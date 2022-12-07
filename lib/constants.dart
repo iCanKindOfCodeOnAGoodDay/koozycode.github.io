@@ -1,0 +1,213 @@
+import 'package:flutter/material.dart';
+
+Color kBlankColor = Color(0x00000000);
+
+Color kBlockColor = Colors.white;
+
+Color kBlankSquare = Color(0x00000000);
+
+TextStyle kMessageStyle = TextStyle(
+    color: Colors.white70, fontSize: 20.0, fontWeight: FontWeight.w900);
+
+TextStyle kScoreStyle =
+    TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.w900);
+
+TextStyle kButtonStyle =
+    TextStyle(fontSize: 40.0, fontWeight: FontWeight.w900, color: Colors.white);
+
+Color kTransparent = Color(0x00000000);
+
+Container kThing = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/thingRight.gif'))),
+);
+
+Container kThingFalling = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/thingSquare.gif'))),
+);
+
+Container kSkullCoin = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/skullCoin.png'))),
+);
+
+Icon kblankIcon = Icon(
+  Icons.circle,
+  color: Color(0x00000000),
+  size: 30.0,
+);
+
+Hero kRedGem = Hero(
+  tag: 'red',
+  child: Container(
+    height: 30.0,
+    width: 30.0,
+    decoration: BoxDecoration(
+        image: DecorationImage(
+            fit: BoxFit.cover, image: AssetImage('images/bandaidColor.gif'))),
+  ),
+);
+
+Container kKnifePowerUp = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/KnifeX.gif'))),
+);
+
+Hero kFlameFace = Hero(
+  tag: 'face',
+  child: Container(
+    height: 30.0,
+    width: 30.0,
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        fit: BoxFit.cover,
+        image: AssetImage('images/fireballX.gif'),
+      ),
+    ),
+  ),
+);
+
+Hero kExtraLife = Hero(
+  tag: 'thing',
+  child: Container(
+    height: 30.0,
+    width: 30.0,
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        fit: BoxFit.cover,
+        image: AssetImage('images/electricHeart2.gif'),
+      ),
+    ),
+  ),
+);
+
+Hero kFlashingGem = Hero(
+  tag: 'flashing',
+  child: Container(
+    height: 30.0,
+    width: 30.0,
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        fit: BoxFit.cover,
+        image: AssetImage('images/rubyColorGif.gif'),
+      ),
+    ),
+  ),
+);
+
+Container kFlyingFireBall = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/fireball6.png'))),
+);
+
+Container kNuke = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/bomb.png'))),
+);
+
+Container kSkullPatch = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/skullPatch.png'))),
+);
+
+Container kTimeBombLarge = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/dynamite.png'))),
+);
+
+Container kTimeBomb = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/dynamite.png'))),
+);
+
+Container kNukeExplosion = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/nukeExplosion.jpg'))),
+);
+
+Container kLargeHellfireOrange = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/fireball6.png'))),
+);
+
+Container kLargeHellfireBlue = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/fireball6Blue.png'))),
+);
+
+Container kLargeHellfireYellow = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/fireball6Yellow.png'))),
+);
+
+Container kLargeHellfirePurple = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/fireball6Purple.png'))),
+);
+
+Container kLargeHellfireFlashing = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/fireBallXX.gif'))),
+);
+
+Container kGoldCoin = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/coinFlip.gif'))),
+);
+
+Container kContactCoin = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/coinWin.gif'))),
+);
