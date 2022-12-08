@@ -7,7 +7,7 @@ import 'package:flappy_taco/widgets/cannon_switch_widget.dart';
 import 'package:flappy_taco/widgets/flashing_text_widget.dart';
 import 'package:flappy_taco/widgets/power_up_widgets_lives_and.dart';
 import 'package:flappy_taco/widgets/power_ups_widget.dart';
-import 'package:flappy_taco/widgets/taco_widget.dart';
+import 'package:flappy_taco/widgets/hand_column_widget.dart';
 import 'package:flappy_taco/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -126,7 +126,7 @@ class GamePlayScreen extends StatelessWidget {
                   ),
                   Container(
                     // color: Colors.red,
-                    child: TacoWidget(
+                    child: HandColumn(
 
                         /// taco position widget
                         position:

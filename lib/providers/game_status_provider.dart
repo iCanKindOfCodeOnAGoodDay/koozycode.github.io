@@ -140,57 +140,63 @@ class GameStatusProvider with ChangeNotifier {
 
   void handClimb() {
     fireHellFire();
+    if (_isPaused == false) {
+      /// when user taps, let the taco climb
+      if (_handPosition < 10) {
+        if (_crashed == false) {
+          _isClimbing = true;
+          _handPosition = _handPosition + 2;
+          // gameOver();
 
-    /// when user taps, let the taco climb
-    if (_handPosition < 10) {
-      if (_crashed == false) {
-        _isClimbing = true;
-        _handPosition = _handPosition + 2;
-        // gameOver();
-
-        notifyListeners();
+          notifyListeners();
+        }
       }
     }
+
     gameOver();
   }
 
   void handJump() {
-    /// when user taps, let the taco climb
-    if (_handPosition <= 6) {
-      if (_crashed == false) {
-        _isClimbing = true;
-        _handPosition = _handPosition + 4;
-        // gameOver();
+    if (_isPaused == false) {
+      /// when user taps, let the taco climb
+      if (_handPosition <= 6) {
+        if (_crashed == false) {
+          _isClimbing = true;
+          _handPosition = _handPosition + 4;
+          // gameOver();
 
-        notifyListeners();
+          notifyListeners();
+        }
+      } else {
+        if (_crashed == false) {
+          _isClimbing = true;
+          _handPosition = 11;
+          notifyListeners();
+        }
       }
-    } else {
-      if (_crashed == false) {
-        _isClimbing = true;
-        _handPosition = 11;
-        notifyListeners();
-      }
+      gameOver();
     }
-    gameOver();
   }
 
   void handDive() {
-    /// when user taps, let the taco climb
-    if (_handPosition <= 4) {
-      if (_crashed == false) {
-        _isClimbing = false;
-        _handPosition = 1;
-        // gameOver();
-        notifyListeners();
+    if (_isPaused == false) {
+      /// when user taps, let the taco climb
+      if (_handPosition <= 4) {
+        if (_crashed == false) {
+          _isClimbing = false;
+          _handPosition = 1;
+          // gameOver();
+          notifyListeners();
+        }
+      } else {
+        if (_crashed == false) {
+          _isClimbing = false;
+          _handPosition = _handPosition - 4;
+          notifyListeners();
+        }
       }
-    } else {
-      if (_crashed == false) {
-        _isClimbing = false;
-        _handPosition = _handPosition - 4;
-        notifyListeners();
-      }
+      gameOver();
     }
-    gameOver();
   }
 
   String _progressMessage = '';
@@ -868,13 +874,13 @@ class GameStatusProvider with ChangeNotifier {
   void startGame() {
     var timer = Timer.periodic(Duration(milliseconds: 150), (timer) {
       if (_crashed == false) {
-        _score++;
-
         /// make game speed up as you play
         // _gameSpeed--;
         // print('game spped $_gameSpeed');
         updateProgressMessage();
         if (_isPaused == false) {
+          _score++;
+
           if (buildingSpace >= 3) {
             createBuilding();
             contactWithPowerUpChecker();
@@ -1026,37 +1032,8 @@ class GameStatusProvider with ChangeNotifier {
             /// remove the animation effect quickly
             contactGrid.insert(
                 i, HellFireContactColumns(potentialContactPosition: 21));
-            if (_currentCannon == CannonType.orange) {
-              if (_shouldDisplayDoublePointsEffects == false) {
-                _score = _score + 3;
-              } else {
-                _score = _score + 6;
-              }
-            } else if (_currentCannon == CannonType.yellow) {
-              if (_shouldDisplayDoublePointsEffects == false) {
-                _score = _score + 7;
-              } else {
-                _score = _score + 14;
-              }
-            } else if (_currentCannon == CannonType.blue) {
-              if (_shouldDisplayDoublePointsEffects == false) {
-                _score = _score + 12;
-              } else {
-                _score = _score + 24;
-              }
-            } else if (_currentCannon == CannonType.purple) {
-              if (_shouldDisplayDoublePointsEffects == false) {
-                _score = _score + 18;
-              } else {
-                _score = _score + 36;
-              }
-            } else if (_currentCannon == CannonType.flashing) {
-              if (_shouldDisplayDoublePointsEffects == false) {
-                _score = _score + 25;
-              } else {
-                _score = _score + 50;
-              }
-            }
+            pointsForHittingPerCannonType();
+
             notifyListeners();
 
             /// 21 adds a blank column
@@ -1066,10 +1043,49 @@ class GameStatusProvider with ChangeNotifier {
     }
   }
 
+  void pointsForHittingPerCannonType() {
+    if (_crashed == false) {
+      if (_isPaused == false) {
+        if (_currentCannon == CannonType.orange) {
+          if (_shouldDisplayDoublePointsEffects == false) {
+            _score = _score + 3;
+          } else {
+            _score = _score + 6;
+          }
+        } else if (_currentCannon == CannonType.yellow) {
+          if (_shouldDisplayDoublePointsEffects == false) {
+            _score = _score + 7;
+          } else {
+            _score = _score + 14;
+          }
+        } else if (_currentCannon == CannonType.blue) {
+          if (_shouldDisplayDoublePointsEffects == false) {
+            _score = _score + 12;
+          } else {
+            _score = _score + 24;
+          }
+        } else if (_currentCannon == CannonType.purple) {
+          if (_shouldDisplayDoublePointsEffects == false) {
+            _score = _score + 18;
+          } else {
+            _score = _score + 36;
+          }
+        } else if (_currentCannon == CannonType.flashing) {
+          if (_shouldDisplayDoublePointsEffects == false) {
+            _score = _score + 25;
+          } else {
+            _score = _score + 50;
+          }
+        }
+      }
+      notifyListeners();
+    }
+  }
+
   void contactSixOrMore() {
     for (var i = 0; i < 11; i++) {
       if (buildings[i].buildingHeight >= 6) {
-        if (buildings[i].buildingHeight <= _handPosition &&
+        if (buildings[i].buildingHeight <= _handPosition + 2 &&
             buildings[i].buildingHeight <= 12 &&
             buildings[i].buildingHeight >= 1) {
           /// then contact has been made
@@ -1090,17 +1106,7 @@ class GameStatusProvider with ChangeNotifier {
             /// remove the animation effect quickly
             contactGrid.insert(
                 i, HellFireContactColumns(potentialContactPosition: 21));
-            if (_currentCannon == CannonType.orange) {
-              _score = _score + 3;
-            } else if (_currentCannon == CannonType.yellow) {
-              _score = _score + 7;
-            } else if (_currentCannon == CannonType.blue) {
-              _score = _score + 12;
-            } else if (_currentCannon == CannonType.purple) {
-              _score = _score + 18;
-            } else if (_currentCannon == CannonType.flashing) {
-              _score = _score + 25;
-            }
+            pointsForHittingPerCannonType();
 
             /// 21 adds a blank column
             notifyListeners();

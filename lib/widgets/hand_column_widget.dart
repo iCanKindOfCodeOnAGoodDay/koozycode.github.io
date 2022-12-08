@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'package:provider/provider.dart';
 
-class TacoWidget extends StatelessWidget {
+class HandColumn extends StatelessWidget {
   int position = 6;
 
-  TacoWidget({required this.position});
+  HandColumn({required this.position});
 
   @override
   Widget build(BuildContext context) {

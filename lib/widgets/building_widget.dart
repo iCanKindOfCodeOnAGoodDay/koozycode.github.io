@@ -1,4 +1,6 @@
 import 'package:flappy_taco/constants.dart';
+import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
+import 'package:flappy_taco/widgets/cannon_ammunition_widget.dart';
 import 'package:flappy_taco/widgets/development_block_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +46,8 @@ class BuildingWidget extends StatelessWidget {
                   powerUpPosition == 6 ? kRedGem : kblankIcon,
                   powerUpPosition == 5 ? kSkullPatch : kblankIcon,
                   powerUpPosition == 4 ? kKnifePowerUp : kblankIcon,
-                  powerUpPosition == 3 ? kFlameFace : kblankIcon,
-                  powerUpPosition == 2 ? kFlameFace : kblankIcon,
+                  powerUpPosition == 3 ? AmmoPickup() : kblankIcon,
+                  powerUpPosition == 2 ? AmmoPickup() : kblankIcon,
                   powerUpPosition == 1 ? kNuke : kblankIcon,
                   // DevelopmentBlock(color: kBlankColor),
                 ],

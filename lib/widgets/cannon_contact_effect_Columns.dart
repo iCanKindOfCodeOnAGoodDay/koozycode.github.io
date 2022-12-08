@@ -19,13 +19,14 @@ class HellFireContactColumns extends StatelessWidget {
               DevelopmentBlock(color: kBlankColor),
               DevelopmentBlock(color: kBlankColor),
               DevelopmentBlock(color: kBlankColor),
-              DevelopmentBlock(color: kBlankColor),
+              potentialContactPosition == 6 ? kContactCoin : kblankIcon,
               potentialContactPosition == 5 ? kContactCoin : kblankIcon,
               potentialContactPosition == 4 ? kContactCoin : kblankIcon,
               potentialContactPosition == 3 ? kContactCoin : kblankIcon,
               potentialContactPosition == 2 ? kContactCoin : kblankIcon,
               potentialContactPosition == 1 ? kContactCoin : kblankIcon,
               potentialContactPosition == 0 ? kContactCoin : kblankIcon,
+              // DevelopmentBlock(color: kBlankColor),
             ],
           )
 
@@ -34,16 +35,17 @@ class HellFireContactColumns extends StatelessWidget {
         : Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // kblankIcon,
+              kblankIcon,
               potentialContactPosition == 11 ? kContactCoin : kblankIcon,
               potentialContactPosition == 10 ? kContactCoin : kblankIcon,
               potentialContactPosition == 9 ? kContactCoin : kblankIcon,
               potentialContactPosition == 8 ? kContactCoin : kblankIcon,
               potentialContactPosition == 7 ? kContactCoin : kblankIcon,
               potentialContactPosition == 6 ? kContactCoin : kblankIcon,
-              DevelopmentBlock(color: kBlankColor),
-              DevelopmentBlock(color: kBlankColor),
-              DevelopmentBlock(color: kBlankColor),
+              potentialContactPosition == 5 ? kContactCoin : kblankIcon,
+              potentialContactPosition == 4 ? kContactCoin : kblankIcon,
+              potentialContactPosition == 3 ? kContactCoin : kblankIcon,
+              // DevelopmentBlock(color: kBlankColor),
               DevelopmentBlock(color: kBlankColor),
             ],
           );
