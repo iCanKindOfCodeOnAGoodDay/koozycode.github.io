@@ -34,12 +34,12 @@ class GamePlayScreen extends StatelessWidget {
         children: [
           context.watch<GameStatusProvider>().crashed == true
               ? Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('images/redSkullMono2.gif'
-                              // 'images/blackRedYellowExplosion.gif',
-                              ))),
+                  // decoration: BoxDecoration(
+                  //     image: DecorationImage(
+                  //         fit: BoxFit.cover,
+                  //         image: AssetImage('images/plasmaChargeForButton.gif'
+                  //             // 'images/blackRedYellowExplosion.gif',
+                  //             ))),
                   child: Container(
                     height: 700.0,
                     // width: 300.0,
@@ -57,7 +57,7 @@ class GamePlayScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      height: 570.0,
+                      height: 440.0,
                       width: 30.0,
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -69,24 +69,28 @@ class GamePlayScreen extends StatelessWidget {
                   ],
                 ),
           context.watch<GameStatusProvider>().shouldShowCoinWinEffect == true
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+              ? Stack(
                   children: [
-                    SizedBox(
-                      height: 500.0,
-                    ),
-                    Container(
-                      child: Container(
-                        height: 30.0,
-                        width: 30.0,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage('images/fire.gif'
-                                    // 'images/blackRedYellowExplosion.gif',
-                                    ))),
-                      ),
-                      height: 400.0,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox(
+                          height: 500.0,
+                        ),
+                        Container(
+                          child: Container(
+                            height: 30.0,
+                            width: 30.0,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/fire.gif'
+                                        // 'images/blackRedYellowExplosion.gif',
+                                        ))),
+                          ),
+                          height: 400.0,
+                        ),
+                      ],
                     ),
                   ],
                 )
@@ -115,12 +119,11 @@ class GamePlayScreen extends StatelessWidget {
                               ),
                         Expanded(
                           child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image:
-                                      AssetImage('images/redSkullMono2.gif')),
-                            ),
+                            // decoration: BoxDecoration(
+                            //   image: DecorationImage(
+                            //       fit: BoxFit.cover,
+                            //       image: AssetImage('images/gameOver.GIF')),
+                            // ),
                             child: Container(
                               // height: 400.0,
                               decoration: BoxDecoration(
@@ -152,7 +155,7 @@ class GamePlayScreen extends StatelessWidget {
                                                               .crashed ==
                                                           true
                                                       ? AssetImage(
-                                                          'images/blood2v.gif')
+                                                          'images/blood2.gif')
                                                       : AssetImage(
                                                           'images/brain1.gif',
                                                         ))),
@@ -161,13 +164,89 @@ class GamePlayScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+
+          /// top of tv stand
+          Stack(
+            children: [
+              Opacity(
+                opacity: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    context.watch<GameStatusProvider>().roundsInMagazine >= 10
+
+                        /// account for full magazine
+                        ? SizedBox(
+                            height: 56.0,
+                          )
+                        : context
+                                    .watch<GameStatusProvider>()
+                                    .roundsInMagazine ==
+                                0
+
+                            /// account for no rows
+                            ? SizedBox(
+                                height: 69.0,
+                              )
+
+                            /// account for one row
+                            : SizedBox(
+                                height: 62.0,
+                              ),
+                    Container(
+                      height: 110.0,
+                      // width: 400.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                                'images/60syellowLongTopEditRaised.png')),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Stack(
+            children: [
+              Opacity(
+                opacity: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    context.watch<GameStatusProvider>().roundsInMagazine >= 10
+                        ? SizedBox(
+                            height: 460.0,
+                          )
+                        : SizedBox(
+                            height: 460.0,
+                          ),
+                    // SizedBox(
+                    //   height: 450.0,
+                    // ),
+                    Container(
+                      height: 150.0,
+                      // width: 400.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('images/60syellowStand2.png')),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                height: 60.0,
+                height: 30.0,
               ),
               Row(
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   context
@@ -203,10 +282,10 @@ class GamePlayScreen extends StatelessWidget {
                   context.watch<GameStatusProvider>().crashed == true
                       ? Container(
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(
-                                    'images/plasmaChargeForButton.gif')),
+                                image: AssetImage('images/bloodSplatV.gif')),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -218,22 +297,21 @@ class GamePlayScreen extends StatelessWidget {
                                       .read<GameStatusProvider>()
                                       .resetGame();
                                 },
-                                child: Container(
-                                  color: Colors.black,
-                                  child: Text(
-                                    'start',
-                                    style: kButtonStyle,
-                                  ),
+                                child: Icon(
+                                  Icons.play_circle_outline_outlined,
+                                  size: 60.0,
+                                  color: Colors.yellow,
                                 )),
                           ),
                         )
                       : context.watch<GameStatusProvider>().isPaused == false
                           ? Container(
                               decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        'images/plasmaChargeForButton.gif')),
+                                    image:
+                                        AssetImage('images/bloodSplatV.gif')),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -243,23 +321,21 @@ class GamePlayScreen extends StatelessWidget {
                                         .read<GameStatusProvider>()
                                         .pauseGame();
                                   },
-                                  child: Container(
-                                      color: Colors.black,
-                                      child: Text(
-                                        'pause',
-                                        //// when user taps pause
-                                        //// a button prompting the user to resume game should appear
-                                        style: kButtonStyle,
-                                      )),
+                                  child: Icon(
+                                    Icons.pause_circle_outline,
+                                    size: 60.0,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             )
                           : Container(
                               decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        'images/plasmaChargeForButton.gif')),
+                                    image:
+                                        AssetImage('images/bloodSplatV.gif')),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -269,14 +345,11 @@ class GamePlayScreen extends StatelessWidget {
                                         .read<GameStatusProvider>()
                                         .resumeGame();
                                   },
-                                  child: Container(
-                                      color: Colors.green,
-                                      child: Text(
-                                        'play',
-                                        //// when user taps pause
-                                        //// a button prompting the user to resume game should appear
-                                        style: kButtonStyle,
-                                      )),
+                                  child: Icon(
+                                    Icons.play_circle_outline_outlined,
+                                    size: 60.0,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             )
@@ -284,31 +357,42 @@ class GamePlayScreen extends StatelessWidget {
               ),
               Stack(
                 children: [
+                  ///GAME play areas
                   Container(
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: context
-                                    .watch<GameStatusProvider>()
-                                    .showSkullBackground ==
-                                true
-                            ? AssetImage('images/skelatonStrobe.gif')
-                            : AssetImage('images/fire.gif'),
-
-                        // context.watch<GameStatusProvider>().crashed ==
-                        //                             false
-                        //                         ? AssetImage('images/fire.gif')
-                        //                         // ? AssetImage('images/blackWater.gif')
-                        //
-                        //                         // blackWater.gif
-                        //                         : AssetImage('images/skullStatic.gif'),
-                      ),
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: context
+                                        .watch<GameStatusProvider>()
+                                        .showSkullBackground ==
+                                    true
+                                ? AssetImage('images/skelatonStrobe.gif')
+                                // : AssetImage('images/fire.gif'),
 
-                      /// buildlings
-                      children: context.watch<GameStatusProvider>().buildings,
+                                : context.watch<GameStatusProvider>().crashed ==
+                                        false
+                                    ? AssetImage('images/fire.gif')
+                                    // ? AssetImage('images/blackWater.gif')
+
+                                    // blackWater.gif
+                                    : AssetImage('images/gameOver.GIF'),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          /// buildlings
+                          children:
+                              context.watch<GameStatusProvider>().buildings,
+                        ),
+                      ),
                     ),
                   ),
                   Container(
@@ -351,6 +435,7 @@ class GamePlayScreen extends StatelessWidget {
                     children:
                         context.watch<GameStatusProvider>().hellFireColumns,
                   ),
+
                   Row(
                     children: context.watch<GameStatusProvider>().contactGrid,
                   ),
@@ -362,6 +447,7 @@ class GamePlayScreen extends StatelessWidget {
                   ),
                 ],
               ),
+
               PowerUps(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -388,71 +474,99 @@ class GamePlayScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          CannonSwitch(
-                            cannonIsLoaded:
-                                context.watch<GameStatusProvider>().fullyLoaded,
-                            remainingAmmo: context
-                                .watch<GameStatusProvider>()
-                                .roundsInMagazine,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CannonSwitch(
+                              cannonIsLoaded: context
+                                  .watch<GameStatusProvider>()
+                                  .fullyLoaded,
+                              remainingAmmo: context
+                                  .watch<GameStatusProvider>()
+                                  .roundsInMagazine,
+                            ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 40.0,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                  'images/plasmaChargeForButton.gif')),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              context.read<GameStatusProvider>().handJump();
-                            },
-                            child: Container(
-                              width: 150.0,
-                              height: 100,
-                              child: Center(
-                                child: Text(
-                                  'jump',
-                                  style: kButtonStyle,
+                      // SizedBox(
+                      //   height: 10.0,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 8.0, right: 8.0, bottom: 8.0),
+                        child: Opacity(
+                          opacity: 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      'images/plasmaChargeForButton.gif')),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  context.read<GameStatusProvider>().handJump();
+                                },
+                                child: Container(
+                                  width: 150.0,
+                                  height: 100,
+                                  child: Center(
+                                    child: Text(
+                                      'jump',
+                                      style: kButtonStyle,
+                                    ),
+                                  ),
+                                  color: context
+                                              .watch<GameStatusProvider>()
+                                              .lastCommand ==
+                                          LastGamePlayButton.jump
+                                      ? Colors.yellow
+                                      : Colors.black,
                                 ),
                               ),
-                              color: Colors.black,
                             ),
                           ),
                         ),
                       ),
                       // SizedBox(
-                      //   height: 50.0,
+                      //   height: 2.0,
                       // ),
-                      Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                  'images/plasmaChargeForButton.gif')),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              context.read<GameStatusProvider>().handDive();
-                            },
-                            child: Container(
-                              width: 150.0,
-                              height: 100.0,
-                              child: Center(
-                                child: Text(
-                                  'dive',
-                                  style: kButtonStyle,
+
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8),
+                        child: Opacity(
+                          opacity: 0.8,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      'images/plasmaChargeForButton.gif')),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  context.read<GameStatusProvider>().handDive();
+                                },
+                                child: Container(
+                                  width: 150.0,
+                                  height: 100.0,
+                                  child: Center(
+                                    child: Text(
+                                      'dive',
+                                      style: kButtonStyle,
+                                    ),
+                                  ),
+                                  color: context
+                                              .watch<GameStatusProvider>()
+                                              .lastCommand ==
+                                          LastGamePlayButton.dive
+                                      ? Colors.yellow
+                                      : Colors.black,
                                 ),
                               ),
-                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -479,38 +593,49 @@ class GamePlayScreen extends StatelessWidget {
                           : Container(
                               height: 70.0,
                             ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          context.read<GameStatusProvider>().handClimb();
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                    'images/plasmaChargeForButton.gif')),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                      // SizedBox(
+                      //   height: 20.0,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Opacity(
+                          opacity: 0.8,
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<GameStatusProvider>().handClimb();
+                            },
                             child: Container(
-                              height: 100.0,
-                              width: 150.0,
-                              // decoration: BoxDecoration(
-                              //   image: DecorationImage(
-                              //       fit: BoxFit.cover,
-                              //       image: AssetImage(
-                              //           'images/plasmaChargeForButton.gif')),
-                              // ),
-                              child: Center(
-                                child: Text(
-                                  'climb',
-                                  style: kButtonStyle,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        'images/plasmaChargeForButton.gif')),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 100.0,
+                                  width: 150.0,
+                                  // decoration: BoxDecoration(
+                                  //   image: DecorationImage(
+                                  //       fit: BoxFit.cover,
+                                  //       image: AssetImage(
+                                  //           'images/plasmaChargeForButton.gif')),
+                                  // ),
+                                  child: Center(
+                                    child: Text(
+                                      'climb',
+                                      style: kButtonStyle,
+                                    ),
+                                  ),
+                                  color: context
+                                              .watch<GameStatusProvider>()
+                                              .lastCommand ==
+                                          LastGamePlayButton.climb
+                                      ? Colors.yellow
+                                      : Colors.black,
                                 ),
                               ),
-                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -519,12 +644,12 @@ class GamePlayScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10.0,
-              ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
               SecondPowerUps(),
               SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
             ],
           ),

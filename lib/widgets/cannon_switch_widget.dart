@@ -39,7 +39,12 @@ class CannonSwitch extends StatelessWidget {
                       color: context.watch<GameStatusProvider>().fullyLoaded ==
                               true
                           ? Colors.white24
-                          : Colors.red),
+                          : context
+                                      .watch<GameStatusProvider>()
+                                      .roundsInMagazine ==
+                                  0
+                              ? Colors.redAccent
+                              : Colors.yellow),
                 ),
               ),
               GestureDetector(
@@ -53,19 +58,40 @@ class CannonSwitch extends StatelessWidget {
                   /// toggle switch
                 },
                 child: Container(
-                  width: 40.0,
-                  height: 40.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: context.watch<GameStatusProvider>().fullyLoaded ==
-                              true
-                          ? Colors.lightGreenAccent
-                          : Colors.white24),
-                ),
+                    width: 40.0,
+                    height: 40.0,
+                    decoration:
+                        context.watch<GameStatusProvider>().fullyLoaded == true
+                            ? BoxDecoration(
+                                color: Colors.yellow,
+                              )
+                            // borderRadius: BorderRadius.circular(5),
+                            // image: DecorationImage(
+                            //     fit: BoxFit.cover,
+                            //     image: AssetImage(
+                            //         'images/plasmaChargeForButton.gif')))
+                            : BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                // color: context
+                                //             .watch<GameStatusProvider>()
+                                //             .fullyLoaded ==
+                                //         true
+                                //     ? Colors.black
+                                //     : Colors.white54
+                              ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Container(
+                          color:
+                              context.watch<GameStatusProvider>().fullyLoaded ==
+                                      true
+                                  ? Colors.black
+                                  : Colors.white54),
+                    )),
               ),
-              SizedBox(
-                width: 40.0,
-              ),
+              // SizedBox(
+              //   width: 40.0,
+              // ),
             ],
           ),
         ],

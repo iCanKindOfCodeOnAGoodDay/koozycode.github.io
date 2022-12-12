@@ -32,11 +32,21 @@ enum AmmoType {
   black,
 }
 
+enum LastGamePlayButton {
+  climb,
+  jump,
+  dive,
+}
+
 class GameStatusProvider with ChangeNotifier {
   /// start the taco position at 6 near center
   int _handPosition = 5;
 
   int get handPosition => _handPosition;
+
+  LastGamePlayButton _lastCommand = LastGamePlayButton.climb;
+
+  LastGamePlayButton get lastCommand => _lastCommand;
 
   /// position 10 and 11 are not accessible for the hand
   /// 1, 2, 3 , 4, 5, 6, 7, 8, 9 , 10
@@ -149,6 +159,7 @@ class GameStatusProvider with ChangeNotifier {
       if (_handPosition < 10) {
         if (_crashed == false) {
           _isClimbing = true;
+          _lastCommand = LastGamePlayButton.climb;
 
           /// let the user jump through to pickup powerups
           _handPosition++;
@@ -169,6 +180,7 @@ class GameStatusProvider with ChangeNotifier {
       /// when user taps, let the taco climb
       if (_handPosition <= 7) {
         if (_crashed == false) {
+          _lastCommand = LastGamePlayButton.jump;
           _isClimbing = true;
           _handPosition++;
           _handPosition++;
@@ -202,6 +214,7 @@ class GameStatusProvider with ChangeNotifier {
       /// when user taps, let the taco climb
       if (_handPosition <= 4) {
         if (_crashed == false) {
+          _lastCommand = LastGamePlayButton.dive;
           _isClimbing = false;
           // _handPosition = 1;
           _handPosition--;
@@ -750,7 +763,7 @@ class GameStatusProvider with ChangeNotifier {
   }
 
   void reloadHellFire() {
-    _roundsInMagazine = 16;
+    _roundsInMagazine = 18;
     flames = [
       CannonAmmunition(),
       CannonAmmunition(),
@@ -1323,13 +1336,15 @@ class GameStatusProvider with ChangeNotifier {
   /// combo data provider
   ///
 
-  int _roundsInMagazine = 16;
+  int _roundsInMagazine = 18;
   int get roundsInMagazine => _roundsInMagazine;
 
   void fireHellFire() {
     if (flamesSecond.isEmpty == false) {
       _fullyLoaded = false;
-      _roundsInMagazine--;
+      if (_roundsInMagazine > 0) {
+        _roundsInMagazine--;
+      }
 
       /// reset combo hits
       if (_comboHits < 3) {
