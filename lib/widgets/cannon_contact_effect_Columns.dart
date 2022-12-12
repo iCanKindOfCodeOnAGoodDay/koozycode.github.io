@@ -1,5 +1,6 @@
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/widgets/cannon_fire.dart';
+import 'package:flappy_taco/widgets/coin_win_effect.dart';
 import 'package:flappy_taco/widgets/development_block_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -19,13 +20,27 @@ class HellFireContactColumns extends StatelessWidget {
               DevelopmentBlock(color: kBlankColor),
               DevelopmentBlock(color: kBlankColor),
               DevelopmentBlock(color: kBlankColor),
-              potentialContactPosition == 6 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 5 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 4 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 3 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 2 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 1 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 0 ? kContactCoin : kblankIcon,
+              potentialContactPosition == 6
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 5
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 4
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 3
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 2
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 1
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 0
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
               // DevelopmentBlock(color: kBlankColor),
             ],
           )
@@ -36,15 +51,33 @@ class HellFireContactColumns extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               kblankIcon,
-              potentialContactPosition == 11 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 10 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 9 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 8 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 7 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 6 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 5 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 4 ? kContactCoin : kblankIcon,
-              potentialContactPosition == 3 ? kContactCoin : kblankIcon,
+              potentialContactPosition == 11
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 10
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 9
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 8
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 7
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 6
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 5
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 4
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
+              potentialContactPosition == 3
+                  ? WinEffectForEachAmmoType()
+                  : kblankIcon,
               // DevelopmentBlock(color: kBlankColor),
               DevelopmentBlock(color: kBlankColor),
             ],

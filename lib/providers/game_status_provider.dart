@@ -18,6 +18,8 @@ enum CannonType {
   yellow,
   purple,
   flashing,
+  white,
+  black,
 }
 
 enum AmmoType {
@@ -26,6 +28,8 @@ enum AmmoType {
   yellow,
   purple,
   flashing,
+  white,
+  black,
 }
 
 class GameStatusProvider with ChangeNotifier {
@@ -145,7 +149,11 @@ class GameStatusProvider with ChangeNotifier {
       if (_handPosition < 10) {
         if (_crashed == false) {
           _isClimbing = true;
-          _handPosition = _handPosition + 2;
+
+          /// let the user jump through to pickup powerups
+          _handPosition++;
+          _handPosition++;
+          // _handPosition = _handPosition + 2;
           // gameOver();
 
           notifyListeners();
@@ -159,10 +167,14 @@ class GameStatusProvider with ChangeNotifier {
   void handJump() {
     if (_isPaused == false) {
       /// when user taps, let the taco climb
-      if (_handPosition <= 6) {
+      if (_handPosition <= 7) {
         if (_crashed == false) {
           _isClimbing = true;
-          _handPosition = _handPosition + 4;
+          _handPosition++;
+          _handPosition++;
+          _handPosition++;
+          _handPosition++;
+          // _handPosition = _handPosition + 4;
           // gameOver();
 
           notifyListeners();
@@ -170,7 +182,14 @@ class GameStatusProvider with ChangeNotifier {
       } else {
         if (_crashed == false) {
           _isClimbing = true;
-          _handPosition = 11;
+          _handPosition++;
+          _handPosition++;
+          _handPosition++;
+          _handPosition++;
+          if (_handPosition > 11) {
+            _handPosition = 11;
+          }
+          // _handPosition = 11;
           notifyListeners();
         }
       }
@@ -184,14 +203,25 @@ class GameStatusProvider with ChangeNotifier {
       if (_handPosition <= 4) {
         if (_crashed == false) {
           _isClimbing = false;
-          _handPosition = 1;
+          // _handPosition = 1;
+          _handPosition--;
+          _handPosition--;
+          _handPosition--;
+          if (_handPosition < 1) {
+            _handPosition = 1;
+          }
           // gameOver();
           notifyListeners();
         }
       } else {
         if (_crashed == false) {
           _isClimbing = false;
-          _handPosition = _handPosition - 4;
+          _handPosition--;
+          _handPosition--;
+          _handPosition--;
+          _handPosition--;
+
+          // _handPosition = _handPosition - 4;
           notifyListeners();
         }
       }
@@ -512,8 +542,79 @@ class GameStatusProvider with ChangeNotifier {
     });
   }
 
+  bool _shouldDisplayExplosion1 = false;
+
+  bool get shouldDisplayExplosion1 => _shouldDisplayExplosion1;
+
+  void fireExplosion1() {
+    // _score = _score + 50;
+    _shouldDisplayExplosion1 = true;
+    notifyListeners();
+    Future.delayed(Duration(milliseconds: 1200), () {
+      _shouldDisplayExplosion1 = false;
+      notifyListeners();
+    });
+  }
+
+  bool _shouldDisplayExplosion2 = false;
+
+  bool get shouldDisplayExplosion2 => _shouldDisplayExplosion2;
+
+  void fireExplosion2() {
+    // _score = _score + 50;
+    _shouldDisplayExplosion2 = true;
+    notifyListeners();
+    Future.delayed(Duration(milliseconds: 1200), () {
+      _shouldDisplayExplosion2 = false;
+      notifyListeners();
+    });
+  }
+
+  bool _shouldDisplayBloodSplatQuick = false;
+
+  bool get shouldDisplayBloodSplatQuick => _shouldDisplayBloodSplatQuick;
+
+  void fireBloodSplatQuick() {
+    // _score = _score + 50;
+    _shouldDisplayBloodSplatQuick = true;
+    notifyListeners();
+    Future.delayed(Duration(milliseconds: 1200), () {
+      _shouldDisplayBloodSplatQuick = false;
+      notifyListeners();
+    });
+  }
+
+  bool _shouldDisplayJustPickedUpCannon = false;
+
+  bool get shouldDisplayJustPickedUpCannon => _shouldDisplayJustPickedUpCannon;
+
+  void fireJustPickedUpCannon() {
+    // _score = _score + 50;
+    _shouldDisplayJustPickedUpCannon = true;
+    notifyListeners();
+    Future.delayed(Duration(milliseconds: 1200), () {
+      _shouldDisplayJustPickedUpCannon = false;
+      notifyListeners();
+    });
+  }
+
+  bool _shouldShowCoinWinEffect = false;
+
+  bool get shouldShowCoinWinEffect => _shouldShowCoinWinEffect;
+
+  void fireCoinWinEffect() {
+    // _score = _score + 10;
+    _shouldShowCoinWinEffect = true;
+    notifyListeners();
+    Future.delayed(Duration(milliseconds: 1200), () {
+      _shouldShowCoinWinEffect = false;
+      notifyListeners();
+    });
+  }
+
   void nuclearExplosionOnScreen() {
     fireDoublePointsEffects();
+    fireExplosion1();
 
     nukeList.removeAt(nukeList.length - 1);
     buildings = [];
@@ -606,15 +707,21 @@ class GameStatusProvider with ChangeNotifier {
         _handPosition == _gemLocationAtIndexZero) {
       if (_gemLocationAtIndexZero == 4 || _gemLocationAtIndexZero == 7) {
         if (redGems.isEmpty && extraLives.isEmpty) {
+          fireBloodSplatQuick();
+
           print('user got stabbed');
           _crashed = true;
           pauseGame();
           notifyListeners();
         } else if (redGems.isNotEmpty) {
+          fireBloodSplatQuick();
+
           redGems.removeAt(redGems.length - 1);
           print('bandaid stab protection');
           notifyListeners();
         } else if (extraLives.isNotEmpty) {
+          fireBloodSplatQuick();
+
           extraLives.removeAt(extraLives.length - 1);
           print('extra lives stab protection');
 
@@ -622,6 +729,8 @@ class GameStatusProvider with ChangeNotifier {
         }
       } else if (_gemLocationAtIndexZero == 5) {
         turnOnAndOffSkullBackground();
+        fireBloodSplatQuick();
+
         fireDoublePointsEffects();
 
         /// set string value for background image
@@ -641,6 +750,7 @@ class GameStatusProvider with ChangeNotifier {
   }
 
   void reloadHellFire() {
+    _roundsInMagazine = 16;
     flames = [
       CannonAmmunition(),
       CannonAmmunition(),
@@ -686,12 +796,16 @@ class GameStatusProvider with ChangeNotifier {
         _handPosition + 1 == _gemLocationAtIndexZero ||
         _handPosition - 1 == _gemLocationAtIndexZero) {
       if (_gemLocationAtIndexZero == 3 || _gemLocationAtIndexZero == 2) {
+        fireJustPickedUpCannon();
+
         ///hell fire cannon
         if (_currentCannon == CannonType.orange) {
           _currentCannon = CannonType.yellow;
           _cannons = [kLargeHellfireOrange];
           _cannons.add(kLargeHellfireYellow);
           _currentAmmunition = AmmoType.yellow;
+
+          /// adds two cannons
           notifyListeners();
         } else if (_currentCannon == CannonType.yellow) {
           _currentCannon = CannonType.blue;
@@ -711,11 +825,25 @@ class GameStatusProvider with ChangeNotifier {
           _currentAmmunition = AmmoType.flashing;
 
           notifyListeners();
+        } else if (_currentCannon == CannonType.flashing) {
+          _currentCannon = CannonType.black;
+          _cannons.add(kLargeHellfireBlack);
+          _currentAmmunition = AmmoType.black;
+
+          notifyListeners();
+        } else if (_currentCannon == CannonType.black) {
+          _currentCannon = CannonType.white;
+          _cannons.add(kLargeHellfireWhite);
+          _currentAmmunition = AmmoType.white;
+
+          notifyListeners();
         }
         // flames.add(CannonAmmunition());
         // notifyListeners();
         print('user caught a FLAME');
       } else if (_gemLocationAtIndexZero == 9) {
+        fireCoinWinEffect();
+
         /// give the user an extra life
         extraLives.add(kExtraLife);
         notifyListeners();
@@ -723,6 +851,8 @@ class GameStatusProvider with ChangeNotifier {
         print('user got extra life');
       } else if (_gemLocationAtIndexZero == 10 ||
           _gemLocationAtIndexZero == 6) {
+        fireCoinWinEffect();
+
         redGems.add(kRedGem);
         notifyListeners();
 
@@ -732,6 +862,7 @@ class GameStatusProvider with ChangeNotifier {
         ///empty buildings
         fireDoublePointsEffects();
         activateShield();
+        fireExplosion2();
         print('user caught a flashing gem');
       } else if (_gemLocationAtIndexZero == 8) {
         ///empty buildings
@@ -1006,6 +1137,10 @@ class GameStatusProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  int _comboHits = 0;
+
+  int get comboHits => _comboHits;
+
   ///this funnction should determine contact points and fire animations at the correct contact point
   ///with 1/50th the amounth of code or so
   ///display contactGrid as a stack in from of the game play areas
@@ -1016,7 +1151,12 @@ class GameStatusProvider with ChangeNotifier {
             buildings[i].buildingHeight <= 12 &&
             buildings[i].buildingHeight >= 1) {
           /// then contact has been made
-          ///
+          handleComboHitsMessageAndHoldTripleHit();
+
+          // _comboHits++;
+          // if (_comboHits >= 3) {
+          //   fireDoublePointsEffects();
+          // }
           // resetHellFireContactLocations();
           contactGrid.removeAt(i);
           contactGrid.insert(i,
@@ -1076,9 +1216,36 @@ class GameStatusProvider with ChangeNotifier {
           } else {
             _score = _score + 50;
           }
+        } else if (_currentCannon == CannonType.black) {
+          if (_shouldDisplayDoublePointsEffects == false) {
+            _score = _score + 35;
+          } else {
+            _score = _score + 70;
+          }
+        } else if (_currentCannon == CannonType.white) {
+          if (_shouldDisplayDoublePointsEffects == false) {
+            _score = _score + 45;
+          } else {
+            _score = _score + 90;
+          }
         }
       }
       notifyListeners();
+    }
+  }
+
+  void handleComboHitsMessageAndHoldTripleHit() {
+    /// dont incremnet combo hits if it's greater than 3
+    if (_comboHits < 3) {
+      _comboHits++;
+      if (_comboHits >= 3) {
+        fireDoublePointsEffects();
+      }
+    } else {
+      Future.delayed(Duration(milliseconds: 1200), () {
+        _comboHits = 0;
+        notifyListeners();
+      });
     }
   }
 
@@ -1089,7 +1256,11 @@ class GameStatusProvider with ChangeNotifier {
             buildings[i].buildingHeight <= 12 &&
             buildings[i].buildingHeight >= 1) {
           /// then contact has been made
-          // resetHellFireContactLocations();
+          handleComboHitsMessageAndHoldTripleHit();
+          // _comboHits++;
+          // if (_comboHits >= 3) {
+          //   fireDoublePointsEffects();
+          // }
           contactGrid.removeAt(i);
           contactGrid.insert(
               i,
@@ -1149,9 +1320,21 @@ class GameStatusProvider with ChangeNotifier {
     }
   }
 
+  /// combo data provider
+  ///
+
+  int _roundsInMagazine = 16;
+  int get roundsInMagazine => _roundsInMagazine;
+
   void fireHellFire() {
     if (flamesSecond.isEmpty == false) {
       _fullyLoaded = false;
+      _roundsInMagazine--;
+
+      /// reset combo hits
+      if (_comboHits < 3) {
+        _comboHits = 0;
+      }
 
       moveHellFire();
       hellFireColumns.removeAt(hellFireColumns.length - 1);

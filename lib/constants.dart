@@ -15,6 +15,9 @@ TextStyle kScoreStyle =
 TextStyle kButtonStyle =
     TextStyle(fontSize: 40.0, fontWeight: FontWeight.w900, color: Colors.white);
 
+TextStyle kSmallButton =
+    TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white);
+
 Color kTransparent = Color(0x00000000);
 
 Container kThing = Container(
@@ -133,8 +136,8 @@ Container kSkullPatch = Container(
 );
 
 Container kTimeBombLarge = Container(
-  height: 50.0,
-  width: 50.0,
+  height: 70.0,
+  width: 70.0,
   decoration: BoxDecoration(
       image: DecorationImage(
           fit: BoxFit.cover, image: AssetImage('images/dynamite.png'))),
@@ -161,7 +164,7 @@ Container kLargeHellfireOrange = Container(
   width: 50.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/fireball6.png'))),
+          fit: BoxFit.cover, image: AssetImage('images/fireBallXYellow2.gif'))),
 );
 
 Container kLargeHellfireBlue = Container(
@@ -169,7 +172,8 @@ Container kLargeHellfireBlue = Container(
   width: 50.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/fireball6Blue.png'))),
+          fit: BoxFit.cover,
+          image: AssetImage('images/invertGreenFireBall.gif'))),
 );
 
 Container kLargeHellfireYellow = Container(
@@ -177,7 +181,7 @@ Container kLargeHellfireYellow = Container(
   width: 50.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/fireball6Yellow.png'))),
+          fit: BoxFit.cover, image: AssetImage('images/yellowFireBall3.gif'))),
 );
 
 Container kLargeHellfirePurple = Container(
@@ -185,7 +189,7 @@ Container kLargeHellfirePurple = Container(
   width: 50.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/fireball6Purple.png'))),
+          fit: BoxFit.cover, image: AssetImage('images/fireBallXPurple.gif'))),
 );
 
 Container kLargeHellfireFlashing = Container(
@@ -193,9 +197,29 @@ Container kLargeHellfireFlashing = Container(
   width: 50.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/fireBallXX.gif'))),
+          fit: BoxFit.cover,
+          image: AssetImage('images/fireBallXFlashing2.gif'))),
 );
 
+Container kLargeHellfireBlack = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/greyFireBall.gif'))),
+);
+
+Container kLargeHellfireWhite = Container(
+  height: 50.0,
+  width: 50.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/whiteFireBall.gif'))),
+);
+
+///
+///
+///
 Container kGoldCoin = Container(
   height: 30.0,
   width: 30.0,
@@ -210,4 +234,12 @@ Container kContactCoin = Container(
   decoration: BoxDecoration(
       image: DecorationImage(
           fit: BoxFit.cover, image: AssetImage('images/coinWin.gif'))),
+);
+
+Container kDeadHand = Container(
+  height: 30.0,
+  width: 30.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/deadHand.gif'))),
 );

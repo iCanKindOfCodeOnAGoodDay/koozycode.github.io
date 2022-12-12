@@ -13,7 +13,7 @@ class CannonAmmunition extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('images/fireballX.gif'))),
+                    image: AssetImage('images/fireBallXYellow2.gif'))),
           )
         : context.watch<GameStatusProvider>().currentAmmunition ==
                 AmmoType.yellow
@@ -23,7 +23,7 @@ class CannonAmmunition extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('images/fireBallXYellow2.gif'))),
+                        image: AssetImage('images/yellowFireBall3.gif'))),
               )
             : context.watch<GameStatusProvider>().currentAmmunition ==
                     AmmoType.purple
@@ -44,16 +44,41 @@ class CannonAmmunition extends StatelessWidget {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage('images/fireBallXBlue.gif'))),
-                      )
-                    : Container(
-                        height: 30.0,
-                        width: 30.0,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
                                 image: AssetImage(
-                                    'images/fireBallXFlashing.gif'))),
-                      );
+                                    'images/invertGreenFireBall.gif'))),
+                      )
+                    : context.watch<GameStatusProvider>().currentAmmunition ==
+                            AmmoType.flashing
+                        ? Container(
+                            height: 30.0,
+                            width: 30.0,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        'images/fireBallXFlashing2.gif'))),
+                          )
+                        : context
+                                    .watch<GameStatusProvider>()
+                                    .currentAmmunition ==
+                                AmmoType.black
+                            ? Container(
+                                height: 30.0,
+                                width: 30.0,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'images/greyFireBall.gif'))),
+                              )
+                            : Container(
+                                height: 30.0,
+                                width: 30.0,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'images/whiteFireBall.gif'))),
+                              );
   }
 }

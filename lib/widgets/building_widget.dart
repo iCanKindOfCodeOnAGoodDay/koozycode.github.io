@@ -2,6 +2,19 @@ import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_widget.dart';
 import 'package:flappy_taco/widgets/development_block_widget.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flutter/material.dart';
 
 class BuildingWidget extends StatelessWidget {
@@ -63,12 +76,12 @@ class BuildingWidget extends StatelessWidget {
                       DevelopmentBlock(color: kBlankColor),
                       DevelopmentBlock(color: kBlankColor),
                       DevelopmentBlock(color: kBlankColor),
-                      buildingHeight >= 5 ? kSkullCoin : kblankIcon,
-                      buildingHeight >= 4 ? kSkullCoin : kblankIcon,
-                      buildingHeight >= 3 ? kSkullCoin : kblankIcon,
-                      buildingHeight >= 2 ? kSkullCoin : kblankIcon,
-                      buildingHeight >= 1 ? kSkullCoin : kblankIcon,
-                      buildingHeight >= 0 ? kSkullCoin : kblankIcon,
+                      buildingHeight >= 5 ? DynamicCoin() : kblankIcon,
+                      buildingHeight >= 4 ? DynamicCoin() : kblankIcon,
+                      buildingHeight >= 3 ? DynamicCoin() : kblankIcon,
+                      buildingHeight >= 2 ? DynamicCoin() : kblankIcon,
+                      buildingHeight >= 1 ? DynamicCoin() : kblankIcon,
+                      buildingHeight >= 0 ? DynamicCoin() : kblankIcon,
                     ],
                   )
 
@@ -97,13 +110,13 @@ class BuildingWidget extends StatelessWidget {
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          kSkullCoin,
-                          kSkullCoin,
-                          buildingHeight <= 10 ? kSkullCoin : kblankIcon,
-                          buildingHeight <= 9 ? kSkullCoin : kblankIcon,
-                          buildingHeight <= 8 ? kSkullCoin : kblankIcon,
-                          buildingHeight <= 7 ? kSkullCoin : kblankIcon,
-                          buildingHeight <= 6 ? kSkullCoin : kblankIcon,
+                          DynamicCoin(),
+                          DynamicCoin(),
+                          buildingHeight <= 10 ? DynamicCoin() : kblankIcon,
+                          buildingHeight <= 9 ? DynamicCoin() : kblankIcon,
+                          buildingHeight <= 8 ? DynamicCoin() : kblankIcon,
+                          buildingHeight <= 7 ? DynamicCoin() : kblankIcon,
+                          buildingHeight <= 6 ? DynamicCoin() : kblankIcon,
                           DevelopmentBlock(color: kBlankColor),
                           DevelopmentBlock(color: kBlankColor),
                           DevelopmentBlock(color: kBlankColor),

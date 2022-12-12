@@ -2,8 +2,13 @@ import 'dart:async';
 
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
+import 'package:flappy_taco/widgets/cannon_ammunition_widget.dart';
 import 'package:flappy_taco/widgets/cannon_button.dart';
 import 'package:flappy_taco/widgets/cannon_switch_widget.dart';
+import 'package:flappy_taco/widgets/coin_win_effect.dart';
+import 'package:flappy_taco/widgets/combo_hits.dart';
+import 'package:flappy_taco/widgets/death_effect_column.dart';
+import 'package:flappy_taco/widgets/fireball_under_hand_column.dart';
 import 'package:flappy_taco/widgets/flashing_text_widget.dart';
 import 'package:flappy_taco/widgets/power_up_widgets_lives_and.dart';
 import 'package:flappy_taco/widgets/power_ups_widget.dart';
@@ -14,18 +19,6 @@ import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 class GamePlayScreen extends StatelessWidget {
-  static const colorizeColors = [
-    Colors.purple,
-    Colors.blue,
-    Colors.yellow,
-    Colors.red,
-  ];
-
-  static const colorizeTextStyle = TextStyle(
-    fontSize: 50.0,
-    fontFamily: 'Horizon',
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +32,135 @@ class GamePlayScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
+          context.watch<GameStatusProvider>().crashed == true
+              ? Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('images/redSkullMono2.gif'
+                              // 'images/blackRedYellowExplosion.gif',
+                              ))),
+                  child: Container(
+                    height: 700.0,
+                    // width: 300.0,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('images/blood2v.gif'
+                                // 'images/blackRedYellowExplosion.gif',
+                                ))),
+                  ),
+                  height: 400.0,
+                )
+              // : Container(),
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      height: 570.0,
+                      width: 30.0,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('images/colorfulBlackWhite.gif'
+                                  // 'images/blackRedYellowExplosion.gif',
+                                  ))),
+                    ),
+                  ],
+                ),
+          context.watch<GameStatusProvider>().shouldShowCoinWinEffect == true
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: 500.0,
+                    ),
+                    Container(
+                      child: Container(
+                        height: 30.0,
+                        width: 30.0,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('images/fire.gif'
+                                    // 'images/blackRedYellowExplosion.gif',
+                                    ))),
+                      ),
+                      height: 400.0,
+                    ),
+                  ],
+                )
+              : context
+                          .watch<GameStatusProvider>()
+                          .shouldDisplayJustPickedUpCannon ==
+                      true
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox(
+                          height: 500.0,
+                        ),
+                        Container(height: 400.0, child: CannonAmmunition()),
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        context.watch<GameStatusProvider>().crashed == true
+                            ? SizedBox(
+                                height: 400.0,
+                              )
+                            : SizedBox(
+                                height: 500.0,
+                              ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image:
+                                      AssetImage('images/redSkullMono2.gif')),
+                            ),
+                            child: Container(
+                              // height: 400.0,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: context
+                                                  .watch<GameStatusProvider>()
+                                                  .shouldDisplayExplosion1 ==
+                                              true
+                                          ? AssetImage(
+                                              'images/deathStar150.gif')
+                                          : context
+                                                      .watch<
+                                                          GameStatusProvider>()
+                                                      .shouldDisplayExplosion2 ==
+                                                  true
+                                              ? AssetImage(
+                                                  'images/blackRedYellowExplosion.gif')
+                                              : context
+                                                          .watch<
+                                                              GameStatusProvider>()
+                                                          .shouldDisplayBloodSplatQuick ==
+                                                      true
+                                                  ? AssetImage(
+                                                      'images/blood2.gif')
+                                                  : context
+                                                              .watch<
+                                                                  GameStatusProvider>()
+                                                              .crashed ==
+                                                          true
+                                                      ? AssetImage(
+                                                          'images/blood2v.gif')
+                                                      : AssetImage(
+                                                          'images/brain1.gif',
+                                                        ))),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -52,54 +174,111 @@ class GamePlayScreen extends StatelessWidget {
                               .watch<GameStatusProvider>()
                               .shouldDisplayDoublePointsEffects ==
                           false
-                      ? Text(
-                          context.watch<GameStatusProvider>().score.toString(),
-                          style: kScoreStyle)
+                      ? Stack(
+                          children: [
+                            Text(
+                                context
+                                    .watch<GameStatusProvider>()
+                                    .score
+                                    .toString(),
+                                style: kScoreStyle),
+                            context
+                                        .watch<GameStatusProvider>()
+                                        .shouldShowCoinWinEffect ==
+                                    true
+                                ? Column(
+                                    children: [
+                                      // SizedBox(height: 300.0),
+                                      WinEffectForEachAmmoType(),
+                                    ],
+                                  )
+                                : Container(),
+                          ],
+                        )
                       : FlashingText(
                           text: context
                               .watch<GameStatusProvider>()
                               .score
                               .toString()),
                   context.watch<GameStatusProvider>().crashed == true
-                      ? GestureDetector(
-                          onTap: () {
-                            context.read<GameStatusProvider>().start();
-                            context.read<GameStatusProvider>().handFall();
-                            context.read<GameStatusProvider>().resetGame();
-                          },
-                          child: Container(
-                            color: Colors.green,
-                            child: Text(
-                              'start',
-                              style: kButtonStyle,
-                            ),
-                          ))
+                      ? Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    'images/plasmaChargeForButton.gif')),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GestureDetector(
+                                onTap: () {
+                                  context.read<GameStatusProvider>().start();
+                                  context.read<GameStatusProvider>().handFall();
+                                  context
+                                      .read<GameStatusProvider>()
+                                      .resetGame();
+                                },
+                                child: Container(
+                                  color: Colors.black,
+                                  child: Text(
+                                    'start',
+                                    style: kButtonStyle,
+                                  ),
+                                )),
+                          ),
+                        )
                       : context.watch<GameStatusProvider>().isPaused == false
-                          ? GestureDetector(
-                              onTap: () {
-                                context.read<GameStatusProvider>().pauseGame();
-                              },
-                              child: Container(
-                                  color: Colors.red,
-                                  child: Text(
-                                    'pause',
-                                    //// when user taps pause
-                                    //// a button prompting the user to resume game should appear
-                                    style: kButtonStyle,
-                                  )),
+                          ? Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        'images/plasmaChargeForButton.gif')),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    context
+                                        .read<GameStatusProvider>()
+                                        .pauseGame();
+                                  },
+                                  child: Container(
+                                      color: Colors.black,
+                                      child: Text(
+                                        'pause',
+                                        //// when user taps pause
+                                        //// a button prompting the user to resume game should appear
+                                        style: kButtonStyle,
+                                      )),
+                                ),
+                              ),
                             )
-                          : GestureDetector(
-                              onTap: () {
-                                context.read<GameStatusProvider>().resumeGame();
-                              },
-                              child: Container(
-                                  color: Colors.green,
-                                  child: Text(
-                                    'resume',
-                                    //// when user taps pause
-                                    //// a button prompting the user to resume game should appear
-                                    style: kButtonStyle,
-                                  )),
+                          : Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        'images/plasmaChargeForButton.gif')),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    context
+                                        .read<GameStatusProvider>()
+                                        .resumeGame();
+                                  },
+                                  child: Container(
+                                      color: Colors.green,
+                                      child: Text(
+                                        'play',
+                                        //// when user taps pause
+                                        //// a button prompting the user to resume game should appear
+                                        style: kButtonStyle,
+                                      )),
+                                ),
+                              ),
                             )
                 ],
               ),
@@ -112,9 +291,17 @@ class GamePlayScreen extends StatelessWidget {
                         image: context
                                     .watch<GameStatusProvider>()
                                     .showSkullBackground ==
-                                false
-                            ? AssetImage('images/night5.gif')
-                            : AssetImage('images/skelatonStrobe.gif'),
+                                true
+                            ? AssetImage('images/skelatonStrobe.gif')
+                            : AssetImage('images/fire.gif'),
+
+                        // context.watch<GameStatusProvider>().crashed ==
+                        //                             false
+                        //                         ? AssetImage('images/fire.gif')
+                        //                         // ? AssetImage('images/blackWater.gif')
+                        //
+                        //                         // blackWater.gif
+                        //                         : AssetImage('images/skullStatic.gif'),
                       ),
                     ),
                     child: Row(
@@ -123,6 +310,22 @@ class GamePlayScreen extends StatelessWidget {
                       /// buildlings
                       children: context.watch<GameStatusProvider>().buildings,
                     ),
+                  ),
+                  Container(
+                    // color: Colors.red,
+                    child: DeadEffectColumn(
+
+                        /// taco position widget
+                        position:
+                            context.watch<GameStatusProvider>().handPosition),
+                  ),
+                  Container(
+                    // color: Colors.red,
+                    child: CoinsUnderHandColumn(
+
+                        /// taco position widget
+                        position:
+                            context.watch<GameStatusProvider>().handPosition),
                   ),
                   Container(
                     // color: Colors.red,
@@ -151,17 +354,28 @@ class GamePlayScreen extends StatelessWidget {
                   Row(
                     children: context.watch<GameStatusProvider>().contactGrid,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ComboHitsMessage(),
+                    ],
+                  ),
                 ],
               ),
-              // context.watch<GameStatusProvider>().redGems.length != 0 ||
-              //         context.watch<GameStatusProvider>().colorGems.length != 0
-              //     ? PowerUps()
-              //     : kblankIcon,
               PowerUps(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: context.watch<GameStatusProvider>().cannons,
               ),
+              // context.watch<GameStatusProvider>().redGems.length != 0 ||
+              //         context.watch<GameStatusProvider>().colorGems.length != 0
+              //     ? PowerUps()
+              //     : kblankIcon,
+              // PowerUps(),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.end,
+              //   children: context.watch<GameStatusProvider>().cannons,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -171,48 +385,76 @@ class GamePlayScreen extends StatelessWidget {
                       // SizedBox(
                       //   height: 40.0,
                       // ),
-                      CannonSwitch(
-                        cannonIsLoaded:
-                            context.watch<GameStatusProvider>().fullyLoaded,
-                        remainingAmmo:
-                            context.watch<GameStatusProvider>().ammunition,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CannonSwitch(
+                            cannonIsLoaded:
+                                context.watch<GameStatusProvider>().fullyLoaded,
+                            remainingAmmo: context
+                                .watch<GameStatusProvider>()
+                                .roundsInMagazine,
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 40.0,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          context.read<GameStatusProvider>().handJump();
-                        },
-                        child: Container(
-                          width: 150.0,
-                          height: 100,
-                          child: Center(
-                            child: Text(
-                              'jump',
-                              style: kButtonStyle,
+                      Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                  'images/plasmaChargeForButton.gif')),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<GameStatusProvider>().handJump();
+                            },
+                            child: Container(
+                              width: 150.0,
+                              height: 100,
+                              child: Center(
+                                child: Text(
+                                  'jump',
+                                  style: kButtonStyle,
+                                ),
+                              ),
+                              color: Colors.black,
                             ),
                           ),
-                          color: Colors.deepPurple,
                         ),
                       ),
                       // SizedBox(
                       //   height: 50.0,
                       // ),
-                      GestureDetector(
-                        onTap: () {
-                          context.read<GameStatusProvider>().handDive();
-                        },
-                        child: Container(
-                          width: 150.0,
-                          height: 100.0,
-                          child: Center(
-                            child: Text(
-                              'dive',
-                              style: kButtonStyle,
+                      Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                  'images/plasmaChargeForButton.gif')),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<GameStatusProvider>().handDive();
+                            },
+                            child: Container(
+                              width: 150.0,
+                              height: 100.0,
+                              child: Center(
+                                child: Text(
+                                  'dive',
+                                  style: kButtonStyle,
+                                ),
+                              ),
+                              color: Colors.black,
                             ),
                           ),
-                          color: Colors.red,
                         ),
                       ),
                     ],
@@ -235,7 +477,7 @@ class GamePlayScreen extends StatelessWidget {
                               ),
                             )
                           : Container(
-                              height: 50.0,
+                              height: 70.0,
                             ),
                       SizedBox(
                         height: 20.0,
@@ -245,15 +487,32 @@ class GamePlayScreen extends StatelessWidget {
                           context.read<GameStatusProvider>().handClimb();
                         },
                         child: Container(
-                          height: 100.0,
-                          width: 150.0,
-                          child: Center(
-                            child: Text(
-                              'climb',
-                              style: kButtonStyle,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    'images/plasmaChargeForButton.gif')),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 100.0,
+                              width: 150.0,
+                              // decoration: BoxDecoration(
+                              //   image: DecorationImage(
+                              //       fit: BoxFit.cover,
+                              //       image: AssetImage(
+                              //           'images/plasmaChargeForButton.gif')),
+                              // ),
+                              child: Center(
+                                child: Text(
+                                  'climb',
+                                  style: kButtonStyle,
+                                ),
+                              ),
+                              color: Colors.black,
                             ),
                           ),
-                          color: Colors.green,
                         ),
                       ),
                     ],

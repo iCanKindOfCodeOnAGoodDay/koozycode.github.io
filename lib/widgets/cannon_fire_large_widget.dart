@@ -13,7 +13,7 @@ class CannonFireLarge extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('images/fireball6.png'))),
+                    image: AssetImage('images/fireBallXYellow2.gif'))),
           )
         : context.watch<GameStatusProvider>().currentCannon == CannonType.yellow
             ? Container(
@@ -22,7 +22,7 @@ class CannonFireLarge extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('images/fireball6Yellow.png'))),
+                        image: AssetImage('images/invertGreenFireBall.gif'))),
               )
             : context.watch<GameStatusProvider>().currentCannon ==
                     CannonType.purple
@@ -32,7 +32,7 @@ class CannonFireLarge extends StatelessWidget {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage('images/fireball6Purple.png'))),
+                            image: AssetImage('images/fireBallXPurple.gif'))),
                   )
                 //// else cannon type is flashing
                 : context.watch<GameStatusProvider>().currentCannon ==
@@ -43,15 +43,38 @@ class CannonFireLarge extends StatelessWidget {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage('images/fireball6Blue.png'))),
+                                image: AssetImage('images/fireBallXBlue.gif'))),
                       )
-                    : Container(
-                        height: 50.0,
-                        width: 50.0,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage('images/fireBallXX.gif'))),
-                      );
+                    : context.watch<GameStatusProvider>().currentCannon ==
+                            CannonType.flashing
+                        ? Container(
+                            height: 50.0,
+                            width: 50.0,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        'images/fireBallXFlashing2.gif'))),
+                          )
+                        : context.watch<GameStatusProvider>().currentCannon ==
+                                CannonType.white
+                            ? Container(
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'images/whiteFireBall.gif'))),
+                              )
+                            : Container(
+                                height: 50.0,
+                                width: 50.0,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'images/greyFireBall.gif'))),
+                              );
   }
 }
