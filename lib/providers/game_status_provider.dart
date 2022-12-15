@@ -581,6 +581,7 @@ class GameStatusProvider with ChangeNotifier {
       _shouldDisplayDoublePointsEffects;
 
   void fireDoublePointsEffects() {
+    soundModel.playOtherThree('arcadeAndApplause.wav');
     _score = _score + 50;
     _shouldDisplayDoublePointsEffects = true;
     notifyListeners();
@@ -762,6 +763,7 @@ class GameStatusProvider with ChangeNotifier {
         if (redGems.isEmpty && extraLives.isEmpty) {
           fireBloodSplatQuick();
           soundModel.playOtherSounds('jumpScare.wav');
+          soundModel.playOtherThree('negativePowerupTwo.wav');
 
           print('user got stabbed');
           _crashed = true;
@@ -769,12 +771,14 @@ class GameStatusProvider with ChangeNotifier {
           notifyListeners();
         } else if (redGems.isNotEmpty) {
           fireBloodSplatQuick();
+          soundModel.playOtherThree('negativePowerupTwo.wav');
 
           redGems.removeAt(redGems.length - 1);
           print('bandaid stab protection');
           notifyListeners();
         } else if (extraLives.isNotEmpty) {
           fireBloodSplatQuick();
+          soundModel.playOtherThree('negativePowerupTwo.wav');
 
           extraLives.removeAt(extraLives.length - 1);
           print('extra lives stab protection');
@@ -785,6 +789,7 @@ class GameStatusProvider with ChangeNotifier {
         soundModel.playOtherSounds('rampage.wav');
         turnOnAndOffSkullBackground();
         fireBloodSplatQuick();
+        soundModel.playOtherThree('negativePowerup.wav');
 
         fireDoublePointsEffects();
 
@@ -857,6 +862,7 @@ class GameStatusProvider with ChangeNotifier {
       if (_gemLocationAtIndexZero == 3 || _gemLocationAtIndexZero == 2) {
         fireJustPickedUpCannon();
         soundModel.playCannonUpgradeSound();
+        soundModel.playOtherThree('sciFiPowerupThree.wav');
 
         ///hell fire cannon
         if (_currentCannon == CannonType.orange) {
@@ -902,8 +908,15 @@ class GameStatusProvider with ChangeNotifier {
         // notifyListeners();
         print('user caught a FLAME');
       } else if (_gemLocationAtIndexZero == 9) {
+        ///extra life
+        soundModel.playOtherSoundsTwo('arcadePickup.wav');
         fireCoinWinEffect();
-        soundModel.playOtherSounds('arcadeScore.wav');
+        soundModel.playOtherSoundsTwo('arcadeAndApplause.wav');
+        // soundModel.playOtherThree('bopBopBopDing.wav');
+        soundModel.playOtherThree('powerupOne.wav');
+
+        // soundModel.playOtherSoundsTwo('sciFiPowerupThree.wav');
+        soundModel.playOtherThree('positivePowerupTwo.wav');
 
         /// give the user an extra life
         extraLives.add(kExtraLife);
@@ -912,7 +925,12 @@ class GameStatusProvider with ChangeNotifier {
         print('user got extra life');
       } else if (_gemLocationAtIndexZero == 10 ||
           _gemLocationAtIndexZero == 6) {
-        soundModel.playOtherSounds('arcadeScore.wav');
+        // soundModel.playOtherSounds('arcadeScore.wav');
+        soundModel.playOtherSoundsTwo('arcadeAndApplause.wav');
+
+        soundModel.playOtherThree('powerupOne.wav');
+        // soundModel.playOtherSoundsTwo('sciFiPowerupThree.wav');
+        soundModel.playOtherThree('positivePowerupTwo.wav');
 
         fireCoinWinEffect();
 
@@ -927,12 +945,15 @@ class GameStatusProvider with ChangeNotifier {
         soundModel.playOtherSounds('sciFiBitExplosion.wav');
         soundModel.playOtherSounds('sciFiBitExplosion.wav');
         soundModel.playOtherSounds('debrisShatter.wav');
+        // soundModel.playOtherSoundsTwo('sciFiPowerupThree.wav');
 
         activateShield();
         fireExplosion2();
         print('user caught a flashing gem');
       } else if (_gemLocationAtIndexZero == 8) {
         soundModel.playOtherSounds('sizzlePop.wav');
+        soundModel.playOtherThree('bopBopBopDing.wav');
+        soundModel.playOtherSoundsTwo('sciFiPowerupThree.wav');
 
         ///empty buildings
         nukeList.add(kTimeBombLarge);
@@ -950,6 +971,10 @@ class GameStatusProvider with ChangeNotifier {
     notifyListeners();
     if (_gemPosition == 4 || _gemPosition == 7) {
       _trackGemType = 'knife'.toUpperCase();
+      soundModel.playOtherSounds('jumpScare.wav');
+      soundModel.playOtherSoundsTwo('knifeSharpening.wav');
+      soundModel.playOtherSounds('knifeScrapeGoreTwo.wav');
+
       print('gem type $_trackGemType');
       notifyListeners();
     } else if (_gemPosition == 10 || _gemPosition == 2) {
@@ -1309,11 +1334,13 @@ class GameStatusProvider with ChangeNotifier {
       _comboHits++;
       if (_comboHits == 2) {
         soundModel.playOtherSounds('sizzlePop.wav');
+        soundModel.playOtherThree('metalPlinkOne.wav');
         // soundModel.playOtherSounds('doubleKill.wav');
       }
       if (_comboHits >= 3) {
         fireDoublePointsEffects();
         soundModel.playOtherSounds('tipleKill.wav');
+        soundModel.playOtherFour('metalPlinkThree.wav');
       }
     } else {
       Future.delayed(Duration(milliseconds: 1200), () {
@@ -1406,7 +1433,7 @@ class GameStatusProvider with ChangeNotifier {
       if (_roundsInMagazine > 0) {
         _roundsInMagazine--;
         // soundModel.playLaserSound();
-        soundModel.playOtherSounds('laserUpgrade.wav');
+        soundModel.playLaserSound();
         // soundModel.playOtherSoundsTwo('shortLaserSplat.wav');
       }
 

@@ -157,7 +157,7 @@ class GamePlayScreen extends StatelessWidget {
                                                         .crashed ==
                                                     true
                                                 ? AssetImage(
-                                                    'images/redSkullGlitch2x30.gif')
+                                                    'images/blood2v.gif')
                                                 : AssetImage(
                                                     'images/brain1.gif',
                                                   ),

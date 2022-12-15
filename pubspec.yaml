@@ -146,6 +146,15 @@ flutter:
      - metalPlinkOne.wav
      - metalPlinkThree.wav
      - metalPlinkTwo.wav
+     - arcadeAndApplause.wav
+     - arcadePickup.wav
+     - bopBopBopDing.wav
+     - negativePowerup.wav
+     - negativePowerupTwo.wav
+     - positivePowerupTwo.wav
+     - sciFiPowerupThree.wav
+     - footStepsOne.wav
+     - footStepsTwo.wav
   #   - images/a_dot_ham.jpeg
 
 

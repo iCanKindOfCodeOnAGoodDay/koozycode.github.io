@@ -23,7 +23,8 @@ class EndDrawerCustomWidget extends StatelessWidget {
               soundModel.playElectricChair();
               soundModel.playScreechSound();
               soundModel.playCreatureSounds();
-              soundModel.playLoopWhistle();
+              // soundModel.playLoopWhistle();
+              soundModel.playLoopFootSteps();
 
               // soundModel.playOtherSounds('sizzleFire.wav');
               // soundModel.playTripleKillSound();

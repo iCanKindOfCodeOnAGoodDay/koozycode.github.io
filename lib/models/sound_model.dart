@@ -65,7 +65,31 @@ class SoundModel {
     await musicPlayer.dispose();
   }
 
+  void playLoopFootSteps() async {
+    final musicPlayer = AudioPlayer();
+    await musicPlayer.setVolume(5.0);
+    await musicPlayer.setLoopMode(LoopMode.one);
+    await musicPlayer.setAsset('footStepsTwo.wav');
+    await musicPlayer.play();
+
+    await musicPlayer.dispose();
+  }
+
   void playOtherSounds(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.dispose();
+  }
+
+  void playOtherThree(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.dispose();
+  }
+
+  void playOtherFour(String soundPath) async {
     final audioPlayer = AudioPlayer();
     await audioPlayer.setAsset('assets/$soundPath');
     await audioPlayer.play();
@@ -109,7 +133,7 @@ class SoundModel {
 
   void playLaserSound() async {
     final laserShotPlayer = AudioPlayer();
-    await laserShotPlayer.setAsset('assets/laserBlast.wav');
+    await laserShotPlayer.setAsset('assets/laserUpgrade.wav');
     await laserShotPlayer.play();
 
     await laserShotPlayer.dispose();
