@@ -8,6 +8,7 @@ import 'package:flappy_taco/widgets/cannon_switch_widget.dart';
 import 'package:flappy_taco/widgets/coin_win_effect.dart';
 import 'package:flappy_taco/widgets/combo_hits.dart';
 import 'package:flappy_taco/widgets/death_effect_column.dart';
+import 'package:flappy_taco/widgets/end_drawer_widget.dart';
 import 'package:flappy_taco/widgets/fireball_under_hand_column.dart';
 import 'package:flappy_taco/widgets/flashing_text_widget.dart';
 import 'package:flappy_taco/widgets/power_up_widgets_lives_and.dart';
@@ -22,6 +23,7 @@ class GamePlayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: EndDrawerCustomWidget(),
       // appBar: AppBar(
       //   backgroundColor: Colors.black,
       //   title: Text(
@@ -129,39 +131,37 @@ class GamePlayScreen extends StatelessWidget {
 
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: context
-                                                  .watch<GameStatusProvider>()
-                                                  .shouldDisplayExplosion1 ==
-                                              true
-                                          ? AssetImage(
-                                              'images/deathStar150.gif')
-                                          : context
-                                                      .watch<
-                                                          GameStatusProvider>()
-                                                      .shouldDisplayExplosion2 ==
-                                                  true
-                                              ? AssetImage(
-                                                  'images/blackRedYellowExplosion.gif')
-                                              : context
-                                                          .watch<
-                                                              GameStatusProvider>()
-                                                          .shouldDisplayBloodSplatQuick ==
-                                                      true
-                                                  ? AssetImage(
-                                                      'images/blood2.gif')
-                                                  :
-                                                  // context
-                                                  //                         .watch<
-                                                  //                             GameStatusProvider>()
-                                                  //                         .crashed ==
-                                                  //                     true
-                                                  //                 ? AssetImage(
-                                                  //                     'images/blood2.gif')
-                                                  //                 :
-                                                  AssetImage(
-                                                      'images/brain1.gif',
-                                                    ))),
+                                fit: BoxFit.cover,
+                                image: context
+                                            .watch<GameStatusProvider>()
+                                            .shouldDisplayExplosion1 ==
+                                        true
+                                    ? AssetImage('images/deathStar150.gif')
+                                    : context
+                                                .watch<GameStatusProvider>()
+                                                .shouldDisplayExplosion2 ==
+                                            true
+                                        ? AssetImage(
+                                            'images/blackRedYellowExplosion.gif')
+                                        : context
+                                                    .watch<GameStatusProvider>()
+                                                    .shouldDisplayBloodSplatQuick ==
+                                                true
+                                            ? AssetImage('images/blood2.gif')
+                                            // : AssetImage(
+                                            //     'images/brain1.gif',
+                                            //   ),
+                                            : context
+                                                        .watch<
+                                                            GameStatusProvider>()
+                                                        .crashed ==
+                                                    true
+                                                ? AssetImage(
+                                                    'images/redSkullGlitch2x30.gif')
+                                                : AssetImage(
+                                                    'images/brain1.gif',
+                                                  ),
+                              )),
                             ),
                           ),
                         ),
@@ -176,7 +176,7 @@ class GamePlayScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    context.watch<GameStatusProvider>().roundsInMagazine >= 10
+                    context.watch<GameStatusProvider>().roundsInMagazine >= 12
 
                         /// account for full magazine
                         ? SizedBox(
@@ -237,20 +237,43 @@ class GamePlayScreen extends StatelessWidget {
                     //         image: AssetImage('images/60syellowStand2.png')),
                     //   ),
                     // ),
-                    context.watch<GameStatusProvider>().roundsInMagazine >= 10
+                    context.watch<GameStatusProvider>().roundsInMagazine >= 12
                         ? SizedBox(
                             height: 460.0,
                           )
-                        : SizedBox(
-                            height: 460.0,
+                        : context
+                                    .watch<GameStatusProvider>()
+                                    .roundsInMagazine ==
+                                0
+                            ? SizedBox(
+                                height: 470.0,
+                              )
+                            : SizedBox(
+                                height: 465.0,
+                              ),
+                    Center(
+                      child: Container(
+                        height: 40.0,
+                        // width: 400.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('images/60syellowReverse.png')),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 8.0, left: 8.0, right: 8.0),
+                          child: Center(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.contain,
+                                    image: AssetImage(
+                                        'images/dotSquashAppsTransC4.gif')),
+                              ),
+                            ),
                           ),
-                    Container(
-                      height: 40.0,
-                      // width: 400.0,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage('images/60syellowReverse.png')),
+                        ),
                       ),
                     ),
                   ],
@@ -515,12 +538,13 @@ class GamePlayScreen extends StatelessWidget {
                         child: Opacity(
                           opacity: 0.9,
                           child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                      'images/plasmaChargeForButton.gif')),
-                            ),
+                            color: Colors.yellow,
+                            // decoration: BoxDecoration(
+                            //   image: DecorationImage(
+                            //       fit: BoxFit.cover,
+                            //       image: AssetImage(
+                            //           'images/plasmaChargeForButton.gif')),
+                            // ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
@@ -557,12 +581,13 @@ class GamePlayScreen extends StatelessWidget {
                         child: Opacity(
                           opacity: 0.9,
                           child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                      'images/plasmaChargeForButton.gif')),
-                            ),
+                            color: Colors.yellow,
+                            // decoration: BoxDecoration(
+                            //   image: DecorationImage(
+                            //       fit: BoxFit.cover,
+                            //       image: AssetImage(
+                            //           'images/plasmaChargeForButton.gif')),
+                            // ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
@@ -624,12 +649,13 @@ class GamePlayScreen extends StatelessWidget {
                               context.read<GameStatusProvider>().handClimb();
                             },
                             child: Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        'images/plasmaChargeForButton.gif')),
-                              ),
+                              color: Colors.yellow,
+                              // decoration: BoxDecoration(
+                              //   image: DecorationImage(
+                              //       fit: BoxFit.cover,
+                              //       image: AssetImage(
+                              //           'images/plasmaChargeForButton.gif')),
+                              // ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
@@ -651,8 +677,8 @@ class GamePlayScreen extends StatelessWidget {
                                               .watch<GameStatusProvider>()
                                               .lastCommand ==
                                           LastGamePlayButton.climb
-                                      ? Colors.yellow
-                                      : Colors.yellow,
+                                      ? Colors.black
+                                      : Colors.black,
                                 ),
                               ),
                             ),

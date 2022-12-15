@@ -10,6 +10,7 @@ import 'package:flappy_taco/widgets/upside_down_building_widget.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import '../models/sound_model.dart';
 import '../widgets/cannon_ammunition_widget.dart';
 
 enum CannonType {
@@ -38,6 +39,8 @@ enum LastGamePlayButton {
   dive,
 }
 
+SoundModel soundModel = SoundModel();
+
 class GameStatusProvider with ChangeNotifier {
   /// start the taco position at 6 near center
   int _handPosition = 5;
@@ -56,6 +59,7 @@ class GameStatusProvider with ChangeNotifier {
   AmmoType get currentAmmunition => _currentAmmunition;
 
   void resetGame() {
+    soundModel.playOtherSounds('arcadeStartUp.wav');
     resetHellFireColumns();
     resetHellFireContactLocations();
     reloadHellFire();
@@ -158,6 +162,9 @@ class GameStatusProvider with ChangeNotifier {
       /// when user taps, let the taco climb
       if (_handPosition < 10) {
         if (_crashed == false) {
+          soundModel.playOtherSounds('jumpSwipe.wav');
+          // soundModel.playOtherSounds('wingsNewTwo.wav');
+
           _isClimbing = true;
           _lastCommand = LastGamePlayButton.climb;
 
@@ -177,6 +184,10 @@ class GameStatusProvider with ChangeNotifier {
 
   void handJump() {
     if (_isPaused == false) {
+      soundModel.playTapSound();
+      soundModel.playOtherSounds('wingsNewTwo.wav');
+      soundModel.playOtherSounds('creature.wav');
+
       /// when user taps, let the taco climb
       if (_handPosition <= 7) {
         if (_crashed == false) {
@@ -211,6 +222,9 @@ class GameStatusProvider with ChangeNotifier {
 
   void handDive() {
     if (_isPaused == false) {
+      // soundModel.playCreatureSound();
+      soundModel.playOtherSounds('sciFiDive.wav');
+
       /// when user taps, let the taco climb
       if (_handPosition <= 4) {
         if (_crashed == false) {
@@ -281,6 +295,8 @@ class GameStatusProvider with ChangeNotifier {
   void handFall() {
     var timer = Timer.periodic(Duration(milliseconds: 200), (timer) {
       gameOver();
+      // soundModel.playFallingSound('wingsNewOne.wav');
+      // soundModel.playTapSound();
 
       print(_handPosition);
       // notifyListeners();
@@ -338,11 +354,17 @@ class GameStatusProvider with ChangeNotifier {
       if (obstacleHeight <= 5) {
         if (_handPosition <= obstacleHeight + 1) {
           if (extraLives.isNotEmpty == true) {
+            soundModel.playOtherSounds('femaleDeath.wav');
             _userCantDie = true;
             tinyAmountOfTimeForInvinsibility();
             extraLives.removeAt(extraLives.length - 1);
             notifyListeners();
           } else if (extraLives.isEmpty == true) {
+            soundModel.playOtherSounds('manDeath.wav');
+            soundModel.playOtherSounds('splat.wav');
+            soundModel.playOtherSounds('deathCallsForMe.wav');
+            soundModel.playOtherSounds('fireworks.wav');
+
             _crashed = true;
             _isClimbing = true;
             print('craashed = $_crashed');
@@ -626,6 +648,11 @@ class GameStatusProvider with ChangeNotifier {
   }
 
   void nuclearExplosionOnScreen() {
+    soundModel.playOtherSounds('sciFiBitExplosion.wav');
+    soundModel.playOtherSounds('whistle.wav');
+    soundModel.playOtherSounds('sizzlePop.wav');
+    soundModel.playOtherSounds('popDebris.wav');
+
     fireDoublePointsEffects();
     fireExplosion1();
 
@@ -721,6 +748,7 @@ class GameStatusProvider with ChangeNotifier {
       if (_gemLocationAtIndexZero == 4 || _gemLocationAtIndexZero == 7) {
         if (redGems.isEmpty && extraLives.isEmpty) {
           fireBloodSplatQuick();
+          soundModel.playOtherSounds('jumpScare.wav');
 
           print('user got stabbed');
           _crashed = true;
@@ -741,6 +769,7 @@ class GameStatusProvider with ChangeNotifier {
           notifyListeners();
         }
       } else if (_gemLocationAtIndexZero == 5) {
+        soundModel.playOtherSounds('rampage.wav');
         turnOnAndOffSkullBackground();
         fireBloodSplatQuick();
 
@@ -763,6 +792,8 @@ class GameStatusProvider with ChangeNotifier {
   }
 
   void reloadHellFire() {
+    soundModel.playReloadSound();
+    soundModel.playOtherSounds('sciFiReload.wav');
     _roundsInMagazine = 18;
     flames = [
       CannonAmmunition(),
@@ -810,6 +841,7 @@ class GameStatusProvider with ChangeNotifier {
         _handPosition - 1 == _gemLocationAtIndexZero) {
       if (_gemLocationAtIndexZero == 3 || _gemLocationAtIndexZero == 2) {
         fireJustPickedUpCannon();
+        soundModel.playCannonUpgradeSound();
 
         ///hell fire cannon
         if (_currentCannon == CannonType.orange) {
@@ -856,6 +888,7 @@ class GameStatusProvider with ChangeNotifier {
         print('user caught a FLAME');
       } else if (_gemLocationAtIndexZero == 9) {
         fireCoinWinEffect();
+        soundModel.playOtherSounds('arcadeScore.wav');
 
         /// give the user an extra life
         extraLives.add(kExtraLife);
@@ -864,6 +897,8 @@ class GameStatusProvider with ChangeNotifier {
         print('user got extra life');
       } else if (_gemLocationAtIndexZero == 10 ||
           _gemLocationAtIndexZero == 6) {
+        soundModel.playOtherSounds('arcadeScore.wav');
+
         fireCoinWinEffect();
 
         redGems.add(kRedGem);
@@ -874,10 +909,16 @@ class GameStatusProvider with ChangeNotifier {
       } else if (_gemLocationAtIndexZero == 1) {
         ///empty buildings
         fireDoublePointsEffects();
+        soundModel.playOtherSounds('sciFiBitExplosion.wav');
+        soundModel.playOtherSounds('sciFiBitExplosion.wav');
+        soundModel.playOtherSounds('debrisShatter.wav');
+
         activateShield();
         fireExplosion2();
         print('user caught a flashing gem');
       } else if (_gemLocationAtIndexZero == 8) {
+        soundModel.playOtherSounds('sizzlePop.wav');
+
         ///empty buildings
         nukeList.add(kTimeBombLarge);
         print('user caught a nuke');
@@ -1251,8 +1292,13 @@ class GameStatusProvider with ChangeNotifier {
     /// dont incremnet combo hits if it's greater than 3
     if (_comboHits < 3) {
       _comboHits++;
+      if (_comboHits == 2) {
+        soundModel.playOtherSounds('sizzlePop.wav');
+        // soundModel.playOtherSounds('doubleKill.wav');
+      }
       if (_comboHits >= 3) {
         fireDoublePointsEffects();
+        soundModel.playOtherSounds('tipleKill.wav');
       }
     } else {
       Future.delayed(Duration(milliseconds: 1200), () {
@@ -1344,6 +1390,8 @@ class GameStatusProvider with ChangeNotifier {
       _fullyLoaded = false;
       if (_roundsInMagazine > 0) {
         _roundsInMagazine--;
+        soundModel.playLaserSound();
+        soundModel.playOtherSounds('laserUpgrade.wav');
       }
 
       /// reset combo hits

@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.0.4
   animated_text_kit: ^4.2.2
+  just_audio: ^0.9.30
 
 
 
@@ -66,7 +67,57 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - images/
+     - mowgli.mp3
+     - cannonUpgrade.wav
+     - creature.wav
+     - doubleKill.wav
+     - laserBlast.wav
+     - mowgli.mp3
+     - rampage.wav
+     - reload.wav
+     - tap.wav
+     - tipleKill.wav
+     - spookyMusic.wav
+     - arcadeScore.wav
+     - arcadeStartUp.wav
+     - cannonUpgrade.wav
+     - creature.wav
+     - creatureShuffle.wav
+     - deathCallsForMe.wav
+     - debrisShatter.wav
+     - dingPotentialJump.wav
+     - doubleKill.wav
+     - femaleDeath.wav
+     - fireworks.wav
+     - jumpScare.wav
+     - kiss.wav
+     - laserBlast.wav
+     - laserReload.wav
+     - laserUpgrade.wav
+     - manDeath.wav
+     - mowgli.mp3
+     - newLaserShot.wav
+     - popDebris.wav
+     - powerupOne.wav
+     - rampage.wav
+     - reload.wav
+     - sciFiBitExplosion.wav
+     - sciFiJump.wav
+     - shieldPowerup.wav
+     - sizzleFire.wav
+     - sizzlePop.wav
+     - splat.wav
+     - spookyMusic.wav
+     - tap.wav
+     - tipleKill.wav
+     - whistle.wav
+     - jumpSwipe.wav
+     - sciFiDive.wav
+     - sciFiReload.wav
+     - wingsNewOne.wav
+     - wingsNewTwo.wav
   #   - images/a_dot_ham.jpeg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

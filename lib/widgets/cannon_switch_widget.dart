@@ -1,3 +1,5 @@
+import 'package:flappy_taco/constants.dart';
+import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
@@ -63,30 +65,58 @@ class CannonSwitch extends StatelessWidget {
                     decoration:
                         context.watch<GameStatusProvider>().fullyLoaded == true
                             ? BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
                                 color: Colors.yellow,
+                                // image: DecorationImage(
+                                //   fit: BoxFit.cover,
+                                //   image: AssetImage(
+                                //       'images/plasmaChargeForButton.gif'),
+                                // ),
                               )
-                            // borderRadius: BorderRadius.circular(5),
-                            // image: DecorationImage(
-                            //     fit: BoxFit.cover,
-                            //     image: AssetImage(
-                            //         'images/plasmaChargeForButton.gif')))
                             : BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                // color: context
-                                //             .watch<GameStatusProvider>()
-                                //             .fullyLoaded ==
-                                //         true
-                                //     ? Colors.black
-                                //     : Colors.white54
+                                color: kBlankColor,
                               ),
+                    // DecorationImage(
+                    //   fit: BoxFit.cover,
+                    //   image: AssetImage('images/plasmaChargeForButton.gif'),
+                    // ),
+
+                    // decoration:
+                    //     context.watch<GameStatusProvider>().fullyLoaded == true
+                    //         ? BoxDecoration(color: Colors.yellow)
+                    //         color: Colors.yellow,
+                    //         borderRadius: BorderRadius.circular(5),
+                    //         image: DecorationImage(
+                    //             fit: BoxFit.cover,
+                    //             image: AssetImage(
+                    //                 'images/plasmaChargeForButton.gif'),),)
+                    //         : BoxDecoration(
+                    //             borderRadius: BorderRadius.circular(5),
+                    // color: context
+                    //             .watch<GameStatusProvider>()
+                    //             .fullyLoaded ==
+                    //         true
+                    //     ? Colors.black
+                    //     : Colors.white54
+
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: Container(
-                          color:
-                              context.watch<GameStatusProvider>().fullyLoaded ==
-                                      true
-                                  ? Colors.black
-                                  : Colors.white54),
+                      child: context.watch<GameStatusProvider>().fullyLoaded ==
+                              false
+                          ? Container(
+                              child: AmmoPickup(),
+                            )
+                          : Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(5),
+                                // image: DecorationImage(
+                                //     fit: BoxFit.cover,
+                                //     image: AssetImage(
+                                //         'images/plasmaChargeForButton.gif')),
+                              ),
+                            ),
                     )),
               ),
               // SizedBox(
