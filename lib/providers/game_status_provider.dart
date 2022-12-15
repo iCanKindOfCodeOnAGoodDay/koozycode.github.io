@@ -163,6 +163,9 @@ class GameStatusProvider with ChangeNotifier {
       if (_handPosition < 10) {
         if (_crashed == false) {
           soundModel.playOtherSounds('jumpSwipe.wav');
+          soundModel.playOtherSoundsTwo('splatDeath.wav');
+          soundModel.playTapSound();
+
           // soundModel.playOtherSounds('wingsNewTwo.wav');
 
           _isClimbing = true;
@@ -186,7 +189,8 @@ class GameStatusProvider with ChangeNotifier {
     if (_isPaused == false) {
       soundModel.playTapSound();
       soundModel.playOtherSounds('wingsNewTwo.wav');
-      soundModel.playOtherSounds('creature.wav');
+      soundModel.playOtherSounds('sciFiChargeQuick.wav');
+      soundModel.playOtherSoundsTwo('bugSquash.wav');
 
       /// when user taps, let the taco climb
       if (_handPosition <= 7) {
@@ -224,6 +228,7 @@ class GameStatusProvider with ChangeNotifier {
     if (_isPaused == false) {
       // soundModel.playCreatureSound();
       soundModel.playOtherSounds('sciFiDive.wav');
+      soundModel.playOtherSoundsTwo('sciFiChargeQuick.wav');
 
       /// when user taps, let the taco climb
       if (_handPosition <= 4) {
@@ -364,6 +369,7 @@ class GameStatusProvider with ChangeNotifier {
             soundModel.playOtherSounds('splat.wav');
             soundModel.playOtherSounds('deathCallsForMe.wav');
             soundModel.playOtherSounds('fireworks.wav');
+            soundModel.playOtherSoundsTwo('bulletShot.wav');
 
             _crashed = true;
             _isClimbing = true;
@@ -379,6 +385,8 @@ class GameStatusProvider with ChangeNotifier {
         print('obstance hight from top $obstacleHeight');
         if (_handPosition >= obstacleHeight - 1) {
           if (extraLives.isNotEmpty == true) {
+            soundModel.playOtherSounds('femaleDeath.wav');
+
             _userCantDie = true;
             tinyAmountOfTimeForInvinsibility();
             extraLives.removeAt(extraLives.length - 1);
@@ -389,6 +397,11 @@ class GameStatusProvider with ChangeNotifier {
           else if (extraLives.isEmpty == true) {
             _crashed = true;
             _isClimbing = true;
+            soundModel.playOtherSounds('manDeath.wav');
+            soundModel.playOtherSounds('splat.wav');
+            soundModel.playOtherSounds('deathCallsForMe.wav');
+            soundModel.playOtherSounds('fireworks.wav');
+            soundModel.playOtherSoundsTwo('bulletShot.wav');
 
             print('craashed = $_crashed');
             print('game over top buildling');
@@ -794,6 +807,8 @@ class GameStatusProvider with ChangeNotifier {
   void reloadHellFire() {
     soundModel.playReloadSound();
     soundModel.playOtherSounds('sciFiReload.wav');
+    soundModel.playOtherSoundsTwo('shotgunReload.wav');
+
     _roundsInMagazine = 18;
     flames = [
       CannonAmmunition(),
@@ -1390,8 +1405,9 @@ class GameStatusProvider with ChangeNotifier {
       _fullyLoaded = false;
       if (_roundsInMagazine > 0) {
         _roundsInMagazine--;
-        soundModel.playLaserSound();
+        // soundModel.playLaserSound();
         soundModel.playOtherSounds('laserUpgrade.wav');
+        // soundModel.playOtherSoundsTwo('shortLaserSplat.wav');
       }
 
       /// reset combo hits

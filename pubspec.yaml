@@ -116,6 +116,36 @@ flutter:
      - sciFiReload.wav
      - wingsNewOne.wav
      - wingsNewTwo.wav
+     - bugSquash.wav
+     - bulletShot.wav
+     - deathSplatEffect.wav
+     - electricChair.wav
+     - goreDeathSound.wav
+     - knifeGore.wav
+     - knifeScrapeAndGore.wav
+     - knifeScrapeGoreTwo.wav
+     - knifeSharpening.wav
+     - loudSciFiScreech.wav
+     - maleGruntFour.wav
+     - maleGruntThree.wav
+     - manPainGrunt.wav
+     - sciFiChargeQuick.wav
+     - sciFiEngine.wav
+     - sciFiPowerupTwo.wav
+     - sciFiShortRev.wav
+     - sciFiShotTwo.wav
+     - sciFiStartUp.wav
+     - shortLaserSplat.wav
+     - shotgunReload.wav
+     - sniperRifle.wav
+     - splatDeath.wav
+     - womanGruntTwo.wav
+     - womanPainTwo.wav
+     - explosionAndDebris.wav
+     - gunshotHitBody.wav
+     - metalPlinkOne.wav
+     - metalPlinkThree.wav
+     - metalPlinkTwo.wav
   #   - images/a_dot_ham.jpeg
 
 

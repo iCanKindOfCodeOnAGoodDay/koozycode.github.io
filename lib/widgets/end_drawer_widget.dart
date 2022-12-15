@@ -19,6 +19,12 @@ class EndDrawerCustomWidget extends StatelessWidget {
               // soundModel.disposeMusicSoundPlayer();
               soundModel.playMusicSound();
               soundModel.playSizzleSound();
+              soundModel.playCreapyWingsSound();
+              soundModel.playElectricChair();
+              soundModel.playScreechSound();
+              soundModel.playCreatureSounds();
+              soundModel.playLoopWhistle();
+
               // soundModel.playOtherSounds('sizzleFire.wav');
               // soundModel.playTripleKillSound();
               // soundModel.playLaserSound();

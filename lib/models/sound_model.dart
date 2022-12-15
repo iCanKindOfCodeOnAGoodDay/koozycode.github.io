@@ -20,7 +20,59 @@ class SoundModel {
     await musicPlayer.dispose();
   }
 
+  void playCreapyWingsSound() async {
+    final musicPlayer = AudioPlayer();
+    await musicPlayer.setLoopMode(LoopMode.one);
+    await musicPlayer.setAsset('assets/wingsNewOne.wav');
+    await musicPlayer.play();
+
+    await musicPlayer.dispose();
+  }
+
+  void playElectricChair() async {
+    final musicPlayer = AudioPlayer();
+    await musicPlayer.setLoopMode(LoopMode.one);
+    await musicPlayer.setAsset('assets/electricChair.wav');
+    await musicPlayer.play();
+
+    await musicPlayer.dispose();
+  }
+
+  void playCreatureSounds() async {
+    final musicPlayer = AudioPlayer();
+    await musicPlayer.setLoopMode(LoopMode.one);
+    await musicPlayer.setAsset('assets/fireworks.wav');
+    await musicPlayer.play();
+
+    await musicPlayer.dispose();
+  }
+
+  void playScreechSound() async {
+    final musicPlayer = AudioPlayer();
+    await musicPlayer.setLoopMode(LoopMode.one);
+    await musicPlayer.setAsset('assets/sciFiEngine.wav');
+    await musicPlayer.play();
+
+    await musicPlayer.dispose();
+  }
+
+  void playLoopWhistle() async {
+    final musicPlayer = AudioPlayer();
+    await musicPlayer.setLoopMode(LoopMode.one);
+    await musicPlayer.setAsset('assets/whistle.wav');
+    await musicPlayer.play();
+
+    await musicPlayer.dispose();
+  }
+
   void playOtherSounds(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.dispose();
+  }
+
+  void playOtherSoundsTwo(String soundPath) async {
     final audioPlayer = AudioPlayer();
     await audioPlayer.setAsset('assets/$soundPath');
     await audioPlayer.play();
