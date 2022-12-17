@@ -25,29 +25,20 @@ class CannonSwitch extends StatelessWidget {
           ),
           Row(
             children: [
-              GestureDetector(
-                onTap: () {
-                  // context.read<GameStatusProvider>().unloadHellFire();
-
-                  // context.read<GameStatusProvider>().switchCannon();
-
-                  /// toggle switch
-                },
-                child: Container(
-                  width: 40.0,
-                  height: 40.0,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: context.watch<GameStatusProvider>().fullyLoaded ==
-                              true
-                          ? Colors.white24
-                          : context
-                                      .watch<GameStatusProvider>()
-                                      .roundsInMagazine ==
-                                  0
-                              ? Colors.redAccent
-                              : Colors.yellow),
-                ),
+              Container(
+                width: 40.0,
+                height: 40.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color:
+                        context.watch<GameStatusProvider>().fullyLoaded == true
+                            ? Colors.white24
+                            : context
+                                        .watch<GameStatusProvider>()
+                                        .roundsInMagazine ==
+                                    0
+                                ? Colors.redAccent
+                                : Colors.yellow),
               ),
               GestureDetector(
                 onLongPress: () {
@@ -55,6 +46,7 @@ class CannonSwitch extends StatelessWidget {
                 },
                 onTap: () {
                   context.read<GameStatusProvider>().reloadHellFire();
+                  // super.dispose();
                   // context.read<GameStatusProvider>().switchCannon();
 
                   /// toggle switch

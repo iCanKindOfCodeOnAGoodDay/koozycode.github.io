@@ -159,7 +159,7 @@ class GamePlayScreen extends StatelessWidget {
                                                 ? AssetImage(
                                                     'images/blood2v.gif')
                                                 : AssetImage(
-                                                    'images/brain1.gif',
+                                                    'images/bloodMoon.gif',
                                                   ),
                               )),
                             ),
@@ -218,42 +218,23 @@ class GamePlayScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // context.watch<GameStatusProvider>().roundsInMagazine >= 10
-                    //     ? SizedBox(
-                    //         height: 460.0,
-                    //       )
-                    //     : SizedBox(
-                    //         height: 460.0,
-                    //       ),
-                    // // SizedBox(
-                    // //   height: 450.0,
-                    // // ),
-                    // Container(
-                    //   height: 150.0,
-                    //   // width: 400.0,
-                    //   decoration: BoxDecoration(
-                    //     image: DecorationImage(
-                    //         fit: BoxFit.cover,
-                    //         image: AssetImage('images/60syellowStand2.png')),
-                    //   ),
-                    // ),
                     context.watch<GameStatusProvider>().roundsInMagazine >= 12
                         ? SizedBox(
-                            height: 460.0,
+                            height: 455.0,
                           )
                         : context
                                     .watch<GameStatusProvider>()
                                     .roundsInMagazine ==
                                 0
                             ? SizedBox(
-                                height: 470.0,
+                                height: 465.0,
                               )
                             : SizedBox(
-                                height: 465.0,
+                                height: 460.0,
                               ),
                     Center(
                       child: Container(
-                        height: 40.0,
+                        height: 50.0,
                         // width: 400.0,
                         decoration: BoxDecoration(
                           image: DecorationImage(
@@ -262,7 +243,7 @@ class GamePlayScreen extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              top: 8.0, left: 8.0, right: 8.0),
+                              top: 16.0, left: 30.0, right: 30.0, bottom: 8),
                           child: Center(
                             child: Container(
                               decoration: BoxDecoration(

@@ -5,63 +5,93 @@ class SoundModel {
   void playMusicSound() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('assets/spookyMusic.wav');
+    await musicPlayer.setAsset('assets/spookyMusic.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+
+// Download and cache audio while playing it (experimental)
   }
 
   void playSizzleSound() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('assets/sizzleFire.wav');
+    await musicPlayer.setAsset('assets/sizzleFire.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
   }
 
   void playCreapyWingsSound() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('assets/wingsNewOne.wav');
+    await musicPlayer.setAsset('assets/wingsNewOne.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
   }
 
   void playElectricChair() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('assets/electricChair.wav');
+    await musicPlayer.setAsset('assets/electricChair.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
   }
 
-  void playCreatureSounds() async {
+  void playFireworkdsSounds() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('assets/fireworks.wav');
+    await musicPlayer.setAsset('assets/fireworks.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
   }
 
   void playScreechSound() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('assets/sciFiEngine.wav');
+    await musicPlayer.setAsset('assets/sciFiEngine.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
   }
 
   void playLoopWhistle() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('assets/whistle.wav');
+    await musicPlayer.setAsset('assets/whistle.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
   }
 
@@ -69,16 +99,41 @@ class SoundModel {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setVolume(5.0);
     await musicPlayer.setLoopMode(LoopMode.one);
-    await musicPlayer.setAsset('footStepsTwo.wav');
+    await musicPlayer.setAsset('assets/footStepsTwo.mp3');
     await musicPlayer.play();
-
+    await musicPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await musicPlayer.dispose();
   }
+
+  // void playLoopedSounds(String soundPath) async {
+  //   final musicPlayer = AudioPlayer();
+  //   await musicPlayer.setVolume(5.0);
+  //   await musicPlayer.setLoopMode(LoopMode.one);
+  //   await musicPlayer.setAsset('footStepsTwo.mp3');
+  //   await musicPlayer.play();
+  //   await musicPlayer.stop();
+  //   // Clear the asset cache directory
+  //   // await AudioPlayer.clearAssetCache();
+  //   // Stop an
+  //   // d free resources
+  //   await musicPlayer.dispose();
+  //
+  //
+  // }
 
   void playOtherSounds(String soundPath) async {
     final audioPlayer = AudioPlayer();
     await audioPlayer.setAsset('assets/$soundPath');
     await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await audioPlayer.dispose();
   }
 
@@ -86,6 +141,11 @@ class SoundModel {
     final audioPlayer = AudioPlayer();
     await audioPlayer.setAsset('assets/$soundPath');
     await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await audioPlayer.dispose();
   }
 
@@ -93,13 +153,112 @@ class SoundModel {
     final audioPlayer = AudioPlayer();
     await audioPlayer.setAsset('assets/$soundPath');
     await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await audioPlayer.dispose();
   }
+
+  /// new sound playing functions
+
+  void playOtherFive(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
+    await audioPlayer.dispose();
+  }
+
+  void playOtherSix(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
+    await audioPlayer.dispose();
+  }
+
+  void playOtherSeven(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
+    await audioPlayer.dispose();
+  }
+
+  void playOtherEight(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
+    await audioPlayer.dispose();
+  }
+
+  void playOtherNine(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
+    await audioPlayer.dispose();
+  }
+
+  void playOtherTen(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
+    await audioPlayer.dispose();
+  }
+
+  /// that's where the new sound players end
 
   void playOtherSoundsTwo(String soundPath) async {
     final audioPlayer = AudioPlayer();
     await audioPlayer.setAsset('assets/$soundPath');
     await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
+    await audioPlayer.dispose();
+  }
+
+  void playOtherSounds5x(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setVolume(5.0);
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await audioPlayer.dispose();
   }
 
@@ -107,10 +266,17 @@ class SoundModel {
     final fallingSoundPlayer = AudioPlayer();
     await fallingSoundPlayer.setAsset('assets/$soundPath');
     await fallingSoundPlayer.play();
+    await fallingSoundPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await fallingSoundPlayer.dispose();
   }
 
-  // void disposeMusicSoundPlayer() async {
+  // void disposeMusicSoundPawait player.stop();
+  // Stop an
+  // d free resourceslayer() async {
   //   musicPlayer.dispose();
   // }
 
@@ -119,13 +285,19 @@ class SoundModel {
   void playReloadSound() async {
     final reloadPlayer = AudioPlayer();
 
-    await reloadPlayer.setAsset('assets/laserReload.wav');
+    await reloadPlayer.setAsset('assets/laserReload.mp3');
     await reloadPlayer.play();
-
+    await reloadPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await reloadPlayer.dispose();
   }
   //
-  // void disposeReloadSoundPlayer() async {
+  // void disposeReloadSoundPawait player.stop();
+  // Stop an
+  // d free resourceslayer() async {
   //   reloadPlayer.dispose();
   // }
 
@@ -133,13 +305,19 @@ class SoundModel {
 
   void playLaserSound() async {
     final laserShotPlayer = AudioPlayer();
-    await laserShotPlayer.setAsset('assets/laserUpgrade.wav');
+    await laserShotPlayer.setAsset('assets/laserUpgrade.mp3');
     await laserShotPlayer.play();
-
+    await laserShotPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await laserShotPlayer.dispose();
   }
 
-  // void disposeLaserSoundPlayer() async {
+  // void disposeLaserSoundPlayeawait player.stop();
+  // Stop an
+  // d free resourcesr() async {
   //   laserShotPlayer.dispose();
   // }
 
@@ -148,78 +326,114 @@ class SoundModel {
 
     await tapSoundPlayer.setVolume(5.0);
 
-    await tapSoundPlayer.setAsset('assets/tap.wav');
+    await tapSoundPlayer.setAsset('assets/tap.mp3');
     await tapSoundPlayer.play();
-
+    await tapSoundPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await tapSoundPlayer.dispose();
   }
 
-  // void disposeTapSoundPlayer() async {
+  // void disposeTapSoundPlayerawait player.stop();
+  // Stop an
+  // d free resources() async {
   //   tapSoundPlayer.dispose();
   // }
 
   void playCreatureSound() async {
     final creatureSoundPlayer = AudioPlayer();
 
-    await creatureSoundPlayer.setAsset('assets/creature.wav');
+    await creatureSoundPlayer.setAsset('assets/creature.mp3');
     await creatureSoundPlayer.play();
-
+    await creatureSoundPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await creatureSoundPlayer.dispose();
   }
 
-  // void disposeCreatureSoundPlayer() async {
+  // void disposeCreatureSoundPlayerawait player.stop();
+  // Stop an
+  // d free resources() async {
   //   creatureSoundPlayer.dispose();
   // }
 
   void playCannonUpgradeSound() async {
     final cannonUpgradeSoundPlayer = AudioPlayer();
 
-    await cannonUpgradeSoundPlayer.setAsset('assets/cannonUpgrade.wav');
+    await cannonUpgradeSoundPlayer.setAsset('assets/cannonUpgrade.mp3');
     await cannonUpgradeSoundPlayer.play();
-
+    await cannonUpgradeSoundPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await cannonUpgradeSoundPlayer.dispose();
   }
 
-  // void disposeCannonUpgradeSoundPlayer() async {
+  // void disposeCannonUpgradeSoundPlayerawait player.stop();
+  // Stop an
+  // d free resources() async {
   //   cannonUpgradeSoundPlayer.dispose();
   // }
 
   void playDoubleKillSound() async {
     final doubleKillSoundPlayer = AudioPlayer();
 
-    await doubleKillSoundPlayer.setAsset('assets/doubleKill.wav');
+    await doubleKillSoundPlayer.setAsset('assets/doubleKill.mp3');
     await doubleKillSoundPlayer.play();
-
+    await doubleKillSoundPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await doubleKillSoundPlayer.dispose();
   }
   //
-  // void disposeDoubleKillSoundPlayer() async {
+  // void disposeDoubleKillSoundPlayerawait player.stop();
+  // Stop an
+  // d free resources() async {
   //   doubleKillSoundPlayer.dispose();
   // }
 
   void playTripleKillSound() async {
     final tripleKillSoundPlayer = AudioPlayer();
 
-    await tripleKillSoundPlayer.setAsset('assets/tipleKill.wav');
+    await tripleKillSoundPlayer.setAsset('assets/tipleKill.mp3');
     await tripleKillSoundPlayer.play();
-
+    await tripleKillSoundPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await tripleKillSoundPlayer.dispose();
   }
 
-  // void disposeTripleKillSoundPlayer() async {
+  // void disposeTripleKillSoundPlayerawait player.stop();
+  // Stop an
+  // d free resources() async {
   //   tripleKillSoundPlayer.dispose();
   // }
 
   void playRampageSound() async {
     final rampageSoundPlayer = AudioPlayer();
 
-    await rampageSoundPlayer.setAsset('assets/rampage.wav');
+    await rampageSoundPlayer.setAsset('assets/rampage.mp3');
     await rampageSoundPlayer.play();
-
+    await rampageSoundPlayer.stop();
+    // Clear the asset cache directory
+    // await AudioPlayer.clearAssetCache();
+    // Stop an
+    // d free resources
     await rampageSoundPlayer.dispose();
   }
 
-  // void disposeRampageSoundPlayer() async {
+  // void disposeRampageSoundPlayerawait player.stop();
+// Stop an
+// d free resources() async {
   //   rampageSoundPlayer.dispose();
   // }
 }
