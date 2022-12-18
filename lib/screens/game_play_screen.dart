@@ -86,7 +86,8 @@ class GamePlayScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
-                                    image: AssetImage('images/fire.gif'
+                                    image: AssetImage(
+                                        'images/walkingAwayFromExplosionThree.gif'
                                         // 'images/blackRedYellowExplosion.gif',
                                         ))),
                           ),
@@ -136,7 +137,8 @@ class GamePlayScreen extends StatelessWidget {
                                             .watch<GameStatusProvider>()
                                             .shouldDisplayExplosion1 ==
                                         true
-                                    ? AssetImage('images/deathStar150.gif')
+                                    ? AssetImage(
+                                        'images/walkingAwayFromExplosionIntuit.gif')
                                     : context
                                                 .watch<GameStatusProvider>()
                                                 .shouldDisplayExplosion2 ==
@@ -157,9 +159,9 @@ class GamePlayScreen extends StatelessWidget {
                                                         .crashed ==
                                                     true
                                                 ? AssetImage(
-                                                    'images/blood2v.gif')
+                                                    'images/blood2.gif')
                                                 : AssetImage(
-                                                    'images/bloodMoon.gif',
+                                                    'images/deadHand.gif',
                                                   ),
                               )),
                             ),
@@ -243,7 +245,7 @@ class GamePlayScreen extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(
-                              top: 16.0, left: 30.0, right: 30.0, bottom: 8),
+                              top: 10.0, left: 20.0, right: 20.0, bottom: 8),
                           child: Center(
                             child: Container(
                               decoration: BoxDecoration(
@@ -385,6 +387,18 @@ class GamePlayScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: context
+                                    .watch<GameStatusProvider>()
+                                    .shouldDisplayDoublePointsEffects ==
+                                true
+                            ? AssetImage('images/endlessColorHole.gif')
+                            : context.watch<GameStatusProvider>().crashed ==
+                                    false
+                                ? AssetImage('images/black.png')
+                                : AssetImage('images/skullStatic.gif'),
+                      ),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -396,7 +410,7 @@ class GamePlayScreen extends StatelessWidget {
                                         .watch<GameStatusProvider>()
                                         .showSkullBackground ==
                                     true
-                                ? AssetImage('images/skelatonStrobe.gif')
+                                ? AssetImage('images/blood2.gif')
                                 // : AssetImage('images/fire.gif'),
 
                                 : context.watch<GameStatusProvider>().crashed ==
@@ -519,13 +533,12 @@ class GamePlayScreen extends StatelessWidget {
                         child: Opacity(
                           opacity: 0.9,
                           child: Container(
-                            color: Colors.yellow,
-                            // decoration: BoxDecoration(
-                            //   image: DecorationImage(
-                            //       fit: BoxFit.cover,
-                            //       image: AssetImage(
-                            //           'images/plasmaChargeForButton.gif')),
-                            // ),
+                            // color: Colors.yellow,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('images/energyHumps.gif')),
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
@@ -562,13 +575,12 @@ class GamePlayScreen extends StatelessWidget {
                         child: Opacity(
                           opacity: 0.9,
                           child: Container(
-                            color: Colors.yellow,
-                            // decoration: BoxDecoration(
-                            //   image: DecorationImage(
-                            //       fit: BoxFit.cover,
-                            //       image: AssetImage(
-                            //           'images/plasmaChargeForButton.gif')),
-                            // ),
+                            // color: Colors.yellow,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('images/energyHumps.gif')),
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
@@ -630,13 +642,13 @@ class GamePlayScreen extends StatelessWidget {
                               context.read<GameStatusProvider>().handClimb();
                             },
                             child: Container(
-                              color: Colors.yellow,
-                              // decoration: BoxDecoration(
-                              //   image: DecorationImage(
-                              //       fit: BoxFit.cover,
-                              //       image: AssetImage(
-                              //           'images/plasmaChargeForButton.gif')),
-                              // ),
+                              // color: Colors.yellow,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image:
+                                        AssetImage('images/energyHumps.gif')),
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(

@@ -170,11 +170,9 @@ class GameStatusProvider with ChangeNotifier {
       /// when user taps, let the taco climb
       if (_handPosition < 10) {
         if (_crashed == false) {
-          soundModel.playOtherEight('jumpSwipe.mp3');
-          soundModel.playOtherNine('splatDeath.mp3');
+          // soundModel.playOtherEight('jumpSwipe.mp3');
+          // soundModel.playOtherNine('splatDeath.mp3');
           soundModel.playTapSound();
-
-          // soundModel.playOtherSounds('wingsNewTwo.mp3');
 
           _isClimbing = true;
           _lastCommand = LastGamePlayButton.climb;
@@ -198,8 +196,8 @@ class GameStatusProvider with ChangeNotifier {
       //// now every time the hand jumps resources will be disposed
       soundModel.playTapSound();
       soundModel.playOtherSounds('wingsNewTwo.mp3');
-      soundModel.playOtherSoundsTwo('sciFiChargeQuick.mp3');
-      soundModel.playOtherSeven('bugSquash.mp3');
+      // soundModel.playOtherSoundsTwo('sciFiChargeQuick.mp3');
+      // soundModel.playOtherSeven('bugSquash.mp3');
 
       /// when user taps, let the taco climb
       if (_handPosition <= 7) {
@@ -235,9 +233,8 @@ class GameStatusProvider with ChangeNotifier {
 
   void handDive() {
     if (_isPaused == false) {
-      // soundModel.playCreatureSound();
       soundModel.playOtherSeven('sciFiDive.mp3');
-      soundModel.playOtherThree('sciFiChargeQuick.mp3');
+      // soundModel.playOtherThree('sciFiChargeQuick.mp3');
 
       /// when user taps, let the taco climb
       if (_handPosition <= 4) {
@@ -1375,9 +1372,9 @@ class GameStatusProvider with ChangeNotifier {
     if (_comboHits < 3) {
       _comboHits++;
       if (_comboHits == 2) {
-        soundModel.playOtherSeven('sizzlePop.mp3');
+        // soundModel.playOtherSeven('sizzlePop.mp3');
         soundModel.playOtherThree('metalPlinkOne.mp3');
-        // soundModel.playOtherSounds('doubleKill.mp3');
+        // soundModel.playOtherFour('metalPlinkThree.mp3');
       }
       if (_comboHits >= 3) {
         fireDoublePointsEffects();

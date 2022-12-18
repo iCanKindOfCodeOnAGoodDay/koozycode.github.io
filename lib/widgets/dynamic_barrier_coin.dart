@@ -52,14 +52,24 @@ class DynamicCoin extends StatelessWidget {
                                     image: AssetImage(
                                         'images/skullCoinPlatinumIced.png'))),
                           )
-                        : Container(
-                            height: 30.0,
-                            width: 30.0,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(
-                                        'images/skullCoinXXXX.gif'))),
-                          );
+                        : context.watch<GameStatusProvider>().score <= 15000
+                            ? Container(
+                                height: 30.0,
+                                width: 30.0,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'images/skullCoinXXXX.gif'))),
+                              )
+                            : Container(
+                                height: 30.0,
+                                width: 30.0,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image:
+                                            AssetImage('images/pendant.png'))),
+                              );
   }
 }
