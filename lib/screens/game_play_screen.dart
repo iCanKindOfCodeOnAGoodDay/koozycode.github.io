@@ -120,6 +120,8 @@ class GamePlayScreen extends StatelessWidget {
                             : SizedBox(
                                 height: 500.0,
                               ),
+
+                        ///TODO no, this is the bottom screen
                         Expanded(
                           child: Container(
                             // decoration: BoxDecoration(
@@ -149,7 +151,8 @@ class GamePlayScreen extends StatelessWidget {
                                                     .watch<GameStatusProvider>()
                                                     .shouldDisplayBloodSplatQuick ==
                                                 true
-                                            ? AssetImage('images/blood2.gif')
+                                            ? AssetImage(
+                                                'images/scaryBabyBuff.gif')
                                             // : AssetImage(
                                             //     'images/brain1.gif',
                                             //   ),
@@ -270,6 +273,8 @@ class GamePlayScreen extends StatelessWidget {
               SizedBox(
                 height: 30.0,
               ),
+
+              /// this is the bottom screen shittttt
               Row(
                 // crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -385,20 +390,27 @@ class GamePlayScreen extends StatelessWidget {
                   ///GAME play areas
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      // color: Colors.black,
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: context
-                                    .watch<GameStatusProvider>()
-                                    .shouldDisplayDoublePointsEffects ==
-                                true
-                            ? AssetImage('images/endlessColorHole.gif')
-                            : context.watch<GameStatusProvider>().crashed ==
-                                    false
-                                ? AssetImage('images/black.png')
-                                : AssetImage('images/skullStatic.gif'),
-                      ),
+                          fit: BoxFit.cover,
+                          image: context
+                                      .watch<GameStatusProvider>()
+                                      .showSkullBackground ==
+                                  true
+                              ? AssetImage('images/endlessColorHole.gif')
+                              : context
+                                          .watch<GameStatusProvider>()
+                                          .shouldDisplayDoublePointsEffects ==
+                                      true
+                                  ? AssetImage(
+                                      'images/plasmaChargeForButton.gif')
+                                  : context
+                                              .watch<GameStatusProvider>()
+                                              .crashed ==
+                                          false
+                                      ? AssetImage('images/black.png')
+                                      : AssetImage('images/skullStatic.gif')),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -527,6 +539,7 @@ class GamePlayScreen extends StatelessWidget {
                       // SizedBox(
                       //   height: 10.0,
                       // ),
+
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 8.0, right: 8.0, bottom: 8.0),

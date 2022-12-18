@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flappy_taco/providers/game_status_provider.dart';
 
 class SoundModel {
+  void playReloadMaleVoice() async {
+    final reloadVoicePlayer = AudioPlayer();
+
+    // await reloadVoicePlayer.setLoopMode(LoopMode.one);
+    await reloadVoicePlayer.setAsset('assets/reloadMaleVoice.mp3');
+    await reloadVoicePlayer.play();
+    await reloadVoicePlayer.stop();
+    await reloadVoicePlayer.dispose();
+  }
+
   void playMusicSound() async {
     final musicPlayer = AudioPlayer();
     await musicPlayer.setLoopMode(LoopMode.one);

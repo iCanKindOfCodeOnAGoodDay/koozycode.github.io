@@ -1466,6 +1466,8 @@ class GameStatusProvider with ChangeNotifier {
   int _roundsInMagazine = 18;
   int get roundsInMagazine => _roundsInMagazine;
 
+  bool _shouldPlayReloadVoiceWarning = false;
+
   void fireHellFire() {
     if (flamesSecond.isEmpty == false) {
       _fullyLoaded = false;
@@ -1501,6 +1503,8 @@ class GameStatusProvider with ChangeNotifier {
         flamesSecond.removeAt(0);
         notifyListeners();
       }
+    } else {
+      soundModel.playReloadMaleVoice();
     }
   }
 
