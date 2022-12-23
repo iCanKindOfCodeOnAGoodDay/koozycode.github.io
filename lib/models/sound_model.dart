@@ -109,7 +109,7 @@ class SoundModel {
 
   void playLoopFootSteps() async {
     final musicPlayer = AudioPlayer();
-    await musicPlayer.setVolume(5.0);
+    await musicPlayer.setVolume(3.0);
     await musicPlayer.setLoopMode(LoopMode.one);
     await musicPlayer.setAsset('assets/footStepsTwo.mp3');
     await musicPlayer.play();
@@ -136,6 +136,17 @@ class SoundModel {
   //
   //
   // }
+
+  void playComedySounds(String soundPath) async {
+    final audioPlayer = AudioPlayer();
+    await audioPlayer.setVolume(3.0);
+
+    await audioPlayer.setAsset('assets/$soundPath');
+    await audioPlayer.play();
+    await audioPlayer.stop();
+
+    await audioPlayer.dispose();
+  }
 
   void playOtherSounds(String soundPath) async {
     final audioPlayer = AudioPlayer();

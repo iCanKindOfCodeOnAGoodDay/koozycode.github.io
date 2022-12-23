@@ -158,6 +158,25 @@ flutter:
      - timerBombAndExplosion.mp3
      - timerTicking.mp3
      - reloadMaleVoice.mp3
+     - botDotDotDot.mp3
+     - darkMagicZap.mp3
+     - emergencyAlertFourDings.mp3
+     - magicHum.mp3
+     - magicSpell.mp3
+     - magicZap.mp3
+     - positiveChimeXX.mp3
+     - slotMachineDingle.mp3
+     - windGust.mp3
+     - laughingWitch.mp3
+     - comedyDrums.mp3
+     - crowdApplause.mp3
+     - horseNeigh.mp3
+     - horseTrot.mp3
+     - jumpScareTwo.mp3
+     - laughingYoungFemale.mp3
+     - laughingYoungFemaleThree.mp3
+     - laughingYoungFemaleTwo.mp3
+     - savageHorse.mp3
   #   - images/a_dot_ham.jpeg
 
 

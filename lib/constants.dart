@@ -132,7 +132,11 @@ Container kSkullPatch = Container(
   width: 30.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/skullPatch.png'))),
+          fit: BoxFit.cover,
+          image: AssetImage(
+            // 'images/skullPatch.png',
+            'images/horseTransparent.gif',
+          ))),
 );
 
 Container kTimeBombLarge = Container(
