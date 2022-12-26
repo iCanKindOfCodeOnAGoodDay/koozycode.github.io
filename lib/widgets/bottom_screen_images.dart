@@ -73,7 +73,7 @@ class BottomOfTheScreenImages extends StatelessWidget {
                                   true
                               ? AssetImage(
                                   // 'images/horseRidingPeople.gif',
-                                  'images/horseRidingPeople.gif',
+                                  'images/katyPerryRidingHorse.gif',
                                 )
                               // ('images/katyPerryRidingHorse.gif')
                               : context
@@ -112,7 +112,9 @@ class BottomOfTheScreenImages extends StatelessWidget {
                                                       true
                                                   //// quick game over before going back to blood
                                                   ? AssetImage(
-                                                      'images/taylorSwiftCelebration.gif')
+                                                      // 'images/taylorSwiftCelebration.gif',
+                                                      'images/snoopApproval.GIF',
+                                                    )
                                                   : context
                                                               .watch<
                                                                   GameStatusProvider>()

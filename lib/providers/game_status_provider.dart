@@ -66,8 +66,40 @@ class GameStatusProvider with ChangeNotifier {
 
   AmmoType get currentAmmunition => _currentAmmunition;
 
+  bool _hearSoundEffects = false;
+
+  bool get hearSoundEffects => _hearSoundEffects;
+
+  void turnOnSoundEffects() {
+    _hearSoundEffects = true;
+    notifyListeners();
+  }
+
+  void turnOffSoundEffects() {
+    _hearSoundEffects = false;
+    notifyListeners();
+  }
+
+  bool _hearBackgroundMusic = false;
+
+  bool get hearBackgroundMusic => _hearBackgroundMusic;
+
+  void setBackgroundMusicToFalse() {
+    _hearBackgroundMusic = false;
+    notifyListeners();
+  }
+
+  void setBackgroundMusicToTrue() {
+    _hearBackgroundMusic = true;
+    notifyListeners();
+  }
+
+  /// was forced to pass in the value because the value couldnt be accesed outside of the sound model, even when sound model was turned into a provider
+
   void resetGame() {
-    soundModel.playOtherSounds('arcadeStartUp.mp3');
+    _amountOfTimeUserHitDoublePoints = 1;
+    _gameSpeed = 150000;
+    soundModel.playOtherSounds('arcadeStartUp.mp3', _hearSoundEffects);
     resetHellFireColumns();
     resetHellFireContactLocations();
     reloadHellFire();
@@ -82,7 +114,6 @@ class GameStatusProvider with ChangeNotifier {
     extraLives = [];
     redGems = [];
     colorGems = [];
-    // _gameSpeed = 200;
     _progressMessage = '';
     _handPosition = 5;
     _score = 0;
@@ -172,7 +203,7 @@ class GameStatusProvider with ChangeNotifier {
         if (_crashed == false) {
           // soundModel.playOtherEight('jumpSwipe.mp3');
           // soundModel.playOtherNine('splatDeath.mp3');
-          soundModel.playTapSound();
+          soundModel.playTapSound(_hearSoundEffects);
 
           _isClimbing = true;
           _lastCommand = LastGamePlayButton.climb;
@@ -194,8 +225,8 @@ class GameStatusProvider with ChangeNotifier {
   void handJump() {
     if (_isPaused == false) {
       //// now every time the hand jumps resources will be disposed
-      soundModel.playTapSound();
-      soundModel.playOtherSounds('wingsNewTwo.mp3');
+      soundModel.playTapSound(_hearSoundEffects);
+      soundModel.playOtherSounds('wingsNewTwo.mp3', _hearSoundEffects);
       // soundModel.playOtherSoundsTwo('sciFiChargeQuick.mp3');
       // soundModel.playOtherSeven('bugSquash.mp3');
 
@@ -233,7 +264,7 @@ class GameStatusProvider with ChangeNotifier {
 
   void handDive() {
     if (_isPaused == false) {
-      soundModel.playOtherSeven('sciFiDive.mp3');
+      soundModel.playOtherSeven('sciFiDive.mp3', _hearSoundEffects);
       // soundModel.playOtherThree('sciFiChargeQuick.mp3');
 
       /// when user taps, let the taco climb
@@ -274,24 +305,28 @@ class GameStatusProvider with ChangeNotifier {
   void updateProgressMessage() {
     if (_score > 20 && _score < 25) {
       _progressMessage = 'wow!';
+      // increaseGameSpeed();
       notifyListeners();
     } else if (_score > 25 && _score < 49) {
       _progressMessage = '';
       notifyListeners();
     } else if (_score > 50 && _score < 55) {
       _progressMessage = 'super!';
+      // increaseGameSpeed();
       notifyListeners();
     } else if (_score > 55 && _score < 74) {
       _progressMessage = '';
       notifyListeners();
     } else if (_score > 75 && _score < 80) {
       _progressMessage = 'WHOA!!';
+      // increaseGameSpeed();
       notifyListeners();
     } else if (_score > 80 && _score < 100) {
       _progressMessage = '';
       notifyListeners();
     } else if (_score > 100 && _score < 105) {
       _progressMessage = 'YAAAA!!';
+      // increaseGameSpeed();
       notifyListeners();
     } else if (_score > 105) {
       _progressMessage = '';
@@ -365,18 +400,18 @@ class GameStatusProvider with ChangeNotifier {
       if (obstacleHeight <= 5) {
         if (_handPosition <= obstacleHeight + 1) {
           if (extraLives.isNotEmpty == true) {
-            soundModel.playOtherSounds('femaleDeath.mp3');
+            soundModel.playOtherSounds('femaleDeath.mp3', _hearSoundEffects);
             _userCantDie = true;
             tinyAmountOfTimeForInvinsibility();
             extraLives.removeAt(extraLives.length - 1);
             fireBloodSplatQuick();
             notifyListeners();
           } else if (extraLives.isEmpty == true) {
-            soundModel.playOtherSoundsTwo('manDeath.mp3');
-            soundModel.playOtherThree('splat.mp3');
-            soundModel.playOtherFour('deathCallsForMe.mp3');
-            soundModel.playOtherFive('fireworks.mp3');
-            soundModel.playOtherSix('bulletShot.mp3');
+            soundModel.playOtherSoundsTwo('manDeath.mp3', _hearSoundEffects);
+            soundModel.playOtherThree('splat.mp3', _hearSoundEffects);
+            soundModel.playOtherFour('deathCallsForMe.mp3', _hearSoundEffects);
+            soundModel.playOtherFive('fireworks.mp3', _hearSoundEffects);
+            soundModel.playOtherSix('bulletShot.mp3', _hearSoundEffects);
             fireQuickHorror();
             _crashed = true;
             _isClimbing = true;
@@ -392,7 +427,7 @@ class GameStatusProvider with ChangeNotifier {
         print('obstance hight from top $obstacleHeight');
         if (_handPosition >= obstacleHeight - 1) {
           if (extraLives.isNotEmpty == true) {
-            soundModel.playOtherEight('femaleDeath.mp3');
+            soundModel.playOtherEight('femaleDeath.mp3', _hearSoundEffects);
             fireBloodSplatQuick();
 
             _userCantDie = true;
@@ -407,11 +442,11 @@ class GameStatusProvider with ChangeNotifier {
 
             _crashed = true;
             _isClimbing = true;
-            soundModel.playOtherThree('manDeath.mp3');
-            soundModel.playOtherFour('splat.mp3');
-            soundModel.playOtherFive('deathCallsForMe.mp3');
-            soundModel.playOtherSix('fireworks.mp3');
-            soundModel.playOtherSoundsTwo('bulletShot.mp3');
+            soundModel.playOtherThree('manDeath.mp3', _hearSoundEffects);
+            soundModel.playOtherFour('splat.mp3', _hearSoundEffects);
+            soundModel.playOtherFive('deathCallsForMe.mp3', _hearSoundEffects);
+            soundModel.playOtherSix('fireworks.mp3', _hearSoundEffects);
+            soundModel.playOtherSoundsTwo('bulletShot.mp3', _hearSoundEffects);
 
             print('craashed = $_crashed');
             print('game over top buildling');
@@ -590,9 +625,13 @@ class GameStatusProvider with ChangeNotifier {
   bool get shouldDisplayDoublePointsEffects =>
       _shouldDisplayDoublePointsEffects;
 
+  int _amountOfTimeUserHitDoublePoints = 1;
+
   void fireDoublePointsEffects() {
-    soundModel.playOtherThree('arcadeAndApplause.mp3');
-    _score = _score + 50;
+    soundModel.playOtherThree('arcadeAndApplause.mp3', _hearSoundEffects);
+    // _score = _score + 50;
+    _amountOfTimeUserHitDoublePoints++;
+    _score = _score * 2;
     _shouldDisplayDoublePointsEffects = true;
     notifyListeners();
     Future.delayed(Duration(milliseconds: 1200), () {
@@ -729,9 +768,9 @@ class GameStatusProvider with ChangeNotifier {
 
   void nuclearExplosionOnScreen() {
     // soundModel.playOtherThree('sciFiBitExplosion.mp3');
-    soundModel.playOtherFour('whistle.mp3');
+    soundModel.playOtherFour('whistle.mp3', _hearSoundEffects);
     // soundModel.playOtherFive('sizzlePop.mp3');
-    soundModel.playOtherSix('popDebris.mp3');
+    soundModel.playOtherSix('popDebris.mp3', _hearSoundEffects);
 
     fireDoublePointsEffects();
     fireExplosion1();
@@ -830,8 +869,9 @@ class GameStatusProvider with ChangeNotifier {
       if (_gemLocationAtIndexZero == 4 || _gemLocationAtIndexZero == 7) {
         if (redGems.isEmpty && extraLives.isEmpty) {
           fireQuickScream();
-          soundModel.playOtherSounds('jumpScare.mp3');
-          soundModel.playOtherThree('negativePowerupTwo.mp3');
+          soundModel.playOtherSounds('jumpScare.mp3', _hearSoundEffects);
+          soundModel.playOtherThree(
+              'negativePowerupTwo.mp3', _hearSoundEffects);
           fireQuickScream();
 
           print('user got stabbed');
@@ -842,14 +882,15 @@ class GameStatusProvider with ChangeNotifier {
           fireQuickScream();
 
           // fireBloodSplatQuick();
-          soundModel.playOtherThree('negativePowerupTwo.mp3');
+          soundModel.playOtherThree(
+              'negativePowerupTwo.mp3', _hearSoundEffects);
 
           redGems.removeAt(redGems.length - 1);
           print('bandaid stab protection');
           notifyListeners();
         } else if (extraLives.isNotEmpty) {
           fireQuickScream();
-          soundModel.playOtherFour('negativePowerupTwo.mp3');
+          soundModel.playOtherFour('negativePowerupTwo.mp3', _hearSoundEffects);
 
           extraLives.removeAt(extraLives.length - 1);
           print('extra lives stab protection');
@@ -858,10 +899,10 @@ class GameStatusProvider with ChangeNotifier {
         }
       } else if (_gemLocationAtIndexZero == 5) {
         // soundModel.playOtherSounds('rampage.mp3');
-        soundModel.playComedySounds('horseNeigh.mp3');
+        soundModel.playComedySounds('horseNeigh.mp3', _hearSoundEffects);
         turnOnAndOffSkullBackground();
         fireBloodSplatQuick();
-        soundModel.playOtherThree('negativePowerup.mp3');
+        soundModel.playOtherThree('negativePowerup.mp3', _hearSoundEffects);
 
         fireDoublePointsEffects();
 
@@ -882,9 +923,9 @@ class GameStatusProvider with ChangeNotifier {
   }
 
   void reloadHellFire() {
-    soundModel.playReloadSound();
-    soundModel.playOtherEight('sciFiReload.mp3');
-    soundModel.playOtherNine('shotgunReload.mp3');
+    soundModel.playReloadSound(_hearSoundEffects);
+    soundModel.playOtherEight('sciFiReload.mp3', _hearSoundEffects);
+    soundModel.playOtherNine('shotgunReload.mp3', _hearSoundEffects);
 
     _roundsInMagazine = 18;
     flames = [
@@ -925,8 +966,8 @@ class GameStatusProvider with ChangeNotifier {
         _handPosition - 1 == _gemLocationAtIndexZero) {
       if (_gemLocationAtIndexZero == 3 || _gemLocationAtIndexZero == 2) {
         fireJustPickedUpCannon();
-        soundModel.playCannonUpgradeSound();
-        soundModel.playOtherThree('sciFiPowerupThree.mp3');
+        soundModel.playCannonUpgradeSound(_hearSoundEffects);
+        soundModel.playOtherThree('sciFiPowerupThree.mp3', _hearSoundEffects);
 
         ///hell fire cannon
         if (_currentCannon == CannonType.orange) {
@@ -977,8 +1018,9 @@ class GameStatusProvider with ChangeNotifier {
         // fireCoinWinEffect();
         // soundModel.playOtherThree('arcadeAndApplause.mp3');
         // soundModel.playOtherThree('bopBopBopDing.mp3');
-        soundModel.playOtherFour('powerupOne.mp3');
-        soundModel.playComedySounds('laughingYoungFemale.mp3');
+        soundModel.playOtherFour('powerupOne.mp3', _hearSoundEffects);
+        soundModel.playComedySounds(
+            'laughingYoungFemale.mp3', _hearSoundEffects);
         fireQuickLifePickup();
 
         // soundModel.playOtherSoundsTwo('sciFiPowerupThree.mp3');
@@ -996,8 +1038,9 @@ class GameStatusProvider with ChangeNotifier {
 
         // soundModel.playOtherThree('powerupOne.mp3');
         // soundModel.playOtherSoundsTwo('sciFiPowerupThree.mp3');
-        soundModel.playOtherFour('positivePowerupTwo.mp3');
-        soundModel.playComedySounds('laughingYoungFemaleThree.mp3');
+        soundModel.playOtherFour('positivePowerupTwo.mp3', _hearSoundEffects);
+        // soundModel.playComedySounds(
+        //     'laughingYoungFemaleThree.mp3', _hearSoundEffects);
         // soundModel.playComedySounds('comedyDrums.mp3');
 
         // fireCoinWinEffect();
@@ -1012,9 +1055,9 @@ class GameStatusProvider with ChangeNotifier {
         ///empty buildings
         fireDoublePointsEffects();
         // soundModel.playOtherThree('sciFiBitExplosion.mp3');
-        soundModel.playComedySounds('savageHorse.mp3');
+        soundModel.playComedySounds('savageHorse.mp3', _hearSoundEffects);
         // soundModel.playOtherFour('sciFiBitExplosion.mp3');
-        soundModel.playOtherFive('debrisShatter.mp3');
+        soundModel.playOtherFive('debrisShatter.mp3', _hearSoundEffects);
         // soundModel.playOtherSoundsTwo('sciFiPowerupThree.mp3');
         // soundModel.playOtherSounds5x('fuseSound.mp3');
 
@@ -1022,9 +1065,9 @@ class GameStatusProvider with ChangeNotifier {
         fireExplosion2();
         print('user caught a flashing gem');
       } else if (_gemLocationAtIndexZero == 8) {
-        soundModel.playOtherSounds('sizzlePop.mp3');
+        soundModel.playOtherSounds('sizzlePop.mp3', _hearSoundEffects);
         // soundModel.playOtherSix('bopBopBopDing.mp3');
-        soundModel.playOtherSeven('sciFiPowerupThree.mp3');
+        soundModel.playOtherSeven('sciFiPowerupThree.mp3', _hearSoundEffects);
         // soundModel.playOtherSounds5x('timerTicking.mp3');
 
         ///empty buildings
@@ -1059,43 +1102,44 @@ class GameStatusProvider with ChangeNotifier {
     notifyListeners();
     if (_gemPosition == 4 || _gemPosition == 7) {
       _trackGemType = 'knife'.toUpperCase();
-      soundModel.playOtherEight('jumpScare.mp3');
+      soundModel.playOtherEight('jumpScare.mp3', _hearSoundEffects);
       // soundModel.playOtherSounds5x('knifeSharpening.mp3');
-      soundModel.playOtherSounds5x('knifeScrapeGoreTwo.mp3');
+      soundModel.playOtherSounds5x('knifeScrapeGoreTwo.mp3', _hearSoundEffects);
 
       print('gem type $_trackGemType');
       notifyListeners();
     } else if (_gemPosition == 10 || _gemPosition == 6) {
       /// bandaid
-      soundModel.playOtherSounds5x('magicSpell.mp3');
+      soundModel.playOtherSounds5x('magicSpell.mp3', _hearSoundEffects);
 
       notifyListeners();
     } else if (_gemPosition == 1) {
       /// life
-      soundModel.playOtherSounds5x('fuseSound.mp3');
+      soundModel.playOtherSounds5x('fuseSound.mp3', _hearSoundEffects);
 
       notifyListeners();
     } else if (_gemPosition == 5) {
       /// skellaton
       // soundModel.playOtherSounds5x('emergencyAlertFourDings.mp3');
-      soundModel.playOtherSounds5x('emergencyAlertFourDings.mp3');
+      soundModel.playOtherSounds5x(
+          'emergencyAlertFourDings.mp3', _hearSoundEffects);
 
       notifyListeners();
     } else if (_gemPosition == 8) {
       /// timebomb
-      soundModel.playOtherSounds5x('timerTicking.mp3');
+      soundModel.playOtherSounds5x('timerTicking.mp3', _hearSoundEffects);
 
       notifyListeners();
     } else if (_gemPosition == 3 || _gemPosition == 2) {
       // cannon upgrade
-      soundModel.playOtherSounds5x('shieldPowerup.mp3');
+      soundModel.playOtherSounds5x('shieldPowerup.mp3', _hearSoundEffects);
 
       /// what the fuck powerup is this? fireball
 
       notifyListeners();
     } else if (_gemPosition == 9) {
       // extra life
-      soundModel.playOtherSounds5x('magicHum.mp3');
+      soundModel.playOtherSounds5x('magicHum.mp3', _hearSoundEffects);
       notifyListeners();
     }
     notifyListeners();
@@ -1199,20 +1243,49 @@ class GameStatusProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  int _gameSpeed = 150;
+  int _gameSpeed = 150000;
 
   /// game speed is not going faster
   /// because the timer needs to be canceled, and a new timer created which moves faster
 
+  // void increaseGameSpeed() {
+  //   /// cancel previous timer
+  //   /// create a new timer, faster
+  //   /// check for game over, and move the buildings, create new ones, destroy at index 0, etc.
+  //   // int speed = 150;
+  //   gameSpeedTimer.cancel();
+  //   _gameSpeed = _gameSpeed - 10;
+  //   startGame();
+  // }
+
+  // void increaseSpeedEveryTenSeconds() {
+  //   var timer = Timer.periodic(Duration(seconds: 10), (timer) {
+  //     increaseGameSpeed();
+  //   });
+  // }
+
+  Timer gameSpeedTimer =
+      Timer.periodic(Duration(microseconds: 150000), (timer) {});
+
+  void cancelGameSpeedTimerToCreateANewOne() {
+    gameSpeedTimer.cancel();
+    _gameSpeed = _gameSpeed - 100;
+    print('game speed is = $_gameSpeed');
+    startGame();
+  }
+
   void startGame() {
-    var timer = Timer.periodic(Duration(milliseconds: 150), (timer) {
+    // increaseSpeedEveryTenSeconds();
+
+    gameSpeedTimer =
+        Timer.periodic(Duration(microseconds: _gameSpeed), (timer) {
       if (_crashed == false) {
         /// make game speed up as you play
         // _gameSpeed--;
         // print('game spped $_gameSpeed');
         updateProgressMessage();
         if (_isPaused == false) {
-          _score++;
+          _score = _score + (1 * _amountOfTimeUserHitDoublePoints);
 
           if (buildingSpace >= 3) {
             createBuilding();
@@ -1220,32 +1293,18 @@ class GameStatusProvider with ChangeNotifier {
             checkForBadPowerUps();
             // contactWithPowerUpCheckerIndex1();
             buildingSpace = 0;
-            // shouldMakeUpsideDownBuilding = true;
-
-            // else {
-            //   // createUpsideDownBuilding();
-            //   buildingSpace = 0;
-            //   shouldMakeUpsideDownBuilding = false;
-            // }
+            cancelGameSpeedTimerToCreateANewOne();
           } else {
             buildingSpace++;
 
             createEmptyBuildingSpace();
             contactWithPowerUpChecker();
             checkForBadPowerUps();
-            // contactWithPowerUpCheckerIndex1();
 
             notifyListeners();
           }
         }
       } else {
-        /// the issue with only canceling the timer here
-        /// is that if this function is not called, before reset
-        /// then we'll get duplicate game speed timers, multiplying game speed to
-        /// crazy fast unplayable speed
-        /// and this is probably why at times
-        /// the game play is very fast, and the
-        /// hand becomes invinsible
         timer.cancel();
         print('canceling building creation timer');
       }
@@ -1390,45 +1449,45 @@ class GameStatusProvider with ChangeNotifier {
       if (_isPaused == false) {
         if (_currentCannon == CannonType.orange) {
           if (_shouldDisplayDoublePointsEffects == false) {
-            _score = _score + 3;
+            _score = _score + (3 * _amountOfTimeUserHitDoublePoints);
           } else {
-            _score = _score + 6;
+            _score = _score + (6 * _amountOfTimeUserHitDoublePoints);
           }
         } else if (_currentCannon == CannonType.yellow) {
           if (_shouldDisplayDoublePointsEffects == false) {
-            _score = _score + 7;
+            _score = _score + (7 * _amountOfTimeUserHitDoublePoints);
           } else {
-            _score = _score + 14;
+            _score = _score + (14 * _amountOfTimeUserHitDoublePoints);
           }
         } else if (_currentCannon == CannonType.blue) {
           if (_shouldDisplayDoublePointsEffects == false) {
-            _score = _score + 12;
+            _score = _score + (12 * _amountOfTimeUserHitDoublePoints);
           } else {
-            _score = _score + 24;
+            _score = _score + (24 * _amountOfTimeUserHitDoublePoints);
           }
         } else if (_currentCannon == CannonType.purple) {
           if (_shouldDisplayDoublePointsEffects == false) {
-            _score = _score + 18;
+            _score = _score + (18 * _amountOfTimeUserHitDoublePoints);
           } else {
-            _score = _score + 36;
+            _score = _score + (36 * _amountOfTimeUserHitDoublePoints);
           }
         } else if (_currentCannon == CannonType.flashing) {
           if (_shouldDisplayDoublePointsEffects == false) {
-            _score = _score + 25;
+            _score = _score + (25 * _amountOfTimeUserHitDoublePoints);
           } else {
-            _score = _score + 50;
+            _score = _score + (50 * _amountOfTimeUserHitDoublePoints);
           }
         } else if (_currentCannon == CannonType.black) {
           if (_shouldDisplayDoublePointsEffects == false) {
-            _score = _score + 35;
+            _score = _score + (35 * _amountOfTimeUserHitDoublePoints);
           } else {
-            _score = _score + 70;
+            _score = _score + (70 * _amountOfTimeUserHitDoublePoints);
           }
         } else if (_currentCannon == CannonType.white) {
           if (_shouldDisplayDoublePointsEffects == false) {
-            _score = _score + 45;
+            _score = _score + (45 * _amountOfTimeUserHitDoublePoints);
           } else {
-            _score = _score + 90;
+            _score = _score + (90 * _amountOfTimeUserHitDoublePoints);
           }
         }
       }
@@ -1442,13 +1501,13 @@ class GameStatusProvider with ChangeNotifier {
       _comboHits++;
       if (_comboHits == 2) {
         // soundModel.playOtherSeven('sizzlePop.mp3');
-        soundModel.playOtherThree('metalPlinkOne.mp3');
+        soundModel.playOtherThree('metalPlinkOne.mp3', _hearSoundEffects);
         // soundModel.playOtherFour('metalPlinkThree.mp3');
       }
       if (_comboHits >= 3) {
         fireDoublePointsEffects();
-        soundModel.playOtherFive('tipleKill.mp3');
-        soundModel.playOtherFour('metalPlinkThree.mp3');
+        soundModel.playOtherFive('tipleKill.mp3', _hearSoundEffects);
+        soundModel.playOtherFour('metalPlinkThree.mp3', _hearSoundEffects);
       }
     } else {
       Future.delayed(Duration(milliseconds: 1200), () {
@@ -1543,7 +1602,7 @@ class GameStatusProvider with ChangeNotifier {
       if (_roundsInMagazine > 0) {
         _roundsInMagazine--;
         // soundModel.playLaserSound();
-        soundModel.playLaserSound();
+        soundModel.playLaserSound(_hearSoundEffects);
         // soundModel.playOtherSoundsTwo('shortLaserSplat.mp3');
       }
 
@@ -1573,7 +1632,7 @@ class GameStatusProvider with ChangeNotifier {
         notifyListeners();
       }
     } else {
-      soundModel.playReloadMaleVoice();
+      soundModel.playReloadMaleVoice(_hearSoundEffects);
     }
   }
 

@@ -1,9 +1,12 @@
+import 'package:flappy_taco/models/sound_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../providers/game_status_provider.dart';
 import 'cannon_switch_widget.dart';
+
+SoundModel soundModel = SoundModel();
 
 class GameControlsWidgets extends StatelessWidget {
   const GameControlsWidgets({Key? key}) : super(key: key);

@@ -28,7 +28,7 @@ class BottomOfGameboyWidgets extends StatelessWidget {
                         ),
               Center(
                 child: Container(
-                  height: 50.0,
+                  height: 55.0,
                   // width: 400.0,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -37,7 +37,7 @@ class BottomOfGameboyWidgets extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        top: 15.0, left: 20.0, right: 20.0, bottom: 8),
+                        top: 15.0, left: 20.0, right: 20.0, bottom: 10),
                     child: Center(
                       child: Container(
                         decoration: BoxDecoration(
