@@ -40,7 +40,8 @@ class GamePlayScreen extends StatelessWidget {
               fit: BoxFit.cover,
               image: AssetImage(
                 // 'images/horseRidingPeople.gif',
-                'images/phoneInternalsPurp.JPG',
+                // 'images/phoneInternalsBlack.PNG',
+                'images/black.png',
               )),
         ),
         child: Stack(
@@ -51,11 +52,23 @@ class GamePlayScreen extends StatelessWidget {
             ///todo this is the bottom screen below the game control buttons
             BottomOfTheScreenImages(),
 
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      // 'images/horseRidingPeople.gif',
+                      // 'images/phoneInternalsBlack.PNG',
+                      'images/futuristicGameConsoleNoLogo2BLANKLOGO.png',
+                    )),
+              ),
+            ),
+
             /// top of tv stand
-            TopOfGameboyWidgets(),
-            BottomOfGameboyWidgets(),
+            // TopOfGameboyWidgets(),
+            // BottomOfGameboyWidgets(),
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 10.0,

@@ -25,88 +25,50 @@ class CannonSwitch extends StatelessWidget {
           ),
           Row(
             children: [
-              Container(
-                width: 40.0,
-                height: 40.0,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color:
-                        context.watch<GameStatusProvider>().fullyLoaded == true
-                            ? Colors.white24
-                            : context
-                                        .watch<GameStatusProvider>()
-                                        .roundsInMagazine ==
-                                    0
-                                ? Colors.redAccent
-                                : Colors.yellow),
-              ),
               GestureDetector(
-                onLongPress: () {
-                  context.read<GameStatusProvider>().reloadHellFire();
-                },
                 onTap: () {
                   context.read<GameStatusProvider>().reloadHellFire();
-                  // super.dispose();
-                  // context.read<GameStatusProvider>().switchCannon();
-
-                  /// toggle switch
                 },
                 child: Container(
-                    width: 40.0,
-                    height: 40.0,
-                    decoration:
-                        context.watch<GameStatusProvider>().fullyLoaded == true
-                            ? BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.yellow,
-                                // image: DecorationImage(
-                                //   fit: BoxFit.cover,
-                                //   image: AssetImage(
-                                //       'images/plasmaChargeForButton.gif'),
-                                // ),
-                              )
-                            : BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: kBlankColor,
-                              ),
-                    // DecorationImage(
-                    //   fit: BoxFit.cover,
-                    //   image: AssetImage('images/plasmaChargeForButton.gif'),
-                    // ),
-
-                    // decoration:
-                    //     context.watch<GameStatusProvider>().fullyLoaded == true
-                    //         ? BoxDecoration(color: Colors.yellow)
-                    //         color: Colors.yellow,
-                    //         borderRadius: BorderRadius.circular(5),
-                    //         image: DecorationImage(
-                    //             fit: BoxFit.cover,
-                    //             image: AssetImage(
-                    //                 'images/plasmaChargeForButton.gif'),),)
-                    //         : BoxDecoration(
-                    //             borderRadius: BorderRadius.circular(5),
-                    // color: context
-                    //             .watch<GameStatusProvider>()
-                    //             .fullyLoaded ==
-                    //         true
-                    //     ? Colors.black
-                    //     : Colors.white54
-
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                              context.watch<GameStatusProvider>().fullyLoaded ==
+                                      true
+                                  ? 'images/componetLeftBlackButtonSquare.png'
+                                  : 'images/nukeButton.png'))),
+                  child: Container(
+                    width: 70.0,
+                    height: 70.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: kTransparent),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  context.read<GameStatusProvider>().reloadHellFire();
+                },
+                child: Container(
+                    width: 180.0,
+                    height: 90.0,
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: context.watch<GameStatusProvider>().fullyLoaded ==
-                              false
+                              true
                           ? Container(
-                              child: AmmoPickup(),
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          'images/rayGunPimpedEnergy.gif'))),
                             )
                           : Container(
                               decoration: BoxDecoration(
-                                color: Colors.black,
+                                color: kTransparent,
                                 borderRadius: BorderRadius.circular(5),
-                                // image: DecorationImage(
-                                //     fit: BoxFit.cover,
-                                //     image: AssetImage(
-                                //         'images/plasmaChargeForButton.gif')),
                               ),
                             ),
                     )),

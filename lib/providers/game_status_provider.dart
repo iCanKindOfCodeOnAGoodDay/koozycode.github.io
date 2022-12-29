@@ -97,6 +97,7 @@ class GameStatusProvider with ChangeNotifier {
   /// was forced to pass in the value because the value couldnt be accesed outside of the sound model, even when sound model was turned into a provider
 
   void resetGame() {
+    _reverseGameSpeedToDisplayForUserAsTheyProgress = 1;
     _amountOfTimeUserHitDoublePoints = 1;
     _gameSpeed = 150000;
     soundModel.playOtherSounds('arcadeStartUp.mp3', _hearSoundEffects);
@@ -627,11 +628,13 @@ class GameStatusProvider with ChangeNotifier {
 
   int _amountOfTimeUserHitDoublePoints = 1;
 
+  int get amountOfTimeUserHitDoublePoints => _amountOfTimeUserHitDoublePoints;
+
   void fireDoublePointsEffects() {
     soundModel.playOtherThree('arcadeAndApplause.mp3', _hearSoundEffects);
     // _score = _score + 50;
     _amountOfTimeUserHitDoublePoints++;
-    _score = _score * 2;
+    _score = _score + 1000;
     _shouldDisplayDoublePointsEffects = true;
     notifyListeners();
     Future.delayed(Duration(milliseconds: 1200), () {
@@ -958,6 +961,10 @@ class GameStatusProvider with ChangeNotifier {
 
   bool _shouldGetDoublePoints = false;
 
+  String _cannonPath = 'fireBallXYellow2.gif';
+
+  String get cannonPath => _cannonPath;
+
   void contactWithPowerUpChecker() {
     int _gemLocationAtIndexZero = buildings[0].powerUpPosition;
 
@@ -975,6 +982,7 @@ class GameStatusProvider with ChangeNotifier {
           _cannons = [kLargeHellfireOrange];
           _cannons.add(kLargeHellfireYellow);
           _currentAmmunition = AmmoType.yellow;
+          _cannonPath = 'fireBallXYellow2.gif';
 
           /// adds two cannons
           notifyListeners();
@@ -982,30 +990,43 @@ class GameStatusProvider with ChangeNotifier {
           _currentCannon = CannonType.blue;
           _cannons.add(kLargeHellfireBlue);
           _currentAmmunition = AmmoType.blue;
+          _cannonPath = 'invertGreenFireBall.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.blue) {
           _currentCannon = CannonType.purple;
           _cannons.add(kLargeHellfirePurple);
           _currentAmmunition = AmmoType.purple;
+          _cannonPath = 'fireBallXPurple.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.purple) {
           _currentCannon = CannonType.flashing;
           _cannons.add(kLargeHellfireFlashing);
           _currentAmmunition = AmmoType.flashing;
+          _cannonPath = 'fireBallXFlashing2.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.flashing) {
           _currentCannon = CannonType.black;
           _cannons.add(kLargeHellfireBlack);
           _currentAmmunition = AmmoType.black;
+          _cannonPath = 'greyFireBall.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.black) {
           _currentCannon = CannonType.white;
           _cannons.add(kLargeHellfireWhite);
           _currentAmmunition = AmmoType.white;
+          _cannonPath = 'whiteFireBall.gif';
+
+          notifyListeners();
+        } else if (_currentCannon == CannonType.white) {
+          //// let user be rewarded for catching a cannon after they are already on cannon whiteR
+          // _currentCannon = CannonType.white;
+          // _cannons.add(kLargeHellfireWhite);
+          // _currentAmmunition = AmmoType.white;
+          fireDoublePointsEffects();
 
           notifyListeners();
         }
@@ -1245,6 +1266,11 @@ class GameStatusProvider with ChangeNotifier {
 
   int _gameSpeed = 150000;
 
+  int _reverseGameSpeedToDisplayForUserAsTheyProgress = 1;
+
+  int get reverseGameSpeedToDisplayForUserAsTheyProgress =>
+      _reverseGameSpeedToDisplayForUserAsTheyProgress;
+
   /// game speed is not going faster
   /// because the timer needs to be canceled, and a new timer created which moves faster
 
@@ -1270,6 +1296,7 @@ class GameStatusProvider with ChangeNotifier {
   void cancelGameSpeedTimerToCreateANewOne() {
     gameSpeedTimer.cancel();
     _gameSpeed = _gameSpeed - 100;
+    _reverseGameSpeedToDisplayForUserAsTheyProgress++;
     print('game speed is = $_gameSpeed');
     startGame();
   }
@@ -1444,51 +1471,76 @@ class GameStatusProvider with ChangeNotifier {
     }
   }
 
+  int _basePointsForHittingBarrier = 3;
+
+  int get basePointsForHittingBarrier => _basePointsForHittingBarrier;
+
   void pointsForHittingPerCannonType() {
     if (_crashed == false) {
       if (_isPaused == false) {
         if (_currentCannon == CannonType.orange) {
           if (_shouldDisplayDoublePointsEffects == false) {
+            _basePointsForHittingBarrier = 3;
             _score = _score + (3 * _amountOfTimeUserHitDoublePoints);
           } else {
             _score = _score + (6 * _amountOfTimeUserHitDoublePoints);
+            _basePointsForHittingBarrier = 6;
           }
+          notifyListeners();
         } else if (_currentCannon == CannonType.yellow) {
           if (_shouldDisplayDoublePointsEffects == false) {
+            _basePointsForHittingBarrier = 7;
             _score = _score + (7 * _amountOfTimeUserHitDoublePoints);
           } else {
             _score = _score + (14 * _amountOfTimeUserHitDoublePoints);
+            _basePointsForHittingBarrier = 14;
           }
+          notifyListeners();
         } else if (_currentCannon == CannonType.blue) {
           if (_shouldDisplayDoublePointsEffects == false) {
+            _basePointsForHittingBarrier = 12;
             _score = _score + (12 * _amountOfTimeUserHitDoublePoints);
           } else {
             _score = _score + (24 * _amountOfTimeUserHitDoublePoints);
+            _basePointsForHittingBarrier = 24;
           }
+          notifyListeners();
         } else if (_currentCannon == CannonType.purple) {
           if (_shouldDisplayDoublePointsEffects == false) {
+            _basePointsForHittingBarrier = 18;
             _score = _score + (18 * _amountOfTimeUserHitDoublePoints);
           } else {
+            _basePointsForHittingBarrier = 36;
             _score = _score + (36 * _amountOfTimeUserHitDoublePoints);
           }
+          notifyListeners();
         } else if (_currentCannon == CannonType.flashing) {
           if (_shouldDisplayDoublePointsEffects == false) {
+            _basePointsForHittingBarrier = 25;
             _score = _score + (25 * _amountOfTimeUserHitDoublePoints);
           } else {
+            _basePointsForHittingBarrier = 50;
             _score = _score + (50 * _amountOfTimeUserHitDoublePoints);
           }
+          notifyListeners();
         } else if (_currentCannon == CannonType.black) {
           if (_shouldDisplayDoublePointsEffects == false) {
+            _basePointsForHittingBarrier = 35;
             _score = _score + (35 * _amountOfTimeUserHitDoublePoints);
           } else {
+            _basePointsForHittingBarrier = 70;
             _score = _score + (70 * _amountOfTimeUserHitDoublePoints);
           }
+          notifyListeners();
         } else if (_currentCannon == CannonType.white) {
           if (_shouldDisplayDoublePointsEffects == false) {
+            _basePointsForHittingBarrier = 45;
             _score = _score + (45 * _amountOfTimeUserHitDoublePoints);
           } else {
+            _basePointsForHittingBarrier = 90;
             _score = _score + (90 * _amountOfTimeUserHitDoublePoints);
           }
+          notifyListeners();
         }
       }
       notifyListeners();

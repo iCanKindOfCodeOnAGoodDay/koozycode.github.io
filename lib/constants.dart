@@ -9,8 +9,8 @@ Color kBlankSquare = Color(0x00000000);
 TextStyle kMessageStyle = TextStyle(
     color: Colors.white70, fontSize: 20.0, fontWeight: FontWeight.w900);
 
-TextStyle kScoreStyle =
-    TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.w900);
+TextStyle kScoreStyle = TextStyle(
+    color: Colors.white70, fontSize: 25.0, fontWeight: FontWeight.bold);
 
 TextStyle kButtonStyle =
     TextStyle(fontSize: 40.0, fontWeight: FontWeight.w900, color: Colors.white);
@@ -22,10 +22,11 @@ Color kTransparent = Color(0x00000000);
 
 Container kThing = Container(
   height: 30.0,
-  width: 30.0,
+  width: 60.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/thingRight.gif'))),
+          fit: BoxFit.cover,
+          image: AssetImage('images/rayGunPimpedEnergy.gif'))),
 );
 
 Container kThingFalling = Container(
@@ -57,7 +58,11 @@ Hero kRedGem = Hero(
     width: 30.0,
     decoration: BoxDecoration(
         image: DecorationImage(
-            fit: BoxFit.cover, image: AssetImage('images/bandaidColor.gif'))),
+            fit: BoxFit.cover,
+            image: AssetImage(
+              'images/blood.png',
+              // 'images/shieldRingXX.png',
+            ))),
   ),
 );
 
@@ -66,7 +71,8 @@ Container kKnifePowerUp = Container(
   width: 30.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/KnifeX.gif'))),
+          fit: BoxFit.cover,
+          image: AssetImage('images/switchBladeBloody.gif'))),
 );
 
 Hero kFlameFace = Hero(
@@ -91,7 +97,7 @@ Hero kExtraLife = Hero(
     decoration: BoxDecoration(
       image: DecorationImage(
         fit: BoxFit.cover,
-        image: AssetImage('images/electricHeart2.gif'),
+        image: AssetImage('images/thingWalkingLeft.gif'),
       ),
     ),
   ),
@@ -134,8 +140,8 @@ Container kSkullPatch = Container(
       image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage(
-            // 'images/skullPatch.png',
-            'images/horseTransparent.gif',
+            'images/octopus.png',
+            // 'images/horseTransparent.gif',
           ))),
 );
 

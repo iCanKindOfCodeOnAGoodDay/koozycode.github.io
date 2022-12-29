@@ -19,8 +19,23 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                 false
             ? Stack(
                 children: [
-                  Text(context.watch<GameStatusProvider>().score.toString(),
-                      style: kScoreStyle),
+                  Container(
+                    width: 150.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.black),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                            context
+                                .watch<GameStatusProvider>()
+                                .score
+                                .toString(),
+                            style: kScoreStyle),
+                      ],
+                    ),
+                  ),
                   context.watch<GameStatusProvider>().shouldShowCoinWinEffect ==
                           true
                       ? Column(
@@ -32,8 +47,22 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                       : Container(),
                 ],
               )
-            : FlashingText(
-                text: context.watch<GameStatusProvider>().score.toString()),
+            : Container(
+                width: 150.0,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.black),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FlashingText(
+                        text: context
+                            .watch<GameStatusProvider>()
+                            .score
+                            .toString()),
+                  ],
+                ),
+              ),
         context.watch<GameStatusProvider>().crashed == true
             ? Container(
                 decoration: BoxDecoration(

@@ -13,103 +13,66 @@ class GameControlsWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Stack(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        /// reload switch
+        Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CannonSwitch(
+                        cannonIsLoaded:
+                            context.watch<GameStatusProvider>().fullyLoaded,
+                        remainingAmmo: context
+                            .watch<GameStatusProvider>()
+                            .roundsInMagazine,
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Multiplier: ${context.watch<GameStatusProvider>().amountOfTimeUserHitDoublePoints.toString()}x',
+                          style: TextStyle(
+                              color: Colors.yellow,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 8.0),
+                        ),
+                        Text(
+                          'Hit: ${context.watch<GameStatusProvider>().basePointsForHittingBarrier.toString()}',
+                          style: TextStyle(
+                              color: Colors.yellow,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 8.0),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CannonSwitch(
-                    cannonIsLoaded:
-                        context.watch<GameStatusProvider>().fullyLoaded,
-                    remainingAmmo:
-                        context.watch<GameStatusProvider>().roundsInMagazine,
+                  padding: const EdgeInsets.only(left: 30.0),
+                  child: Text(
+                    'Speed: ${context.watch<GameStatusProvider>().reverseGameSpeedToDisplayForUserAsTheyProgress.toString()}',
+                    style: TextStyle(
+                        color: Colors.yellow,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 8.0),
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 20.0, left: 8.0, right: 8.0, bottom: 8.0),
-              child: Opacity(
-                opacity: 0.9,
-                child: Container(
-                  // color: Colors.yellow,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('images/energyHumps.gif')),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        context.read<GameStatusProvider>().handJump();
-                      },
-                      child: Container(
-                        width: 150.0,
-                        height: 100,
-                        child: Center(
-                          child: Text(
-                            'jump',
-                            style: kButtonStyle,
-                          ),
-                        ),
-                        color:
-                            context.watch<GameStatusProvider>().lastCommand ==
-                                    LastGamePlayButton.jump
-                                ? Colors.black
-                                : Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8),
-              child: Opacity(
-                opacity: 0.9,
-                child: Container(
-                  // color: Colors.yellow,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('images/energyHumps.gif')),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        context.read<GameStatusProvider>().handDive();
-                      },
-                      child: Container(
-                        width: 150.0,
-                        height: 100.0,
-                        child: Center(
-                          child: Text(
-                            'dive',
-                            style: kButtonStyle,
-                          ),
-                        ),
-                        color:
-                            context.watch<GameStatusProvider>().lastCommand ==
-                                    LastGamePlayButton.dive
-                                ? Colors.black
-                                : Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
+        Column(
+          children: [],
+        ),
+
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -121,51 +84,173 @@ class GameControlsWidgets extends StatelessWidget {
                           .nuclearExplosionOnScreen();
                     },
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: context.watch<GameStatusProvider>().nukeList,
                     ),
                   )
                 : Container(
                     height: 70.0,
                   ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Opacity(
-                opacity: 0.9,
-                child: GestureDetector(
-                  onTap: () {
-                    context.read<GameStatusProvider>().handClimb();
-                  },
-                  child: Container(
-                    // color: Colors.yellow,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('images/energyHumps.gif')),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 100.0,
-                        width: 150.0,
-                        child: Center(
-                          child: Text(
-                            'climb',
-                            style: kButtonStyle,
-                          ),
-                        ),
-                        color:
-                            context.watch<GameStatusProvider>().lastCommand ==
-                                    LastGamePlayButton.climb
-                                ? Colors.black
-                                : Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
+        Column(
+          children: [
+            SizedBox(
+              height: 80.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 200.0,
+                  width: 200.0,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image:
+                            AssetImage('images/componetFourArrowsSquare.png')),
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 100.0,
+                        width: 100.0,
+                        child: GestureDetector(
+                          onTap: () {
+                            context.read<GameStatusProvider>().handJump();
+                          },
+                        ),
+                      ),
+                      Container(
+                        height: 100.0,
+                        width: 100.0,
+                        child: GestureDetector(
+                          onTap: () {
+                            context.read<GameStatusProvider>().handDive();
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        context.read<GameStatusProvider>().handClimb();
+                      },
+                      child: Container(
+                        height: 200.0,
+                        width: 200.0,
+
+                        // color: Colors.yellow,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                  'images/componetFullGreenButtonSquare.png')),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          context.read<GameStatusProvider>().handClimb();
+                        },
+                        child: Container(
+                          height: 50.0,
+                          width: 50.0,
+
+                          // color: Colors.yellow,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    'images/componetBottomButtonSquare.png')),
+                          ),
+                          child: context.watch<GameStatusProvider>().crashed ==
+                                  true
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'images/bloodSplatV.gif')),
+                                  ),
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        context
+                                            .read<GameStatusProvider>()
+                                            .start();
+                                        context
+                                            .read<GameStatusProvider>()
+                                            .handFall();
+                                        context
+                                            .read<GameStatusProvider>()
+                                            .resetGame();
+                                      },
+                                      child: Icon(
+                                        Icons.play_circle_outline_outlined,
+                                        size: 50.0,
+                                        color: kTransparent,
+                                      )),
+                                )
+                              : context.watch<GameStatusProvider>().isPaused ==
+                                      false
+                                  ? Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: AssetImage(
+                                                'images/bloodSplatV.gif')),
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<GameStatusProvider>()
+                                              .pauseGame();
+                                        },
+                                        child: Icon(
+                                          Icons.pause_circle_outline,
+                                          size: 50.0,
+                                          color: kTransparent,
+                                        ),
+                                      ),
+                                    )
+                                  : Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: AssetImage(
+                                                'images/bloodSplatV.gif')),
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<GameStatusProvider>()
+                                              .resumeGame();
+                                        },
+                                        child: Icon(
+                                          Icons.play_circle_outline_outlined,
+                                          size: 50.0,
+                                          color: kTransparent,
+                                        ),
+                                      ),
+                                    ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        )
       ],
     );
   }

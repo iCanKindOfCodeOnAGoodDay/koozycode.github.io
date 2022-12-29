@@ -15,23 +15,30 @@ class EndDrawerCustomWidget extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-            color: Colors.black,
+            // color: Colors.black,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('images/compInternalsD.JPG')),
+            ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   width: 200.0,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Effects',
                         style: TextStyle(
                             color: Colors.yellow,
                             fontWeight: FontWeight.w700,
-                            fontSize: 60.0),
+                            fontSize: 20.0),
                       ),
-                      SizedBox(
-                        height: 50.0,
-                      ),
+                      // SizedBox(
+                      //   height: 50.0,
+                      // ),
                       GestureDetector(
                         onTap: () {
                           // soundModel.turnOnSoundEffects();
@@ -42,7 +49,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                         },
                         child: Icon(
                           Icons.play_circle_outline_outlined,
-                          size: 200.0,
+                          size: 100.0,
                           color: context
                                       .watch<GameStatusProvider>()
                                       .hearSoundEffects ==
@@ -60,7 +67,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                         },
                         child: Icon(
                           Icons.pause_circle_outline,
-                          size: 200.0,
+                          size: 100.0,
                           color: context
                                       .watch<GameStatusProvider>()
                                       .hearSoundEffects ==
@@ -88,11 +95,11 @@ class EndDrawerCustomWidget extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.yellow,
                       fontWeight: FontWeight.w700,
-                      fontSize: 60.0),
+                      fontSize: 20.0),
                 ),
-                SizedBox(
-                  height: 50.0,
-                ),
+                // SizedBox(
+                //   height: 10.0,
+                // ),
                 GestureDetector(
                   onTap: () {
                     // soundModel.disposeMusicSoundPlayer();
@@ -114,7 +121,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                   },
                   child: Icon(
                     Icons.play_circle_outline_outlined,
-                    size: 200.0,
+                    size: 100.0,
                     color: context
                                 .watch<GameStatusProvider>()
                                 .hearBackgroundMusic ==
@@ -136,7 +143,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                   },
                   child: Icon(
                     Icons.pause_circle_outline,
-                    size: 200.0,
+                    size: 100.0,
                     color: context
                                 .watch<GameStatusProvider>()
                                 .hearBackgroundMusic ==

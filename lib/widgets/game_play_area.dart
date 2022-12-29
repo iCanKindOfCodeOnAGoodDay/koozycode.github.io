@@ -4,6 +4,7 @@ import 'package:flappy_taco/providers/game_status_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
+import 'cannon_ammunition_widget.dart';
 import 'combo_hits.dart';
 import 'death_effect_column.dart';
 import 'fireball_under_hand_column.dart';
@@ -21,12 +22,13 @@ class GamePlayAreaWidget extends StatelessWidget {
       children: [
         ///GAME play areas
         ///frame, except for when the image on top has transparent properties.
+
         Container(
           decoration: BoxDecoration(
             // color: Colors.black,
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 image: context
                             .watch<GameStatusProvider>()
                             .showSkullBackground ==
@@ -39,93 +41,109 @@ class GamePlayAreaWidget extends StatelessWidget {
                         ? AssetImage('images/endlessColorHole.gif')
                         : context
                                     .watch<GameStatusProvider>()
-                                    .shouldDisplayBloodSplatQuick ==
+                                    .shouldDisplayJustPickedUpCannon ==
                                 true
-                            ? AssetImage('images/21SavageEnglish2.gif')
+                            ? AssetImage('images/fire.gif')
                             : context
                                         .watch<GameStatusProvider>()
-                                        .shouldDisplayQuickScream ==
+                                        .shouldDisplayBloodSplatQuick ==
                                     true
-                                ? AssetImage('images/21SavageEnglish2.gif')
-                                : context.watch<GameStatusProvider>().crashed ==
-                                        false
-                                    ? AssetImage('images/black.png')
-                                    : AssetImage(
-                                        'images/endlessColorHole.gif')),
+                                // ? AssetImage('images/21SavageEnglish2.gif')
+                                ? AssetImage('images/black.png')
+                                : context
+                                            .watch<GameStatusProvider>()
+                                            .shouldDisplayQuickScream ==
+                                        true
+                                    ? AssetImage('images/switchBladeBloody.gif')
+
+                                    // ? AssetImage('images/21SavageEnglish2.gif')
+                                    : context
+                                                .watch<GameStatusProvider>()
+                                                .crashed ==
+                                            false
+                                        ? AssetImage('images/black.png')
+                                        : AssetImage('images/black.png')),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: context
-                              .watch<GameStatusProvider>()
-                              .showSkullBackground ==
+                  fit: BoxFit.fill,
+                  image: context.watch<GameStatusProvider>().showSkullBackground ==
                           true
                       ? AssetImage('images/blood2.gif')
                       // : AssetImage('images/fire.gif'),
-
                       : context
                                   .watch<GameStatusProvider>()
-                                  .shouldDisplayQuickHorror ==
+                                  .shouldDisplayJustPickedUpCannon ==
                               true
-                          ? AssetImage('images/blood2.gif')
+                          ? AssetImage(
+                              'images/${context.watch<GameStatusProvider>().cannonPath}')
                           : context
                                       .watch<GameStatusProvider>()
-                                      .shouldDisplayQuickScream ==
+                                      .shouldDisplayQuickHorror ==
                                   true
                               ? AssetImage('images/blood2.gif')
                               : context
                                           .watch<GameStatusProvider>()
-                                          .shouldDisplayBloodSplatQuick ==
+                                          .shouldDisplayQuickScream ==
                                       true
                                   ? AssetImage('images/blood2.gif')
                                   : context
                                               .watch<GameStatusProvider>()
-                                              .shouldDisplayJustPickedUpCannon ==
+                                              .shouldDisplayBloodSplatQuick ==
                                           true
-                                      ? AssetImage(
-                                          'images/levelUpSword.gif',
-                                        )
+                                      ? AssetImage('images/blood2.gif')
                                       : context
                                                   .watch<GameStatusProvider>()
-                                                  .shouldDisplayExplosion2 ==
+                                                  .shouldDisplayJustPickedUpCannon ==
                                               true
                                           ? AssetImage(
-                                              'images/explosionFlames.gif',
-                                              // 'images/macGruberGunshots.gif',
+                                              // 'images/levelUpSword.gif',
+                                              'images/black.png',
                                             )
                                           : context
                                                       .watch<
                                                           GameStatusProvider>()
-                                                      .shouldDisplayBandaidPickup ==
+                                                      .shouldDisplayExplosion2 ==
                                                   true
                                               ? AssetImage(
-                                                  'images/swordSelfRespect.gif',
+                                                  'images/explosionFlames.gif',
+                                                  // 'images/macGruberGunshots.gif',
                                                 )
                                               : context
                                                           .watch<
                                                               GameStatusProvider>()
-                                                          .shouldDisplayExplosion1 ==
+                                                          .shouldDisplayBandaidPickup ==
                                                       true
                                                   ? AssetImage(
-                                                      'images/horseTwoLegs.gif',
-                                                      // 'images/horseRidingPeople.gif',
+                                                      // 'images/pyramid.png',
+                                                      'images/pyramid.png',
+                                                      // 'images/swordSelfRespect.gif',
                                                     )
                                                   : context
                                                               .watch<GameStatusProvider>()
-                                                              .shouldDisplayQuickLifePickup ==
+                                                              .shouldDisplayExplosion1 ==
                                                           true
                                                       ? AssetImage(
-                                                          'images/mileySnoopNicholasCage.gif',
+                                                          // 'images/horseTwoLegs.gif',
+                                                          'images/explosionFlames.gif',
+                                                          // 'images/horseRidingPeople.gif',
                                                         )
-                                                      : context.watch<GameStatusProvider>().crashed == false
-                                                          ? AssetImage('images/fire.gif')
-                                                          // ? AssetImage('images/blackWater.gif')
+                                                      : context.watch<GameStatusProvider>().shouldDisplayQuickLifePickup == true
+                                                          ? AssetImage(
+                                                              // 'images/mileySnoopNicholasCage.gif',
+                                                              // 'images/sparklingDiamondsPowerUp.gif',
+                                                              'images/thingRight.gif',
+                                                              // 'images/hourGlass.png',
+                                                            )
+                                                          : context.watch<GameStatusProvider>().crashed == false
+                                                              ? AssetImage('images/fire.gif')
+                                                              // ? AssetImage('images/blackWater.gif')
 
-                                                          // blackWater.gif
-                                                          : AssetImage('images/gameOver.GIF'),
+                                                              // blackWater.gif
+                                                              : AssetImage('images/gameOver.GIF'),
                 ),
               ),
               child: Row(
@@ -137,6 +155,7 @@ class GamePlayAreaWidget extends StatelessWidget {
             ),
           ),
         ),
+
         Container(
           // color: Colors.red,
           child: DeadEffectColumn(
