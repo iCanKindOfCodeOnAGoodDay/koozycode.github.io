@@ -67,7 +67,8 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                 .watch<GameStatusProvider>()
                                                 .crashed ==
                                             false
-                                        ? AssetImage('images/black.png')
+                                        ? AssetImage(
+                                            'images/ledScreenBackground.jpg')
                                         : AssetImage(
                                             'images/ledScreenBackground.jpg')),
           ),
@@ -147,7 +148,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                               ? AssetImage(
                                                                   // 'images/coinDropHearts.GIF',
                                                                   // 'images/coinFlip.gif',
-                                                                  'images/thingRightDead.png',
+                                                                  'images/thingRightTraced.png',
 
                                                                   // 'images/sparklingDiamondsPowerUp.gif',
                                                                   // 'images/thingWalkingLeft.gif',

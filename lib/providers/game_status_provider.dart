@@ -983,7 +983,7 @@ class GameStatusProvider with ChangeNotifier {
         fireBloodSplatQuick();
         soundModel.playOtherThree('negativePowerup.mp3', _hearSoundEffects);
 
-        fireDoublePointsEffects();
+        // fireDoublePointsEffects();
 
         /// set string value for background image
         /// or, set a bool to true, then back to false on a delay
@@ -1532,6 +1532,10 @@ class GameStatusProvider with ChangeNotifier {
           /// then contact has been made
           handleComboHitsMessageAndHoldTripleHit();
 
+          /// decrease the building height (later for just upgrade cannons)
+          /// todo implement upgrade cannon destroy barriers only
+          buildings[i].buildingHeight = buildings[i].buildingHeight - 1;
+
           // _comboHits++;
           // if (_comboHits >= 3) {
           //   fireDoublePointsEffects();
@@ -1556,6 +1560,47 @@ class GameStatusProvider with ChangeNotifier {
             notifyListeners();
 
             /// 21 adds a blank column
+          });
+        }
+      }
+    }
+  }
+
+  void contactSixOrMore() {
+    for (var i = 0; i < 11; i++) {
+      if (buildings[i].buildingHeight >= 6) {
+        if (buildings[i].buildingHeight <= _handPosition + 2 &&
+            buildings[i].buildingHeight <= 12 &&
+            buildings[i].buildingHeight >= 1) {
+          /// then contact has been made
+          handleComboHitsMessageAndHoldTripleHit();
+          // _comboHits++;
+          // if (_comboHits >= 3) {
+          //   fireDoublePointsEffects();
+          // }
+          /// todo implement destruction of barriers for only upgrade cannons
+          buildings[i].buildingHeight = buildings[i].buildingHeight + 1;
+
+          contactGrid.removeAt(i);
+          contactGrid.insert(
+              i,
+              HellFireContactColumns(
+                  potentialContactPosition: _handPosition + 1));
+
+          /// add a animation when the gunshot hits a target
+          /// at the location of contact
+          notifyListeners();
+          Future.delayed(Duration(milliseconds: 400), () {
+            resetHellFireContactLocations();
+            contactGrid.removeAt(i);
+
+            /// remove the animation effect quickly
+            contactGrid.insert(
+                i, HellFireContactColumns(potentialContactPosition: 21));
+            pointsForHittingPerCannonType();
+
+            /// 21 adds a blank column
+            notifyListeners();
           });
         }
       }
@@ -1665,44 +1710,6 @@ class GameStatusProvider with ChangeNotifier {
         _comboHits = 0;
         notifyListeners();
       });
-    }
-  }
-
-  void contactSixOrMore() {
-    for (var i = 0; i < 11; i++) {
-      if (buildings[i].buildingHeight >= 6) {
-        if (buildings[i].buildingHeight <= _handPosition + 2 &&
-            buildings[i].buildingHeight <= 12 &&
-            buildings[i].buildingHeight >= 1) {
-          /// then contact has been made
-          handleComboHitsMessageAndHoldTripleHit();
-          // _comboHits++;
-          // if (_comboHits >= 3) {
-          //   fireDoublePointsEffects();
-          // }
-          contactGrid.removeAt(i);
-          contactGrid.insert(
-              i,
-              HellFireContactColumns(
-                  potentialContactPosition: _handPosition + 1));
-
-          /// add a animation when the gunshot hits a target
-          /// at the location of contact
-          notifyListeners();
-          Future.delayed(Duration(milliseconds: 400), () {
-            resetHellFireContactLocations();
-            contactGrid.removeAt(i);
-
-            /// remove the animation effect quickly
-            contactGrid.insert(
-                i, HellFireContactColumns(potentialContactPosition: 21));
-            pointsForHittingPerCannonType();
-
-            /// 21 adds a blank column
-            notifyListeners();
-          });
-        }
-      }
     }
   }
 

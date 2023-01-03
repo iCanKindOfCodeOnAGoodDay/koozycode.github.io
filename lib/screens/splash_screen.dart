@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
     ///  image chaninging timer
     Timer imageTimer = Timer(Duration(seconds: 1), () {
       setState(() {
-        imageFileName = 'thingWalkingStitched.gif';
+        imageFileName = 'thingStichedWalkingXX.gif';
         fireBallPathTop = 'fireBallXFlashing.gif';
         fireBallPathBottom = 'fireBallXPurple.gif';
       });
@@ -82,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer2a = Timer(Duration(milliseconds: 1500), () {
       setState(() {
-        imageFileName = 'thingRightDead.png';
+        imageFileName = 'thingRightTraced.png';
         fireBallPathTop = 'fireBallXFlashing.gif';
         fireBallPathBottom = 'fireBallXPurple.gif';
       });
@@ -130,7 +130,7 @@ class _SplashScreenState extends State<SplashScreen> {
     kblankIcon,
   ];
 
-  String imageFileName = "thingWalkingStitched.gif";
+  String imageFileName = "thingStichedWalkingXX.gif";
 
   String fireBallPathTop = 'fireBallXPurple.gif';
 

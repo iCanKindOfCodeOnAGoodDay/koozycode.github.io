@@ -34,7 +34,7 @@ Container kThingDead = Container(
   width: 40.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/thingRightDead.png'))),
+          fit: BoxFit.cover, image: AssetImage('images/thingRightTraced.png'))),
 );
 
 Container kThingFalling = Container(
@@ -43,7 +43,7 @@ Container kThingFalling = Container(
   decoration: BoxDecoration(
       image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('images/thingWalkingStitched.gif'))),
+          image: AssetImage('images/thingStichedWalkingXX.gif'))),
 );
 
 Container kSkullCoin = Container(
