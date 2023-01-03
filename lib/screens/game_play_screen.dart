@@ -56,22 +56,40 @@ class GamePlayScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(
-                      // 'images/horseRidingPeople.gif',
-                      // 'images/phoneInternalsBlack.PNG',
-                      'images/futuristicGameConsoleNoLogo2BLANKLOGO.png',
-                    )),
+                    image: AssetImage(context
+                                .watch<GameStatusProvider>()
+                                .redGameBoyInsteadOfYellow ==
+                            false
+                        ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'
+                        : 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy.png')),
+              ),
+            ),
+            Opacity(
+              opacity: context
+                          .watch<GameStatusProvider>()
+                          .shouldDisplayDoublePointsEffects ==
+                      false
+                  ? 1.0
+                  : context.watch<GameStatusProvider>().opacityOfBlackGameBoy,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                          'images/futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png')),
+                ),
               ),
             ),
 
             /// top of tv stand
             // TopOfGameboyWidgets(),
             // BottomOfGameboyWidgets(),
+            TwoXWinEffectWidgets(),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 10.0,
+                  height: 20.0,
                 ),
 
                 /// this is the bottom screen shittttt
@@ -79,9 +97,12 @@ class GamePlayScreen extends StatelessWidget {
                 GamePlayAreaWidget(),
 
                 PowerUps(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: context.watch<GameStatusProvider>().cannons,
+                Hero(
+                  tag: 'fireBall',
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: context.watch<GameStatusProvider>().cannons,
+                  ),
                 ),
 
                 GameControlsWidgets(),
@@ -92,7 +113,6 @@ class GamePlayScreen extends StatelessWidget {
                 ),
               ],
             ),
-            TwoXWinEffectWidgets(),
           ],
         ),
       ),

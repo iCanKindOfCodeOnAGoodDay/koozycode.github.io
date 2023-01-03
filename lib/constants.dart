@@ -10,7 +10,7 @@ TextStyle kMessageStyle = TextStyle(
     color: Colors.white70, fontSize: 20.0, fontWeight: FontWeight.w900);
 
 TextStyle kScoreStyle = TextStyle(
-    color: Colors.white70, fontSize: 25.0, fontWeight: FontWeight.bold);
+    color: Colors.white70, fontSize: 30.0, fontWeight: FontWeight.bold);
 
 TextStyle kButtonStyle =
     TextStyle(fontSize: 40.0, fontWeight: FontWeight.w900, color: Colors.white);
@@ -20,21 +20,30 @@ TextStyle kSmallButton =
 
 Color kTransparent = Color(0x00000000);
 
-Container kThing = Container(
-  height: 30.0,
-  width: 60.0,
+Container kThingRayGun = Container(
+  height: 40.0,
+  width: 90.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage('images/rayGunPimpedEnergy.gif'))),
+          fit: BoxFit.fitHeight,
+          image: AssetImage('images/caroleLynnRayGun.gif'))),
+);
+
+Container kThingDead = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.cover, image: AssetImage('images/thingRightDead.png'))),
 );
 
 Container kThingFalling = Container(
-  height: 30.0,
-  width: 30.0,
+  height: 40.0,
+  width: 40.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/thingSquare.gif'))),
+          fit: BoxFit.cover,
+          image: AssetImage('images/thingWalkingStitched.gif'))),
 );
 
 Container kSkullCoin = Container(
@@ -61,6 +70,21 @@ Hero kRedGem = Hero(
             fit: BoxFit.cover,
             image: AssetImage(
               'images/blood.png',
+              // 'images/shieldRingXX.png',
+            ))),
+  ),
+);
+
+Hero kTimeIncrease = Hero(
+  tag: 'red',
+  child: Container(
+    height: 30.0,
+    width: 30.0,
+    decoration: BoxDecoration(
+        image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage(
+              'images/rocketBlackRed.gif',
               // 'images/shieldRingXX.png',
             ))),
   ),
@@ -97,7 +121,7 @@ Hero kExtraLife = Hero(
     decoration: BoxDecoration(
       image: DecorationImage(
         fit: BoxFit.cover,
-        image: AssetImage('images/thingWalkingLeft.gif'),
+        image: AssetImage('images/thingWalkingStichedLeft.gif'),
       ),
     ),
   ),
@@ -216,7 +240,7 @@ Container kLargeHellfireBlack = Container(
   width: 50.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/greyFireBall.gif'))),
+          fit: BoxFit.cover, image: AssetImage('images/blackFireBall.gif'))),
 );
 
 Container kLargeHellfireWhite = Container(

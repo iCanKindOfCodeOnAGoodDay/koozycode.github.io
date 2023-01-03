@@ -56,7 +56,7 @@ class BuildingWidget extends StatelessWidget {
                   powerUpPosition == 9 ? kExtraLife : kblankIcon,
                   powerUpPosition == 8 ? kTimeBomb : kblankIcon,
                   powerUpPosition == 7 ? kKnifePowerUp : kblankIcon,
-                  powerUpPosition == 6 ? kRedGem : kblankIcon,
+                  powerUpPosition == 6 ? kTimeIncrease : kblankIcon,
                   powerUpPosition == 5 ? kSkullPatch : kblankIcon,
                   powerUpPosition == 4 ? kKnifePowerUp : kblankIcon,
                   powerUpPosition == 3 ? AmmoPickup() : kblankIcon,

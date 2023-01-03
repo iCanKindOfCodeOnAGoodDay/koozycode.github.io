@@ -30,20 +30,36 @@ class CannonSwitch extends StatelessWidget {
                   context.read<GameStatusProvider>().reloadHellFire();
                 },
                 child: Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                              context.watch<GameStatusProvider>().fullyLoaded ==
-                                      true
-                                  ? 'images/componetLeftBlackButtonSquare.png'
-                                  : 'images/nukeButton.png'))),
+                  decoration:
+                      context.watch<GameStatusProvider>().roundsInMagazine < 18
+                          ? BoxDecoration(
+                              borderRadius: BorderRadius.circular(80),
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('images/bloodSplatV.gif')))
+                          : BoxDecoration(),
                   child: Container(
-                    width: 70.0,
-                    height: 70.0,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: kTransparent),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(context
+                                        .watch<GameStatusProvider>()
+                                        .fullyLoaded ==
+                                    true
+                                ? 'images/componetLeftBlackButtonSquare.png'
+                                : context
+                                            .watch<GameStatusProvider>()
+                                            .roundsInMagazine ==
+                                        0
+                                    ? 'images/nukeButton.png'
+                                    : 'images/nukeButtonReload.gif'))),
+                    child: Container(
+                      width: 70.0,
+                      height: 70.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: kTransparent),
+                    ),
                   ),
                 ),
               ),
@@ -53,17 +69,20 @@ class CannonSwitch extends StatelessWidget {
                 },
                 child: Container(
                     width: 180.0,
-                    height: 90.0,
+                    height: 97.6,
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: context.watch<GameStatusProvider>().fullyLoaded ==
                               true
-                          ? Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(
-                                          'images/rayGunPimpedEnergy.gif'))),
+                          ? Hero(
+                              tag: "pimpedRayGun",
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: AssetImage(
+                                            'images/caroleLynnRayGun.gif'))),
+                              ),
                             )
                           : Container(
                               decoration: BoxDecoration(
@@ -73,9 +92,9 @@ class CannonSwitch extends StatelessWidget {
                             ),
                     )),
               ),
-              // SizedBox(
-              //   width: 40.0,
-              // ),
+              SizedBox(
+                width: 20.0,
+              ),
             ],
           ),
         ],

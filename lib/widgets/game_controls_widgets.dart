@@ -1,4 +1,5 @@
 import 'package:flappy_taco/models/sound_model.dart';
+import 'package:flappy_taco/widgets/flashing_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -57,12 +58,27 @@ class GameControlsWidgets extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0),
-                  child: Text(
-                    'Speed: ${context.watch<GameStatusProvider>().reverseGameSpeedToDisplayForUserAsTheyProgress.toString()}',
-                    style: TextStyle(
-                        color: Colors.yellow,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 8.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Speed: ${context.watch<GameStatusProvider>().reverseGameSpeedToDisplayForUserAsTheyProgress.toString()}',
+                        style: TextStyle(
+                            color: context
+                                        .watch<GameStatusProvider>()
+                                        .shouldDisplayTimeIncrease ==
+                                    false
+                                ? Colors.yellow
+                                : kTransparent,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 8.0),
+                      ),
+                      context
+                                  .watch<GameStatusProvider>()
+                                  .shouldDisplayTimeIncrease ==
+                              true
+                          ? FlashingText(text: '+ 50')
+                          : Container(),
+                    ],
                   ),
                 ),
               ],
@@ -81,7 +97,7 @@ class GameControlsWidgets extends StatelessWidget {
                     onTap: () {
                       context
                           .read<GameStatusProvider>()
-                          .nuclearExplosionOnScreen();
+                          .timeBombExplosionOnScreen();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -107,8 +123,8 @@ class GameControlsWidgets extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.fill,
-                        image:
-                            AssetImage('images/componetFourArrowsSquare.png')),
+                        image: AssetImage(
+                            'images/componetFourArrowsSquareBloodDarkest.png')),
                   ),
                   child: Column(
                     children: [
@@ -149,7 +165,7 @@ class GameControlsWidgets extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage(
-                                  'images/componetFullGreenButtonSquare.png')),
+                                  'images/componetFullGreenButtonSquareBlackThumb.png')),
                         ),
                       ),
                     ),
@@ -168,18 +184,18 @@ class GameControlsWidgets extends StatelessWidget {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
-                                    'images/componetBottomButtonSquare.png')),
+                                    'images/componetBottomButtonSquareBlack.png')),
                           ),
                           child: context.watch<GameStatusProvider>().crashed ==
                                   true
                               ? Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            'images/bloodSplatV.gif')),
-                                  ),
+                                  // decoration: BoxDecoration(
+                                  //   borderRadius: BorderRadius.circular(30),
+                                  //   image: DecorationImage(
+                                  //       fit: BoxFit.cover,
+                                  //       image: AssetImage(
+                                  //           'images/bloodyThumb.png')),
+                                  // ),
                                   child: GestureDetector(
                                       onTap: () {
                                         context
@@ -206,7 +222,7 @@ class GameControlsWidgets extends StatelessWidget {
                                         image: DecorationImage(
                                             fit: BoxFit.cover,
                                             image: AssetImage(
-                                                'images/bloodSplatV.gif')),
+                                                'images/bloodyThumb.png')),
                                       ),
                                       child: GestureDetector(
                                         onTap: () {
@@ -222,13 +238,13 @@ class GameControlsWidgets extends StatelessWidget {
                                       ),
                                     )
                                   : Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: AssetImage(
-                                                'images/bloodSplatV.gif')),
-                                      ),
+                                      // decoration: BoxDecoration(
+                                      //   borderRadius: BorderRadius.circular(30),
+                                      //   image: DecorationImage(
+                                      //       fit: BoxFit.cover,
+                                      //       image: AssetImage(
+                                      //           'images/bloodyThumb.png')),
+                                      // ),
                                       child: GestureDetector(
                                         onTap: () {
                                           context

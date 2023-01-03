@@ -93,7 +93,7 @@ class _FlashingTextState extends State<FlashingText> {
       style: TextStyle(
           color: textColor,
           // fontFamily: ('HennyPenny'),
-          fontSize: 25.0,
+          fontSize: 30.0,
           fontWeight: FontWeight.bold),
     );
   }

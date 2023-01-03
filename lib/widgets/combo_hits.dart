@@ -9,23 +9,23 @@ class ComboHitsMessage extends StatelessWidget {
         ? Column(
             children: [
               Container(
-                height: 60.0,
-                width: 120.0,
+                height: 42.0,
+                width: 340.0,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('images/2xDoubleDouble.gif'))),
+                        image: AssetImage('images/hitKiller.png'))),
               ),
             ],
           )
         : context.watch<GameStatusProvider>().comboHits == 3
             ? Container(
-                height: 60.0,
-                width: 120.0,
+                height: 229.0,
+                width: 319.0,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('images/3xGobbleGobblePink.gif'))),
+                        image: AssetImage('images/hitSplat.png'))),
               )
             : context.watch<GameStatusProvider>().comboHits == 3
                 ? Container(

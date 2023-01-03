@@ -11,30 +11,31 @@ class EndDrawerCustomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200.0,
+      // width: 200.0,
       child: ListView(
         children: [
           Container(
             // color: Colors.black,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('images/compInternalsD.JPG')),
+                  fit: BoxFit.fitWidth,
+                  image: AssetImage('images/phoneInternalsDepth.JPG')),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Container(
-                  width: 200.0,
+                  // width: 200.0,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         'Effects',
                         style: TextStyle(
-                            color: Colors.yellow,
+                            color: Colors.white,
                             fontWeight: FontWeight.w700,
-                            fontSize: 20.0),
+                            fontSize: 70.0),
                       ),
                       // SizedBox(
                       //   height: 50.0,
@@ -49,13 +50,13 @@ class EndDrawerCustomWidget extends StatelessWidget {
                         },
                         child: Icon(
                           Icons.play_circle_outline_outlined,
-                          size: 100.0,
+                          size: 150.0,
                           color: context
                                       .watch<GameStatusProvider>()
                                       .hearSoundEffects ==
                                   true
-                              ? Colors.pink
-                              : Colors.yellow,
+                              ? Colors.white
+                              : Colors.black,
                         ),
                       ),
                       GestureDetector(
@@ -67,13 +68,13 @@ class EndDrawerCustomWidget extends StatelessWidget {
                         },
                         child: Icon(
                           Icons.pause_circle_outline,
-                          size: 100.0,
+                          size: 150.0,
                           color: context
                                       .watch<GameStatusProvider>()
                                       .hearSoundEffects ==
                                   false
-                              ? Colors.pink
-                              : Colors.yellow,
+                              ? Colors.white
+                              : Colors.black,
                         ),
                       ),
                       // GestureDetector(
@@ -93,9 +94,9 @@ class EndDrawerCustomWidget extends StatelessWidget {
                 Text(
                   'Music',
                   style: TextStyle(
-                      color: Colors.yellow,
+                      color: Colors.white,
                       fontWeight: FontWeight.w700,
-                      fontSize: 20.0),
+                      fontSize: 70.0),
                 ),
                 // SizedBox(
                 //   height: 10.0,
@@ -121,13 +122,13 @@ class EndDrawerCustomWidget extends StatelessWidget {
                   },
                   child: Icon(
                     Icons.play_circle_outline_outlined,
-                    size: 100.0,
+                    size: 150.0,
                     color: context
                                 .watch<GameStatusProvider>()
                                 .hearBackgroundMusic ==
                             false
-                        ? Colors.yellow
-                        : Colors.pink,
+                        ? Colors.black
+                        : Colors.white,
                   ),
                 ),
                 GestureDetector(
@@ -143,13 +144,13 @@ class EndDrawerCustomWidget extends StatelessWidget {
                   },
                   child: Icon(
                     Icons.pause_circle_outline,
-                    size: 100.0,
+                    size: 150.0,
                     color: context
                                 .watch<GameStatusProvider>()
                                 .hearBackgroundMusic ==
                             false
-                        ? Colors.pink
-                        : Colors.yellow,
+                        ? Colors.white
+                        : Colors.black,
                   ),
                 ),
               ],
