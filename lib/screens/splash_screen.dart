@@ -142,9 +142,10 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.black,
       body: Container(
         // decoration: BoxDecoration(
-        //     image: DecorationImage(
-        //         fit: BoxFit.fill,
-        //         image: AssetImage('images/ledScreenBackground.jpg'))),
+        //   borderRadius: BorderRadius.circular(20.0),
+        //   image: DecorationImage(
+        //       fit: BoxFit.cover, image: AssetImage('images/redChip.jpg')),
+        // ),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -110,8 +110,10 @@ class BuildingWidget extends StatelessWidget {
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          DynamicCoin(),
-                          DynamicCoin(),
+                          buildingHeight <= 12 ? DynamicCoin() : kblankIcon,
+                          buildingHeight <= 11 ? DynamicCoin() : kblankIcon,
+                          // DynamicCoin(),
+                          // DynamicCoin(),
                           buildingHeight <= 10 ? DynamicCoin() : kblankIcon,
                           buildingHeight <= 9 ? DynamicCoin() : kblankIcon,
                           buildingHeight <= 8 ? DynamicCoin() : kblankIcon,

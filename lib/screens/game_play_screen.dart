@@ -56,12 +56,15 @@ class GamePlayScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(context
-                                .watch<GameStatusProvider>()
-                                .redGameBoyInsteadOfYellow ==
-                            false
-                        ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'
-                        : 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy.png')),
+                    image: AssetImage(
+                      context
+                                  .watch<GameStatusProvider>()
+                                  .redGameBoyInsteadOfYellow ==
+                              false
+                          // ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'
+                          ? 'images/redChip.jpg'
+                          : 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy.png',
+                    )),
               ),
             ),
             Opacity(

@@ -555,7 +555,7 @@ class GameStatusProvider with ChangeNotifier {
 
   int chooseRandomHeight() {
     /// creates and returns a random int between 1-5
-    return Random().nextInt(8) + 2;
+    return Random().nextInt(12) + 0;
   }
 
   BuildingWidget theLast = BuildingWidget(
