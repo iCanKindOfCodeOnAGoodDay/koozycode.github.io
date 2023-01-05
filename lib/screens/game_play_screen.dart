@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
+import 'package:flappy_taco/widgets/shop_drawer_widget.dart';
 import 'package:flappy_taco/widgets/top_screen_controls_and_score_widgets.dart';
 import 'package:flappy_taco/widgets/bottom_screen_images.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_widget.dart';
@@ -32,6 +33,7 @@ class GamePlayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: ShopDrawerWidget(),
       endDrawer: EndDrawerCustomWidget(),
       // backgroundColor: Colors.black,
       body: Container(
@@ -57,13 +59,15 @@ class GamePlayScreen extends StatelessWidget {
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage(
-                      context
-                                  .watch<GameStatusProvider>()
-                                  .redGameBoyInsteadOfYellow ==
-                              false
-                          // ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'
-                          ? 'images/redChip.jpg'
-                          : 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy.png',
+                      context.watch<GameStatusProvider>().purpleGameBoy == true
+                          ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOPurp.png'
+                          : context
+                                      .watch<GameStatusProvider>()
+                                      .redGameBoyInsteadOfYellow ==
+                                  false
+                              ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'
+                              // ? 'images/redChip.jpg'
+                              : 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy.png',
                     )),
               ),
             ),

@@ -18,21 +18,22 @@ class EndDrawerCustomWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('images/ledScreenBackground.jpg')),
-                ),
+                // color: Colors.white12,
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(20.0),
+                //   image: DecorationImage(
+                //       fit: BoxFit.cover,
+                //       image: AssetImage('images/ledScreenBackground.jpg')),
+                // ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     // color: Colors.black,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('images/redChip.jpg')),
-                    ),
+                    // decoration: BoxDecoration(
+                    //   image: DecorationImage(
+                    //       fit: BoxFit.cover,
+                    //       image: AssetImage('images/redChip.jpg')),
+                    // ),
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +44,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                             Text(
                               'Effects',
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.white12,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 20.0),
                             ),
@@ -70,8 +71,8 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                     .watch<GameStatusProvider>()
                                                     .hearSoundEffects ==
                                                 true
-                                            ? Colors.white
-                                            : Colors.black,
+                                            ? Colors.white12
+                                            : Colors.white12,
                                       ),
                                     )
                                   : GestureDetector(
@@ -88,8 +89,8 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                     .watch<GameStatusProvider>()
                                                     .hearSoundEffects ==
                                                 false
-                                            ? Colors.white
-                                            : Colors.black,
+                                            ? Colors.white12
+                                            : Colors.white12,
                                       ),
                                     ),
                             ),
@@ -110,7 +111,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                         Text(
                           'Music',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.white12,
                               fontWeight: FontWeight.w700,
                               fontSize: 20.0),
                         ),
@@ -152,8 +153,8 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 .watch<GameStatusProvider>()
                                                 .hearBackgroundMusic ==
                                             false
-                                        ? Colors.black
-                                        : Colors.white,
+                                        ? Colors.white12
+                                        : Colors.white12,
                                   ),
                                 )
                               : GestureDetector(
@@ -174,13 +175,25 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 .watch<GameStatusProvider>()
                                                 .hearBackgroundMusic ==
                                             false
-                                        ? Colors.white
-                                        : Colors.black,
+                                        ? Colors.white12
+                                        : Colors.white12,
                                   ),
                                 ),
                         ),
                       ],
                     ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.deepPurple),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'logout?',
+                    style: TextStyle(color: Colors.white24),
                   ),
                 ),
               ),
@@ -191,7 +204,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                 child: Icon(
                   Icons.arrow_circle_right_outlined,
                   size: 50.0,
-                  color: Colors.white54,
+                  color: Colors.white12,
                 ),
               ),
             ],

@@ -65,7 +65,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer1a = Timer(Duration(milliseconds: 500), () {
       setState(() {
-        imageFileName = 'caroleLynnRayGun.gif';
+        // imageFileName = 'caroleLynnRayGun.gif';
+        imageFileName = 'xThingDraco.png';
+
         fireBallPathTop = 'whiteFireBall.gif';
         fireBallPathBottom = 'whiteFireBall.gif';
       });
@@ -82,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer2a = Timer(Duration(milliseconds: 1500), () {
       setState(() {
-        imageFileName = 'thingRightTraced.png';
+        imageFileName = 'thingBlock9.png';
         fireBallPathTop = 'fireBallXFlashing.gif';
         fireBallPathBottom = 'fireBallXPurple.gif';
       });
@@ -90,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer2 = Timer(Duration(seconds: 2), () {
       setState(() {
-        imageFileName = 'caroleLynnRayGun.gif';
+        imageFileName = 'xThingGrenadeLauncher.png';
         fireBallPathTop = 'fireBallXPurple.gif';
 
         fireBallPathBottom = 'fireBallXFlashing.gif';
@@ -151,6 +153,9 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 20.0,
+              ),
               Expanded(
                 child: Hero(
                   tag: 'fireBall',
@@ -191,13 +196,13 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Container(
                         height: imageFileName == 'thingRightDead.png'
                             ? 300.0
-                            : imageFileName == 'thingWalkingStitched.gif'
-                                ? 200
+                            : imageFileName == 'xThingDraco.png'
+                                ? 101.25
                                 : 150.0,
                         width: imageFileName == 'bloodyThumb.png'
                             ? 200.0
-                            : imageFileName == 'thingWalkingStitched.gif'
-                                ? 200
+                            : imageFileName == 'xThingDraco.png'
+                                ? 180.0
                                 : 300.0,
                         decoration: BoxDecoration(
                             image: DecorationImage(

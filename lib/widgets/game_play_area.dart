@@ -42,35 +42,47 @@ class GamePlayAreaWidget extends StatelessWidget {
                                 .shouldDisplayDoublePointsEffects ==
                             true
                         ? AssetImage(
-                            'images/enlessColorHoleRecoloredYellowOrange.gif',
-                            // 'images/ledScreenBackground.jpg',
+                            // 'images/enlessColorHoleRecoloredYellowOrange.gif',
+                            'images/black.png',
                           )
                         : context
                                     .watch<GameStatusProvider>()
-                                    .shouldDisplayJustPickedUpCannon ==
+                                    .shouldDisplayQuickLifePickup ==
                                 true
-                            ? AssetImage('images/fire.gif')
+                            ? AssetImage('images/black.png')
                             : context
                                         .watch<GameStatusProvider>()
-                                        .shouldDisplayBloodSplatQuick ==
+                                        .shouldDisplayBandaidPickup ==
                                     true
-                                // ? AssetImage('images/21SavageEnglish2.gif')
                                 ? AssetImage('images/black.png')
                                 : context
                                             .watch<GameStatusProvider>()
-                                            .shouldDisplayQuickScream ==
+                                            .shouldDisplayJustPickedUpCannon ==
                                         true
-                                    ? AssetImage('images/switchBladeBloody.gif')
-
-                                    // ? AssetImage('images/21SavageEnglish2.gif')
+                                    ? AssetImage('images/fire.gif')
                                     : context
                                                 .watch<GameStatusProvider>()
-                                                .crashed ==
-                                            false
-                                        ? AssetImage(
-                                            'images/ledScreenBackground.jpg')
-                                        : AssetImage(
-                                            'images/ledScreenBackground.jpg')),
+                                                .shouldDisplayBloodSplatQuick ==
+                                            true
+                                        // ? AssetImage('images/21SavageEnglish2.gif')
+                                        ? AssetImage('images/black.png')
+                                        : context
+                                                    .watch<GameStatusProvider>()
+                                                    .shouldDisplayQuickScream ==
+                                                true
+                                            ? AssetImage(
+                                                'images/switchBladeBloody.gif')
+
+                                            // ? AssetImage('images/21SavageEnglish2.gif')
+                                            : context
+                                                        .watch<
+                                                            GameStatusProvider>()
+                                                        .crashed ==
+                                                    false
+                                                ? AssetImage(
+                                                    'images/ledScreenBackground.jpg')
+                                                : AssetImage(
+                                                    'images/ledScreenBackground.jpg')),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -123,7 +135,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                           .shouldDisplayBandaidPickup ==
                                                       true
                                                   ? AssetImage(
-                                                      'images/pyramid.png',
+                                                      'images/blood.png',
                                                       // 'images/wonderWomanShield.gif',
 
                                                       /// the below wonder woman image will be used when a knife defense has been succesfully activitated
@@ -148,7 +160,8 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                               ? AssetImage(
                                                                   // 'images/coinDropHearts.GIF',
                                                                   // 'images/coinFlip.gif',
-                                                                  'images/thingRightTraced.png',
+                                                                  // 'images/thingRightTraced.png',
+                                                                  'images/thingStichedWalkingXX.gif',
 
                                                                   // 'images/sparklingDiamondsPowerUp.gif',
                                                                   // 'images/thingWalkingLeft.gif',

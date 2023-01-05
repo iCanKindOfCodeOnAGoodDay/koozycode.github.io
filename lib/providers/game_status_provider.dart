@@ -102,17 +102,25 @@ class GameStatusProvider with ChangeNotifier {
 
   bool get redGameBoyInsteadOfYellow => _redGameBoyInsteadOfYellow;
 
+  bool _purpleGameBoy = false;
+
+  bool get purpleGameBoy => _purpleGameBoy;
+
   void updateGameBoyOpacity() {
     for (var i = 0; i < 12; i++) {
       int delay = i * 100;
       int _evenOrOdd = 2;
       Timer(Duration(milliseconds: delay), () {
-        _opacityOfBlackGameBoy = Random().nextDouble();
-        _evenOrOdd = Random().nextInt(2) + 1;
+        _opacityOfBlackGameBoy = (Random().nextInt(5) + 5) / 10;
+        _evenOrOdd = Random().nextInt(3) + 1;
         if (_evenOrOdd == 2) {
+          _purpleGameBoy = true;
+        } else if (_evenOrOdd == 1) {
           _redGameBoyInsteadOfYellow = true;
+          _purpleGameBoy = false;
         } else {
           _redGameBoyInsteadOfYellow = false;
+          _purpleGameBoy = false;
         }
         notifyListeners();
       });
@@ -1156,7 +1164,7 @@ class GameStatusProvider with ChangeNotifier {
 
         fireQuickBandaidPickup();
 
-        redGems.add(kRedGem);
+        redGems.add(kBlood);
         notifyListeners();
 
         /// increase users red gem count

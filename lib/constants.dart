@@ -20,13 +20,249 @@ TextStyle kSmallButton =
 
 Color kTransparent = Color(0x00000000);
 
-Container kThingRayGun = Container(
+Container kThingDraco = Container(
+  // height: 40.0,
+  // width: 90.0,
+  height: 50.0,
+  width: 90.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            // 'images/caroleLynnRayGun.gif',
+            'images/xThingDraco.png',
+          ))),
+);
+
+Container kThingCaroleLynn = Container(
   height: 40.0,
   width: 90.0,
   decoration: BoxDecoration(
       image: DecorationImage(
           fit: BoxFit.fitHeight,
-          image: AssetImage('images/caroleLynnRayGun.gif'))),
+          image: AssetImage(
+            'images/caroleLynnRayGun.gif',
+          ))),
+);
+
+Container kThingGrenadeLauncher = Container(
+  height: 50.0,
+  width: 85.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingGrenadeLauncher.png',
+          ))),
+);
+
+Container kThingKeltechPistol = Container(
+  height: 40.0,
+  width: 60.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingKeltechPistol.png',
+          ))),
+);
+
+Container kThingPirate = Container(
+  height: 40.0,
+  width: 71.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingPirate.png',
+          ))),
+);
+
+Container kThingBrightPistol = Container(
+  height: 40.0,
+  width: 60.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingRightBrightPistol.png',
+          ))),
+);
+
+Container kThingShortM4 = Container(
+  height: 40.0,
+  width: 66.6,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingShortM4Carbine.png',
+          ))),
+);
+
+Container kThingOutlineRay = Container(
+  height: 40.0,
+  width: 60.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingTracedRayGun.png',
+          ))),
+);
+
+Container kThingBlock9 = Container(
+  height: 40.0,
+  width: 60.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/thingBlock9.png',
+          ))),
+);
+
+Container kThingGoldDeagle = Container(
+  height: 50.0,
+  width: 90.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/thingGoldDeagle.png',
+          ))),
+);
+
+Container kThingDarrenger = Container(
+  height: 40.0,
+  width: 60.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/thingDarrenger.png',
+          ))),
+);
+
+Container kThingCapPishPish = Container(
+  height: 50.0,
+  width: 90.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/thingCapPishPish.png',
+          ))),
+);
+
+Container kThingToyM4 = Container(
+  height: 50.0,
+  width: 90.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/thingToyM4.png',
+          ))),
+);
+
+Container kThingSBR = Container(
+  height: 50.0,
+  width: 90.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/thingSBR.png',
+          ))),
+);
+
+Container kIcedGrenade = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/icedGrenade.png',
+          ))),
+);
+
+Container kCherryBomb1 = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/cherryBomb.png',
+          ))),
+);
+
+Container kCherryBomb2 = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/cherryBomb4.png',
+          ))),
+);
+
+Container kSciFiGrenade1 = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/sciFiGernade2.png',
+          ))),
+);
+
+Container kSciFiGrenade2 = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/sciFiGrendade.png',
+          ))),
+);
+
+Container kGrenade = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xGreenGrenade.png',
+          ))),
+);
+
+Container kSharkBomb = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xSharkBomb.png',
+          ))),
+);
+
+Container kBlueGrenade = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xBlueGrendade.png',
+          ))),
 );
 
 Container kThingDead = Container(
@@ -60,7 +296,7 @@ Icon kblankIcon = Icon(
   size: 30.0,
 );
 
-Hero kRedGem = Hero(
+Hero kBlood = Hero(
   tag: 'red',
   child: Container(
     height: 30.0,

@@ -87,14 +87,18 @@ class _FlashingTextState extends State<FlashingText> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      widget.text,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-          color: textColor,
-          // fontFamily: ('HennyPenny'),
-          fontSize: 30.0,
-          fontWeight: FontWeight.bold),
+    return Column(
+      children: [
+        Text(
+          widget.text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: textColor,
+              // fontFamily: ('HennyPenny'),
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 }

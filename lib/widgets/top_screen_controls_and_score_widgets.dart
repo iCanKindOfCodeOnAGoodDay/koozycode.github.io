@@ -1,3 +1,4 @@
+import 'package:flappy_taco/providers/premium_content_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,44 +18,67 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2),
-                  color: Colors.black87),
-              child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Container(
-                  // width: 150.0,
+            Row(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(2),
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('images/ledScreenBackground.jpg')),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: context
-                                      .watch<GameStatusProvider>()
-                                      .shouldDisplayDoublePointsEffects ==
-                                  false
-                              ? Text(
-                                  context
-                                      .watch<GameStatusProvider>()
-                                      .score
-                                      .toString(),
-                                  style: kScoreStyle)
-                              : FlashingText(
-                                  text: context
-                                      .watch<GameStatusProvider>()
-                                      .score
-                                      .toString())),
-                    ],
+                      borderRadius: BorderRadius.circular(2),
+                      color: Colors.black87),
+                  child: Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Container(
+                      // width: 150.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image:
+                                AssetImage('images/ledScreenBackground.jpg')),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: context
+                                          .watch<GameStatusProvider>()
+                                          .shouldDisplayDoublePointsEffects ==
+                                      false
+                                  ? Text(
+                                      context
+                                          .watch<GameStatusProvider>()
+                                          .score
+                                          .toString(),
+                                      style: kScoreStyle)
+                                  : FlashingText(
+                                      text: context
+                                          .watch<GameStatusProvider>()
+                                          .score
+                                          .toString())),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 30.0,
+                      width: 30.0,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage('images/rubyColor.gif'))),
+                    ),
+                    Text(
+                      '${context.watch<PremiumContentProvider>().amountOfRubiesReadyToUse.toString()}',
+                      style: TextStyle(color: Colors.deepPurple),
+                    )
+                  ],
+                ),
+              ],
             ),
             context.watch<GameStatusProvider>().shouldShowCoinWinEffect == true
                 ? Column(
@@ -68,77 +92,108 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10.0),
-          child: Container(
-            decoration: BoxDecoration(
-              // borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image:
-                      AssetImage('images/componetRightBlackButtonSquare.png')),
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius:
-                    context.watch<GameStatusProvider>().crashed == false
-                        ? BorderRadius.circular(80)
-                        : BorderRadius.circular(0.0),
-                // BorderRadius.circular(30),
-                // image: context.watch<GameStatusProvider>().isPaused == true
-                //     ? DecorationImage(
-                //         fit: BoxFit.cover,
-                //         image: AssetImage('images/bloodyThumb.png'))
-                //     // : context.watch<GameStatusProvider>().crashed == true
-                //     //     ?
-                //     : DecorationImage(
-                //         fit: BoxFit.cover,
-                //         image: AssetImage('images/bloodyThumb.png')),
-                // : DecorationImage(
-                //     fit: BoxFit.cover,
-                //     image: AssetImage('images/bloodSplatV.gif')),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: Container(
+                  height: 60.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage('images/xChestTransparent.gif'))),
+                ),
               ),
-              child: context.watch<GameStatusProvider>().crashed == true
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                          onTap: () {
-                            context.read<GameStatusProvider>().start();
-                            context.read<GameStatusProvider>().handFall();
-                            context.read<GameStatusProvider>().resetGame();
-                          },
-                          child: Icon(
-                            Icons.play_circle_outline_outlined,
-                            size: 50.0,
-                            color: Colors.white24,
-                          )),
-                    )
-                  : context.watch<GameStatusProvider>().isPaused == false
+              GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    // borderRadius: BorderRadius.circular(30),
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage(
+                            'images/componetLeftBlackButtonSquare.png')),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.account_circle_outlined,
+                      size: 50.0,
+                      color: Colors.white24,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  // borderRadius: BorderRadius.circular(30),
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage(
+                          'images/componetRightBlackButtonSquare.png')),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        context.watch<GameStatusProvider>().crashed == false
+                            ? BorderRadius.circular(80)
+                            : BorderRadius.circular(0.0),
+                  ),
+                  child: context.watch<GameStatusProvider>().crashed == true
                       ? Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                            onTap: () {
-                              context.read<GameStatusProvider>().pauseGame();
-                            },
-                            child: Icon(
-                              Icons.pause_circle_outline,
-                              size: 50.0,
-                              color: Colors.white24,
-                            ),
-                          ),
+                              onTap: () {
+                                context.read<GameStatusProvider>().start();
+                                context.read<GameStatusProvider>().handFall();
+                                context.read<GameStatusProvider>().resetGame();
+                              },
+                              child: Icon(
+                                Icons.play_circle_outline_outlined,
+                                size: 50.0,
+                                color: Colors.white24,
+                              )),
                         )
-                      : Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              context.read<GameStatusProvider>().resumeGame();
-                            },
-                            child: Icon(
-                              Icons.play_circle_outline_outlined,
-                              size: 50.0,
-                              color: Colors.white24,
+                      : context.watch<GameStatusProvider>().isPaused == false
+                          ? Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<GameStatusProvider>()
+                                      .pauseGame();
+                                },
+                                child: Icon(
+                                  Icons.pause_circle_outline,
+                                  size: 50.0,
+                                  color: Colors.white24,
+                                ),
+                              ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<GameStatusProvider>()
+                                      .resumeGame();
+                                },
+                                child: Icon(
+                                  Icons.play_circle_outline_outlined,
+                                  size: 50.0,
+                                  color: Colors.white24,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-            ),
+                ),
+              ),
+            ],
           ),
         )
       ],

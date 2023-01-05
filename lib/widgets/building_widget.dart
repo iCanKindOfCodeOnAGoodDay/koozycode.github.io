@@ -52,7 +52,7 @@ class BuildingWidget extends StatelessWidget {
                 children: [
                   /// the hand can fall down to 1, and climb up to 10
                   ///                   kblankIcon,
-                  powerUpPosition == 10 ? kRedGem : kblankIcon,
+                  powerUpPosition == 10 ? kBlood : kblankIcon,
                   powerUpPosition == 9 ? kExtraLife : kblankIcon,
                   powerUpPosition == 8 ? kTimeBomb : kblankIcon,
                   powerUpPosition == 7 ? kKnifePowerUp : kblankIcon,

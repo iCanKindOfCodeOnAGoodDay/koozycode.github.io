@@ -1,4 +1,5 @@
 import 'package:flappy_taco/constants.dart';
+import 'package:flappy_taco/providers/premium_content_provider.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -68,8 +69,10 @@ class CannonSwitch extends StatelessWidget {
                   context.read<GameStatusProvider>().reloadHellFire();
                 },
                 child: Container(
+                    // width: 180.0,
+                    // height: 97.6,
                     width: 180.0,
-                    height: 97.6,
+                    height: 101.25,
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: context.watch<GameStatusProvider>().fullyLoaded ==
@@ -81,7 +84,9 @@ class CannonSwitch extends StatelessWidget {
                                     image: DecorationImage(
                                         fit: BoxFit.fill,
                                         image: AssetImage(
-                                            'images/caroleLynnRayGun.gif'))),
+                                          // 'images/caroleLynnRayGun.gif',
+                                          'images/${context.watch<PremiumContentProvider>().playersGatChoiceString}',
+                                        ))),
                               ),
                             )
                           : Container(
