@@ -82,7 +82,7 @@ class CannonSwitch extends StatelessWidget {
                               child: Container(
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.contain,
                                         image: AssetImage(
                                           // 'images/caroleLynnRayGun.gif',
                                           'images/${context.watch<PremiumContentProvider>().playersGatChoiceString}',

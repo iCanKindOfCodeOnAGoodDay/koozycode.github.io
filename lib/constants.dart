@@ -265,6 +265,83 @@ Container kBlueGrenade = Container(
           ))),
 );
 
+Container kAK47 = Container(
+  height: 40.0,
+  width: 126.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingAK47.png',
+          ))),
+);
+
+Container kPurpleM4 = Container(
+  height: 40.0,
+  width: 88.9,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingPurpM4.png',
+          ))),
+);
+
+Container kRedM4 = Container(
+  height: 40.0,
+  width: 80.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingRedM4.png',
+          ))),
+);
+
+Container kCrazyDraco = Container(
+  height: 40.0,
+  width: 80.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingDraco2.png',
+          ))),
+);
+
+Container kSniperRifle = Container(
+  height: 40.0,
+  width: 120.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingSniperLong.png',
+          ))),
+);
+
+Container kM203 = Container(
+  height: 40.0,
+  width: 80.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingM203.png',
+          ))),
+);
+
+Container kDoubleBarrel = Container(
+  height: 40.0,
+  width: 88.9,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(
+            'images/xThingShotgun2.png',
+          ))),
+);
+
 Container kThingDead = Container(
   height: 40.0,
   width: 40.0,

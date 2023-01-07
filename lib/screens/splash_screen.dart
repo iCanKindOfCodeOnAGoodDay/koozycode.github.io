@@ -84,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer2a = Timer(Duration(milliseconds: 1500), () {
       setState(() {
-        imageFileName = 'thingBlock9.png';
+        imageFileName = 'thingRightTraced.png';
         fireBallPathTop = 'fireBallXFlashing.gif';
         fireBallPathBottom = 'fireBallXPurple.gif';
       });

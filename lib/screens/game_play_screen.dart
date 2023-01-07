@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
+import 'package:flappy_taco/providers/premium_content_provider.dart';
 import 'package:flappy_taco/widgets/shop_drawer_widget.dart';
 import 'package:flappy_taco/widgets/top_screen_controls_and_score_widgets.dart';
 import 'package:flappy_taco/widgets/bottom_screen_images.dart';
@@ -11,7 +12,7 @@ import 'package:flappy_taco/widgets/cannon_switch_widget.dart';
 import 'package:flappy_taco/widgets/coin_win_effect.dart';
 import 'package:flappy_taco/widgets/combo_hits.dart';
 import 'package:flappy_taco/widgets/death_effect_column.dart';
-import 'package:flappy_taco/widgets/end_drawer_widget.dart';
+import 'package:flappy_taco/widgets/end_drawer_account_and_settings_widget.dart';
 import 'package:flappy_taco/widgets/fireball_under_hand_column.dart';
 import 'package:flappy_taco/widgets/flashing_text_widget.dart';
 import 'package:flappy_taco/widgets/game_controls_widgets.dart';
@@ -61,13 +62,16 @@ class GamePlayScreen extends StatelessWidget {
                     image: AssetImage(
                       context.watch<GameStatusProvider>().purpleGameBoy == true
                           ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOPurp.png'
-                          : context
-                                      .watch<GameStatusProvider>()
-                                      .redGameBoyInsteadOfYellow ==
-                                  false
-                              ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'
-                              // ? 'images/redChip.jpg'
-                              : 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy.png',
+                          : context.watch<GameStatusProvider>().silverGameBoy ==
+                                  true
+                              ? 'images/futuristicGameConsoleNoLogo2BLANKLOGO.png'
+                              : context
+                                          .watch<GameStatusProvider>()
+                                          .redGameBoyInsteadOfYellow ==
+                                      false
+                                  ? 'images/futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'
+                                  // ? 'images/redChip.jpg'
+                                  : 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy.png',
                     )),
               ),
             ),
@@ -83,7 +87,9 @@ class GamePlayScreen extends StatelessWidget {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                          'images/futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png')),
+                        // 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png',
+                        'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}',
+                      )),
                 ),
               ),
             ),

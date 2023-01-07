@@ -43,18 +43,19 @@ class GamePlayAreaWidget extends StatelessWidget {
                             true
                         ? AssetImage(
                             // 'images/enlessColorHoleRecoloredYellowOrange.gif',
-                            'images/black.png',
+                            // 'images/fireFrameOptimized.gif'
+                            'images/ledScreenBackground.jpg',
                           )
                         : context
                                     .watch<GameStatusProvider>()
                                     .shouldDisplayQuickLifePickup ==
                                 true
-                            ? AssetImage('images/black.png')
+                            ? AssetImage('images/redChip.jpg')
                             : context
                                         .watch<GameStatusProvider>()
                                         .shouldDisplayBandaidPickup ==
                                     true
-                                ? AssetImage('images/black.png')
+                                ? AssetImage('images/redChip.jpg')
                                 : context
                                             .watch<GameStatusProvider>()
                                             .shouldDisplayJustPickedUpCannon ==
@@ -135,7 +136,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                           .shouldDisplayBandaidPickup ==
                                                       true
                                                   ? AssetImage(
-                                                      'images/blood.png',
+                                                      'images/zombieHandReach.gif',
                                                       // 'images/wonderWomanShield.gif',
 
                                                       /// the below wonder woman image will be used when a knife defense has been succesfully activitated
@@ -161,7 +162,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                                   // 'images/coinDropHearts.GIF',
                                                                   // 'images/coinFlip.gif',
                                                                   // 'images/thingRightTraced.png',
-                                                                  'images/thingStichedWalkingXX.gif',
+                                                                  'images/zombieHandReach.gif',
 
                                                                   // 'images/sparklingDiamondsPowerUp.gif',
                                                                   // 'images/thingWalkingLeft.gif',
@@ -194,10 +195,12 @@ class GamePlayAreaWidget extends StatelessWidget {
         ),
         Container(
           // color: Colors.red,
-          child: CoinsUnderHandColumn(
+          child: context.watch<GameStatusProvider>().isClimbing == true
+              ? CoinsUnderHandColumn(
 
-              /// taco position widget
-              position: context.watch<GameStatusProvider>().handPosition),
+                  /// taco position widget
+                  position: context.watch<GameStatusProvider>().handPosition)
+              : Container(),
         ),
         Container(
           // color: Colors.red,

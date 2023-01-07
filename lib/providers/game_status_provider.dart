@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flappy_taco/constants.dart';
+import 'package:flappy_taco/providers/premium_content_provider.dart';
 import 'package:flappy_taco/widgets/building_widget.dart';
 import 'package:flappy_taco/widgets/cannon_contact_effect_Columns.dart';
 import 'package:flappy_taco/widgets/cannon_fire.dart';
 import 'package:flappy_taco/widgets/cannon_fire_large_widget.dart';
 import 'package:flappy_taco/widgets/hell_fire_columns.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_grendade_widget.dart';
 import 'package:flappy_taco/widgets/upside_down_building_widget.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -104,6 +106,10 @@ class GameStatusProvider with ChangeNotifier {
 
   bool _purpleGameBoy = false;
 
+  bool _silverGameBoy = false;
+
+  bool get silverGameBoy => _silverGameBoy;
+
   bool get purpleGameBoy => _purpleGameBoy;
 
   void updateGameBoyOpacity() {
@@ -111,16 +117,22 @@ class GameStatusProvider with ChangeNotifier {
       int delay = i * 100;
       int _evenOrOdd = 2;
       Timer(Duration(milliseconds: delay), () {
-        _opacityOfBlackGameBoy = (Random().nextInt(5) + 5) / 10;
-        _evenOrOdd = Random().nextInt(3) + 1;
+        _opacityOfBlackGameBoy = (Random().nextInt(3) + 1) / 10;
+        _evenOrOdd = Random().nextInt(4) + 1;
         if (_evenOrOdd == 2) {
           _purpleGameBoy = true;
         } else if (_evenOrOdd == 1) {
           _redGameBoyInsteadOfYellow = true;
           _purpleGameBoy = false;
+          _silverGameBoy = false;
+        } else if (_evenOrOdd == 4) {
+          _silverGameBoy = true;
+          _purpleGameBoy = false;
+          _redGameBoyInsteadOfYellow = false;
         } else {
           _redGameBoyInsteadOfYellow = false;
           _purpleGameBoy = false;
+          _silverGameBoy = false;
         }
         notifyListeners();
       });
@@ -235,7 +247,6 @@ class GameStatusProvider with ChangeNotifier {
   bool get showADeadHand => _showADeadHand;
 
   void handClimb() {
-    fireHellFire();
     if (_isPaused == false) {
       /// when user taps, let the taco climb
       if (_handPosition < 10) {
@@ -452,6 +463,7 @@ class GameStatusProvider with ChangeNotifier {
             soundModel.playOtherFive('fireworks.mp3', _hearSoundEffects);
             soundModel.playOtherSix('bulletShot.mp3', _hearSoundEffects);
             fireQuickHorror();
+            pauseGame();
             _crashed = true;
             _showADeadHand = true;
             // _isClimbing = true;
@@ -1032,6 +1044,7 @@ class GameStatusProvider with ChangeNotifier {
   }
 
   void reloadHellFire() {
+    _triedFiringWhenOutOfAmmo = false;
     soundModel.playReloadSound(_hearSoundEffects);
     soundModel.playOtherEight('sciFiReload.mp3', _hearSoundEffects);
     soundModel.playOtherNine('shotgunReload.mp3', _hearSoundEffects);
@@ -1189,7 +1202,13 @@ class GameStatusProvider with ChangeNotifier {
         // soundModel.playOtherSounds5x('timerTicking.mp3');
 
         ///empty buildings
-        nukeList.add(kTimeBombLarge);
+        nukeList.add(
+          SelectedGrenadeWidget(
+            onScreenPickupAndNotAGrenadeButton: false,
+          ),
+
+          ///TODO add a custom widget that holds the string from the other provider
+        );
         print('user caught a nuke');
       }
     }
@@ -1762,11 +1781,16 @@ class GameStatusProvider with ChangeNotifier {
 
   bool _shouldPlayReloadVoiceWarning = false;
 
+  bool _triedFiringWhenOutOfAmmo = false;
+
+  bool get triedFiringWhenOutOfAmmo => _triedFiringWhenOutOfAmmo;
+
   void fireHellFire() {
-    if (_isPaused == false) {
-      if (flamesSecond.isEmpty == false) {
-        _fullyLoaded = false;
-        if (_roundsInMagazine > 0) {
+    if (flamesSecond.isEmpty == false) {
+      _fullyLoaded = false;
+      if (_roundsInMagazine > 0) {
+        if (_isPaused == false) {
+          _triedFiringWhenOutOfAmmo = false;
           _roundsInMagazine--;
           // soundModel.playLaserSound();
           soundModel.playLaserSound(_hearSoundEffects);
@@ -1774,33 +1798,41 @@ class GameStatusProvider with ChangeNotifier {
         }
 
         /// reset combo hits
-        if (_comboHits < 3) {
-          _comboHits = 0;
+        if (_isPaused == false) {
+          if (_comboHits < 3) {
+            _comboHits = 0;
+          }
         }
+        if (_isPaused == false) {
+          moveHellFire();
+          hellFireColumns.removeAt(hellFireColumns.length - 1);
 
-        moveHellFire();
-        hellFireColumns.removeAt(hellFireColumns.length - 1);
+          hellFireColumns.insert(
+              0,
+              HellFirePowerUpColumns(
+                /// by setting powerup position to 7, there should always be a powerup created
+                firePosition: _handPosition,
+              ));
+          contactFiveOrLess();
+          contactSixOrMore();
+          handClimb();
 
-        hellFireColumns.insert(
-            0,
-            HellFirePowerUpColumns(
-              /// by setting powerup position to 7, there should always be a powerup created
-              firePosition: _handPosition,
-            ));
-        contactFiveOrLess();
-        contactSixOrMore();
-        // fireContact();
+          // fireContact();
+          notifyListeners();
+          if (flames.length > 0) {
+            flames.removeAt(0);
+            notifyListeners();
+          } else if (flamesSecond.length > 0) {
+            flamesSecond.removeAt(0);
+            notifyListeners();
+          }
+        }
+      } else {
+        _triedFiringWhenOutOfAmmo = true;
+        // print('trried firing when out of ammo is = $_triedFiringWhenOutOfAmmo');
         notifyListeners();
-        if (flames.length > 0) {
-          flames.removeAt(0);
-          notifyListeners();
-        } else if (flamesSecond.length > 0) {
-          flamesSecond.removeAt(0);
-          notifyListeners();
-        }
+        soundModel.playReloadMaleVoice(_hearSoundEffects);
       }
-    } else {
-      soundModel.playReloadMaleVoice(_hearSoundEffects);
     }
   }
 

@@ -154,7 +154,7 @@ class GameControlsWidgets extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        context.read<GameStatusProvider>().handClimb();
+                        context.read<GameStatusProvider>().fireHellFire();
                       },
                       child: Container(
                         height: 200.0,

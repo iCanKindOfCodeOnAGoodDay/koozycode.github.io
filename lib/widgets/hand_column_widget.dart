@@ -1,13 +1,13 @@
 import 'package:flappy_taco/providers/game_status_provider.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
-import 'package:flappy_taco/widgets/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -25,9 +25,14 @@ class HandColumn extends StatelessWidget {
         position == 11
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -36,9 +41,14 @@ class HandColumn extends StatelessWidget {
         position == 10
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -47,9 +57,14 @@ class HandColumn extends StatelessWidget {
         position == 9
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -58,9 +73,14 @@ class HandColumn extends StatelessWidget {
         position == 8
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -69,9 +89,14 @@ class HandColumn extends StatelessWidget {
         position == 7
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -80,9 +105,14 @@ class HandColumn extends StatelessWidget {
         position == 6
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -91,9 +121,14 @@ class HandColumn extends StatelessWidget {
         position == 5
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -102,9 +137,14 @@ class HandColumn extends StatelessWidget {
         position == 4
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -113,9 +153,14 @@ class HandColumn extends StatelessWidget {
         position == 3
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -124,9 +169,14 @@ class HandColumn extends StatelessWidget {
         position == 2
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -135,9 +185,14 @@ class HandColumn extends StatelessWidget {
         position == 1
             ? context.watch<GameStatusProvider>().isClimbing == true
                 ? SelectedGat()
-                : context.watch<GameStatusProvider>().showADeadHand == true
+                : context
+                            .watch<GameStatusProvider>()
+                            .triedFiringWhenOutOfAmmo ==
+                        true
                     ? kThingDead
-                    : kThingFalling
+                    : context.watch<GameStatusProvider>().showADeadHand == true
+                        ? kThingDead
+                        : kThingFalling
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,

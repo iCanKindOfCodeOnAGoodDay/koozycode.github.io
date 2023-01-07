@@ -15,6 +15,9 @@ import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_beast.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_grendade_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_knife_widget.dart';
 import 'package:flutter/material.dart';
 
 class BuildingWidget extends StatelessWidget {
@@ -54,11 +57,15 @@ class BuildingWidget extends StatelessWidget {
                   ///                   kblankIcon,
                   powerUpPosition == 10 ? kBlood : kblankIcon,
                   powerUpPosition == 9 ? kExtraLife : kblankIcon,
-                  powerUpPosition == 8 ? kTimeBomb : kblankIcon,
-                  powerUpPosition == 7 ? kKnifePowerUp : kblankIcon,
+                  powerUpPosition == 8
+                      ? SelectedGrenadeWidget(
+                          onScreenPickupAndNotAGrenadeButton: true,
+                        )
+                      : kblankIcon,
+                  powerUpPosition == 7 ? SelectedKnifeWidget() : kblankIcon,
                   powerUpPosition == 6 ? kTimeIncrease : kblankIcon,
-                  powerUpPosition == 5 ? kSkullPatch : kblankIcon,
-                  powerUpPosition == 4 ? kKnifePowerUp : kblankIcon,
+                  powerUpPosition == 5 ? SelectedBeastWidget() : kblankIcon,
+                  powerUpPosition == 4 ? SelectedKnifeWidget() : kblankIcon,
                   powerUpPosition == 3 ? AmmoPickup() : kblankIcon,
                   powerUpPosition == 2 ? AmmoPickup() : kblankIcon,
                   powerUpPosition == 1 ? kNuke : kblankIcon,
