@@ -109,21 +109,12 @@ class GamePlayScreen extends StatelessWidget {
                 TopOfScreenControlsAndScoreWidgets(),
                 GamePlayAreaWidget(),
 
-                PowerUps(),
-                Hero(
-                  tag: 'fireBall',
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: context.watch<GameStatusProvider>().cannons,
-                  ),
-                ),
-
                 GameControlsWidgets(),
 
                 SecondPowerUps(),
-                SizedBox(
-                  height: 10.0,
-                ),
+                // SizedBox(
+                //   height: 10.0,
+                // ),
               ],
             ),
           ],

@@ -370,14 +370,14 @@ Container kSkullCoin = Container(
 Icon kblankIcon = Icon(
   Icons.circle,
   color: Color(0x00000000),
-  size: 30.0,
+  size: 40.0,
 );
 
 Hero kBlood = Hero(
   tag: 'red',
   child: Container(
-    height: 30.0,
-    width: 30.0,
+    height: 40.0,
+    width: 40.0,
     decoration: BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.cover,
@@ -429,8 +429,8 @@ Hero kFlameFace = Hero(
 Hero kExtraLife = Hero(
   tag: 'thing',
   child: Container(
-    height: 30.0,
-    width: 30.0,
+    height: 40.0,
+    width: 40.0,
     decoration: BoxDecoration(
       image: DecorationImage(
         fit: BoxFit.cover,
@@ -463,8 +463,8 @@ Container kFlyingFireBall = Container(
 );
 
 Container kNuke = Container(
-  height: 30.0,
-  width: 30.0,
+  height: 40.0,
+  width: 40.0,
   decoration: BoxDecoration(
       image: DecorationImage(
           fit: BoxFit.cover, image: AssetImage('images/bomb.png'))),
@@ -568,8 +568,8 @@ Container kLargeHellfireWhite = Container(
 ///
 ///
 Container kGoldCoin = Container(
-  height: 30.0,
-  width: 30.0,
+  height: 40.0,
+  width: 40.0,
   decoration: BoxDecoration(
       image: DecorationImage(
           fit: BoxFit.cover, image: AssetImage('images/coinFlip.gif'))),
@@ -584,8 +584,8 @@ Container kContactCoin = Container(
 );
 
 Container kDeadHand = Container(
-  height: 30.0,
-  width: 30.0,
+  height: 40.0,
+  width: 40.0,
   decoration: BoxDecoration(
       image: DecorationImage(
           fit: BoxFit.cover, image: AssetImage('images/deadHand.gif'))),

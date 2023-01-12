@@ -60,6 +60,9 @@ class PopUpPrizeMessageWidget extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
+                    context
+                        .read<PremiumContentProvider>()
+                        .closeChestAndHideLastPrize();
                     context.read<PremiumContentProvider>().equipLastWonPrize();
                   },
                   child: Container(
@@ -86,7 +89,7 @@ class PopUpPrizeMessageWidget extends StatelessWidget {
                   width: 75.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.yellow),
+                      color: Colors.orange),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(

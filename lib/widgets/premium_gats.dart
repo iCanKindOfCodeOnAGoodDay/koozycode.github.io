@@ -1,3 +1,4 @@
+import 'package:flappy_taco/providers/game_status_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +14,8 @@ class PremiumGatsAndGrenades extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        context.read<GameStatusProvider>().reloadHellFire();
+
         context
             .read<PremiumContentProvider>()
             .handleAnimationWhenSelectingAnItemFromList(path);
@@ -27,6 +30,8 @@ class PremiumGatsAndGrenades extends StatelessWidget {
           context.read<PremiumContentProvider>().changeKnife('$path');
         } else if (type == PremiumContentType.console) {
           context.read<PremiumContentProvider>().changeConsole('$path');
+        } else if (type == PremiumContentType.rocket) {
+          context.read<PremiumContentProvider>().changeRocket('$path');
         }
       },
       child: Container(

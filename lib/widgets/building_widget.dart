@@ -1,4 +1,5 @@
 import 'package:flappy_taco/constants.dart';
+import 'package:flappy_taco/providers/game_status_provider.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_widget.dart';
 import 'package:flappy_taco/widgets/development_block_widget.dart';
@@ -15,10 +16,29 @@ import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
+import 'package:flappy_taco/widgets/ice_cream_bullet.dart';
+import 'package:flappy_taco/widgets/rotating_icecream_bullet_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_beast.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_grendade_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_knife_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/selected_rocket.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BuildingWidget extends StatelessWidget {
   int buildingHeight = 1;
@@ -63,11 +83,23 @@ class BuildingWidget extends StatelessWidget {
                         )
                       : kblankIcon,
                   powerUpPosition == 7 ? SelectedKnifeWidget() : kblankIcon,
-                  powerUpPosition == 6 ? kTimeIncrease : kblankIcon,
+                  powerUpPosition == 6 ? SelectedRocketWidget() : kblankIcon,
                   powerUpPosition == 5 ? SelectedBeastWidget() : kblankIcon,
                   powerUpPosition == 4 ? SelectedKnifeWidget() : kblankIcon,
-                  powerUpPosition == 3 ? AmmoPickup() : kblankIcon,
-                  powerUpPosition == 2 ? AmmoPickup() : kblankIcon,
+                  powerUpPosition == 3
+                      ? RotatingIcecreamBullet(
+                          height: 40.0,
+                          width: 40.0,
+                          path:
+                              '${context.watch<GameStatusProvider>().nextIceCreamBulletPath}')
+                      : kblankIcon,
+                  powerUpPosition == 2
+                      ? RotatingIcecreamBullet(
+                          height: 40.0,
+                          width: 40.0,
+                          path:
+                              '${context.watch<GameStatusProvider>().nextIceCreamBulletPath}')
+                      : kblankIcon,
                   powerUpPosition == 1 ? kNuke : kblankIcon,
                   // DevelopmentBlock(color: kBlankColor),
                 ],
@@ -83,12 +115,24 @@ class BuildingWidget extends StatelessWidget {
                       DevelopmentBlock(color: kBlankColor),
                       DevelopmentBlock(color: kBlankColor),
                       DevelopmentBlock(color: kBlankColor),
-                      buildingHeight >= 5 ? DynamicCoin() : kblankIcon,
-                      buildingHeight >= 4 ? DynamicCoin() : kblankIcon,
-                      buildingHeight >= 3 ? DynamicCoin() : kblankIcon,
-                      buildingHeight >= 2 ? DynamicCoin() : kblankIcon,
-                      buildingHeight >= 1 ? DynamicCoin() : kblankIcon,
-                      buildingHeight >= 0 ? DynamicCoin() : kblankIcon,
+                      buildingHeight >= 5
+                          ? SelectedBarrierWidget()
+                          : kblankIcon,
+                      buildingHeight >= 4
+                          ? SelectedBarrierWidget()
+                          : kblankIcon,
+                      buildingHeight >= 3
+                          ? SelectedBarrierWidget()
+                          : kblankIcon,
+                      buildingHeight >= 2
+                          ? SelectedBarrierWidget()
+                          : kblankIcon,
+                      buildingHeight >= 1
+                          ? SelectedBarrierWidget()
+                          : kblankIcon,
+                      buildingHeight >= 0
+                          ? SelectedBarrierWidget()
+                          : kblankIcon,
                     ],
                   )
 
@@ -117,15 +161,29 @@ class BuildingWidget extends StatelessWidget {
                     : Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          buildingHeight <= 12 ? DynamicCoin() : kblankIcon,
-                          buildingHeight <= 11 ? DynamicCoin() : kblankIcon,
-                          // DynamicCoin(),
-                          // DynamicCoin(),
-                          buildingHeight <= 10 ? DynamicCoin() : kblankIcon,
-                          buildingHeight <= 9 ? DynamicCoin() : kblankIcon,
-                          buildingHeight <= 8 ? DynamicCoin() : kblankIcon,
-                          buildingHeight <= 7 ? DynamicCoin() : kblankIcon,
-                          buildingHeight <= 6 ? DynamicCoin() : kblankIcon,
+                          buildingHeight <= 12
+                              ? SelectedBarrierWidget()
+                              : kblankIcon,
+                          buildingHeight <= 11
+                              ? SelectedBarrierWidget()
+                              : kblankIcon,
+                          // SelectedBarrierWidget(),
+                          // SelectedBarrierWidget(),
+                          buildingHeight <= 10
+                              ? SelectedBarrierWidget()
+                              : kblankIcon,
+                          buildingHeight <= 9
+                              ? SelectedBarrierWidget()
+                              : kblankIcon,
+                          buildingHeight <= 8
+                              ? SelectedBarrierWidget()
+                              : kblankIcon,
+                          buildingHeight <= 7
+                              ? SelectedBarrierWidget()
+                              : kblankIcon,
+                          buildingHeight <= 6
+                              ? SelectedBarrierWidget()
+                              : kblankIcon,
                           DevelopmentBlock(color: kBlankColor),
                           DevelopmentBlock(color: kBlankColor),
                           DevelopmentBlock(color: kBlankColor),

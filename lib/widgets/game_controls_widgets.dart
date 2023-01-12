@@ -1,5 +1,6 @@
 import 'package:flappy_taco/models/sound_model.dart';
 import 'package:flappy_taco/widgets/flashing_text_widget.dart';
+import 'package:flappy_taco/widgets/power_ups_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,15 +25,24 @@ class GameControlsWidgets extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(left: 8.0),
                       child: CannonSwitch(
                         cannonIsLoaded:
                             context.watch<GameStatusProvider>().fullyLoaded,
                         remainingAmmo: context
                             .watch<GameStatusProvider>()
                             .roundsInMagazine,
+                      ),
+                    ),
+                    PowerUps(),
+                    Hero(
+                      tag: 'fireBall',
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: context.watch<GameStatusProvider>().cannons,
                       ),
                     ),
                     Column(
@@ -85,9 +95,6 @@ class GameControlsWidgets extends StatelessWidget {
             ),
           ],
         ),
-        Column(
-          children: [],
-        ),
 
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -112,7 +119,7 @@ class GameControlsWidgets extends StatelessWidget {
         Column(
           children: [
             SizedBox(
-              height: 80.0,
+              height: 40.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

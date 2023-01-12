@@ -8,7 +8,7 @@ class DevelopmentBlock extends StatelessWidget {
     return Icon(
       Icons.circle,
       color: color,
-      size: 30.0,
+      size: 40.0,
     );
   }
 }

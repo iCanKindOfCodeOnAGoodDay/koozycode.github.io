@@ -10,8 +10,8 @@ class WinEffectForEachAmmoType extends StatelessWidget {
     return context.watch<GameStatusProvider>().currentCannon ==
             CannonType.orange
         ? Container(
-            height: 30.0,
-            width: 30.0,
+            height: 40.0,
+            width: 40.0,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
@@ -19,8 +19,8 @@ class WinEffectForEachAmmoType extends StatelessWidget {
           )
         : context.watch<GameStatusProvider>().currentCannon == CannonType.yellow
             ? Container(
-                height: 30.0,
-                width: 30.0,
+                height: 40.0,
+                width: 40.0,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
@@ -29,8 +29,8 @@ class WinEffectForEachAmmoType extends StatelessWidget {
             : context.watch<GameStatusProvider>().currentCannon ==
                     CannonType.purple
                 ? Container(
-                    height: 30.0,
-                    width: 30.0,
+                    height: 40.0,
+                    width: 40.0,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.cover,
@@ -40,8 +40,8 @@ class WinEffectForEachAmmoType extends StatelessWidget {
                 : context.watch<GameStatusProvider>().currentCannon ==
                         CannonType.blue
                     ? Container(
-                        height: 30.0,
-                        width: 30.0,
+                        height: 40.0,
+                        width: 40.0,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 fit: BoxFit.cover,
@@ -51,8 +51,8 @@ class WinEffectForEachAmmoType extends StatelessWidget {
                     : context.watch<GameStatusProvider>().currentCannon ==
                             CannonType.flashing
                         ? Container(
-                            height: 30.0,
-                            width: 30.0,
+                            height: 40.0,
+                            width: 40.0,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
@@ -62,8 +62,8 @@ class WinEffectForEachAmmoType extends StatelessWidget {
                         : context.watch<GameStatusProvider>().currentCannon ==
                                 CannonType.black
                             ? Container(
-                                height: 30.0,
-                                width: 30.0,
+                                height: 40.0,
+                                width: 40.0,
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
@@ -71,8 +71,8 @@ class WinEffectForEachAmmoType extends StatelessWidget {
                                             'images/6blackCoinWin.gif'))),
                               )
                             : Container(
-                                height: 30.0,
-                                width: 30.0,
+                                height: 40.0,
+                                width: 40.0,
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         fit: BoxFit.cover,

@@ -1,3 +1,5 @@
+import 'package:flappy_taco/providers/premium_content_provider.dart';
+import 'package:flappy_taco/widgets/rotating_icecream_bullet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
@@ -35,7 +37,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                         true
                     ? AssetImage(
                         // 'images/horseThree.gif',
-                        'images/octopus.png',
+                        'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}',
                       )
                     : context
                                 .watch<GameStatusProvider>()
@@ -50,40 +52,42 @@ class GamePlayAreaWidget extends StatelessWidget {
                                     .watch<GameStatusProvider>()
                                     .shouldDisplayQuickLifePickup ==
                                 true
-                            ? AssetImage('images/redChip.jpg')
+                            ? AssetImage(
+                                'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
                             : context
                                         .watch<GameStatusProvider>()
                                         .shouldDisplayBandaidPickup ==
                                     true
-                                ? AssetImage('images/redChip.jpg')
+                                ? AssetImage(
+                                    'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
+                                // : context
+                                //             .watch<GameStatusProvider>()
+                                //             .shouldDisplayJustPickedUpCannon ==
+                                //         true
+                                //     ? AssetImage(
+                                //         'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
+                                // : context
+                                //             .watch<GameStatusProvider>()
+                                //             .shouldDisplayBloodSplatQuick ==
+                                //         true
+                                //     // ? AssetImage('images/21SavageEnglish2.gif')
+                                //     ? AssetImage('images/black.png')
                                 : context
                                             .watch<GameStatusProvider>()
-                                            .shouldDisplayJustPickedUpCannon ==
+                                            .shouldDisplayQuickScream ==
                                         true
-                                    ? AssetImage('images/fire.gif')
+                                    ? AssetImage(
+                                        'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}')
+
+                                    // ? AssetImage('images/21SavageEnglish2.gif')
                                     : context
                                                 .watch<GameStatusProvider>()
-                                                .shouldDisplayBloodSplatQuick ==
-                                            true
-                                        // ? AssetImage('images/21SavageEnglish2.gif')
-                                        ? AssetImage('images/black.png')
-                                        : context
-                                                    .watch<GameStatusProvider>()
-                                                    .shouldDisplayQuickScream ==
-                                                true
-                                            ? AssetImage(
-                                                'images/switchBladeBloody.gif')
-
-                                            // ? AssetImage('images/21SavageEnglish2.gif')
-                                            : context
-                                                        .watch<
-                                                            GameStatusProvider>()
-                                                        .crashed ==
-                                                    false
-                                                ? AssetImage(
-                                                    'images/ledScreenBackground.jpg')
-                                                : AssetImage(
-                                                    'images/ledScreenBackground.jpg')),
+                                                .crashed ==
+                                            false
+                                        ? AssetImage(
+                                            'images/ledScreenBackground.jpg')
+                                        : AssetImage(
+                                            'images/ledScreenBackground.jpg')),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -97,83 +101,91 @@ class GamePlayAreaWidget extends StatelessWidget {
 
                       // : AssetImage('images/fire.gif'),
 
-                      : context.watch<GameStatusProvider>().shouldDisplayTimeIncrease ==
+                      : context
+                                  .watch<GameStatusProvider>()
+                                  .shouldDisplayTimeIncrease ==
                               true
-                          ? AssetImage('images/warpSpeedBlack.gif')
+                          ? AssetImage(
+                              // 'images/hhWarp3.GIF',
+                              'images/warpSpeedBlack.gif',
+                            )
+                          // : context
+                          //             .watch<GameStatusProvider>()
+                          //             .shouldDisplayJustPickedUpCannon ==
+                          //         true
+                          //     ? AssetImage(
+                          //         'images/${context.watch<GameStatusProvider>().iceCreamBulletPath}')
                           : context
                                       .watch<GameStatusProvider>()
-                                      .shouldDisplayJustPickedUpCannon ==
+                                      .shouldDisplayQuickHorror ==
                                   true
-                              ? AssetImage(
-                                  'images/${context.watch<GameStatusProvider>().cannonPath}')
+                              ? AssetImage('images/blood2.gif')
                               : context
                                           .watch<GameStatusProvider>()
-                                          .shouldDisplayQuickHorror ==
+                                          .shouldDisplayQuickScream ==
                                       true
                                   ? AssetImage('images/blood2.gif')
                                   : context
                                               .watch<GameStatusProvider>()
-                                              .shouldDisplayQuickScream ==
+                                              .shouldDisplayBloodSplatQuick ==
                                           true
                                       ? AssetImage('images/blood2.gif')
                                       : context
                                                   .watch<GameStatusProvider>()
-                                                  .shouldDisplayBloodSplatQuick ==
+                                                  .shouldDisplayExplosion2 ==
                                               true
-                                          ? AssetImage('images/blood2.gif')
+                                          ? AssetImage(
+                                              'images/explosionFlames.gif',
+                                              // 'images/macGruberGunshots.gif',
+                                            )
                                           : context
                                                       .watch<
                                                           GameStatusProvider>()
-                                                      .shouldDisplayExplosion2 ==
+                                                      .shouldDisplayBandaidPickup ==
                                                   true
                                               ? AssetImage(
-                                                  'images/explosionFlames.gif',
-                                                  // 'images/macGruberGunshots.gif',
+                                                  'images/zombieHandReach.gif',
+                                                  // 'images/wonderWomanShield.gif',
+
+                                                  /// the below wonder woman image will be used when a knife defense has been succesfully activitated
+                                                  /// /// and the one wee are using above is displayed upon powerup pickups
+                                                  // 'images/wonderWomanShield2.gif',
+                                                  // 'images/swordSelfRespect.gif',
                                                 )
                                               : context
                                                           .watch<
                                                               GameStatusProvider>()
-                                                          .shouldDisplayBandaidPickup ==
+                                                          .shouldDisplayKnifeDefense ==
                                                       true
                                                   ? AssetImage(
-                                                      'images/zombieHandReach.gif',
-                                                      // 'images/wonderWomanShield.gif',
-
-                                                      /// the below wonder woman image will be used when a knife defense has been succesfully activitated
-                                                      /// /// and the one wee are using above is displayed upon powerup pickups
-                                                      // 'images/wonderWomanShield2.gif',
-                                                      // 'images/swordSelfRespect.gif',
+                                                      'images/wonderWomanShield2.gif',
                                                     )
                                                   : context
                                                               .watch<GameStatusProvider>()
-                                                              .shouldDisplayKnifeDefense ==
+                                                              .shouldDisplayExplosion1 ==
                                                           true
                                                       ? AssetImage(
-                                                          'images/wonderWomanShield2.gif',
+                                                          // 'images/horseTwoLegs.gif',
+                                                          'images/explosionFlames.gif',
+                                                          // 'images/horseRidingPeople.gif',
                                                         )
-                                                      : context.watch<GameStatusProvider>().shouldDisplayExplosion1 == true
+                                                      : context.watch<GameStatusProvider>().shouldDisplayQuickLifePickup == true
                                                           ? AssetImage(
-                                                              // 'images/horseTwoLegs.gif',
-                                                              'images/explosionFlames.gif',
-                                                              // 'images/horseRidingPeople.gif',
+                                                              // 'images/coinDropHearts.GIF',
+                                                              // 'images/coinFlip.gif',
+                                                              // 'images/thingRightTraced.png',
+                                                              'images/zombieHandReach.gif',
+
+                                                              // 'images/sparklingDiamondsPowerUp.gif',
+                                                              // 'images/thingWalkingLeft.gif',
+                                                              // 'images/rayGunPimpedEnergy.gif',
                                                             )
-                                                          : context.watch<GameStatusProvider>().shouldDisplayQuickLifePickup == true
-                                                              ? AssetImage(
-                                                                  // 'images/coinDropHearts.GIF',
-                                                                  // 'images/coinFlip.gif',
-                                                                  // 'images/thingRightTraced.png',
-                                                                  'images/zombieHandReach.gif',
+                                                          : context.watch<GameStatusProvider>().crashed == false
+                                                              // ? AssetImage('images/fire.gif')
+                                                              ? AssetImage('images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
 
-                                                                  // 'images/sparklingDiamondsPowerUp.gif',
-                                                                  // 'images/thingWalkingLeft.gif',
-                                                                  // 'images/rayGunPimpedEnergy.gif',
-                                                                )
-                                                              : context.watch<GameStatusProvider>().crashed == false
-                                                                  ? AssetImage('images/fire.gif')
-                                                                  // ? AssetImage('images/blackWater.gif')
-
-                                                                  // blackWater.gif
-                                                                  : AssetImage('images/gameOver.GIF'),
+                                                              // blackWater.gif
+                                                              : AssetImage('images/gameOver.GIF'),
                 ),
               ),
               child: Row(
@@ -185,6 +197,14 @@ class GamePlayAreaWidget extends StatelessWidget {
             ),
           ),
         ),
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: context
+                        .watch<GameStatusProvider>()
+                        .shouldDisplayJustPickedUpCannon ==
+                    true
+                ? context.watch<GameStatusProvider>().rotatingIceCreamPickups
+                : []),
 
         Container(
           // color: Colors.red,

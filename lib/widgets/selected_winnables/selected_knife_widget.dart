@@ -10,7 +10,7 @@ class SelectedKnifeWidget extends StatelessWidget {
       width: 40.0,
       decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.contain,
               image: AssetImage(
                   'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}'))),
     );

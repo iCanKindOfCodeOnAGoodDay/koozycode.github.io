@@ -121,10 +121,10 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                             'images/componetLeftBlackButtonSquare.png')),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Icon(
-                      Icons.account_circle_outlined,
-                      size: 50.0,
+                      Icons.settings,
+                      size: 40.0,
                       color: Colors.white24,
                     ),
                   ),

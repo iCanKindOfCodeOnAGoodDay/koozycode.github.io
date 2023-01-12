@@ -90,11 +90,22 @@ class ShopDrawerWidget extends StatelessWidget {
                                 ),
                                 Container(
                                   height: 80,
-                                  width: 30,
+                                  width: 60,
                                   decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'images/futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'))),
+                                              'images/redChip.jpg'))),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(1.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fitWidth,
+                                              image: AssetImage(
+                                                  'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}'))),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -134,8 +145,17 @@ class ShopDrawerWidget extends StatelessWidget {
                                 Icon(
                                   Icons.info_outline,
                                   size: 50.0,
-                                  color: Colors.white24,
+                                  color: Colors.orange,
                                 ),
+                                GestureDetector(
+                                    onTap: () {
+                                      Scaffold.of(context).openEndDrawer();
+                                    },
+                                    child: Icon(
+                                      Icons.settings,
+                                      size: 50.0,
+                                      color: Colors.orange,
+                                    )),
                               ],
                             ),
                           ],
@@ -229,62 +249,10 @@ class ShopDrawerWidget extends StatelessWidget {
                           'what can you win?',
                           style: TextStyle(color: Colors.deepPurple),
                         ),
-                        kThingDraco,
-                        kThingBrightPistol,
-                        kThingCaroleLynn,
-                        kThingGrenadeLauncher,
-                        kThingKeltechPistol,
-                        kThingOutlineRay,
-                        kThingPirate,
-                        kThingShortM4,
-                        kBlueGrenade,
-                        kGrenade,
-                        kSharkBomb,
-                        kSciFiGrenade1,
-                        kSciFiGrenade2,
-                        kIcedGrenade,
-                        kCherryBomb1,
-                        kCherryBomb2,
-                        kThingCapPishPish,
-                        kThingDarrenger,
-                        kThingGoldDeagle,
-                        kThingSBR,
-                        kThingToyM4,
-                        kThingBlock9,
-                        kAK47,
-                        kCrazyDraco,
-                        kM203,
-                        kPurpleM4,
-                        kRedM4,
-                        kDoubleBarrel,
-                        kSniperRifle,
-                        WinnableBeastsWidgets(path: 'horseTransparent.gif'),
-
-                        /// silver
-                        WinnableConsoleWidgets(
-                            path: 'futuristicGameConsoleNoLogo2BLANKLOGO.png'),
-                        WinnableConsoleWidgets(
-                            path:
-                                'futuristicGameConsoleNoLogo2BLANKLOGO copy.png'),
-
-                        /// black
-                        WinnableConsoleWidgets(
-                            path:
-                                'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'),
-                        WinnableConsoleWidgets(
-                            path:
-                                'futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'),
-                        WinnableConsoleWidgets(
-                            path:
-                                'futuristicGameConsoleNoLogo2BLANKLOGOPurp.png'),
-                        WinnableShankWidgets(path: 'xxDuctTapeKnife.gif'),
-                        WinnableShankWidgets(path: 'xxBatNails.gif'),
-                        WinnableShankWidgets(path: 'xxBrokenBottle.gif'),
-                        WinnableShankWidgets(path: 'xxCleaver.gif'),
-                        WinnableShankWidgets(path: 'xxHammer.gif'),
-                        WinnableShankWidgets(path: 'xxKnuckleBlade.gif'),
-                        WinnableShankWidgets(path: 'xxNinjaStar.gif'),
-                        WinnableShankWidgets(path: 'xxRedKnucks.gif'),
+                        Column(
+                          children:
+                              context.read<PremiumContentProvider>().winnables,
+                        ),
                       ],
                     ),
                   ],

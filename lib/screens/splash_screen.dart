@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     /// if they are, play background music and
     /// send them to the game play screen
     /// TODO for now, send user straight to game play screen after a delay to display splash screen
-    Timer transitionTimer = Timer(Duration(seconds: 4), () {
+    Timer transitionTimer = Timer(Duration(seconds: 5), () {
       context.read<GameStatusProvider>().fireDoublePointsEffects();
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer imageTimer1a = Timer(Duration(milliseconds: 500), () {
       setState(() {
         // imageFileName = 'caroleLynnRayGun.gif';
-        imageFileName = 'xThingDraco.png';
+        imageFileName = 'zombieChargeT.gif';
 
         fireBallPathTop = 'whiteFireBall.gif';
         fireBallPathBottom = 'whiteFireBall.gif';
@@ -92,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer2 = Timer(Duration(seconds: 2), () {
       setState(() {
-        imageFileName = 'xThingGrenadeLauncher.png';
+        imageFileName = 'xThingRedM4.png';
         fireBallPathTop = 'fireBallXPurple.gif';
 
         fireBallPathBottom = 'fireBallXFlashing.gif';
@@ -109,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer3 = Timer(Duration(seconds: 3), () {
       setState(() {
-        imageFileName = 'caroleLynnRayGun.gif';
+        imageFileName = 'xxNinjaStar.gif';
         fireBallPathTop = 'fireBallXFlashing.gif';
         fireBallPathBottom = 'fireBallXPurple.gif';
       });
@@ -196,13 +196,13 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Container(
                         height: imageFileName == 'thingRightDead.png'
                             ? 300.0
-                            : imageFileName == 'xThingDraco.png'
-                                ? 101.25
+                            : imageFileName == 'zombieChargeT.gif'
+                                ? 300.0
                                 : 150.0,
                         width: imageFileName == 'bloodyThumb.png'
                             ? 200.0
-                            : imageFileName == 'xThingDraco.png'
-                                ? 180.0
+                            : imageFileName == 'xThingRedM4.png'
+                                ? 400.0
                                 : 300.0,
                         decoration: BoxDecoration(
                             image: DecorationImage(

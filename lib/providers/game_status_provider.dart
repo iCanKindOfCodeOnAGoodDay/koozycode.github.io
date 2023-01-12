@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/premium_content_provider.dart';
 import 'package:flappy_taco/widgets/building_widget.dart';
+import 'package:flappy_taco/widgets/bullet_for_magazine_widget.dart';
 import 'package:flappy_taco/widgets/cannon_contact_effect_Columns.dart';
 import 'package:flappy_taco/widgets/cannon_fire.dart';
 import 'package:flappy_taco/widgets/cannon_fire_large_widget.dart';
 import 'package:flappy_taco/widgets/hell_fire_columns.dart';
+import 'package:flappy_taco/widgets/ice_cream_bullet.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_grendade_widget.dart';
 import 'package:flappy_taco/widgets/upside_down_building_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,7 @@ import 'dart:math';
 
 import '../models/sound_model.dart';
 import '../widgets/cannon_ammunition_widget.dart';
+import '../widgets/rotating_icecream_bullet_widget.dart';
 
 /// once the wav files were replaced by the mp3
 /// the app began to freeze very hard
@@ -150,9 +153,16 @@ class GameStatusProvider with ChangeNotifier {
     resetHellFireColumns();
     resetHellFireContactLocations();
     reloadHellFire();
+    _iceCreamBulletIndex = 0;
     _currentAmmunition = AmmoType.orange;
     _currentCannon = CannonType.orange;
-    _cannons = [kLargeHellfireOrange];
+    _cannons = [
+      RotatingIcecreamBullet(
+        path: _iceCreamBullets[0].iceCreamPath,
+        height: 40.0,
+        width: 40.0,
+      )
+    ];
     // _shouldNotTellHellFireToCancelTimer = true;
     hellFirePowerUp();
     // moveHellFire();
@@ -641,28 +651,28 @@ class GameStatusProvider with ChangeNotifier {
     // CannonAmmunition(),
     // CannonAmmunition(),
     // CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
     kblankIcon,
   ];
 
   List<Widget> flamesSecond = [
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
-    CannonAmmunition(),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
     kblankIcon,
   ];
 
@@ -816,6 +826,16 @@ class GameStatusProvider with ChangeNotifier {
   bool get shouldDisplayJustPickedUpCannon => _shouldDisplayJustPickedUpCannon;
 
   void fireJustPickedUpCannon() {
+    if (_iceCreamBulletIndex < _iceCreamBullets.length - 1) {
+      addFreshlyPickedUpIceCreamToGamePlayAreaForRotatingAnimation();
+      _iceCreamBulletIndex++;
+      _iceCreamBulletPath = _iceCreamBullets[_iceCreamBulletIndex].iceCreamPath;
+
+      if (_iceCreamBulletIndex < 7) {
+        _nextIceCreamBulletPath =
+            _iceCreamBullets[_iceCreamBulletIndex + 1].iceCreamPath;
+      }
+    }
     // _score = _score + 50;
     _shouldDisplayJustPickedUpCannon = true;
     notifyListeners();
@@ -972,6 +992,7 @@ class GameStatusProvider with ChangeNotifier {
           fireQuickScream();
 
           print('user got stabbed');
+
           _crashed = true;
           pauseGame();
           notifyListeners();
@@ -1033,7 +1054,13 @@ class GameStatusProvider with ChangeNotifier {
     });
   }
 
-  List<Widget> _cannons = [CannonFireLarge()];
+  List<Widget> _cannons = [
+    RotatingIcecreamBullet(
+      path: 'iceCream1.png',
+      height: 40.0,
+      width: 40.0,
+    )
+  ];
 
   List<Widget> get cannons => _cannons;
 
@@ -1051,27 +1078,27 @@ class GameStatusProvider with ChangeNotifier {
 
     _roundsInMagazine = 18;
     flames = [
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
       kblankIcon,
     ];
     flamesSecond = [
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
-      CannonAmmunition(),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
       kblankIcon,
     ];
     _fullyLoaded = true;
@@ -1083,6 +1110,54 @@ class GameStatusProvider with ChangeNotifier {
   String _cannonPath = 'yellowFireBall3.gif';
 
   String get cannonPath => _cannonPath;
+
+  int _iceCreamBulletIndex = 0;
+
+  int get iceCreamBulletIndex => _iceCreamBulletIndex;
+
+  String _iceCreamBulletPath = 'iceCream1.png';
+
+  String get iceCreamBulletPath => _iceCreamBulletPath;
+
+  String _nextIceCreamBulletPath = 'iceCream2.png';
+
+  String get nextIceCreamBulletPath => _nextIceCreamBulletPath;
+
+  List<IceCreamBullet> _iceCreamBullets = [
+    IceCreamBullet(iceCreamPath: 'iceCream1.png'),
+    IceCreamBullet(iceCreamPath: 'iceCream2.png'),
+    IceCreamBullet(iceCreamPath: 'iceCream3.png'),
+    IceCreamBullet(iceCreamPath: 'iceCream4.png'),
+    IceCreamBullet(iceCreamPath: 'iceCream5.png'),
+    IceCreamBullet(iceCreamPath: 'iceCream6.png'),
+    IceCreamBullet(iceCreamPath: 'iceCream8.png'),
+    IceCreamBullet(iceCreamPath: 'iceCream7.png'),
+    IceCreamBullet(iceCreamPath: 'iceCreamXXX.gif'),
+  ];
+
+  List get iceCreamBullets => _iceCreamBullets;
+
+  List<Widget> _rotatingIceCreamPickups = [];
+
+  List<Widget> get rotatingIceCreamPickups => _rotatingIceCreamPickups;
+
+  void addFreshlyPickedUpIceCreamToGamePlayAreaForRotatingAnimation() {
+    _rotatingIceCreamPickups = [];
+    _rotatingIceCreamPickups.add(
+      Opacity(
+        opacity: .8,
+        child: Center(
+            child: Container(
+                height: 400.0,
+                width: 400.0,
+                child: RotatingIcecreamBullet(
+                  path: '$_iceCreamBulletPath',
+                  height: 400.0,
+                  width: 400.0,
+                ))),
+      ),
+    );
+  }
 
   void contactWithPowerUpChecker() {
     int _gemLocationAtIndexZero = buildings[0].powerUpPosition;
@@ -1098,8 +1173,18 @@ class GameStatusProvider with ChangeNotifier {
         ///hell fire cannon
         if (_currentCannon == CannonType.orange) {
           _currentCannon = CannonType.yellow;
-          _cannons = [kLargeHellfireOrange];
-          _cannons.add(kLargeHellfireYellow);
+          _cannons = [
+            RotatingIcecreamBullet(
+              path: _iceCreamBullets[0].iceCreamPath,
+              height: 40.0,
+              width: 40.0,
+            )
+          ];
+          _cannons.add(RotatingIcecreamBullet(
+            path: _iceCreamBullets[1].iceCreamPath,
+            height: 40.0,
+            width: 40.0,
+          ));
           _currentAmmunition = AmmoType.yellow;
           _cannonPath = 'yellowFireBall3.gif';
 
@@ -1107,36 +1192,54 @@ class GameStatusProvider with ChangeNotifier {
           notifyListeners();
         } else if (_currentCannon == CannonType.yellow) {
           _currentCannon = CannonType.blue;
-          _cannons.add(kLargeHellfireBlue);
+          _cannons.add(RotatingIcecreamBullet(
+            path: _iceCreamBullets[2].iceCreamPath,
+            height: 40.0,
+            width: 40.0,
+          ));
           _currentAmmunition = AmmoType.blue;
           _cannonPath = 'invertGreenFireBall.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.blue) {
           _currentCannon = CannonType.purple;
-          _cannons.add(kLargeHellfirePurple);
+          _cannons.add(RotatingIcecreamBullet(
+            path: _iceCreamBullets[3].iceCreamPath,
+            height: 40.0,
+            width: 40.0,
+          ));
           _currentAmmunition = AmmoType.purple;
           _cannonPath = 'fireBallXPurple.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.purple) {
           _currentCannon = CannonType.flashing;
-          _cannons.add(kLargeHellfireFlashing);
+          _cannons.add(RotatingIcecreamBullet(
+            path: _iceCreamBullets[4].iceCreamPath,
+            height: 40.0,
+            width: 40.0,
+          ));
           _currentAmmunition = AmmoType.flashing;
           _cannonPath = 'fireBallXFlashing2.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.flashing) {
           _currentCannon = CannonType.black;
-          _cannons.add(kLargeHellfireBlack);
           _currentAmmunition = AmmoType.black;
-          _cannonPath = 'blackFireBall.gif';
+          _cannons.add(RotatingIcecreamBullet(
+            path: _iceCreamBullets[5].iceCreamPath,
+            height: 40.0,
+            width: 40.0,
+          ));
 
           notifyListeners();
         } else if (_currentCannon == CannonType.black) {
           _currentCannon = CannonType.white;
-          _cannons.add(kLargeHellfireWhite);
-          _currentAmmunition = AmmoType.white;
+          _cannons.add(RotatingIcecreamBullet(
+            path: _iceCreamBullets[6].iceCreamPath,
+            height: 40.0,
+            width: 40.0,
+          ));
           _cannonPath = 'whiteFireBall.gif';
 
           notifyListeners();
@@ -1145,6 +1248,12 @@ class GameStatusProvider with ChangeNotifier {
           // _currentCannon = CannonType.white;
           // _cannons.add(kLargeHellfireWhite);
           // _currentAmmunition = AmmoType.white;
+          cannons.add(RotatingIcecreamBullet(
+            path: _iceCreamBullets[7].iceCreamPath,
+            height: 40.0,
+            width: 40.0,
+          ));
+
           fireDoublePointsEffects();
 
           notifyListeners();
