@@ -49,14 +49,6 @@ class _RotatingIcecreamBulletState extends State<RotatingIcecreamBullet>
                       image: AssetImage('images/${widget.path}'))),
             ),
           ),
-          // ElevatedButton(
-          //   child: Text("go"),
-          //   onPressed: () => _controller.forward(),
-          // ),
-          // ElevatedButton(
-          //   child: Text("reset"),
-          //   onPressed: () => _controller.reset(),
-          // ),
         ],
       ),
     );

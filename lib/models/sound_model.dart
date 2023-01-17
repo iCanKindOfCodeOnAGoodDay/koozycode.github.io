@@ -46,7 +46,7 @@ class SoundModel {
   void playSpookyMusic(bool hearSoundEffects) async {
     if (hearSoundEffects == true) {
       await spookyMusicPlayer.setLoopMode(LoopMode.one);
-      await spookyMusicPlayer.setAsset('assets/spookyMusic.mp3');
+      await spookyMusicPlayer.setAsset('assets/xAll249.mp3');
       await spookyMusicPlayer.play();
       await spookyMusicPlayer.stop();
       // Stop an

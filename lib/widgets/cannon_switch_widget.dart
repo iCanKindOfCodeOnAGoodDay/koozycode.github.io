@@ -1,6 +1,7 @@
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/premium_content_provider.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
+import 'package:flappy_taco/widgets/power_ups_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
@@ -17,13 +18,6 @@ class CannonSwitch extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'x$remainingAmmo',
-            style: TextStyle(
-                color: Colors.white70,
-                fontSize: 10.0,
-                fontWeight: FontWeight.bold),
-          ),
           Row(
             children: [
               GestureDetector(
@@ -99,6 +93,17 @@ class CannonSwitch extends StatelessWidget {
               ),
               SizedBox(
                 width: 20.0,
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                'x$remainingAmmo',
+                style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),

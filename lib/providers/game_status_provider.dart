@@ -149,11 +149,18 @@ class GameStatusProvider with ChangeNotifier {
     _reverseGameSpeedToDisplayForUserAsTheyProgress = 100;
     _amountOfTimeUserHitDoublePoints = 1;
     _gameSpeed = 150000;
+    _pathToTwentyMMBullet = '20mmOrange.png';
+
     soundModel.playOtherSounds('arcadeStartUp.mp3', _hearSoundEffects);
     resetHellFireColumns();
     resetHellFireContactLocations();
     reloadHellFire();
     _iceCreamBulletIndex = 0;
+    _iceCreamBulletPath = _iceCreamBullets[_iceCreamBulletIndex].iceCreamPath;
+
+    _nextIceCreamBulletPath =
+        _iceCreamBullets[_iceCreamBulletIndex + 1].iceCreamPath;
+
     _currentAmmunition = AmmoType.orange;
     _currentCannon = CannonType.orange;
     _cannons = [
@@ -168,7 +175,7 @@ class GameStatusProvider with ChangeNotifier {
     // moveHellFire();
     nukeList = [];
     // flames = [];
-    extraLives = [];
+    extraLives = [kExtraLife];
     redGems = [];
     colorGems = [];
     _progressMessage = '';
@@ -473,7 +480,7 @@ class GameStatusProvider with ChangeNotifier {
             soundModel.playOtherFive('fireworks.mp3', _hearSoundEffects);
             soundModel.playOtherSix('bulletShot.mp3', _hearSoundEffects);
             fireQuickHorror();
-            pauseGame();
+
             _crashed = true;
             _showADeadHand = true;
             // _isClimbing = true;
@@ -642,7 +649,7 @@ class GameStatusProvider with ChangeNotifier {
 
   List<Widget> colorGems = [];
 
-  List<Widget> extraLives = [];
+  List<Widget> extraLives = [kExtraLife];
 
   List<Widget> flames = [
     // CannonAmmunition(),
@@ -651,28 +658,29 @@ class GameStatusProvider with ChangeNotifier {
     // CannonAmmunition(),
     // CannonAmmunition(),
     // CannonAmmunition(),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
     kblankIcon,
   ];
 
   List<Widget> flamesSecond = [
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
-    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
     kblankIcon,
   ];
 
@@ -765,16 +773,21 @@ class GameStatusProvider with ChangeNotifier {
     });
   }
 
-  bool _shouldDisplayQuickScream = false;
+  bool
+      _shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed =
+      false;
 
-  bool get shouldDisplayQuickScream => _shouldDisplayQuickScream;
+  bool get shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed =>
+      _shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed;
 
-  void fireQuickScream() {
+  void fireQuickScreamWhenUserLosesALifeAndNotARedGemWhenStabbed() {
     // _score = _score + 50;
-    _shouldDisplayQuickScream = true;
+    _shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed =
+        true;
     notifyListeners();
     Future.delayed(Duration(milliseconds: 1200), () {
-      _shouldDisplayQuickScream = false;
+      _shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed =
+          false;
       notifyListeners();
     });
   }
@@ -830,6 +843,8 @@ class GameStatusProvider with ChangeNotifier {
       addFreshlyPickedUpIceCreamToGamePlayAreaForRotatingAnimation();
       _iceCreamBulletIndex++;
       _iceCreamBulletPath = _iceCreamBullets[_iceCreamBulletIndex].iceCreamPath;
+      _iceCreamBulletPathForMagazine =
+          _iceCreamRoundsForMagazine[_iceCreamBulletIndex].iceCreamPath;
 
       if (_iceCreamBulletIndex < 7) {
         _nextIceCreamBulletPath =
@@ -978,6 +993,7 @@ class GameStatusProvider with ChangeNotifier {
     });
   }
 
+  /// negative power ups, knife, beast, time increase.
   void checkForBadPowerUps() {
     int _gemLocationAtIndexZero = buildings[0].powerUpPosition;
 
@@ -985,49 +1001,42 @@ class GameStatusProvider with ChangeNotifier {
         _handPosition == _gemLocationAtIndexZero) {
       if (_gemLocationAtIndexZero == 4 || _gemLocationAtIndexZero == 7) {
         if (redGems.isEmpty && extraLives.isEmpty) {
-          fireQuickScream();
+          // fireQuickScream();
           soundModel.playOtherSounds('jumpScare.mp3', _hearSoundEffects);
           soundModel.playOtherThree(
               'negativePowerupTwo.mp3', _hearSoundEffects);
-          fireQuickScream();
+          fireQuickScreamWhenUserLosesALifeAndNotARedGemWhenStabbed();
+          // fireBloodSplatQuick();
 
-          print('user got stabbed');
+          print('user got stabbed and game over');
 
           _crashed = true;
           pauseGame();
           notifyListeners();
         } else if (redGems.isNotEmpty) {
-          // fireQuickScream();
-
-          // fireBloodSplatQuick();
+          fireQuickScreamWhenUserLosesALifeAndNotARedGemWhenStabbed();
           soundModel.playOtherThree(
               'negativePowerupTwo.mp3', _hearSoundEffects);
 
           redGems.removeAt(redGems.length - 1);
-          print('bandaid stab protection');
-          fireQuickKnifeDefense();
+          print('red gem stab protection - 1 red gem');
+          // fireQuickKnifeDefense();
 
           notifyListeners();
         } else if (extraLives.isNotEmpty) {
-          fireQuickScream();
+          fireQuickScreamWhenUserLosesALifeAndNotARedGemWhenStabbed();
           soundModel.playOtherFour('negativePowerupTwo.mp3', _hearSoundEffects);
 
           extraLives.removeAt(extraLives.length - 1);
-          print('extra lives stab protection');
+          print(
+              'user got stabbed and had no red gems so lost a life but not a game over');
 
           notifyListeners();
         }
       } else if (_gemLocationAtIndexZero == 5) {
-        // soundModel.playOtherSounds('rampage.mp3');
         soundModel.playComedySounds('horseNeigh.mp3', _hearSoundEffects);
         turnOnAndOffSkullBackground();
-        fireBloodSplatQuick();
         soundModel.playOtherThree('negativePowerup.mp3', _hearSoundEffects);
-
-        // fireDoublePointsEffects();
-
-        /// set string value for background image
-        /// or, set a bool to true, then back to false on a delay
       } else if (_gemLocationAtIndexZero == 6) {
         /// show
         fireTimeIncrease();
@@ -1040,10 +1049,12 @@ class GameStatusProvider with ChangeNotifier {
 
   bool get shouldDisplayTimeIncrease => _shouldDisplayTimeIncrease;
 
+  //// rather than speeding game up, slow it down?!?!?!?
+
   void fireTimeIncrease() {
-    _gameSpeed = _gameSpeed - 5000;
+    _gameSpeed = _gameSpeed + 5000;
     _reverseGameSpeedToDisplayForUserAsTheyProgress =
-        _reverseGameSpeedToDisplayForUserAsTheyProgress + 50;
+        _reverseGameSpeedToDisplayForUserAsTheyProgress - 50;
     // _score = _score + 50;
     _shouldDisplayTimeIncrease = true;
     fireDoublePointsEffects();
@@ -1078,27 +1089,27 @@ class GameStatusProvider with ChangeNotifier {
 
     _roundsInMagazine = 18;
     flames = [
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
       kblankIcon,
     ];
     flamesSecond = [
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
-      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPath),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
+      IceCreamBulletForMagazine(iceCreamPath: _iceCreamBulletPathForMagazine),
       kblankIcon,
     ];
     _fullyLoaded = true;
@@ -1123,6 +1134,8 @@ class GameStatusProvider with ChangeNotifier {
 
   String get nextIceCreamBulletPath => _nextIceCreamBulletPath;
 
+  String _iceCreamBulletPathForMagazine = 'iceCream1x.png';
+
   List<IceCreamBullet> _iceCreamBullets = [
     IceCreamBullet(iceCreamPath: 'iceCream1.png'),
     IceCreamBullet(iceCreamPath: 'iceCream2.png'),
@@ -1135,6 +1148,18 @@ class GameStatusProvider with ChangeNotifier {
     IceCreamBullet(iceCreamPath: 'iceCreamXXX.gif'),
   ];
 
+  List<IceCreamBulletForMagazine> _iceCreamRoundsForMagazine = [
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream1x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream2x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream3x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream4x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream5x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream6x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream7x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream8x.png'),
+    IceCreamBulletForMagazine(iceCreamPath: 'iceCream9X.gif'),
+  ];
+
   List get iceCreamBullets => _iceCreamBullets;
 
   List<Widget> _rotatingIceCreamPickups = [];
@@ -1144,20 +1169,26 @@ class GameStatusProvider with ChangeNotifier {
   void addFreshlyPickedUpIceCreamToGamePlayAreaForRotatingAnimation() {
     _rotatingIceCreamPickups = [];
     _rotatingIceCreamPickups.add(
-      Opacity(
-        opacity: .8,
-        child: Center(
-            child: Container(
-                height: 400.0,
-                width: 400.0,
-                child: RotatingIcecreamBullet(
-                  path: '$_iceCreamBulletPath',
-                  height: 400.0,
-                  width: 400.0,
-                ))),
-      ),
+      Center(
+          child: Container(
+              height: 500.0,
+              width: 500.0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RotatingIcecreamBullet(
+                    path: '$_iceCreamBulletPath',
+                    height: 300.0,
+                    width: 300.0,
+                  ),
+                ],
+              ))),
     );
   }
+
+  String _pathToTwentyMMBullet = '20mmOrange.png';
+
+  String get pathToTwentyMMBullet => _pathToTwentyMMBullet;
 
   void contactWithPowerUpChecker() {
     int _gemLocationAtIndexZero = buildings[0].powerUpPosition;
@@ -1187,6 +1218,7 @@ class GameStatusProvider with ChangeNotifier {
           ));
           _currentAmmunition = AmmoType.yellow;
           _cannonPath = 'yellowFireBall3.gif';
+          _pathToTwentyMMBullet = '20mmGreen.png';
 
           /// adds two cannons
           notifyListeners();
@@ -1199,6 +1231,7 @@ class GameStatusProvider with ChangeNotifier {
           ));
           _currentAmmunition = AmmoType.blue;
           _cannonPath = 'invertGreenFireBall.gif';
+          _pathToTwentyMMBullet = '20mmBlue.png';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.blue) {
@@ -1210,6 +1243,7 @@ class GameStatusProvider with ChangeNotifier {
           ));
           _currentAmmunition = AmmoType.purple;
           _cannonPath = 'fireBallXPurple.gif';
+          _pathToTwentyMMBullet = '20mmPurpleBright.png';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.purple) {
@@ -1221,6 +1255,7 @@ class GameStatusProvider with ChangeNotifier {
           ));
           _currentAmmunition = AmmoType.flashing;
           _cannonPath = 'fireBallXFlashing2.gif';
+          _pathToTwentyMMBullet = '20mmRed.png';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.flashing) {
@@ -1231,6 +1266,7 @@ class GameStatusProvider with ChangeNotifier {
             height: 40.0,
             width: 40.0,
           ));
+          _pathToTwentyMMBullet = '20mmBlack.png';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.black) {
@@ -1241,6 +1277,7 @@ class GameStatusProvider with ChangeNotifier {
             width: 40.0,
           ));
           _cannonPath = 'whiteFireBall.gif';
+          _pathToTwentyMMBullet = '20mmWhite.png';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.white) {
@@ -1277,6 +1314,7 @@ class GameStatusProvider with ChangeNotifier {
 
         /// give the user an extra life
         extraLives.add(kExtraLife);
+        fireDoublePointsEffects();
         notifyListeners();
 
         print('user got extra life');
@@ -1285,6 +1323,7 @@ class GameStatusProvider with ChangeNotifier {
         soundModel.playOtherFour('positivePowerupTwo.mp3', _hearSoundEffects);
 
         fireQuickBandaidPickup();
+        fireDoublePointsEffects();
 
         redGems.add(kBlood);
         notifyListeners();

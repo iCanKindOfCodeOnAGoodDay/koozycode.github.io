@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
 import 'package:flappy_taco/screens/game_play_screen.dart';
+import 'package:flappy_taco/widgets/rotating_barrier_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,17 +44,8 @@ class _SplashScreenState extends State<SplashScreen> {
           coinList.insert(
               0,
               (Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Container(
-                    // height: 38.0,
-                    // width: 38.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image:
-                                AssetImage('images/pendantNew14Colors.gif'))),
-                  ),
+                child: RotatingBarrierWidget(
+                  path: 'mmmZombieFuzzyRedXXX.gif',
                 ),
               )));
           setState(() {});
@@ -66,10 +58,10 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer imageTimer1a = Timer(Duration(milliseconds: 500), () {
       setState(() {
         // imageFileName = 'caroleLynnRayGun.gif';
-        imageFileName = 'zombieChargeT.gif';
+        imageFileName = 'mmmTrumpTrollPurpleYellow.gif';
 
-        fireBallPathTop = 'whiteFireBall.gif';
-        fireBallPathBottom = 'whiteFireBall.gif';
+        fireBallPathTop = 'iceCreamXXX.gif';
+        fireBallPathBottom = 'mmmZombieFuzzyRedXXX.gif';
       });
     });
 
@@ -77,41 +69,41 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer imageTimer = Timer(Duration(seconds: 1), () {
       setState(() {
         imageFileName = 'thingStichedWalkingXX.gif';
-        fireBallPathTop = 'fireBallXFlashing.gif';
-        fireBallPathBottom = 'fireBallXPurple.gif';
+        fireBallPathTop = 'mmmZombieFuzzyRedXXX.gif';
+        fireBallPathBottom = 'iceCreamXXX.gif';
       });
     });
 
     Timer imageTimer2a = Timer(Duration(milliseconds: 1500), () {
       setState(() {
         imageFileName = 'thingRightTraced.png';
-        fireBallPathTop = 'fireBallXFlashing.gif';
-        fireBallPathBottom = 'fireBallXPurple.gif';
+        fireBallPathTop = 'consumeJesus-unscreen.gif';
+        fireBallPathBottom = 'consumeJesus-unscreen.gif';
       });
     });
 
     Timer imageTimer2 = Timer(Duration(seconds: 2), () {
       setState(() {
         imageFileName = 'xThingRedM4.png';
-        fireBallPathTop = 'fireBallXPurple.gif';
+        fireBallPathTop = 'hotGothInvert.gif';
 
-        fireBallPathBottom = 'fireBallXFlashing.gif';
+        fireBallPathBottom = 'iceCreamXXX.gif';
       });
     });
 
     Timer imageTimer3a = Timer(Duration(milliseconds: 2500), () {
       setState(() {
         imageFileName = 'bloodyThumb.png';
-        fireBallPathTop = 'whiteFireBall.gif';
-        fireBallPathBottom = 'whiteFireBall.gif';
+        fireBallPathTop = 'mmmPinUpFuzzBlackSkin123.gif';
+        fireBallPathBottom = 'mmmPinUpFuzzBlackSkin123.gif';
       });
     });
 
     Timer imageTimer3 = Timer(Duration(seconds: 3), () {
       setState(() {
         imageFileName = 'xxNinjaStar.gif';
-        fireBallPathTop = 'fireBallXFlashing.gif';
-        fireBallPathBottom = 'fireBallXPurple.gif';
+        fireBallPathTop = 'iceCreamXXX.gif';
+        fireBallPathBottom = 'iceCreamXXX.gif';
       });
     });
   }
@@ -134,20 +126,21 @@ class _SplashScreenState extends State<SplashScreen> {
 
   String imageFileName = "thingStichedWalkingXX.gif";
 
-  String fireBallPathTop = 'fireBallXPurple.gif';
+  String fireBallPathTop = 'mmmMonsterTrumpGreenYellowRed.gif';
 
-  String fireBallPathBottom = 'fireBallXFlashing.gif';
+  String fireBallPathBottom = 'iceCreamXXX.gif';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
-        // decoration: BoxDecoration(
-        //   borderRadius: BorderRadius.circular(20.0),
-        //   image: DecorationImage(
-        //       fit: BoxFit.cover, image: AssetImage('images/redChip.jpg')),
-        // ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('images/12dotSquashSuperDevice.gif')),
+        ),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -196,7 +189,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Container(
                         height: imageFileName == 'thingRightDead.png'
                             ? 300.0
-                            : imageFileName == 'zombieChargeT.gif'
+                            : imageFileName == 'consumeTrumpX3.gif'
                                 ? 300.0
                                 : 150.0,
                         width: imageFileName == 'bloodyThumb.png'

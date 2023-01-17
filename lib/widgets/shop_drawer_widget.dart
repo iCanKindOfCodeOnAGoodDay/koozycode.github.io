@@ -48,9 +48,9 @@ class ShopDrawerWidget extends StatelessWidget {
                                       .amountOfRubiesReadyToUse
                                       .toString(),
                                   style: TextStyle(
-                                      color: Colors.deepPurple,
-                                      fontSize: 10.0,
-                                      fontWeight: FontWeight.bold),
+                                      color: Colors.white,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w800),
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -58,57 +58,57 @@ class ShopDrawerWidget extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              'images/ledScreenBackground.jpg')),
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Container(
-                                      child: Center(
-                                        child: Text(
-                                          'console:',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                Container(
-                                  height: 80,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'images/redChip.jpg'))),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(1.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              fit: BoxFit.fitWidth,
-                                              image: AssetImage(
-                                                  'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}'))),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.start,
+                            //   crossAxisAlignment: CrossAxisAlignment.center,
+                            //   children: [
+                            //     // Container(
+                            //     //   decoration: BoxDecoration(
+                            //     //       image: DecorationImage(
+                            //     //           fit: BoxFit.cover,
+                            //     //           image: AssetImage(
+                            //     //               'images/ledScreenBackground.jpg')),
+                            //     //       borderRadius:
+                            //     //           BorderRadius.circular(10.0)),
+                            //     //   child: Padding(
+                            //     //     padding: const EdgeInsets.all(2.0),
+                            //     //     child: Container(
+                            //     //       child: Center(
+                            //     //         child: Text(
+                            //     //           'console:',
+                            //     //           style: TextStyle(
+                            //     //               color: Colors.white,
+                            //     //               fontSize: 20.0,
+                            //     //               fontWeight: FontWeight.w700),
+                            //     //         ),
+                            //     //       ),
+                            //     //     ),
+                            //     //   ),
+                            //     // ),
+                            //     // SizedBox(
+                            //     //   width: 10.0,
+                            //     // ),
+                            //     // Container(
+                            //     //   height: 80,
+                            //     //   width: 60,
+                            //     //   decoration: BoxDecoration(
+                            //     //       borderRadius: BorderRadius.circular(10),
+                            //     //       image: DecorationImage(
+                            //     //           image: AssetImage(
+                            //     //               'images/redChip.jpg'))),
+                            //     //   child: Padding(
+                            //     //     padding: const EdgeInsets.all(1.0),
+                            //     //     child: Container(
+                            //     //       decoration: BoxDecoration(
+                            //     //           image: DecorationImage(
+                            //     //               fit: BoxFit.fitWidth,
+                            //     //               image: AssetImage(
+                            //     //                   'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}'))),
+                            //     //     ),
+                            //     //   ),
+                            //     // ),
+                            //   ],
+                            // ),
                           ],
                         ),
                         Column(
@@ -179,14 +179,14 @@ class ShopDrawerWidget extends StatelessWidget {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Colors.deepOrange,
+                                color: Colors.black,
                                 borderRadius: BorderRadius.circular(10.0)),
                             child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
                                     FlashingText(
-                                      text: 'Open Gangsta Gats Chest?',
+                                      text: 'Open Gothic Gear Chest?',
                                     ),
                                   ],
                                 )),
@@ -206,11 +206,48 @@ class ShopDrawerWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<PremiumContentProvider>()
+                                  .addAllSkeletonGatsAsAvailableForTesting();
+                            },
+                            child: context
+                                        .watch<PremiumContentProvider>()
+                                        .addedAllSkeletonGuns ==
+                                    false
+                                ? Container(
+                                    color: Colors.purple,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'press to add all free!',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10.0,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    color: Colors.black,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'clear for testing!',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10.0,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                    ),
+                                  )),
                         Text(
                           'available:',
                           style: TextStyle(
-                            color: Colors.deepPurple,
-                          ),
+                              color: Colors.white,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.w800),
                         ),
                         Column(
                           children: context
@@ -225,8 +262,9 @@ class ShopDrawerWidget extends StatelessWidget {
                         Text(
                           'bloods:',
                           style: TextStyle(
-                            color: Colors.deepPurple,
-                          ),
+                              color: Colors.white,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.w800),
                         ),
                         Column(children: [kBlood, kBlood, kBlood]),
                       ],
@@ -237,8 +275,9 @@ class ShopDrawerWidget extends StatelessWidget {
                         Text(
                           'lifes:',
                           style: TextStyle(
-                            color: Colors.deepPurple,
-                          ),
+                              color: Colors.white,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.w800),
                         ),
                         Column(children: [kThingFalling, kThingFalling]),
                       ],
@@ -247,7 +286,10 @@ class ShopDrawerWidget extends StatelessWidget {
                       children: [
                         Text(
                           'what can you win?',
-                          style: TextStyle(color: Colors.deepPurple),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.w800),
                         ),
                         Column(
                           children:

@@ -1,3 +1,4 @@
+import 'package:flappy_taco/widgets/power_ups_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,9 +19,14 @@ class SecondPowerUps extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: context.watch<GameStatusProvider>().flames,
+              children: [
+                Row(
+                  children: context.watch<GameStatusProvider>().flames,
 
-              /// flames
+                  /// flames
+                ),
+                PowerUps(),
+              ],
             ),
             Row(
               children: context.watch<GameStatusProvider>().flamesSecond,

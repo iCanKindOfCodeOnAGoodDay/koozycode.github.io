@@ -8,6 +8,29 @@ import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
+import 'package:flappy_taco/widgets/selected_winnables/skeleton_finger_gun_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_dead_widget_dynamic.dart';
+import 'package:flappy_taco/widgets/selected_winnables/thing_walking_widget_dynamic.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -29,10 +52,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -45,10 +68,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -61,10 +84,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -77,10 +100,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -93,10 +116,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -109,10 +132,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -125,10 +148,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -141,10 +164,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -157,10 +180,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -173,10 +196,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -189,10 +212,10 @@ class HandColumn extends StatelessWidget {
                             .watch<GameStatusProvider>()
                             .triedFiringWhenOutOfAmmo ==
                         true
-                    ? kThingDead
-                    : context.watch<GameStatusProvider>().showADeadHand == true
-                        ? kThingDead
-                        : kThingFalling
+                    ? SkeletonFingerGunWidget()
+                    : context.watch<GameStatusProvider>().showADeadHand == false
+                        ? ThingWalkingDynamicWidget()
+                        : ThingDeadDynamicWidget()
             : Icon(
                 Icons.circle,
                 color: position == 11 ? kBlankSquare : kBlankColor,
@@ -201,7 +224,7 @@ class HandColumn extends StatelessWidget {
         // position == 0
         //     ? context.watch<GameStatusProvider>().isClimbing == true
         //         ? kThing
-        //         : kThingFalling
+        //         : ThingDeadDynamicWidget(
         //     : Icon(
         //         Icons.circle,
         //         color: position == 11 ? kBlankSquare : kBlankColor,

@@ -29,65 +29,30 @@ class GamePlayAreaWidget extends StatelessWidget {
           decoration: BoxDecoration(
             // color: Colors.black,
             borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: context
-                            .watch<GameStatusProvider>()
-                            .showSkullBackground ==
+            image: context
+                        .read<GameStatusProvider>()
+                        .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
+                    true
+                ? DecorationImage(
+                    image: AssetImage(
+                        'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}'))
+                : context.watch<GameStatusProvider>().showSkullBackground ==
                         true
-                    ? AssetImage(
-                        // 'images/horseThree.gif',
-                        'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}',
-                      )
+                    ? DecorationImage(
+                        image: AssetImage(
+                            'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}'))
                     : context
                                 .watch<GameStatusProvider>()
-                                .shouldDisplayDoublePointsEffects ==
+                                .shouldDisplayTimeIncrease ==
                             true
-                        ? AssetImage(
-                            // 'images/enlessColorHoleRecoloredYellowOrange.gif',
-                            // 'images/fireFrameOptimized.gif'
-                            'images/ledScreenBackground.jpg',
-                          )
-                        : context
-                                    .watch<GameStatusProvider>()
-                                    .shouldDisplayQuickLifePickup ==
-                                true
-                            ? AssetImage(
-                                'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
-                            : context
-                                        .watch<GameStatusProvider>()
-                                        .shouldDisplayBandaidPickup ==
-                                    true
-                                ? AssetImage(
-                                    'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
-                                // : context
-                                //             .watch<GameStatusProvider>()
-                                //             .shouldDisplayJustPickedUpCannon ==
-                                //         true
-                                //     ? AssetImage(
-                                //         'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
-                                // : context
-                                //             .watch<GameStatusProvider>()
-                                //             .shouldDisplayBloodSplatQuick ==
-                                //         true
-                                //     // ? AssetImage('images/21SavageEnglish2.gif')
-                                //     ? AssetImage('images/black.png')
-                                : context
-                                            .watch<GameStatusProvider>()
-                                            .shouldDisplayQuickScream ==
-                                        true
-                                    ? AssetImage(
-                                        'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}')
-
-                                    // ? AssetImage('images/21SavageEnglish2.gif')
-                                    : context
-                                                .watch<GameStatusProvider>()
-                                                .crashed ==
-                                            false
-                                        ? AssetImage(
-                                            'images/ledScreenBackground.jpg')
-                                        : AssetImage(
-                                            'images/ledScreenBackground.jpg')),
+                        ? DecorationImage(
+                            image: AssetImage(
+                            'images/crystalBallLargeScreen.gif',
+                          ))
+                        : DecorationImage(
+                            fit: BoxFit.cover,
+                            image:
+                                AssetImage('images/ledScreenBackground.jpg')),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -95,104 +60,143 @@ class GamePlayAreaWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: context.watch<GameStatusProvider>().showSkullBackground ==
+                  image: context
+                              .read<GameStatusProvider>()
+                              .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
                           true
                       ? AssetImage('images/blood2.gif')
-
-                      // : AssetImage('images/fire.gif'),
-
                       : context
                                   .watch<GameStatusProvider>()
-                                  .shouldDisplayTimeIncrease ==
+                                  .showSkullBackground ==
                               true
                           ? AssetImage(
-                              // 'images/hhWarp3.GIF',
-                              'images/warpSpeedBlack.gif',
-                            )
-                          // : context
-                          //             .watch<GameStatusProvider>()
-                          //             .shouldDisplayJustPickedUpCannon ==
-                          //         true
-                          //     ? AssetImage(
-                          //         'images/${context.watch<GameStatusProvider>().iceCreamBulletPath}')
+                              'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}')
                           : context
                                       .watch<GameStatusProvider>()
-                                      .shouldDisplayQuickHorror ==
+                                      .shouldDisplayTimeIncrease ==
                                   true
-                              ? AssetImage('images/blood2.gif')
+                              ? AssetImage(
+                                  // 'images/hhWarp3.GIF',
+                                  // 'images/ravenSkullSpeedUp.gif',
+                                  'images/crystalBallLargeScreen.gif',
+                                )
                               : context
                                           .watch<GameStatusProvider>()
-                                          .shouldDisplayQuickScream ==
+                                          .shouldDisplayExplosion2 ==
                                       true
-                                  ? AssetImage('images/blood2.gif')
+                                  ? AssetImage(
+                                      'images/explosionFlames.gif',
+                                      // 'images/macGruberGunshots.gif',
+                                    )
                                   : context
                                               .watch<GameStatusProvider>()
-                                              .shouldDisplayBloodSplatQuick ==
+                                              .shouldDisplayKnifeDefense ==
                                           true
-                                      ? AssetImage('images/blood2.gif')
+                                      ? AssetImage(
+                                          'images/psychadelic.gif',
+                                        )
                                       : context
                                                   .watch<GameStatusProvider>()
-                                                  .shouldDisplayExplosion2 ==
+                                                  .shouldDisplayExplosion1 ==
                                               true
                                           ? AssetImage(
+                                              // 'images/horseTwoLegs.gif',
                                               'images/explosionFlames.gif',
-                                              // 'images/macGruberGunshots.gif',
+                                              // 'images/horseRidingPeople.gif',
                                             )
                                           : context
                                                       .watch<
                                                           GameStatusProvider>()
-                                                      .shouldDisplayBandaidPickup ==
-                                                  true
+                                                      .crashed ==
+                                                  false
+                                              // ? AssetImage('images/fire.gif')
                                               ? AssetImage(
-                                                  'images/zombieHandReach.gif',
-                                                  // 'images/wonderWomanShield.gif',
+                                                  'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
 
-                                                  /// the below wonder woman image will be used when a knife defense has been succesfully activitated
-                                                  /// /// and the one wee are using above is displayed upon powerup pickups
-                                                  // 'images/wonderWomanShield2.gif',
-                                                  // 'images/swordSelfRespect.gif',
-                                                )
-                                              : context
-                                                          .watch<
-                                                              GameStatusProvider>()
-                                                          .shouldDisplayKnifeDefense ==
-                                                      true
-                                                  ? AssetImage(
-                                                      'images/wonderWomanShield2.gif',
-                                                    )
-                                                  : context
-                                                              .watch<GameStatusProvider>()
-                                                              .shouldDisplayExplosion1 ==
-                                                          true
-                                                      ? AssetImage(
-                                                          // 'images/horseTwoLegs.gif',
-                                                          'images/explosionFlames.gif',
-                                                          // 'images/horseRidingPeople.gif',
-                                                        )
-                                                      : context.watch<GameStatusProvider>().shouldDisplayQuickLifePickup == true
-                                                          ? AssetImage(
-                                                              // 'images/coinDropHearts.GIF',
-                                                              // 'images/coinFlip.gif',
-                                                              // 'images/thingRightTraced.png',
-                                                              'images/zombieHandReach.gif',
-
-                                                              // 'images/sparklingDiamondsPowerUp.gif',
-                                                              // 'images/thingWalkingLeft.gif',
-                                                              // 'images/rayGunPimpedEnergy.gif',
-                                                            )
-                                                          : context.watch<GameStatusProvider>().crashed == false
-                                                              // ? AssetImage('images/fire.gif')
-                                                              ? AssetImage('images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
-
-                                                              // blackWater.gif
-                                                              : AssetImage('images/gameOver.GIF'),
+                                              // blackWater.gif
+                                              : AssetImage(
+                                                  'images/gameOver.GIF'),
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Container(
+                decoration: context
+                            .read<GameStatusProvider>()
+                            .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
+                        true
+                    ? BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                                'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}')))
+                    : context.read<GameStatusProvider>().shouldDisplayQuickLifePickup ==
+                            true
+                        ? BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image:
+                                    AssetImage('images/zombieHandReach.gif')))
+                        : context.read<GameStatusProvider>().shouldDisplayBandaidPickup ==
+                                true
+                            ? BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: AssetImage(
+                                        'images/christopherScottWhite.gif')))
+                            : context.read<GameStatusProvider>().shouldDisplayBloodSplatQuick ==
+                                    true
+                                ? BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: AssetImage('images/blood2.gif')))
+                                : context
+                                            .read<GameStatusProvider>()
+                                            .shouldDisplayQuickHorror ==
+                                        true
+                                    ? BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: AssetImage('images/blood2.gif')))
+                                    : BoxDecoration(),
+                child: Container(
+                  decoration: context
+                              .read<GameStatusProvider>()
+                              .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
+                          true
+                      ? BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}')))
+                      : context
+                                  .watch<GameStatusProvider>()
+                                  .showSkullBackground ==
+                              true
+                          ? BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}')))
+                          : BoxDecoration(),
+                  child: Opacity(
+                    opacity: .75,
+                    child: Container(
+                      decoration: context
+                                  .read<GameStatusProvider>()
+                                  .shouldDisplayBandaidPickup ==
+                              true
+                          ? BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage('images/blood2White2.gif')))
+                          : BoxDecoration(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                /// buildlings
-                children: context.watch<GameStatusProvider>().buildings,
+                        /// buildlings
+                        children: context.watch<GameStatusProvider>().buildings,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),

@@ -14,7 +14,9 @@ class IceCreamBulletForMagazine extends StatelessWidget {
       width: 33,
       decoration: BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.contain, image: AssetImage('images/$iceCreamPath'))),
+              fit: BoxFit.contain,
+              alignment: Alignment.center,
+              image: AssetImage('images/$iceCreamPath'))),
     );
   }
 }

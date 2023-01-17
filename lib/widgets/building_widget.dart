@@ -1,5 +1,6 @@
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
+import 'package:flappy_taco/providers/premium_content_provider.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
 import 'package:flappy_taco/widgets/cannon_ammunition_widget.dart';
 import 'package:flappy_taco/widgets/development_block_widget.dart';
@@ -17,7 +18,9 @@ import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
 import 'package:flappy_taco/widgets/ice_cream_bullet.dart';
+import 'package:flappy_taco/widgets/rotating_barrier_widget.dart';
 import 'package:flappy_taco/widgets/rotating_icecream_bullet_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/hand_walking_left_widgets.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
@@ -76,7 +79,7 @@ class BuildingWidget extends StatelessWidget {
                   /// the hand can fall down to 1, and climb up to 10
                   ///                   kblankIcon,
                   powerUpPosition == 10 ? kBlood : kblankIcon,
-                  powerUpPosition == 9 ? kExtraLife : kblankIcon,
+                  powerUpPosition == 9 ? HandWalkingLeftWidgets() : kblankIcon,
                   powerUpPosition == 8
                       ? SelectedGrenadeWidget(
                           onScreenPickupAndNotAGrenadeButton: true,
@@ -116,22 +119,40 @@ class BuildingWidget extends StatelessWidget {
                       DevelopmentBlock(color: kBlankColor),
                       DevelopmentBlock(color: kBlankColor),
                       buildingHeight >= 5
-                          ? SelectedBarrierWidget()
+                          ? RotatingBarrierWidget(
+                              path:
+                                  '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                            )
                           : kblankIcon,
                       buildingHeight >= 4
-                          ? SelectedBarrierWidget()
+                          ? RotatingBarrierWidget(
+                              path:
+                                  '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                            )
                           : kblankIcon,
                       buildingHeight >= 3
-                          ? SelectedBarrierWidget()
+                          ? RotatingBarrierWidget(
+                              path:
+                                  '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                            )
                           : kblankIcon,
                       buildingHeight >= 2
-                          ? SelectedBarrierWidget()
+                          ? RotatingBarrierWidget(
+                              path:
+                                  '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                            )
                           : kblankIcon,
                       buildingHeight >= 1
-                          ? SelectedBarrierWidget()
+                          ? RotatingBarrierWidget(
+                              path:
+                                  '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                            )
                           : kblankIcon,
                       buildingHeight >= 0
-                          ? SelectedBarrierWidget()
+                          ? RotatingBarrierWidget(
+                              path:
+                                  '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                            )
                           : kblankIcon,
                     ],
                   )
@@ -162,27 +183,76 @@ class BuildingWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           buildingHeight <= 12
-                              ? SelectedBarrierWidget()
+                              ? Transform.scale(
+                                  scaleY: -1,
+                                  // angle: 180.0,
+                                  child: RotatingBarrierWidget(
+                                    path:
+                                        '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                                  ),
+                                )
                               : kblankIcon,
                           buildingHeight <= 11
-                              ? SelectedBarrierWidget()
+                              ? Transform.scale(
+                                  scaleY: -1,
+                                  // angle: 180.0,
+                                  child: RotatingBarrierWidget(
+                                    path:
+                                        '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                                  ),
+                                )
                               : kblankIcon,
                           // SelectedBarrierWidget(),
                           // SelectedBarrierWidget(),
                           buildingHeight <= 10
-                              ? SelectedBarrierWidget()
+                              ? Transform.scale(
+                                  scaleY: -1,
+                                  // angle: 180.0,
+                                  child: RotatingBarrierWidget(
+                                    path:
+                                        '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                                  ),
+                                )
                               : kblankIcon,
                           buildingHeight <= 9
-                              ? SelectedBarrierWidget()
+                              ? Transform.scale(
+                                  scaleY: -1,
+                                  // angle: 180.0,
+                                  child: RotatingBarrierWidget(
+                                    path:
+                                        '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                                  ),
+                                )
                               : kblankIcon,
                           buildingHeight <= 8
-                              ? SelectedBarrierWidget()
+                              ? Transform.scale(
+                                  scaleY: -1,
+                                  // angle: 180.0,
+                                  child: RotatingBarrierWidget(
+                                    path:
+                                        '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                                  ),
+                                )
                               : kblankIcon,
                           buildingHeight <= 7
-                              ? SelectedBarrierWidget()
+                              ? Transform.scale(
+                                  scaleY: -1,
+                                  // angle: 180.0,
+                                  child: RotatingBarrierWidget(
+                                    path:
+                                        '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                                  ),
+                                )
                               : kblankIcon,
                           buildingHeight <= 6
-                              ? SelectedBarrierWidget()
+                              ? Transform.scale(
+                                  scaleY: -1,
+                                  // angle: 180.0,
+                                  child: RotatingBarrierWidget(
+                                    path:
+                                        '${context.watch<PremiumContentProvider>().pathToSelectedBarrier}',
+                                  ),
+                                )
                               : kblankIcon,
                           DevelopmentBlock(color: kBlankColor),
                           DevelopmentBlock(color: kBlankColor),

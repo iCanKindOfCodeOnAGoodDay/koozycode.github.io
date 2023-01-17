@@ -359,6 +359,51 @@ Container kThingFalling = Container(
           image: AssetImage('images/thingStichedWalkingXX.gif'))),
 );
 
+Container kThingDeadSkeleton = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage('images/thingSkelletonDead.png'))),
+);
+
+Container kThingFallingSkeleton = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage('images/skelletonThing.gif'))),
+);
+
+Container kThingWalkingLeftSkeletonAndSkinCombo = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage('images/rrrSkinSkeletonLeft.gif'))),
+);
+
+Container kThingWalkingLeftSkeletonOnly = Container(
+  height: 40.0,
+  width: 40.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage('images/rrrSkeletonWalkingLeft.gif'))),
+);
+
+Container kSkeletonFingerGun = Container(
+  height: 80.0,
+  width: 80.0,
+  decoration: BoxDecoration(
+      image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage('images/rrrHandGunXRay.png'))),
+);
+
 Container kSkullCoin = Container(
   height: 30.0,
   width: 30.0,

@@ -19,85 +19,83 @@ class GameControlsWidgets extends StatelessWidget {
       children: [
         /// reload switch
         Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            Hero(
+              tag: 'fireBall',
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: context.watch<GameStatusProvider>().cannons,
+              ),
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: CannonSwitch(
-                        cannonIsLoaded:
-                            context.watch<GameStatusProvider>().fullyLoaded,
-                        remainingAmmo: context
-                            .watch<GameStatusProvider>()
-                            .roundsInMagazine,
-                      ),
-                    ),
-                    PowerUps(),
-                    Hero(
-                      tag: 'fireBall',
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: context.watch<GameStatusProvider>().cannons,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Multiplier: ${context.watch<GameStatusProvider>().amountOfTimeUserHitDoublePoints.toString()}x',
-                          style: TextStyle(
-                              color: Colors.yellow,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 8.0),
-                        ),
-                        Text(
-                          'Hit: ${context.watch<GameStatusProvider>().basePointsForHittingBarrier.toString()}',
-                          style: TextStyle(
-                              color: Colors.yellow,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 8.0),
-                        ),
-                      ],
-                    ),
-                  ],
+                Text(
+                  'Multiplier: ${context.watch<GameStatusProvider>().amountOfTimeUserHitDoublePoints.toString()}x',
+                  style: TextStyle(
+                      color: Colors.yellow,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 8.0),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Speed: ${context.watch<GameStatusProvider>().reverseGameSpeedToDisplayForUserAsTheyProgress.toString()}',
-                        style: TextStyle(
-                            color: context
-                                        .watch<GameStatusProvider>()
-                                        .shouldDisplayTimeIncrease ==
-                                    false
-                                ? Colors.yellow
-                                : kTransparent,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 8.0),
-                      ),
-                      context
-                                  .watch<GameStatusProvider>()
-                                  .shouldDisplayTimeIncrease ==
-                              true
-                          ? FlashingText(text: '+ 50')
-                          : Container(),
-                    ],
-                  ),
+                Text(
+                  'Hit: ${context.watch<GameStatusProvider>().basePointsForHittingBarrier.toString()}',
+                  style: TextStyle(
+                      color: Colors.yellow,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 8.0),
                 ),
               ],
             ),
           ],
         ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: CannonSwitch(
+                    cannonIsLoaded:
+                        context.watch<GameStatusProvider>().fullyLoaded,
+                    remainingAmmo:
+                        context.watch<GameStatusProvider>().roundsInMagazine,
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0),
+              child: Row(
+                children: [
+                  Text(
+                    'Speed: ${context.watch<GameStatusProvider>().reverseGameSpeedToDisplayForUserAsTheyProgress.toString()}',
+                    style: TextStyle(
+                        color: context
+                                    .watch<GameStatusProvider>()
+                                    .shouldDisplayTimeIncrease ==
+                                false
+                            ? Colors.yellow
+                            : kTransparent,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 8.0),
+                  ),
+                  context
+                              .watch<GameStatusProvider>()
+                              .shouldDisplayTimeIncrease ==
+                          true
+                      ? FlashingText(text: '+ 50')
+                      : Container(),
+                ],
+              ),
+            ),
+          ],
+        ),
 
         Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             context.watch<GameStatusProvider>().nukeList.isNotEmpty == true
                 ? GestureDetector(

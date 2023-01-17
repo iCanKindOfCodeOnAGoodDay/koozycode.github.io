@@ -11,6 +11,8 @@ import '../widgets/winnables/winnable_beasts.dart';
 import '../widgets/winnables/winnable_consoles.dart';
 import '../widgets/winnables/winnable_shanks.dart';
 
+//// latest import file names
+
 enum PremiumContentType {
   gat,
   grenade,
@@ -50,8 +52,95 @@ enum PremiumContentType {
 // }
 
 class PremiumContentProvider with ChangeNotifier {
-  String _pathToSelectedBarrier = 'consumeTrumpX3.gif';
+  String _pathToSelectedBarrier = 'mmmZombieFuzzyPink.gif';
   // String _pathToSelectedBarrier = 'zombieHandXX.gif';
+
+  bool _activatedSkeletonHand = false;
+
+  bool get activatedSkeletonHand => _activatedSkeletonHand;
+
+  void toggleSkeletonHand() {
+    _activatedSkeletonHand = !_activatedSkeletonHand;
+    notifyListeners();
+  }
+
+  bool _activated20MMAmmo = false;
+
+  bool get activated20MMAmmo => _activated20MMAmmo;
+
+  void toggle20MMAmmo() {
+    _activatedShankShooter = false;
+    _activated40MMAmmo = false;
+    _activatedColorChangingBullets = false;
+    _activated20MMAmmo = !_activated20MMAmmo;
+    notifyListeners();
+  }
+
+  bool _activated40MMAmmo = false;
+
+  bool get activated40MMAmmo => _activated40MMAmmo;
+
+  void toggle40MMAmmo() {
+    _activatedShankShooter = false;
+    _activated20MMAmmo = false;
+    _activated40MMAmmo = !_activated40MMAmmo;
+    notifyListeners();
+  }
+
+  bool _activatedColorChangingBullets = false;
+
+  bool get activatedColorChangingBullets => _activatedColorChangingBullets;
+
+  void toggleColorChangingAmmo() {
+    _activatedShankShooter = false;
+    _activated20MMAmmo = false;
+    _activated40MMAmmo = false;
+    _activatedColorChangingBullets = !_activatedColorChangingBullets;
+    notifyListeners();
+  }
+
+  bool _activatedExplodingAmmo = false;
+
+  bool get activatedExplodingAmmo => _activatedExplodingAmmo;
+
+  void toggleExplodingAmmo() {
+    _activatedExplodingAmmo = !_activatedExplodingAmmo;
+    notifyListeners();
+  }
+
+  bool _activatedExplodingRecoil = false;
+
+  bool get activatedExplodingRecoil => _activatedExplodingRecoil;
+
+  void toggleExplodingRecoil() {
+    _activatedExplodingRecoil = !_activatedExplodingRecoil;
+    _activatedShellCasingsInsteadOfSparks = false;
+    notifyListeners();
+  }
+
+  bool _activatedShankShooter = false;
+
+  bool get activatedShankShooter => _activatedShankShooter;
+
+  void toggleShankShooter() {
+    _activated20MMAmmo = false;
+    _activated40MMAmmo = false;
+    _activatedColorChangingBullets = false;
+    _activatedShankShooter = !_activatedShankShooter;
+    notifyListeners();
+  }
+
+  bool _activatedShellCasingsInsteadOfSparks = false;
+
+  bool get activatedShellCasingsInsteadOfSparks =>
+      _activatedShellCasingsInsteadOfSparks;
+
+  void toggleShellCasingsInsteadOfSparks() {
+    _activatedShellCasingsInsteadOfSparks =
+        !_activatedShellCasingsInsteadOfSparks;
+    _activatedExplodingRecoil = false;
+    notifyListeners();
+  }
 
   String get pathToSelectedBarrier => _pathToSelectedBarrier;
 
@@ -60,24 +149,215 @@ class PremiumContentProvider with ChangeNotifier {
   int get iterateThroughBarrierIndex => _iterateThroughBarrierIndex;
 
   List<String> _barrierFileNames = [
-    'zombieChargeT.gif',
-    'consumeBaskin-unscreen.gif',
-    'consumeBieber-unscreen.gif',
-    'consumeHillary-unscreen.gif',
+    // 'mmFastTrollBlackWhite.gif',
+    // 'mmFastTrollCard0.gif',
+    // 'mmFastTrollCard5.gif',
+    // 'mmFastTrollGray.gif',
+    // 'mmFastTrollInvert.gif',
+    // 'mmFrankensteinBlackCardNoAngle.gif',
+    // 'mmFrankensteinPolaroid.gif',
+    // 'mmGoblinBright.gif',
+    // 'mmGoblinBrightInvert.gif',
+    // 'mmGoblinBrightInvertGrayScale.gif',
+    // 'mmGoblinCardProfile.gif',
+    // 'mmGoblinGreyScale.gif',
+    // 'mmInvertFrankenstein.gif',
+    'mmJakFuzzy.gif',
+    'mmjakFuzzyBlack.gif',
+    'mmJakFuzzyBlackWhite.gif',
+    'mmJakFuzzyBlackWhite2.gif',
+    'mmjakFuzzyInvertBlack.gif',
+    'mmjakFuzzyInvertBlack2.gif',
+    'mmjakFuzzyInvertBlue.gif',
+    'mmjakFuzzyInvertGreen.gif',
+    'mmjakFuzzyInvertPink.gif',
+    'mmjakFuzzyInvertRed.gif',
+    'mmjakFuzzyPurple.gif',
+    'mmjakFuzzyRed.gif',
+    'mmjakFuzzyYellow.gif',
+    // 'mmJakInvert.gif',
+    // 'mmPinup.gif',
+    // 'mmPinupBlackCard0Green.gif',
+    // 'mmPinupBlackSkin.gif',
+    // 'mmPinupBlackSkinCard0.gif',
+    // 'mmPinupBlackSkinCard5.gif',
+    'mmPinupBlueSkinFuzzy.gif',
+    // 'mmPinupCard0.gif',
+    // 'mmPinupCard0Red.gif',
+    // 'mmPinupCard5.gif',
+    // 'mmPinupCard5Red.gif',
+    // 'mmPinupGreenBlackCard5.gif',
+    // 'mmPinupGreenInvert.gif',
+    // 'mmPinupInvert.gif',
+    'mmPinupPitchBlackSkinFuzzy.gif',
+    // 'mmPinupPurpleSkin.gif',
+    // 'mmPinupPurpleSkin5card.gif',
+    // 'mmPinupPurpleSkinFuzzy0.gif',
+    'mmPinupPurpleSkinFuzzy5.gif',
+    // 'mmPinupRedInvert.gif',
+    // 'mmPinupRedWhiteBlue.gif',
+    // 'mmPinupRedWhiteBlueBlackCard0.gif',
+    'mmPinupRedWhiteBlueBlackCardFuzzy.gif',
+    // 'mmPinupWhiteHair.gif',
+    'mmPinupWhiteHairFuzzy.gif',
+    'mmPinupWhiteHairFuzzyX.gif',
+    'mmmPinUpFuzzBlackSkin.gif',
+    'mmmPinUpFuzzBlackSkin123.gif',
+    'mmmPinUpFuzzBlackSkin444.gif',
+    'mmmPinUpFuzzBlackSkinXX.gif',
+    'mmmPinUpFuzzy1.gif',
+    // 'mmPixelWolf.gif',
+    // 'mmPixelWolfGotham.gif',
+    // 'mmPixelWolfGotham2.gif',
+    // 'mmPixelWolfInvert.gif',
+    // 'mmPolarideGreenTroll.gif',
+    // 'mmPurpVampire.gif',
+    // 'mmPurpVampireCard5.gif',
+    // 'mmRedVampireCard0.gif',
+    // 'mmRedVampireCard5.gif',
+    // 'mmStandardFrankenstein.gif',
+    // 'mmStandardTroll.gif',
+    // 'mmVampireRed.gif',
+    // 'mmVampireWhite.gif',
+    // 'mmWhiteBlackVampire.gif',
+    // 'mmWhiteBlackVampireCard.gif',
+    // 'mmZombieChargeInvert.gif',
+    // 'mmZombieChargeInvertBlack.gif',
+    // 'mmZombieChargeInvertBlackBlack.gif',
+    // 'mmZombieChargeInvertBlackBlackCard.gif',
+    // 'mmZombieChargeInvertBlackCard5.gif',
+    // 'mmZombieChargeInvertCard0.gif',
+    // 'mmZombieChargeInvertCard5.gif',
+    // 'mmZombieChargeInvertCard5Gray.gif',
+    // 'mmZombieChargeInvertGray.gif',
+    // 'mmZombieChargeInvertLightPink.gif',
+    // 'mmZombieChargeInvertLightPinkCard.gif',
+    // 'mmZombieChargeInvertPink.gif',
+    // 'mmZombieChargeInvertPinkCard5.gif',
+    // 'mmZombieChargeInvertPitchBlack.gif',
+    // 'mmZombieChargeInvertPitchBlackCard.gif',
+    // 'mmZombieChargeInvertPitchWhite.gif',
+    // 'mmZombieChargeInvertPitchWhiteBlackCard.gif',
+    // 'mmZombieChargeInvertPurp.gif',
+    // 'mmZombieChargeInvertPurp2.gif',
+
+    // 'mmZombieChargeInvertPurpCard5.gif',
+    // 'mmZombieChargeInvertPurplecard52.gif',
+    // 'mmZombieChargeInvertRed.gif',
+    // 'mmZombieChargeInvertRedCard0.gif',
+    // 'mmZombieChargeInvertRedCard5.gif',
+
+    //// new imports
+    // 'mmmFrankensteinBlackxxxx.gif',
+    // 'mmmFrankensteinPink2.gif',
+    'mmmFrankensteinPinkGreen.gif',
+    'mmmFrankensteinPinkOrange.gif',
+    // 'mmmFrankensteinRed.gif',
+    // 'mmmFrankensteinRedBlack.gif',
+    // 'mmmFrankensteinRedBlackBlack.gif',
+    'mmmFrankensteinRedBlackBlue.gif',
+    'mmmFrankensteinRedBlackGreen.gif',
+    'mmmFrankensteinRedBlackPink.gif',
+    'mmmFrankensteinRedBlackYellow.gif',
+    // 'mmmMonsterTrumpBlackHair.gif',
+    'mmmMonsterTrumpBlackWhite.gif',
+    // 'mmmMonsterTrumpGreen.gif',
+    // 'mmmMonsterTrumpGreenx.gif',
+    // 'mmmMonsterTrumpGreenYellowRed.gif',
+    // 'mmmMonsterTrumpPink.gif',
+    // 'mmmMonsterTrumpPurple.gif',
+    // 'mmmMonsterTrumpRed.gif',
+    'mmmMonsterTrumpREdWhiteBlue.gif',
+
+    'mmmTrumpTroll.gif',
+    'mmmTrumpTrollBlackBlue.gif',
+    'mmmTrumpTrollBlackWhite.gif',
+    'mmmTrumpTrollBlue.gif',
+    'mmmTrumpTrollBluePink.gif',
+    // 'mmmTrumpTrollBluex.gif',
+    // 'mmmTrumpTrollBrown.gif',
+    'mmmTrumpTrollDarkBlueGreen.gif',
+    // 'mmmTrumpTrollGreen.gif',
+    // 'mmmTrumpTrollInvert.gif',
+    // 'mmmTrumpTrollLightBlue.gif',
+    // 'mmmTrumpTrollLightGrey.gif',
+    // 'mmmTrumpTrollOrange.gif',
+    // 'mmmTrumpTrollPurpleYellow.gif',
+    'mmmTrumpTrollPurpYellow.gif',
+    // 'mmmTrumpTrollRed.gif',
+    'mmmZombieFuzzyBlackSkinOrange.gif',
+    // 'mmmZombieFuzzyBlackWhite.gif',
+    'mmmZombieFuzzyBlackWhitexxxx.gif',
+    'mmmZombieFuzzyBlue.gif',
+    'mmmZombieFuzzyDarkRed.gif',
+    // 'mmmZombieFuzzyDarkRedx.gif',
+    'mmmZombieFuzzyGreenOrange.gif',
+    // 'mmmZombieFuzzyGrey.gif',
+    'mmmZombieFuzzyGreyBlack.gif',
+    'mmmZombieFuzzyHotPink.gif',
+    'mmmZombieFuzzyLightBlue.gif',
+    'mmmZombieFuzzyPink.gif',
+    // 'mmmZombieFuzzyPink1.gif',
+    // 'mmmZombieFuzzyPinkx.gif',
+    // 'mmmZombieFuzzyPurple.gif',
+    'mmmZombieFuzzyPurplePinkSkin.gif',
+    'mmmZombieFuzzyRed1.gif',
+    'mmmZombieFuzzyRedishPurp.gif',
+    'mmmZombieFuzzyRedSkin.gif',
+    'mmmZombieFuzzyRedx.gif',
+    'mmmZombieFuzzyRedXXX.gif',
+    'mmmZombieFuzzyWhiteBlackxxxxx.gif',
+
+    /// oringals
+    // 'pinUp.gif',
+    // 'hotGothMonsterChick.gif',
+    // 'jak.gif',
+
+    //// hot goth chick
+
+    'hotGothBlackWhite.gif',
+    'hotGothInvert.gif',
+    'hotGothInvertBluePurp.gif',
+    'hotGothInvertGreen.gif',
+    'hotGothInvertOrange.gif',
+    'hotGothInvertPencil.gif',
+    // 'hotGothInvertPink.gif',
+    'hotGothInvertPinkPink.gif',
+    'hotGothInvertRed.gif',
+    'hotGothInvertRedRed.gif',
+    'hotGothInvertWhite.gif',
+    'hotGothInvertx.gif',
+    'hotGothInvertYellow.gif',
+
+    /// Combos - double or triple price?
+    ///
+    'mmmHotGothCombo.gif',
+    'mmmFrankensteinCombo.gif',
+    'mmmJakCombo.gif',
+    'mmmTattedCombo.gif',
+    'mmmTrumpMonsterCombo.gif',
+    'mmmTrumpTrollCombo.gif',
+    'mmmZombieCombo.gif',
+
+    // 'zombieChargeT.gif',
+    // 'consumeBaskin-unscreen.gif',
+    // 'consumeBieber-unscreen.gif',
+    // 'consumeHillary-unscreen.gif',
     // 'consumeJesus-unscreen.gif',
-    'consumeMcdonalds-unscreen.gif',
-    'consumeMichelle-unscreen.gif',
-    'consumeMonsterMiley.gif',
-    'consumePalin-unscreen.gif',
+    // 'consumeMcdonalds-unscreen.gif',
+    // 'consumeMichelle-unscreen.gif',
+    // 'consumeMonsterMiley.gif',
+    // 'consumePalin-unscreen.gif',
     'consumeSkull-unscreen.gif',
-    'consumeTrumpX3.gif',
+    // 'consumeTrumpX3.gif',
     'zombieHandXX.gif',
+    // 'consumeBoxer-unscreen.gif',
     // 'pendantNew14Colors.gif',
     // 'friendlyMonster2.gif',
     'friendlyMonster3.gif',
-    'friendlySpider1.gif',
-    '21BlueZombieSuit.gif',
-    // '21FatBlueZombie.gif',
+    // 'friendlySpider1.gif',
+    // '21BlueZombieSuit.gif',
+    // // '21FatBlueZombie.gif',
     // '21Savage.gif',
     // '21Trump.gif',
     // '21Trump2.gif',
@@ -102,7 +382,8 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _pathToSelectedBackgroundImage = 'horror41.JPG';
+  String _pathToSelectedBackgroundImage =
+      'horror41GlowingColorIncreasedInvertedOptimized.gif';
 
   String get pathToSelectedBackgroundImage => _pathToSelectedBackgroundImage;
 
@@ -170,7 +451,7 @@ class PremiumContentProvider with ChangeNotifier {
       }
     } else {
       /// go backwards on the list
-      if (_horrorIndex <= 0) {
+      if (_horrorIndex < 0) {
         /// if we have reached the beginning of the list
         _horrorIndex = horrorBackgroundImageFileNames.length - 1;
 
@@ -190,7 +471,7 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  int _horrorIndex = 10;
+  int _horrorIndex = 0;
 
   int get horrorIndex => _horrorIndex;
 
@@ -204,10 +485,21 @@ class PremiumContentProvider with ChangeNotifier {
     // 'horror7.jpg',
     // 'horror8.JPG',
     // 'horror9.JPG',
+    'horror41GlowingBO.gif',
+    'horror41GlowingColorIncreasedInvertedOptimized.gif',
+    'horror41GlowingColorIncreasedOptimized.gif',
+    'bonusSpace2.GIF',
+    'horror41.JPG',
+
+    'ravenSkullStandardSpeed.gif',
+    // "dcLoopGrayScale.gif",
+    // "caveDarkRed.gif",
+
     'horror10.JPG',
+
     'horror11.PNG',
     // 'horror12.JPG',
-    'horror13.JPG',
+    // 'horror13.JPG',
     // 'horror14.JPG',
     // 'horror15.PNG',
     // 'horror16.JPG',
@@ -217,12 +509,12 @@ class PremiumContentProvider with ChangeNotifier {
     // 'horror20.JPG',
     // 'horror21.JPG',
     // 'horror22.JPG',
-    'horror23.JPG',
+    // 'horror23.JPG',
     // 'horror24.JPG',
     // 'horror25.JPG',
-    'horror26.JPG',
+    // 'horror26.JPG',
     // 'horror27.JPG',
-    'horror28.JPG',
+    // 'horror28.JPG',
     'horror29.JPG',
     // 'horror30.JPG',
     // 'horror31.JPG',
@@ -235,7 +527,6 @@ class PremiumContentProvider with ChangeNotifier {
     // 'horror38.PNG',
     'horror39.JPG',
     // 'horror40.JPG',
-    'horror41.JPG',
     // 'horror42.JPG',
     // 'horror43.JPG',
     // 'annabel.GIF',
@@ -334,11 +625,12 @@ class PremiumContentProvider with ChangeNotifier {
     // "bonusTraffic4.GIF",
   ];
 
-  String _playersGatChoiceString = 'xThingRedM4.png';
+  String _playersGatChoiceString =
+      'skeletonWhiteARPistolRemakeSkeletonHand.png';
 
   String get playersGatChoiceString => _playersGatChoiceString;
 
-  String _playersGrenadeChoiceString = 'timeBomb.png';
+  String _playersGrenadeChoiceString = 'dynamite.png';
   String get playersGrenadeChoiceString => _playersGrenadeChoiceString;
 
   String _pathToNewItemFromChest = 'xThingKeltechPistol.png';
@@ -361,7 +653,7 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _pathToSelectedBeast = 'bats2.gif';
+  String _pathToSelectedBeast = 'consumeJesus-unscreen.gif';
 
   String get pathToSelectedBeast => _pathToSelectedBeast;
 
@@ -373,7 +665,7 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _pathToSelectedRocket = 'hhRocket7.gif';
+  String _pathToSelectedRocket = 'crystalBallXXXXX.gif';
 
   String get pathToSelectedRocket => _pathToSelectedRocket;
 
@@ -385,8 +677,9 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _pathToSelectedGameConsole =
-      'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png';
+  // String _pathToSelectedGameConsole = '12dotSquashSuperDevice.gif';
+
+  String _pathToSelectedGameConsole = '12DotSquashSuper.gif';
 
   String get pathToSelectedGameConsole => _pathToSelectedGameConsole;
 
@@ -398,12 +691,266 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  List<String> _listOfConsoles = [
+    '44DotSquashComboBlacks.gif',
+    '44DotSquashComboBlues.gif',
+    '44DotSquashComboGreens.gif',
+    '44DotSquashComboGrey.gif',
+    '44DotSquashComboPurps.gif',
+    '44DotSquashComboRedWhiteBlue.gif',
+    '44DotSquashComboWhiteBlack.gif',
+    '12dotsquashConsoleExtraDarkWithLightChipGreen.png',
+    '12dotsquashConsoleExtraDarkWithLightChipGrey.png',
+    '12dotsquashConsoleExtraDarkWithLightChipSaturatedGreen.png',
+    '12dotsquashConsoleExtraDarkWithRedChip2.png',
+    '12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png',
+    '12dotsquashConsoleExtraDarkWithRedChipOrange.png',
+    '12dotsquashConsoleExtraDarkWithRedChipYellow.png',
+    '12dotsquashConsoleLightDarkWithRedChipGrey.png',
+    '12dotSquashConsoleLightGrey2.png',
+    '12dotsquashConsoleLightGreyWithRedChip.png',
+    '12dotsquashConsoleLightWithGreenChip.png',
+    '12dotsquashConsoleLightWithPinkChip.png',
+    '12dotSquashConsoleWhiteChip1.png',
+    '12dotSquashLightWithRedChip.png',
+    '12dotSquashSuperDevice.gif',
+    '12dotSquashWhiteInternalsxx.png',
+    '12dotSqushGameConsoleInternalsBlue.png',
+    '12dotSqushGameConsoleInternalsBrown.png',
+    '12dotSqushGameConsoleInternalsCamo2.png',
+    '12dotSqushGameConsoleInternalsDarkBlueGreen.png',
+    '12dotSqushGameConsoleInternalsDarkGreenLightGreen.png',
+    '12dotSqushGameConsoleInternalsGreen.png',
+    '12dotSqushGameConsoleInternalsLightBlue.png',
+    '12dotSqushGameConsoleInternalsLightBrown.png',
+    '12dotSqushGameConsoleInternalsLightGreen.png',
+    '12dotSqushGameConsoleInternalsLightGrey.png',
+    '12dotSqushGameConsoleInternalsLightGreyGreen.png',
+    '12dotSqushGameConsoleInternalsLightPurp.png',
+    '12dotSqushGameConsoleInternalsLightRedGreen.png',
+    '12dotSqushGameConsoleInternalsPink.png',
+    '12dotSqushGameConsoleInternalsPinkish.png',
+    '12dotSqushGameConsoleInternalsPurp2.png',
+    '12dotSqushGameConsoleInternalsYellow.png',
+    '12DotSquashSuper.gif',
+
+    /// end devices with chips
+    // 'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png',
+    // 'futuristicGameConsoleNoLogo2BLANKLOGO.png',
+    // 'futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png',
+    // 'futuristicGameConsoleNoLogo2BLANKLOGOPurp.png',
+    // 'dotSquashGameConsoleBrown.png',
+    // 'dotSquashGameConsoleBurntBlue.png',
+    // 'dotSquashGameConsoleBurntGreen2.png',
+    // 'dotSquashGameConsoleBurntGrey.png',
+    // 'dotSquashGameConsoleBurntPurple.png',
+    // 'dotSquashGameConsoleBurntRed.png',
+    // 'dotSquashGameConsoleBurntTan.png',
+    // 'dotSquashGameConsoleGreen.png',
+    // 'dotSquashGameConsoleGrey.png',
+    // 'dotSquashGameConsolePink.png',
+    // 'dotSquashGameConsolePink2.png',
+    // 'dotSquashGameConsoleSilver.png',
+    // 'dotSquashGameConsoleWhite.png',
+    // 'dotSquashGameConsoleWhiteInvert.png',
+  ];
+
+  int _consoleListIndex = 0;
+
+  void changeConsoleForTesting() {
+    if (_consoleListIndex > _listOfConsoles.length - 1) {
+      _consoleListIndex = 0;
+    } else {
+      _consoleListIndex++;
+    }
+    _pathToSelectedGameConsole = _listOfConsoles[_consoleListIndex];
+    // _shouldHideTheLastPrize = true;
+    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    notifyListeners();
+  }
+
+  void changeConsoleForTestingBackwards() {
+    if (_consoleListIndex < 0) {
+      _consoleListIndex = _listOfConsoles.length - 1;
+    } else {
+      _consoleListIndex--;
+    }
+    _pathToSelectedGameConsole = _listOfConsoles[_consoleListIndex];
+    // _shouldHideTheLastPrize = true;
+    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    notifyListeners();
+  }
+
+  /// skeleton gats
+  ///
+
+  List<String> _skeletonGats = [
+    'skeletonARPistolRemakeBlacksCombo.gif',
+    'skeletonARPistolRemakeBlacksGreenCombo.gif',
+    'skeletonARPistolRemakeBlacksPurpleCombo.gif',
+    'skeletonARPistolRemakeBlacksYelllowCombo.gif',
+    'skeletonARPistolRemakeColorfulCombos.gif',
+    'skeletonARPistolRemakeWhiteBlackTealCombo.gif',
+    'skeletonWhiteARPistolRemakeSkeletonHandXXX.png',
+    'skeletonWhiteARPistolRemakeSkeletonHandBlack2.png',
+    'skeletonWhiteARPistolRemakeSkeletonHandBluePink.png',
+    'skeletonWhiteARPistolRemakeSkeletonHandBrightGreen.png',
+    'skeletonWhiteARPistolRemakeSkeletonHandBrightYellow.png',
+    'skeletonWhiteARPistolRemakeSkeletonHandGreen.png',
+    'skeletonWhiteARPistolRemakeSkeletonHandTiffany.png',
+    'skeletonWhiteARPistolRemakeSkeletonHandWhitePinkTint.png',
+    'skeletonCompGunBlackxxx.png',
+    'skeletonGunCompxxBlueOrange.png',
+    'skeletonGunCompxxGreenNeonPink.png',
+    'skeletonGunCompxxGreenPink.png',
+    'skeletonGunCompxxGreenPurple.png',
+    'skeletonGunCompxxInverseBlueOrangexxx.png',
+    'skeletonGunCompxxInverseGreenPurple.png',
+    'skeletonGunCompxxInverseNeonGreenPink.png',
+    'skeletonGunCompxxInverseNeonGreenPink2.png',
+    'skeletonGunCompxxInverseNeonPinkGreen.png',
+    'skeletonGunCompxxInverseOrangeBlue.png',
+    'skeletonGunCompxxInversePinkGreen.png',
+    'skeletonGunCompxxInversePurpleGreen.png',
+    'skeletonGunCompxxInverseRedGreen.png',
+    'skeletonGunCompxxInverseRedWhiteBlue.png',
+    'skeletonGunCompxxInverseTealYellow.png',
+    'skeletonGunCompxxInverseTransGold.png',
+    'skeletonGunCompxxInverseTurquoiseRed.png',
+    'skeletonGunCompxxInverseWhitePinkTeal.png',
+    'skeletonGunCompxxInverseYellowAndLightBlue.png',
+    'skeletonGunCompxxInverseYellowBlue.png',
+    'skeletonGunCompxxOrangeBlue.png',
+    'skeletonGunCompxxYellowBlue.png',
+    'skeletonWhiteARPistolRemakeSkeletonHand.png',
+    'skeletonOpticPistolBlackNeonGreen.png',
+    'skeletonOpticPistolBlackPurp.png',
+    'skeletonOpticPistolBlackRed.png',
+    'skeletonOpticPistolBlackSky.png',
+    'skeletonOpticPistolBlackTan.png',
+    'skeletonOpticPistolBlackTan2.png',
+    'skeletonOpticPistolBlackTeal.png',
+    'skeletonOpticPistolBlackYellow.png',
+    'skeletonOpticPistolDarkPurpleOrange.png',
+    'skeletonOpticPistolLightBlackGreen.png',
+    'skeletonOpticPistolLightOrangeGreen.png',
+    'skeletonOpticPistolLightOrangePink.png',
+    'skeletonOpticPistolLightPink.png',
+    'skeletonOpticPistolLightYellowBlack.png',
+    'skeletonOpticPistolWhiteBlue.png',
+    'skeletonDraco1.png',
+    'skeletonDracoBlack.png',
+    'skeletonDracoBlackBrass.png',
+    'skeletonDracoBlackBrassbbb.png',
+    'skeletonDracoBlackGreen.png',
+    'skeletonDracoBlackGreenx.png',
+    'skeletonDracoBlackGreenz.png',
+    'skeletonDracoBlackOrangez.png',
+    'skeletonDracoBlackPurplez.png',
+    'skeletonDracoBlackRedx.png',
+    'skeletonDracoBlackYellowz.png',
+    'skeletonDracoBlueDark.png',
+    'skeletonDracoBlueOrangeGreenbb.png',
+    'skeletonDracoDarkPink.png',
+    'skeletonDracoGoldPinkbbb.png',
+    'skeletonDracoGreen.png',
+    'skeletonDracoGreen2.png',
+    'skeletonDracoInvert.png',
+    'skeletonDracoOrangePink.png',
+    'skeletonDracoOrangePinkx.png',
+    'skeletonDracoPinkBabyBlue.png',
+    'skeletonDracoPinkBlueGreenBB.png',
+    'skeletonDracoPinkChrome.png',
+    'skeletonDracoPinkMetal.png',
+    'skeletonDracoPinkWhiteTiffanyxxx.png',
+    'skeletonDracoPinkYellowBB.png',
+    'skeletonDracoRed.png',
+    'skeletonDracoRedBluebb.png',
+    'skeletonDracoRedYellowPurplebb.png',
+    'skeletonDracoWhite.png',
+    'skeletonDracoWhiteBlueGreenx.png',
+    'skeletonDracoWhiteGreenPinkYellow.png',
+    'skeletonDracoWhitePink.png',
+    'skeletonDracoWhitePink2.png',
+    'skeletonDracoWhiteTurquoise.png',
+    'skeletonDracoWhitexxx.png',
+    'skeletonDracoYellow.png',
+    'skeletonDracoYellowOrange.png',
+    'skeletonDracoYellowPink.png',
+    'skeletonCompGunCombo.gif',
+    'skeletonDrakoCombo.gif',
+    'skeletonGrenadeLauncherCombo.gif',
+    'skeletonOpticPistolCombo.gif',
+    'skeletonGrenadeLauncherRemakeGreen.png',
+    'skeletonGrenadeLauncherRemakeHotPink.png',
+    'skeletonGrenadeLauncherRemakePinkBlack.png',
+    'skeletonGrenadeLauncherRemakePinkWhite.png',
+    'skeletonGrenadeLauncherRemakeWhite.png',
+    'skeletonGunARPistolStickMag.png',
+    'skeletonGunARPistolStickMagOrange.png',
+    'skeletonGunARPistolStickMagOrangeInvert.png',
+    'skeletonGunARWhitePurple.png',
+    'skeletonGunARWhiteTeal.png',
+    'skeletonGunBlackGoldArPistol.png',
+    'skeletonGunBlackGreenARPistol.png',
+    'skeletonGunBlackPinkArPistol.png',
+    'skeletonGunBlackPurpleArPistol.png',
+    'skeletonGunBlackRedHandGun.png',
+    'skeletonGunBluePistol.png',
+    'skeletonGunChromeArPistol.png',
+    'skeletonGunLightBlueBlackHandGun.png',
+    'skeletonGunPinkPistol.png',
+    'skeletonGunRedWhitePistol.png',
+    'skeletonGunVector.png',
+    'skeletonGunVectorBlueGreen.png',
+    'skeletonGunVectorGrey.png',
+    'skeletonGunVectorPinkDisturabance.png',
+    'skeletonGunVectorPinkDisturbace2.png',
+    'skeletonGunVectorPinkOrange.png',
+    'skeletonGunVectorPinkPurple.png',
+    'skeletonGunVectorPurpleBlue.png',
+    'skeletonGunVectorRedYellowOrange.png',
+    'skeletonGunVectorWhiteBlueInvert.png',
+    'skeletonKeltechBlack.png',
+    'skeletonKeltechBluedRed.png',
+    'skeletonKeltechBlueGreen.png',
+    'skeletonKeltechGreenedPink.png',
+    'skeletonKeltechGreenPink.png',
+    'skeletonKeltechGreenPurple.png',
+    'skeletonKeltechOrangeGreen.png',
+    'skeletonKeltechPinkBlue.png',
+    'skeletonKeltechTealBrownze.png',
+    'skeletonKeltechWhite.png',
+    'skeletonKeltechWhiteOrangeBlue.png',
+    'skeletonKeltechWhitePurpleGreen.png',
+    'skeletonKeltechYellowPurple.png',
+  ];
+
+  void addAllSkeletonGatsAsAvailableForTesting() {
+    _addedAllSkeletonGuns = !_addedAllSkeletonGuns;
+    if (_addedAllSkeletonGuns == false) {
+      availableGats = [];
+      for (var i = 0; i < _skeletonGats.length - 1; i++) {
+        availableGats.add(PremiumGatsAndGrenades(
+            type: PremiumContentType.gat, path: _skeletonGats[i]));
+      }
+    } else {
+      availableGats = [];
+    }
+
+    notifyListeners();
+  }
+
+  bool _addedAllSkeletonGuns = false;
+
+  bool get addedAllSkeletonGuns => _addedAllSkeletonGuns;
+
   List<PremiumGatsAndGrenades> availableGats = [
     PremiumGatsAndGrenades(
-        type: PremiumContentType.gat, path: 'thingGoldDeagle.png'),
-    PremiumGatsAndGrenades(
-        type: PremiumContentType.console,
-        path: 'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'),
+        type: PremiumContentType.gat, path: 'xThingRedM4.png'),
+    // PremiumGatsAndGrenades(
+    //     type: PremiumContentType.console,
+    //     path: 'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'),
   ];
 
   void changeGat(String gatName) {
@@ -828,39 +1375,7 @@ class PremiumContentProvider with ChangeNotifier {
       notifyListeners();
       availableGats.add(PremiumGatsAndGrenades(
           type: PremiumContentType.beast, path: 'zzShark.GIF'));
-    }
-    // } else if (randomInt <= 270) {
-    //   _pathToNewItemFromChest = 'hhRocket1.gif';
-    //   notifyListeners();
-    //   availableGats.add(PremiumGatsAndGrenades(
-    //       type: PremiumContentType.rocket, path: 'hhRocket1.gif'));
-    // } else if (randomInt <= 275) {
-    //   _pathToNewItemFromChest = 'hhRocket2.gif';
-    //   notifyListeners();
-    //   availableGats.add(PremiumGatsAndGrenades(
-    //       type: PremiumContentType.rocket, path: 'hhRocket2.gif'));
-    // } else if (randomInt <= 280) {
-    //   _pathToNewItemFromChest = 'hhRocket3.gif';
-    //   notifyListeners();
-    //   availableGats.add(PremiumGatsAndGrenades(
-    //       type: PremiumContentType.rocket, path: 'hhRocket3.gif'));
-    // } else if (randomInt <= 285) {
-    //   _pathToNewItemFromChest = 'hhRocket4.gif';
-    //   notifyListeners();
-    //   availableGats.add(PremiumGatsAndGrenades(
-    //       type: PremiumContentType.rocket, path: 'hhRocket4.gif'));
-    // } else if (randomInt <= 290) {
-    //   _pathToNewItemFromChest = 'hhRocket5.gif';
-    //   notifyListeners();
-    //   availableGats.add(PremiumGatsAndGrenades(
-    //       type: PremiumContentType.rocket, path: 'hhRocket5.gif'));
-    // } else if (randomInt <= 295) {
-    //   _pathToNewItemFromChest = 'hhRocket6.gif';
-    //   notifyListeners();
-    //   availableGats.add(PremiumGatsAndGrenades(
-    //       type: PremiumContentType.rocket, path: 'hhRocket6.gif'));
-    // }
-    else if (randomInt <= 270) {
+    } else if (randomInt <= 270) {
       _pathToNewItemFromChest = 'hhRocket7.gif';
       notifyListeners();
       availableGats.add(PremiumGatsAndGrenades(

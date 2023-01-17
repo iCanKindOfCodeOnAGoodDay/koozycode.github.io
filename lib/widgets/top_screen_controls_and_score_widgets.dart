@@ -74,7 +74,8 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                     ),
                     Text(
                       '${context.watch<PremiumContentProvider>().amountOfRubiesReadyToUse.toString()}',
-                      style: TextStyle(color: Colors.deepPurple),
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w800),
                     )
                   ],
                 ),

@@ -1,6 +1,9 @@
 import 'package:flappy_taco/providers/premium_content_provider.dart';
+import 'package:flappy_taco/widgets/fast_flying_rotating_icecream_bullet_widget.dart';
 import 'package:flappy_taco/widgets/ice_cream_bullet.dart';
 import 'package:flappy_taco/widgets/rotating_icecream_bullet_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/20mm_bullet_widget.dart';
+import 'package:flappy_taco/widgets/winnables/shank_shooter_bullet_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
@@ -8,11 +11,17 @@ import 'package:flappy_taco/providers/game_status_provider.dart';
 class CannonFire extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RotatingIcecreamBullet(
-      path: '${context.watch<GameStatusProvider>().iceCreamBulletPath}',
-      height: 40.0,
-      width: 40.0,
-    );
+    return context.watch<PremiumContentProvider>().activatedShankShooter ==
+            false
+        ? context.watch<PremiumContentProvider>().activated20MMAmmo == true
+            ? TwentyMMBullet()
+            : FastRotatingIcecreamBullet(
+                path:
+                    '${context.watch<GameStatusProvider>().iceCreamBulletPath}',
+                height: 40.0,
+                width: 40.0,
+              )
+        : ShankShooterBullet();
     // return Container(
     //   height: 40.0,
     //   width: 40.0,
