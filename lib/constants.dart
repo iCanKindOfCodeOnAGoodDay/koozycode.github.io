@@ -373,8 +373,8 @@ Container kThingFallingSkeleton = Container(
   width: 40.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.fitHeight,
-          image: AssetImage('images/skelletonThing.gif'))),
+          fit: BoxFit.contain,
+          image: AssetImage('images/rrrthingWalkingSkeleton16.gif'))),
 );
 
 Container kThingWalkingLeftSkeletonAndSkinCombo = Container(
@@ -633,5 +633,5 @@ Container kDeadHand = Container(
   width: 40.0,
   decoration: BoxDecoration(
       image: DecorationImage(
-          fit: BoxFit.cover, image: AssetImage('images/deadHand.gif'))),
+          fit: BoxFit.contain, image: AssetImage('images/deadHand.gif'))),
 );

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flappy_taco/constants.dart';
+import 'package:flappy_taco/widgets/winnables/generic_availble_to_win_from_chest_item_widget.dart';
 import 'package:flappy_taco/widgets/winnables/winnable_rockets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,6 +14,8 @@ import '../widgets/winnables/winnable_shanks.dart';
 
 //// latest import file names
 
+// 'space90BlackGreen.gif',
+
 enum PremiumContentType {
   gat,
   grenade,
@@ -21,35 +24,6 @@ enum PremiumContentType {
   shank,
   rocket,
 }
-
-// enum SelectedGatType {
-//   draco,
-//   caroleLynn,
-//   grenadeLauncher,
-//   keltechPistol,
-//   pirateMusket,
-//   brightOutlinedPistol,
-//   shortM4,
-//   tracedRayGun,
-//   block9,
-//   goldDeagle,
-//   darrenger,
-//   capPshPsh,
-//   toyM4,
-//   sBR,
-// }
-//
-// enum SelectedTimeBomb {
-//   dynamite,
-//   icedGrenade,
-//   greenGrenade,
-//   blueGrenade,
-//   sharkBomb,
-//   sciFi1,
-//   sciFi2,
-//   cherryBomb1,
-//   cherryBomb2,
-// }
 
 class PremiumContentProvider with ChangeNotifier {
   String _pathToSelectedBarrier = 'mmmZombieFuzzyPink.gif';
@@ -250,15 +224,15 @@ class PremiumContentProvider with ChangeNotifier {
     //// new imports
     // 'mmmFrankensteinBlackxxxx.gif',
     // 'mmmFrankensteinPink2.gif',
-    'mmmFrankensteinPinkGreen.gif',
-    'mmmFrankensteinPinkOrange.gif',
+    // 'mmmFrankensteinPinkGreen.gif',
+    // 'mmmFrankensteinPinkOrange.gif',
     // 'mmmFrankensteinRed.gif',
     // 'mmmFrankensteinRedBlack.gif',
     // 'mmmFrankensteinRedBlackBlack.gif',
-    'mmmFrankensteinRedBlackBlue.gif',
-    'mmmFrankensteinRedBlackGreen.gif',
-    'mmmFrankensteinRedBlackPink.gif',
-    'mmmFrankensteinRedBlackYellow.gif',
+    // 'mmmFrankensteinRedBlackBlue.gif',
+    // 'mmmFrankensteinRedBlackGreen.gif',
+    // 'mmmFrankensteinRedBlackPink.gif',
+    // 'mmmFrankensteinRedBlackYellow.gif',
     // 'mmmMonsterTrumpBlackHair.gif',
     'mmmMonsterTrumpBlackWhite.gif',
     // 'mmmMonsterTrumpGreen.gif',
@@ -269,7 +243,7 @@ class PremiumContentProvider with ChangeNotifier {
     // 'mmmMonsterTrumpRed.gif',
     'mmmMonsterTrumpREdWhiteBlue.gif',
 
-    'mmmTrumpTroll.gif',
+    // 'mmmTrumpTroll.gif',
     'mmmTrumpTrollBlackBlue.gif',
     'mmmTrumpTrollBlackWhite.gif',
     'mmmTrumpTrollBlue.gif',
@@ -381,9 +355,18 @@ class PremiumContentProvider with ChangeNotifier {
 
     notifyListeners();
   }
+  //// the background image is set here
 
   String _pathToSelectedBackgroundImage =
-      'horror41GlowingColorIncreasedInvertedOptimized.gif';
+      // 'horror41GlowingColorIncreasedInvertedOptimized.gif';
+      // 'blackSpace1723.gif';
+      // 'fire.gif';
+      // 'fusion3.gif';
+      // 'blackWater.gif';
+      // "bgReactorCore.GIF";
+      // 'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif';
+      // 'reactor1-18-23ColorChangingOptimized.gif';
+      "bgBlackHole.GIF";
 
   String get pathToSelectedBackgroundImage => _pathToSelectedBackgroundImage;
 
@@ -393,79 +376,38 @@ class PremiumContentProvider with ChangeNotifier {
 
   int _backgroundIndex = 0;
 
-  void changeBackgroundImage(bool goBackwardsOnTheList) {
-    /// go forward on the list
-    if (goBackwardsOnTheList == false) {
-      if (_backgroundIndex >= backgroundImagesFileNames.length) {
-        /// start from the beginning of the list
-        _backgroundIndex = 0;
-        _pathToSelectedBackgroundImage = backgroundImagesFileNames[0];
-        _pathToPreviousBackgroundImage =
-            backgroundImagesFileNames[backgroundImagesFileNames.length - 1];
-      } else {
-        _backgroundIndex++;
-        _pathToSelectedBackgroundImage =
-            backgroundImagesFileNames[_backgroundIndex];
-
-        _pathToPreviousBackgroundImage =
-            backgroundImagesFileNames[_backgroundIndex - 1];
-      }
-    } else {
-      /// go backwards on the list
-      if (_backgroundIndex <= 0) {
-        /// if we have reached the beginning of the list
-        _backgroundIndex = backgroundImagesFileNames.length - 1;
-
-        _pathToSelectedBackgroundImage =
-            backgroundImagesFileNames[backgroundImagesFileNames.length - 1];
-
-        _pathToPreviousBackgroundImage = backgroundImagesFileNames[0];
-      } else {
-        _backgroundIndex--;
-        _pathToPreviousBackgroundImage =
-            backgroundImagesFileNames[_backgroundIndex - 1];
-
-        _pathToSelectedBackgroundImage =
-            backgroundImagesFileNames[_backgroundIndex];
-      }
-    }
-    notifyListeners();
-  }
-
   void changeBackgroundImageHorror(bool goBackwardsOnTheList) {
     /// go forward on the list
     if (goBackwardsOnTheList == false) {
-      if (_horrorIndex >= horrorBackgroundImageFileNames.length) {
+      if (_horrorIndex >= backgroundImageFileNames.length) {
         /// start from the beginning of the list
         _horrorIndex = 0;
-        _pathToSelectedBackgroundImage = horrorBackgroundImageFileNames[0];
-        _pathToPreviousBackgroundImage = horrorBackgroundImageFileNames[
-            horrorBackgroundImageFileNames.length - 1];
+        _pathToSelectedBackgroundImage = backgroundImageFileNames[0];
+        _pathToPreviousBackgroundImage =
+            backgroundImageFileNames[backgroundImageFileNames.length - 1];
       } else {
         _horrorIndex++;
-        _pathToSelectedBackgroundImage =
-            horrorBackgroundImageFileNames[_horrorIndex];
+        _pathToSelectedBackgroundImage = backgroundImageFileNames[_horrorIndex];
 
         _pathToPreviousBackgroundImage =
-            horrorBackgroundImageFileNames[_horrorIndex - 1];
+            backgroundImageFileNames[_horrorIndex - 1];
       }
     } else {
       /// go backwards on the list
       if (_horrorIndex < 0) {
         /// if we have reached the beginning of the list
-        _horrorIndex = horrorBackgroundImageFileNames.length - 1;
+        _horrorIndex = backgroundImageFileNames.length - 1;
 
-        _pathToSelectedBackgroundImage = horrorBackgroundImageFileNames[
-            horrorBackgroundImageFileNames.length - 1];
+        _pathToSelectedBackgroundImage =
+            backgroundImageFileNames[backgroundImageFileNames.length - 1];
 
-        _pathToPreviousBackgroundImage = horrorBackgroundImageFileNames[0];
+        _pathToPreviousBackgroundImage = backgroundImageFileNames[0];
       } else {
         _horrorIndex--;
         _pathToPreviousBackgroundImage =
-            horrorBackgroundImageFileNames[_horrorIndex - 1];
+            backgroundImageFileNames[_horrorIndex - 1];
 
-        _pathToSelectedBackgroundImage =
-            horrorBackgroundImageFileNames[_horrorIndex];
+        _pathToSelectedBackgroundImage = backgroundImageFileNames[_horrorIndex];
       }
     }
     notifyListeners();
@@ -475,158 +417,142 @@ class PremiumContentProvider with ChangeNotifier {
 
   int get horrorIndex => _horrorIndex;
 
-  List<String> horrorBackgroundImageFileNames = [
-    // 'horror1.GIF',
-    // 'horror2.JPG',
-    // 'horror3.jpg',
-    // 'horror4.JPG',
-    // 'horror5.JPG',
-    // 'horror6.JPG',
-    // 'horror7.jpg',
-    // 'horror8.JPG',
-    // 'horror9.JPG',
-    'horror41GlowingBO.gif',
-    'horror41GlowingColorIncreasedInvertedOptimized.gif',
-    'horror41GlowingColorIncreasedOptimized.gif',
-    'bonusSpace2.GIF',
-    'horror41.JPG',
+  List<String> backgroundImageFileNames = [
+    // 'horror41GlowingBO.gif',
+    // 'horror41GlowingColorIncreasedInvertedOptimized.gif',
+    // 'horror41GlowingColorIncreasedOptimized.gif',
+    'reactor1-18-23ColorChangingOptimized.gif',
+    'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif',
+    'fire1-18-23ColorChange.gif',
 
-    'ravenSkullStandardSpeed.gif',
-    // "dcLoopGrayScale.gif",
-    // "caveDarkRed.gif",
-
-    'horror10.JPG',
-
-    'horror11.PNG',
-    // 'horror12.JPG',
-    // 'horror13.JPG',
-    // 'horror14.JPG',
-    // 'horror15.PNG',
-    // 'horror16.JPG',
-    // 'horror17.PNG',
-    // 'horror18.JPG',
-    // 'horror19.JPG',
-    // 'horror20.JPG',
-    // 'horror21.JPG',
-    // 'horror22.JPG',
-    // 'horror23.JPG',
-    // 'horror24.JPG',
-    // 'horror25.JPG',
-    // 'horror26.JPG',
-    // 'horror27.JPG',
-    // 'horror28.JPG',
-    'horror29.JPG',
-    // 'horror30.JPG',
-    // 'horror31.JPG',
-    // 'horror32.JPG',
-    // 'horror33.JPG',
-    'horror34.JPG',
-    'horror35.JPG',
-    // 'horror36.JPG',
-    // 'horror37.JPG',
-    // 'horror38.PNG',
-    'horror39.JPG',
-    // 'horror40.JPG',
-    // 'horror42.JPG',
-    // 'horror43.JPG',
-    // 'annabel.GIF',
-    // 'babyHorrorEyes.gif',
-  ];
-
-  List<String> backgroundImagesFileNames = [
-    "dcLoopGrayScale.gif",
-    "caveDarkRed.gif",
-
-    'caveLightBrown.gif',
+    // "bgReactorCore.GIF",
     //
     // 'blackWater.gif',
-    'fire.gif',
-    // 'errorMessage.GIF',
-    // 'redChip.jpg',
-    // // 'enlessColorHoleRecoloredYellowOrange.gif',
-    // 'fusion3.gif',
-    // 'fusionRed.gif',
-    // 'katyPerrySexy.gif',
-    // 'microChipOne.gif',
-    // "mileySnoopNicholasCage.gif",
-    // 'purpleEnergyBlack.gif',
-    // 'xxNinjaStar.gif',
-    // 'colorfulX.gif',
-    // 'colorful2.gif',
-    // 'bloodMoon.gif',
-    // 'blackWhiteExplosion.gif',
-    // 'blackTunnel.gif',
 
-    // 'blackWater.gif',
-    // "bgAlienWorld.GIF",
-    // "bgApple.GIF",
-    // "bgBitArtCity.GIF",
-    // "bgBitArtTokyo.GIF",
-    // "bgBitCity.GIF",
+    'blackSpace1723.gif',
+    // 'bonusSpace2.GIF',
+
+    'ravenSkullStandardSpeed.gif',
+
+    'blackTunnel.gif',
+    // 'colorChangingTunnelCombo1-18-23.gif',
+
+    // 'horror10.JPG',
+
+    // 'horror11.PNG',
+
+    'horror29.JPG',
+
+    // 'horror34.JPG',
+    // 'horror35.JPG',
     "bgBlackHole.GIF",
-    // "bgCityScape.GIF",
-    // "bgColorCubes.GIF",
-    // "bgColorSpirals.GIF",
-    // "bgColorWaves.GIF",
-    // "bgCube.GIF",
-    // "bgEndlessRunner.GIF",
-    // "bgFlower.GIF",
-    // "bgFlowerX.GIF",
-    // "bgForrestNight.GIF",
-    // "bgForrestScary.GIF",
-    // "bgHandStars.GIF",
-    // "bgIllusion.GIF",
-    // "bgOwl.GIF",
-    // "bgPlanets.GIF",
-    "bgReactorCore.GIF",
-    // "bgRipples.GIF",
-    // "bgSamuri.GIF",
-    // "bgSpiralX.GIF",
-    // "bgStar.GIF",
-    // "bgTokyo.GIF",
-    // "bgTriangleGlow.GIF",
-    // "bgWaterWalker.GIF",
-    // "bgWaves.GIF",
-    // "bgWolfJump.GIF",
-    // "bonusCar.GIF",
-    // "bonusCar2.GIF",
-    // "bonusCar3.GIF",
-    // "bonusCar4.GIF",
-    // "bonusCrumble.GIF",
-    // "bonusEscalator.GIF",
-    // "bonusEscalator2.GIF",
-    // "bonusEww.GIF",
-    // "bonusEyes.GIF",
-    // "bonusGeo.GIF",
-    // "bonusGeo2.GIF",
-    // "bonusGeo3.GIF",
-    // "bonusGeo4.GIF",
-    // "bonusHotdog.GIF",
-    // "bonusHotdog2.GIF",
-    // "bonusHotdog3.GIF",
-    // "bonusKaleido.GIF",
-    // "bonusMountains.GIF",
-    // "bonusMountains2.GIF",
-    // "bonusRoad.GIF",
-    // "bonusShapes.GIF",
-    // "bonusShapes2.GIF",
-    // "bonusShapes3.GIF",
-    // "bonusShapes4.GIF",
-    "bonusSpace2.GIF",
-    // "bonusSpaceStairs.GIF",
-    // "bonusSpiral.GIF",
-    // "bonusSplash.GIF",
-    // "bonusStayingAlive.GIF",
-    // "bonusStreaks.GIF",
-    // "bonusTractor.GIF",
-    // "bonusTraffic.GIF",
-    // "bonusTraffic2.GIF",
-    // "bonusTraffic3.GIF",
-    // "bonusTraffic4.GIF",
+    // 'fusion3.gif',
+
+    //// trees
+
+    'horror41.JPG',
+    'fire.gif',
+
+    // 'horror39.JPG',
   ];
 
+  // List<String> backgroundImagesFileNames = [
+  //   "dcLoopGrayScale.gif",
+  //   "caveDarkRed.gif",
+  //
+  //   'caveLightBrown.gif',
+  //   //
+  //   // 'blackWater.gif',
+  //   'fire.gif',
+  //   // 'errorMessage.GIF',
+  //   // 'redChip.jpg',
+  //   // // 'enlessColorHoleRecoloredYellowOrange.gif',
+  //   // 'fusion3.gif',
+  //   // 'fusionRed.gif',
+  //   // 'katyPerrySexy.gif',
+  //   // 'microChipOne.gif',
+  //   // "mileySnoopNicholasCage.gif",
+  //   // 'purpleEnergyBlack.gif',
+  //   // 'xxNinjaStar.gif',
+  //   // 'colorfulX.gif',
+  //   // 'colorful2.gif',
+  //   // 'bloodMoon.gif',
+  //   // 'blackWhiteExplosion.gif',
+  //   // 'blackTunnel.gif',
+  // "bgBlackHole.GIF",
+  // "bgReactorCore.GIF",
+  //
+  //   // 'blackWater.gif',
+  //   // "bgAlienWorld.GIF",
+  //   // "bgApple.GIF",
+  //   // "bgBitArtCity.GIF",
+  //   // "bgBitArtTokyo.GIF",
+  //   // "bgBitCity.GIF",
+  //   "bgBlackHole.GIF",
+  //   // "bgCityScape.GIF",
+  //   // "bgColorCubes.GIF",
+  //   // "bgColorSpirals.GIF",
+  //   // "bgColorWaves.GIF",
+  //   // "bgCube.GIF",
+  //   // "bgEndlessRunner.GIF",
+  //   // "bgFlower.GIF",
+  //   // "bgFlowerX.GIF",
+  //   // "bgForrestNight.GIF",
+  //   // "bgForrestScary.GIF",
+  //   // "bgHandStars.GIF",
+  //   // "bgIllusion.GIF",
+  //   // "bgOwl.GIF",
+  //   // "bgPlanets.GIF",
+  //   "bgReactorCore.GIF",
+  //   // "bgRipples.GIF",
+  //   // "bgSamuri.GIF",
+  //   // "bgSpiralX.GIF",
+  //   // "bgStar.GIF",
+  //   // "bgTokyo.GIF",
+  //   // "bgTriangleGlow.GIF",
+  //   // "bgWaterWalker.GIF",
+  //   // "bgWaves.GIF",
+  //   // "bgWolfJump.GIF",
+  //   // "bonusCar.GIF",
+  //   // "bonusCar2.GIF",
+  //   // "bonusCar3.GIF",
+  //   // "bonusCar4.GIF",
+  //   // "bonusCrumble.GIF",
+  //   // "bonusEscalator.GIF",
+  //   // "bonusEscalator2.GIF",
+  //   // "bonusEww.GIF",
+  //   // "bonusEyes.GIF",
+  //   // "bonusGeo.GIF",
+  //   // "bonusGeo2.GIF",
+  //   // "bonusGeo3.GIF",
+  //   // "bonusGeo4.GIF",
+  //   // "bonusHotdog.GIF",
+  //   // "bonusHotdog2.GIF",
+  //   // "bonusHotdog3.GIF",
+  //   // "bonusKaleido.GIF",
+  //   // "bonusMountains.GIF",
+  //   // "bonusMountains2.GIF",
+  //   // "bonusRoad.GIF",
+  //   // "bonusShapes.GIF",
+  //   // "bonusShapes2.GIF",
+  //   // "bonusShapes3.GIF",
+  //   // "bonusShapes4.GIF",
+  //   "bonusSpace2.GIF",
+  //   // "bonusSpaceStairs.GIF",
+  //   // "bonusSpiral.GIF",
+  //   // "bonusSplash.GIF",
+  //   // "bonusStayingAlive.GIF",
+  //   // "bonusStreaks.GIF",
+  //   // "bonusTractor.GIF",
+  //   // "bonusTraffic.GIF",
+  //   // "bonusTraffic2.GIF",
+  //   // "bonusTraffic3.GIF",
+  //   // "bonusTraffic4.GIF",
+  // ];
+
   String _playersGatChoiceString =
-      'skeletonWhiteARPistolRemakeSkeletonHand.png';
+      // 'skeletonWhiteARPistolRemakeSkeletonHand.png';
+      'skeletonARPistolRemakeWhiteBlackTealCombo.gif';
 
   String get playersGatChoiceString => _playersGatChoiceString;
 
@@ -641,7 +567,7 @@ class PremiumContentProvider with ChangeNotifier {
 
   int get amountOfRubiesReadyToUse => _amountOfRubiesReadyToUse;
 
-  String _pathToSelectedKnife = 'xxNinjaStar.gif';
+  String _pathToSelectedKnife = 'bbbbPurpleBottleInvert.gif';
 
   String get pathToSelectedKnife => _pathToSelectedKnife;
 
@@ -784,7 +710,333 @@ class PremiumContentProvider with ChangeNotifier {
   /// skeleton gats
   ///
 
-  List<String> _skeletonGats = [
+  void addAllSkeletonGatsAsAvailableForTesting() {
+    _addedAllSkeletonGuns = !_addedAllSkeletonGuns;
+    if (_addedAllSkeletonGuns == false) {
+      itemsWonThatAreAvailableToEquip = [];
+      for (var i = 0; i < _pathToEachWinnableSkeletonGat.length - 1; i++) {
+        itemsWonThatAreAvailableToEquip.add(PremiumGatsAndGrenades(
+            type: PremiumContentType.gat,
+            path: _pathToEachWinnableSkeletonGat[i]));
+      }
+    } else {
+      itemsWonThatAreAvailableToEquip = [];
+    }
+
+    notifyListeners();
+  }
+
+  bool _addedAllSkeletonGuns = false;
+
+  bool get addedAllSkeletonGuns => _addedAllSkeletonGuns;
+
+  List<PremiumGatsAndGrenades> itemsWonThatAreAvailableToEquip = [
+    PremiumGatsAndGrenades(
+        type: PremiumContentType.gat, path: 'xThingRedM4.png'),
+  ];
+
+  void changeGat(String gatName) {
+    _playersGatChoiceString = gatName;
+    // _shouldHideTheLastPrize = true;
+    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+
+    notifyListeners();
+  }
+
+  void changeGrenade(String grenadeName) {
+    _playersGrenadeChoiceString = grenadeName;
+    // _shouldHideTheLastPrize = true;
+    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+
+    notifyListeners();
+  }
+
+  String _lastWonPrizeTypeForTheCongratsMessage = 'gat';
+
+  String get lastWonPrizeTypeForTheCongratsMessage =>
+      _lastWonPrizeTypeForTheCongratsMessage;
+
+  void setLastPrizeTypeForCongratsMessage() {
+    var type = itemsWonThatAreAvailableToEquip[
+            itemsWonThatAreAvailableToEquip.length - 1]
+        .type;
+    if (type == PremiumContentType.gat) {
+      _lastWonPrizeTypeForTheCongratsMessage = 'gat';
+    } else if (type == PremiumContentType.shank) {
+      _lastWonPrizeTypeForTheCongratsMessage = 'shank';
+    } else if (type == PremiumContentType.console) {
+      _lastWonPrizeTypeForTheCongratsMessage = 'console';
+    } else if (type == PremiumContentType.beast) {
+      _lastWonPrizeTypeForTheCongratsMessage = 'beast';
+    } else if (type == PremiumContentType.grenade) {
+      _lastWonPrizeTypeForTheCongratsMessage = 'time bomb';
+    }
+    notifyListeners();
+  }
+
+  String _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+
+  String get pathToChangeChestImageFromClosedToOpen =>
+      _pathToChangeChestImageFromClosedToOpen;
+
+  double _widthOfNewItemForAnimationWhenOpeningChest = 0.0;
+
+  double get widthOfNewItemForAnimationWhenOpeningChest =>
+      _widthOfNewItemForAnimationWhenOpeningChest;
+
+  double _heightOfNewItemForAnimationWhenOpeningChest = 0.0;
+
+  double get heightOfNewItemForAnimationWhenOpeningChest =>
+      _heightOfNewItemForAnimationWhenOpeningChest;
+
+  bool _shouldHideTheLastPrize = true;
+
+  bool get shouldHideTheLastPrize => _shouldHideTheLastPrize;
+
+  void equipLastWonPrize() {
+    // _heightOfNewItemForAnimationWhenOpeningChest = 0;
+    var lastWonPrizeType = itemsWonThatAreAvailableToEquip[
+            itemsWonThatAreAvailableToEquip.length - 1]
+        .type;
+    var lastWonItemPath = itemsWonThatAreAvailableToEquip[
+            itemsWonThatAreAvailableToEquip.length - 1]
+        .path;
+    if (lastWonPrizeType == PremiumContentType.gat) {
+      changeGat(lastWonItemPath);
+    } else if (lastWonPrizeType == PremiumContentType.grenade) {
+      changeGrenade(lastWonItemPath);
+    } else if (lastWonPrizeType == PremiumContentType.beast) {
+      changeBeast(lastWonItemPath);
+    } else if (lastWonPrizeType == PremiumContentType.shank) {
+      changeKnife(lastWonItemPath);
+    } else if (lastWonPrizeType == PremiumContentType.console) {
+      changeConsole(lastWonItemPath);
+    }
+    notifyListeners();
+  }
+
+  void handleAnimation() {
+    for (var i = 0; i < 300; i++) {
+      /// TODO this is where the item size is decided, if game console is won, then size should be different
+      /// the brass knucks dont fit either!
+      _heightOfNewItemForAnimationWhenOpeningChest = 100;
+      _widthOfNewItemForAnimationWhenOpeningChest = 100;
+      Timer(Duration(milliseconds: i * 4), () {
+        _heightOfNewItemForAnimationWhenOpeningChest++;
+        _widthOfNewItemForAnimationWhenOpeningChest++;
+        notifyListeners();
+      });
+    }
+  }
+
+  void handleAnimationWhenSelectingAnItemFromList(String itemPath) {
+    _pathToNewItemFromChest = itemPath;
+    _shouldHideTheLastPrize = false;
+    for (var i = 0; i < 300; i++) {
+      _heightOfNewItemForAnimationWhenOpeningChest = 100;
+      _widthOfNewItemForAnimationWhenOpeningChest = 100;
+      Timer(Duration(milliseconds: i * 4), () {
+        _heightOfNewItemForAnimationWhenOpeningChest++;
+        _widthOfNewItemForAnimationWhenOpeningChest++;
+        notifyListeners();
+      });
+    }
+  }
+
+  void closeChestAndHideLastPrize() {
+    _shouldHideTheLastPrize = true;
+
+    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _heightOfNewItemForAnimationWhenOpeningChest = 0;
+    notifyListeners();
+  }
+
+  void openChestToGetRandomPrize() async {
+    ////TODO
+    //// each winnable item type has it's own list
+    // the random int should be a combination of each winnable (length - 1)
+    /// add a widget with that index for that list
+    ///
+    closeChestAndHideLastPrize();
+
+    Timer(Duration(milliseconds: 1200), () {
+      _shouldHideTheLastPrize = false;
+      _pathToChangeChestImageFromClosedToOpen = 'xChestTransparent.gif';
+      notifyListeners();
+
+      handleAnimation();
+    });
+
+    int _randomIntRepresentingOneTypeOfItemWon;
+    int _randomIntRepresetingPrizeIndex;
+
+    _randomIntRepresentingOneTypeOfItemWon = Random().nextInt(3) + 1;
+    if (_randomIntRepresentingOneTypeOfItemWon == 1) {
+      /// player won a gat
+      /// pick a random prize index
+      /// then add a premium item with type gat to the user's available items
+      _randomIntRepresetingPrizeIndex =
+          Random().nextInt(_pathToEachWinnableSkeletonGat.length - 1);
+      itemsWonThatAreAvailableToEquip.add(PremiumGatsAndGrenades(
+          path: _pathToEachWinnableSkeletonGat[_randomIntRepresetingPrizeIndex],
+          type: PremiumContentType.gat));
+      _pathToNewItemFromChest =
+          _pathToEachWinnableSkeletonGat[_randomIntRepresetingPrizeIndex];
+    } else if (_randomIntRepresentingOneTypeOfItemWon == 2) {
+      /// player won a grenade
+      _randomIntRepresetingPrizeIndex =
+          Random().nextInt(_pathToEachWinnableGrenade.length - 1);
+      itemsWonThatAreAvailableToEquip.add(PremiumGatsAndGrenades(
+          path: _pathToEachWinnableGrenade[_randomIntRepresetingPrizeIndex],
+          type: PremiumContentType.grenade));
+      _pathToNewItemFromChest =
+          _pathToEachWinnableGrenade[_randomIntRepresetingPrizeIndex];
+    } else if (_randomIntRepresentingOneTypeOfItemWon == 3) {
+      /// player won a beast
+      _randomIntRepresetingPrizeIndex =
+          Random().nextInt(_pathToEachWinnableBeast.length - 1);
+      itemsWonThatAreAvailableToEquip.add(PremiumGatsAndGrenades(
+          path: _pathToEachWinnableBeast[_randomIntRepresetingPrizeIndex],
+          type: PremiumContentType.beast));
+      _pathToNewItemFromChest =
+          _pathToEachWinnableBeast[_randomIntRepresetingPrizeIndex];
+    } else if (_randomIntRepresentingOneTypeOfItemWon == 4) {
+      _randomIntRepresetingPrizeIndex =
+          Random().nextInt(_pathToEachWinnableShank.length - 1);
+
+      /// player won a shank
+      itemsWonThatAreAvailableToEquip.add(PremiumGatsAndGrenades(
+          path: _pathToEachWinnableShank[_randomIntRepresetingPrizeIndex],
+          type: PremiumContentType.shank));
+      _pathToNewItemFromChest =
+          _pathToEachWinnableShank[_randomIntRepresetingPrizeIndex];
+    }
+
+    notifyListeners();
+    Timer(Duration(milliseconds: 1200), () {
+      _pathToChangeChestImageFromClosedToOpen = 'xOpenChest.gif';
+      notifyListeners();
+    });
+
+    setLastPrizeTypeForCongratsMessage();
+  }
+
+  List<GenericWinnableItemFromChest> _winnables = [];
+
+  Column displayAllWinnables() {
+    /// clear previous widgets to prevent duplicats
+    _winnables = [];
+
+    /// create a generic winnable widget for each type
+    /// guns
+    for (var i = 0; i < _pathToEachWinnableSkeletonGat.length - 1; i++) {
+      _winnables.add(GenericWinnableItemFromChest(
+          path: _pathToEachWinnableSkeletonGat[i]));
+    }
+    for (var i = 0; i < _pathToEachWinnableGrenade.length - 1; i++) {
+      _winnables.add(
+          GenericWinnableItemFromChest(path: _pathToEachWinnableGrenade[i]));
+    }
+    for (var i = 0; i < _pathToEachWinnableBeast.length - 1; i++) {
+      _winnables
+          .add(GenericWinnableItemFromChest(path: _pathToEachWinnableBeast[i]));
+    }
+    for (var i = 0; i < _pathToEachWinnableShank.length - 1; i++) {
+      _winnables
+          .add(GenericWinnableItemFromChest(path: _pathToEachWinnableShank[i]));
+    }
+    return Column(
+      children: _winnables,
+    );
+  }
+
+  List<String> _pathToEachWinnableBeast = [
+    'zzGhost1.gif',
+    'zzBaby.GIF',
+    'zzBaby2.gif',
+  ];
+
+  List<String> _pathToEachWinnableGrenade = [
+    'icedGrenade1-18-23BlackGreen.png',
+    'icedGrenade1-18-23Blue.png',
+    'icedGrenade1-18-23BrightBlue.png',
+    'icedGrenade1-18-23Gold.png',
+    'icedGrenade1-18-23Green.png',
+    'icedGrenade1-18-23NeonGreenA.png',
+    'icedGrenade1-18-23NeonIce.png',
+    'icedGrenade1-18-23Orange.png',
+    'icedGrenade1-18-23Pink.png',
+    'icedGrenade1-18-23PinkBlack.png',
+    'icedGrenade1-18-23PinkIce.png',
+    'icedGrenade1-18-23PinkIceX.png',
+    'icedGrenade1-18-23Purple.png',
+    'icedGrenade1-18-23RedBlack.png',
+    'icedGrenade1-18-23TiffanyIce.png',
+    'icedGrenade1-18-23SaturatedBlueBlack.png',
+    'icedGrenade1-18-23SaturatedGreenBlack.png',
+    'icedGrenade1-18-23SaturatedLimeIce.png',
+    'icedGrenade1-18-23SaturatedNeonGreenIce.png',
+    'icedGrenade1-18-23SaturatedOrangeBlack.png',
+    'icedGrenade1-18-23SaturatedOrangeIce.png',
+    'icedGrenade1-18-23SaturatedOrangeIceX.png',
+    'icedGrenade1-18-23SaturatedPinkBlack.png',
+    'icedGrenade1-18-23SaturatedPinkIce.png',
+    'icedGrenade1-18-23SaturatedPurpleBlack.png',
+    'icedGrenade1-18-23SaturatedPurpleIce.png',
+    'icedGrenade1-18-23SaturatedRedBlack.png',
+    'icedGrenade1-18-23SaturatedTealBlack.png',
+    'icedGrenade1-18-23SaturatedTealIce.png',
+    'icedGrenade1-18-23SaturatedTurquoiseIce.png',
+    'icedGrenade1-18-23SaturatedYellowBlack.png',
+    'standardGrenade1-18-23Blue.png',
+    'standardGrenade1-18-23BlueStandard3.png',
+    'standardGrenade1-18-23BrightBlueInvert.png',
+    'standardGrenade1-18-23BrightGreenInvert2.png',
+    'standardGrenade1-18-23BrightGreenStandard.png',
+    'standardGrenade1-18-23GreenRed.png',
+    'standardGrenade1-18-23InvertOrange.png',
+    'standardGrenade1-18-23LightGreenStandard.png',
+    'standardGrenade1-18-23OrangeInvert.png',
+    'standardGrenade1-18-23OrangeStandard.png',
+    'standardGrenade1-18-23PinkInvert2.png',
+    'standardGrenade1-18-23PinkStandard.png',
+    'standardGrenade1-18-23PinkStandardWhite.png',
+    'standardGrenade1-18-23PurpleInvert.png',
+    'standardGrenade1-18-23RedInvert.png',
+    'standardGrenade1-18-23TealStandard.png',
+    'standardGrenade1-18-23YellowInvert.png',
+    'sharkGrenade1-18-23BlueS.png',
+    'sharkGrenade1-18-23BrightGreenS.png',
+    'sharkGrenade1-18-23GreenI.png',
+    'sharkGrenade1-18-23LightBlueS.png',
+    'sharkGrenade1-18-23NeonGreenI.png',
+    'sharkGrenade1-18-23OrangeI.png',
+    'sharkGrenade1-18-23PinkI.png',
+    'sharkGrenade1-18-23PinkS.png',
+    'sharkGrenade1-18-23PurpleS.png',
+    'sharkGrenade1-18-23RedI.png',
+    'sharkGrenade1-18-23RedS.png',
+    'sharkGrenade1-18-23SeaFoamS.png',
+    'sharkGrenade1-18-23YellowI.png',
+    'iceGrenade1-18-23NormalCombo.gif',
+    'iceGrenade1-18-23SaturatedCombo.gif',
+    'SharkBomb-18-23Combo.gif',
+    'standardGrenade1-18-23Combo.gif',
+  ];
+
+  // List<String> get pathToEachWinnableShank => _pathToEachWinnableShank;
+  List<String> _pathToEachWinnableShank = [
+    'bbbbPurpleBottleInvert.gif',
+    'bbbbBlueKnucksInvert.gif',
+    'bbbbDuctTapeKnifeInverse.gif',
+    'bbbbHammerInvertBlue.gif',
+    'bbbbKnuckKnifeInvert.gif',
+    'bbbbMeatCleaverInvert.gif',
+    'bbbbNinjaStarInvert.gif',
+    'xxNinjaStar.gif',
+  ];
+
+  List<String> _pathToEachWinnableSkeletonGat = [
     'skeletonARPistolRemakeBlacksCombo.gif',
     'skeletonARPistolRemakeBlacksGreenCombo.gif',
     'skeletonARPistolRemakeBlacksPurpleCombo.gif',
@@ -924,540 +1176,5 @@ class PremiumContentProvider with ChangeNotifier {
     'skeletonKeltechWhiteOrangeBlue.png',
     'skeletonKeltechWhitePurpleGreen.png',
     'skeletonKeltechYellowPurple.png',
-  ];
-
-  void addAllSkeletonGatsAsAvailableForTesting() {
-    _addedAllSkeletonGuns = !_addedAllSkeletonGuns;
-    if (_addedAllSkeletonGuns == false) {
-      availableGats = [];
-      for (var i = 0; i < _skeletonGats.length - 1; i++) {
-        availableGats.add(PremiumGatsAndGrenades(
-            type: PremiumContentType.gat, path: _skeletonGats[i]));
-      }
-    } else {
-      availableGats = [];
-    }
-
-    notifyListeners();
-  }
-
-  bool _addedAllSkeletonGuns = false;
-
-  bool get addedAllSkeletonGuns => _addedAllSkeletonGuns;
-
-  List<PremiumGatsAndGrenades> availableGats = [
-    PremiumGatsAndGrenades(
-        type: PremiumContentType.gat, path: 'xThingRedM4.png'),
-    // PremiumGatsAndGrenades(
-    //     type: PremiumContentType.console,
-    //     path: 'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'),
-  ];
-
-  void changeGat(String gatName) {
-    _playersGatChoiceString = gatName;
-    // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
-
-    notifyListeners();
-  }
-
-  void changeGrenade(String grenadeName) {
-    _playersGrenadeChoiceString = grenadeName;
-    // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
-
-    notifyListeners();
-  }
-
-  String _lastWonPrizeTypeForTheCongratsMessage = 'gat';
-
-  String get lastWonPrizeTypeForTheCongratsMessage =>
-      _lastWonPrizeTypeForTheCongratsMessage;
-
-  void setLastPrizeTypeForCongratsMessage() {
-    var type = availableGats[availableGats.length - 1].type;
-    if (type == PremiumContentType.gat) {
-      _lastWonPrizeTypeForTheCongratsMessage = 'gat';
-    } else if (type == PremiumContentType.shank) {
-      _lastWonPrizeTypeForTheCongratsMessage = 'shank';
-    } else if (type == PremiumContentType.console) {
-      _lastWonPrizeTypeForTheCongratsMessage = 'console';
-    } else if (type == PremiumContentType.beast) {
-      _lastWonPrizeTypeForTheCongratsMessage = 'beast';
-    } else if (type == PremiumContentType.grenade) {
-      _lastWonPrizeTypeForTheCongratsMessage = 'time bomb';
-    }
-    notifyListeners();
-  }
-
-  String _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
-
-  String get pathToChangeChestImageFromClosedToOpen =>
-      _pathToChangeChestImageFromClosedToOpen;
-
-  double _widthOfNewItemForAnimationWhenOpeningChest = 0.0;
-
-  double get widthOfNewItemForAnimationWhenOpeningChest =>
-      _widthOfNewItemForAnimationWhenOpeningChest;
-
-  double _heightOfNewItemForAnimationWhenOpeningChest = 0.0;
-
-  double get heightOfNewItemForAnimationWhenOpeningChest =>
-      _heightOfNewItemForAnimationWhenOpeningChest;
-
-  bool _shouldHideTheLastPrize = true;
-
-  bool get shouldHideTheLastPrize => _shouldHideTheLastPrize;
-
-  void equipLastWonPrize() {
-    // _heightOfNewItemForAnimationWhenOpeningChest = 0;
-    var lastWonPrizeType = availableGats[availableGats.length - 1].type;
-    var lastWonItemPath = availableGats[availableGats.length - 1].path;
-    if (lastWonPrizeType == PremiumContentType.gat) {
-      changeGat(lastWonItemPath);
-    } else if (lastWonPrizeType == PremiumContentType.grenade) {
-      changeGrenade(lastWonItemPath);
-    } else if (lastWonPrizeType == PremiumContentType.beast) {
-      changeBeast(lastWonItemPath);
-    } else if (lastWonPrizeType == PremiumContentType.shank) {
-      changeKnife(lastWonItemPath);
-    } else if (lastWonPrizeType == PremiumContentType.console) {
-      changeConsole(lastWonItemPath);
-    }
-    notifyListeners();
-  }
-
-  void handleAnimation() {
-    print('winnables items length is ${_winnables.length}');
-
-    for (var i = 0; i < 300; i++) {
-      /// TODO this is where the item size is decided, if game console is won, then size should be different
-      /// the brass knucks dont fit either!
-      _heightOfNewItemForAnimationWhenOpeningChest = 100;
-      _widthOfNewItemForAnimationWhenOpeningChest = 100;
-      Timer(Duration(milliseconds: i * 4), () {
-        _heightOfNewItemForAnimationWhenOpeningChest++;
-        _widthOfNewItemForAnimationWhenOpeningChest++;
-        notifyListeners();
-      });
-    }
-  }
-
-  void handleAnimationWhenSelectingAnItemFromList(String itemPath) {
-    _pathToNewItemFromChest = itemPath;
-    _shouldHideTheLastPrize = false;
-    for (var i = 0; i < 300; i++) {
-      _heightOfNewItemForAnimationWhenOpeningChest = 100;
-      _widthOfNewItemForAnimationWhenOpeningChest = 100;
-      Timer(Duration(milliseconds: i * 4), () {
-        _heightOfNewItemForAnimationWhenOpeningChest++;
-        _widthOfNewItemForAnimationWhenOpeningChest++;
-        notifyListeners();
-      });
-    }
-  }
-
-  void closeChestAndHideLastPrize() {
-    _shouldHideTheLastPrize = true;
-
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
-    _heightOfNewItemForAnimationWhenOpeningChest = 0;
-    notifyListeners();
-  }
-
-  void openChestToGetRandomPrize() async {
-    closeChestAndHideLastPrize();
-
-    Timer(Duration(milliseconds: 1200), () {
-      _shouldHideTheLastPrize = false;
-      _pathToChangeChestImageFromClosedToOpen = 'xChestTransparent.gif';
-      notifyListeners();
-
-      handleAnimation();
-    });
-
-    int randomInt = 0;
-    randomInt = Random().nextInt(270);
-
-    notifyListeners();
-    Timer(Duration(milliseconds: 1200), () {
-      _pathToChangeChestImageFromClosedToOpen = 'xOpenChest.gif';
-      notifyListeners();
-    });
-
-    if (randomInt <= 2) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'caroleLynnRayGun.gif'));
-      _pathToNewItemFromChest = 'caroleLynnRayGun.gif';
-      notifyListeners();
-    } else if (randomInt <= 5) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingDraco2.png'));
-      _pathToNewItemFromChest = 'xThingDraco2.png';
-      notifyListeners();
-    } else if (randomInt <= 8) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingM203.png'));
-      _pathToNewItemFromChest = 'xThingM203.png';
-      notifyListeners();
-    } else if (randomInt <= 11) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingSniperLong.png'));
-      _pathToNewItemFromChest = 'xThingSniperLong.png';
-      notifyListeners();
-    } else if (randomInt <= 14) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingShotgun2.png'));
-      _pathToNewItemFromChest = 'xThingShotgun2.png';
-      notifyListeners();
-    } else if (randomInt <= 17) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingPurpM4.png'));
-      _pathToNewItemFromChest = 'xThingPurpM4.png';
-      notifyListeners();
-    } else if (randomInt <= 20) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingRedM4.png'));
-      _pathToNewItemFromChest = 'xThingRedM4.png';
-      notifyListeners();
-    } else if (randomInt <= 5) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingDraco.png'));
-      _pathToNewItemFromChest = 'xThingDraco.png';
-      notifyListeners();
-    } else if (randomInt <= 24) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingAK47.png'));
-      _pathToNewItemFromChest = 'xThingAK47.png';
-      notifyListeners();
-    } else if (randomInt <= 27) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'thingToyM4.png'));
-      _pathToNewItemFromChest = 'thingToyM4.png';
-      notifyListeners();
-    } else if (randomInt <= 30) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'thingBlock9.png'));
-      _pathToNewItemFromChest = 'thingBlock9.png';
-      notifyListeners();
-    } else if (randomInt <= 35) {
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'thingSBR.png'));
-      _pathToNewItemFromChest = 'thingSBR.png';
-      notifyListeners();
-    } else if (randomInt <= 45) {
-      _pathToNewItemFromChest = 'thingGoldDeagle.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'thingGoldDeagle.png'));
-    } else if (randomInt <= 50) {
-      _pathToNewItemFromChest = 'xThingShortM4Carbine.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingShortM4Carbine.png'));
-    } else if (randomInt <= 55) {
-      _pathToNewItemFromChest = 'xThingPirate.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingPirate.png'));
-    } else if (randomInt <= 60) {
-      _pathToNewItemFromChest = 'xThingRightBrightPistol.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingRightBrightPistol.png'));
-    } else if (randomInt <= 65) {
-      _pathToNewItemFromChest = 'thingDarrenger.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'thingDarrenger.png'));
-    } else if (randomInt <= 70) {
-      _pathToNewItemFromChest = 'xThingKeltechPistol.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingKeltechPistol.png'));
-    } else if (randomInt <= 75) {
-      _pathToNewItemFromChest = 'xThingGrenadeLauncher.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.gat, path: 'xThingGrenadeLauncher.png'));
-    } else if (randomInt <= 80) {
-      _pathToNewItemFromChest = 'xGreenGrenade.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'xGreenGrenade.png'));
-    } else if (randomInt <= 85) {
-      _pathToNewItemFromChest = 'xBlueGrendade.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'xBlueGrendade.png'));
-    } else if (randomInt <= 90) {
-      _pathToNewItemFromChest = 'xBlueGrendade.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'xBlueGrendade.png'));
-    } else if (randomInt <= 105) {
-      _pathToNewItemFromChest = 'sciFiGrendade.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'sciFiGrendade.png'));
-    } else if (randomInt <= 115) {
-      _pathToNewItemFromChest = 'sciFiGernade2.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'sciFiGernade2.png'));
-    } else if (randomInt <= 125) {
-      _pathToNewItemFromChest = 'cherryBomb.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'cherryBomb.png'));
-    } else if (randomInt <= 135) {
-      _pathToNewItemFromChest = 'cherryBomb4.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'cherryBomb4.png'));
-    } else if (randomInt <= 145) {
-      _pathToNewItemFromChest = 'xSharkBomb.png';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.grenade, path: 'xSharkBomb.png'));
-    } else if (randomInt <= 146) {
-      _pathToNewItemFromChest =
-          'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png';
-
-      /// black console
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.console,
-          path: 'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'));
-    } else if (randomInt <= 147) {
-      _pathToNewItemFromChest = 'futuristicGameConsoleNoLogo2BLANKLOGO.png';
-
-      /// silver console
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.console,
-          path: 'futuristicGameConsoleNoLogo2BLANKLOGO.png'));
-    } else if (randomInt <= 148) {
-      _pathToNewItemFromChest =
-          'futuristicGameConsoleNoLogo2BLANKLOGO copy.png';
-
-      /// red console
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.console,
-          path: 'futuristicGameConsoleNoLogo2BLANKLOGO copy.png'));
-    } else if (randomInt <= 149) {
-      _pathToNewItemFromChest =
-          'futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png';
-
-      /// yellow console
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.console,
-          path: 'futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'));
-    } else if (randomInt <= 150) {
-      _pathToNewItemFromChest = 'futuristicGameConsoleNoLogo2BLANKLOGOPurp.png';
-
-      /// purple console
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.console,
-          path: 'futuristicGameConsoleNoLogo2BLANKLOGOPurp.png'));
-    } else if (randomInt <= 151) {
-      _pathToNewItemFromChest = 'horseTransparent.gif';
-
-      /// purple console
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'horseTransparent.gif'));
-    } else if (randomInt <= 161) {
-      _pathToNewItemFromChest = 'xxDuctTapeKnife.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxDuctTapeKnife.gif'));
-    } else if (randomInt <= 165) {
-      _pathToNewItemFromChest = 'xxAxe.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxAxe.gif'));
-    } else if (randomInt <= 171) {
-      _pathToNewItemFromChest = 'xxBatNails.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxBatNails.gif'));
-    } else if (randomInt <= 175) {
-      _pathToNewItemFromChest = 'xxBrokenBottle.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxBrokenBottle.gif'));
-    } else if (randomInt <= 180) {
-      _pathToNewItemFromChest = 'xxCleaver.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxCleaver.gif'));
-    } else if (randomInt <= 185) {
-      _pathToNewItemFromChest = 'xxHammer.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxHammer.gif'));
-    } else if (randomInt <= 190) {
-      _pathToNewItemFromChest = 'xxKnuckleBlade.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxKnuckleBlade.gif'));
-    } else if (randomInt <= 195) {
-      _pathToNewItemFromChest = 'xxNinjaStar.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxNinjaStar.gif'));
-    } else if (randomInt <= 206) {
-      _pathToNewItemFromChest = 'xxRedKnucks.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.shank, path: 'xxRedKnucks.gif'));
-    } else if (randomInt <= 210) {
-      _pathToNewItemFromChest = 'zzBaby.GIF';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzBaby.GIF'));
-    } else if (randomInt <= 215) {
-      _pathToNewItemFromChest = 'zzBaby2.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzBaby2.gif'));
-    } else if (randomInt <= 220) {
-      _pathToNewItemFromChest = 'zzChicken.GIF';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzChicken.GIF'));
-    } else if (randomInt <= 225) {
-      _pathToNewItemFromChest = 'zzChickenBlood2.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzChickenBlood2.gif'));
-    } else if (randomInt <= 230) {
-      _pathToNewItemFromChest = 'zzCockatoo2.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzCockatoo2.gif'));
-    } else if (randomInt <= 235) {
-      _pathToNewItemFromChest = 'zzDevil.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzDevil.gif'));
-    } else if (randomInt <= 240) {
-      _pathToNewItemFromChest = 'zzDog1.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzDog1.gif'));
-    } else if (randomInt <= 245) {
-      _pathToNewItemFromChest = 'zzDuck.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzDuck.gif'));
-    } else if (randomInt <= 250) {
-      _pathToNewItemFromChest = 'zzFish2.GIF';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzFish2.GIF'));
-    } else if (randomInt <= 255) {
-      _pathToNewItemFromChest = 'zzGator2.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzGator2.gif'));
-    } else if (randomInt <= 260) {
-      _pathToNewItemFromChest = 'zzGhost1.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzGhost1.gif'));
-    } else if (randomInt <= 265) {
-      _pathToNewItemFromChest = 'zzShark.GIF';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.beast, path: 'zzShark.GIF'));
-    } else if (randomInt <= 270) {
-      _pathToNewItemFromChest = 'hhRocket7.gif';
-      notifyListeners();
-      availableGats.add(PremiumGatsAndGrenades(
-          type: PremiumContentType.rocket, path: 'hhRocket7.gif'));
-    }
-
-    setLastPrizeTypeForCongratsMessage();
-  }
-
-  List<Widget> get winnables => _winnables;
-
-  List<Widget> _winnables = [
-    kThingDraco,
-    kThingBrightPistol,
-    kThingCaroleLynn,
-    kThingGrenadeLauncher,
-    kThingKeltechPistol,
-    kThingOutlineRay,
-    kThingPirate,
-    kThingShortM4,
-    kBlueGrenade,
-    kGrenade,
-    kSharkBomb,
-    kSciFiGrenade1,
-    kSciFiGrenade2,
-    kIcedGrenade,
-    kCherryBomb1,
-    kCherryBomb2,
-    kThingCapPishPish,
-    kThingDarrenger,
-    kThingGoldDeagle,
-    kThingSBR,
-    kThingToyM4,
-    kThingBlock9,
-    kAK47,
-    kCrazyDraco,
-    kM203,
-    kPurpleM4,
-    kRedM4,
-    kDoubleBarrel,
-    kSniperRifle,
-    WinnableBeastsWidgets(path: 'horseTransparent.gif'),
-
-    /// silver
-    WinnableConsoleWidgets(path: 'futuristicGameConsoleNoLogo2BLANKLOGO.png'),
-    WinnableConsoleWidgets(
-        path: 'futuristicGameConsoleNoLogo2BLANKLOGO copy.png'),
-
-    /// black
-    WinnableConsoleWidgets(
-        path: 'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'),
-    WinnableConsoleWidgets(
-        path: 'futuristicGameConsoleNoLogo2BLANKLOGOBrightYellow2.png'),
-    WinnableConsoleWidgets(
-        path: 'futuristicGameConsoleNoLogo2BLANKLOGOPurp.png'),
-    WinnableShankWidgets(path: 'xxDuctTapeKnife.gif'),
-    WinnableShankWidgets(path: 'xxBatNails.gif'),
-    WinnableShankWidgets(path: 'xxBrokenBottle.gif'),
-    WinnableShankWidgets(path: 'xxCleaver.gif'),
-    WinnableShankWidgets(path: 'xxHammer.gif'),
-    WinnableShankWidgets(path: 'xxKnuckleBlade.gif'),
-    WinnableShankWidgets(path: 'xxNinjaStar.gif'),
-    WinnableShankWidgets(path: 'xxRedKnucks.gif'),
-    WinnableBeastsWidgets(path: 'zzBaby.GIF'),
-    WinnableBeastsWidgets(path: 'zzBaby2.gif'),
-    WinnableBeastsWidgets(path: 'zzChicken.GIF'),
-    WinnableBeastsWidgets(path: 'zzChickenBlood2.gif'),
-    WinnableBeastsWidgets(path: 'zzCockatoo2.gif'),
-    WinnableBeastsWidgets(path: 'zzDevil.gif'),
-    WinnableBeastsWidgets(path: 'zzDog1.gif'),
-    WinnableBeastsWidgets(path: 'zzDuck.gif'),
-    WinnableBeastsWidgets(path: 'zzFish2.GIF'),
-    WinnableBeastsWidgets(path: 'zzGator2.gif'),
-    WinnableBeastsWidgets(path: 'zzGhost1.gif'),
-
-    WinnableBeastsWidgets(path: 'zzShark.GIF'),
-    // WinnableRocketsWidgets(path: 'hhRocket1.gif'),
-    // WinnableRocketsWidgets(path: 'hhRocket2.gif'),
-    // WinnableRocketsWidgets(path: 'hhRocket3.gif'),
-    // WinnableRocketsWidgets(path: 'hhRocket4.gif'),
-    // WinnableRocketsWidgets(path: 'hhRocket5.gif'),
-    // WinnableRocketsWidgets(path: 'hhRocket6.gif'),
-    WinnableRocketsWidgets(path: 'hhRocket7.gif'),
   ];
 }

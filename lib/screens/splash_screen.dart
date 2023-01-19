@@ -35,13 +35,29 @@ class _SplashScreenState extends State<SplashScreen> {
       );
     });
 
-    void buildRowOfCoins() {
+    List<Widget> listOfIcons = [
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+      kblankIcon,
+    ];
+    void replaceBlankIconsWithZombieCards() {
       for (var i = 0; i < 13; i++) {
+        /// replace 13 blank icons by removing the blank icon at the end
+        /// every 200th of a seconds
         int delay = i * 200;
         Timer(Duration(milliseconds: delay), () {
-          coinList.removeAt(coinList.length - 1);
-
-          coinList.insert(
+          listOfIcons.removeAt(listOfIcons.length - 1);
+          listOfIcons.insert(
               0,
               (Expanded(
                 child: RotatingBarrierWidget(
@@ -49,11 +65,16 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               )));
           setState(() {});
+
+          /// udate the interface 13 times
         });
       }
     }
 
-    buildRowOfCoins();
+    replaceBlankIconsWithZombieCards();
+
+    /// carrry out the instructions defined above
+    //
 
     Timer imageTimer1a = Timer(Duration(milliseconds: 500), () {
       setState(() {
@@ -68,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
     ///  image chaninging timer
     Timer imageTimer = Timer(Duration(seconds: 1), () {
       setState(() {
-        imageFileName = 'thingStichedWalkingXX.gif';
+        imageFileName = 'rrrSkeletonWalkingLeft.gif';
         fireBallPathTop = 'mmmZombieFuzzyRedXXX.gif';
         fireBallPathBottom = 'iceCreamXXX.gif';
       });
@@ -76,7 +97,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer2a = Timer(Duration(milliseconds: 1500), () {
       setState(() {
-        imageFileName = 'thingRightTraced.png';
+        imageFileName = 'rrrHandGunXRay.png';
         fireBallPathTop = 'consumeJesus-unscreen.gif';
         fireBallPathBottom = 'consumeJesus-unscreen.gif';
       });
@@ -84,7 +105,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer2 = Timer(Duration(seconds: 2), () {
       setState(() {
-        imageFileName = 'xThingRedM4.png';
+        imageFileName = 'skeletonARPistolRemakeWhiteBlackTealCombo.gif';
         fireBallPathTop = 'hotGothInvert.gif';
 
         fireBallPathBottom = 'iceCreamXXX.gif';
@@ -101,30 +122,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer imageTimer3 = Timer(Duration(seconds: 3), () {
       setState(() {
-        imageFileName = 'xxNinjaStar.gif';
+        imageFileName = 'bbbbNinjaStarInvert.gif';
         fireBallPathTop = 'iceCreamXXX.gif';
         fireBallPathBottom = 'iceCreamXXX.gif';
       });
     });
   }
 
-  List<Widget> coinList = [
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-    kblankIcon,
-  ];
-
-  String imageFileName = "thingStichedWalkingXX.gif";
+  String imageFileName = "skelletonThing.gif";
 
   String fireBallPathTop = 'mmmMonsterTrumpGreenYellowRed.gif';
 
@@ -187,14 +192,15 @@ class _SplashScreenState extends State<SplashScreen> {
                         child: Hero(
                       tag: "pimpedRayGun",
                       child: Container(
-                        height: imageFileName == 'thingRightDead.png'
+                        height: imageFileName == 'rrrHandGunXRay.png'
                             ? 300.0
                             : imageFileName == 'consumeTrumpX3.gif'
                                 ? 300.0
                                 : 150.0,
                         width: imageFileName == 'bloodyThumb.png'
                             ? 200.0
-                            : imageFileName == 'xThingRedM4.png'
+                            : imageFileName ==
+                                    'skeletonARPistolRemakeWhiteBlackTealCombo.gif'
                                 ? 400.0
                                 : 300.0,
                         decoration: BoxDecoration(

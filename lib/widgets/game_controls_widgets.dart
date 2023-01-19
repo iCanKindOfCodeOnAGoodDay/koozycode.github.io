@@ -1,4 +1,5 @@
 import 'package:flappy_taco/models/sound_model.dart';
+import 'package:flappy_taco/widgets/flashing_text_message_widget.dart';
 import 'package:flappy_taco/widgets/flashing_text_widget.dart';
 import 'package:flappy_taco/widgets/power_ups_widget.dart';
 import 'package:flutter/material.dart';
@@ -66,30 +67,33 @@ class GameControlsWidgets extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30.0),
-              child: Row(
-                children: [
-                  Text(
-                    'Speed: ${context.watch<GameStatusProvider>().reverseGameSpeedToDisplayForUserAsTheyProgress.toString()}',
-                    style: TextStyle(
-                        color: context
-                                    .watch<GameStatusProvider>()
-                                    .shouldDisplayTimeIncrease ==
-                                false
-                            ? Colors.yellow
-                            : kTransparent,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 8.0),
-                  ),
-                  context
-                              .watch<GameStatusProvider>()
-                              .shouldDisplayTimeIncrease ==
-                          true
-                      ? FlashingText(text: '+ 50')
-                      : Container(),
-                ],
-              ),
+            Row(
+              children: [
+                Text(
+                  'Speed: ${context.watch<GameStatusProvider>().reverseGameSpeedToDisplayForUserAsTheyProgress.toString()}',
+                  style: TextStyle(
+                      color: context
+                                  .watch<GameStatusProvider>()
+                                  .shouldDisplayTimeIncrease ==
+                              false
+                          ? Colors.yellow
+                          : kTransparent,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 8.0),
+                ),
+                context.watch<GameStatusProvider>().shouldDisplayTimeIncrease ==
+                        true
+                    ? FlashingTextMessageWidget(text: '- 50')
+                    // ? Text(
+                    //     '-50',
+                    //     style: TextStyle(
+                    //         color: Colors.greenAccent,
+                    //         // fontFamily: ('HennyPenny'),
+                    //         fontSize: 40.0,
+                    //         fontWeight: FontWeight.w800),
+                    //   )
+                    : Container(),
+              ],
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flappy_taco/providers/premium_content_provider.dart';
+import 'package:flappy_taco/widgets/flashing_text_message_widget.dart';
 import 'package:flappy_taco/widgets/flashing_text_widget.dart';
 import 'package:flappy_taco/widgets/openable_chest_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_gat.dart';
@@ -122,7 +123,7 @@ class ShopDrawerWidget extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    FlashingText(
+                                    FlashingTextMessageWidget(
                                       text: 'Buy Rubies?',
                                     ),
                                     // FlashingText(text: 'Do it do it do it'),
@@ -185,8 +186,8 @@ class ShopDrawerWidget extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    FlashingText(
-                                      text: 'Open Gothic Gear Chest?',
+                                    FlashingTextMessageWidget(
+                                      text: 'Open chest?',
                                     ),
                                   ],
                                 )),
@@ -252,7 +253,7 @@ class ShopDrawerWidget extends StatelessWidget {
                         Column(
                           children: context
                               .watch<PremiumContentProvider>()
-                              .availableGats,
+                              .itemsWonThatAreAvailableToEquip,
                         ),
                       ],
                     ),
@@ -291,10 +292,13 @@ class ShopDrawerWidget extends StatelessWidget {
                               fontSize: 10.0,
                               fontWeight: FontWeight.w800),
                         ),
-                        Column(
-                          children:
-                              context.read<PremiumContentProvider>().winnables,
-                        ),
+                        context
+                            .read<PremiumContentProvider>()
+                            .displayAllWinnables(),
+                        // Column(
+                        //   children:
+                        //       context.read<PremiumContentProvider>().winnables,
+                        // ),
                       ],
                     ),
                   ],

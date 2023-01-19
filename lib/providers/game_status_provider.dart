@@ -142,6 +142,37 @@ class GameStatusProvider with ChangeNotifier {
     }
   }
 
+  //// list of zombie hands
+
+  List<String> _zombieHandsForOnScreenEffectWhenUserGrabsExtraLife = [
+    // 'bbbbInvertZombieHandReach.gif',
+    // 'bbbbZombieReachBlackBlueGreen.gif',
+    'bbbbZombieReachBlackGreen.gif',
+    'bbbbZombieReachGreenGreen.gif',
+    'bbbbZombieReachPinkBlue.gif',
+    'bbbbZombieReachRedGreen.gif',
+    'bbbbZombieReachRedWhiteBlue.gif',
+  ];
+
+  int _iterateThroughZombieHandList = 0;
+
+  String _pathToZombieHandReach = 'bbbbZombieReachRedWhiteBlue.gif';
+
+  String get pathToZombieHandReach => _pathToZombieHandReach;
+
+  void updateZombiePath() {
+    if (_iterateThroughZombieHandList <
+        _zombieHandsForOnScreenEffectWhenUserGrabsExtraLife.length - 1) {
+      _iterateThroughZombieHandList++;
+    } else {
+      _iterateThroughZombieHandList = 0;
+    }
+    _pathToZombieHandReach =
+        _zombieHandsForOnScreenEffectWhenUserGrabsExtraLife[
+            _iterateThroughZombieHandList];
+    notifyListeners();
+  }
+
   /// was forced to pass in the value because the value couldnt be accesed outside of the sound model, even when sound model was turned into a provider
 
   void resetGame() {
@@ -150,6 +181,9 @@ class GameStatusProvider with ChangeNotifier {
     _amountOfTimeUserHitDoublePoints = 1;
     _gameSpeed = 150000;
     _pathToTwentyMMBullet = '20mmOrange.png';
+    _pathToFortyMMBullet = '40mmOrange.png';
+
+    _pathToColorChangingBullet = 'bulletCombo1.gif';
 
     soundModel.playOtherSounds('arcadeStartUp.mp3', _hearSoundEffects);
     resetHellFireColumns();
@@ -1020,7 +1054,7 @@ class GameStatusProvider with ChangeNotifier {
 
           redGems.removeAt(redGems.length - 1);
           print('red gem stab protection - 1 red gem');
-          // fireQuickKnifeDefense();
+          fireQuickKnifeDefense();
 
           notifyListeners();
         } else if (extraLives.isNotEmpty) {
@@ -1190,6 +1224,14 @@ class GameStatusProvider with ChangeNotifier {
 
   String get pathToTwentyMMBullet => _pathToTwentyMMBullet;
 
+  String _pathToFortyMMBullet = '40mmOrange.png';
+
+  String get pathToFortyMMBullet => _pathToFortyMMBullet;
+
+  String _pathToColorChangingBullet = 'bulletCombo1.gif';
+
+  String get pathToColorChangingBullet => _pathToColorChangingBullet;
+
   void contactWithPowerUpChecker() {
     int _gemLocationAtIndexZero = buildings[0].powerUpPosition;
 
@@ -1219,6 +1261,8 @@ class GameStatusProvider with ChangeNotifier {
           _currentAmmunition = AmmoType.yellow;
           _cannonPath = 'yellowFireBall3.gif';
           _pathToTwentyMMBullet = '20mmGreen.png';
+          _pathToFortyMMBullet = '40mmGreen3.png';
+          _pathToColorChangingBullet = 'bulletCombo1.gif';
 
           /// adds two cannons
           notifyListeners();
@@ -1232,6 +1276,8 @@ class GameStatusProvider with ChangeNotifier {
           _currentAmmunition = AmmoType.blue;
           _cannonPath = 'invertGreenFireBall.gif';
           _pathToTwentyMMBullet = '20mmBlue.png';
+          _pathToFortyMMBullet = '40mmBlue.png';
+          _pathToColorChangingBullet = 'bulletCombo2.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.blue) {
@@ -1244,6 +1290,8 @@ class GameStatusProvider with ChangeNotifier {
           _currentAmmunition = AmmoType.purple;
           _cannonPath = 'fireBallXPurple.gif';
           _pathToTwentyMMBullet = '20mmPurpleBright.png';
+          _pathToFortyMMBullet = '40mmPink.png';
+          _pathToColorChangingBullet = 'bulletCombo3.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.purple) {
@@ -1256,6 +1304,8 @@ class GameStatusProvider with ChangeNotifier {
           _currentAmmunition = AmmoType.flashing;
           _cannonPath = 'fireBallXFlashing2.gif';
           _pathToTwentyMMBullet = '20mmRed.png';
+          _pathToFortyMMBullet = '40mmRed.png';
+          _pathToColorChangingBullet = 'bulletCombo4.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.flashing) {
@@ -1267,6 +1317,8 @@ class GameStatusProvider with ChangeNotifier {
             width: 40.0,
           ));
           _pathToTwentyMMBullet = '20mmBlack.png';
+          _pathToFortyMMBullet = '40mmBlack.png';
+          _pathToColorChangingBullet = 'bulletCombo5.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.black) {
@@ -1278,6 +1330,8 @@ class GameStatusProvider with ChangeNotifier {
           ));
           _cannonPath = 'whiteFireBall.gif';
           _pathToTwentyMMBullet = '20mmWhite.png';
+          _pathToFortyMMBullet = '40mmBlackWhite.png';
+          _pathToColorChangingBullet = 'bulletCombo6.gif';
 
           notifyListeners();
         } else if (_currentCannon == CannonType.white) {
@@ -1291,6 +1345,9 @@ class GameStatusProvider with ChangeNotifier {
             width: 40.0,
           ));
 
+          _pathToFortyMMBullet = '40mmCombo.gif';
+          _pathToColorChangingBullet = 'bulletCombo7.gif';
+
           fireDoublePointsEffects();
 
           notifyListeners();
@@ -1299,6 +1356,8 @@ class GameStatusProvider with ChangeNotifier {
         // notifyListeners();
         print('user caught a FLAME');
       } else if (_gemLocationAtIndexZero == 9) {
+        updateZombiePath();
+
         ///extra life
         // soundModel.playOtherSoundsTwo('arcadePickup.mp3');
         // fireCoinWinEffect();
@@ -1561,8 +1620,10 @@ class GameStatusProvider with ChangeNotifier {
 
   void cancelGameSpeedTimerToCreateANewOne() {
     gameSpeedTimer.cancel();
-    _gameSpeed = _gameSpeed - 100;
-    _reverseGameSpeedToDisplayForUserAsTheyProgress++;
+    //// 01.17.23 game speed was - 100 now its - 150 to account for crystal ball helping user
+    _gameSpeed = _gameSpeed - 150;
+    _reverseGameSpeedToDisplayForUserAsTheyProgress =
+        _reverseGameSpeedToDisplayForUserAsTheyProgress + 2;
     print('game speed is = $_gameSpeed');
     startGame();
   }
