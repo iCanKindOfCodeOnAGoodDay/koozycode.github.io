@@ -65,15 +65,15 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 30.0,
-                      width: 30.0,
+                      height: 40.0,
+                      width: 40.0,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage('images/rubyColor.gif'))),
+                              fit: BoxFit.contain,
+                              image: AssetImage('images/blackDiamondABC.gif'))),
                     ),
                     Text(
-                      '${context.watch<PremiumContentProvider>().amountOfRubiesReadyToUse.toString()}',
+                      '${(context.watch<PremiumContentProvider>().amountOfRubiesReadyToUse + context.watch<GameStatusProvider>().amountOFBonusGemsEarnedViaGamePlay).toString()}',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w800),
                     )
@@ -106,7 +106,7 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: AssetImage('images/xChestTransparent.gif'))),
+                          image: AssetImage('images/pinkChestClosed.gif'))),
                 ),
               ),
               GestureDetector(
@@ -135,7 +135,7 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                 decoration: BoxDecoration(
                   // borderRadius: BorderRadius.circular(30),
                   image: DecorationImage(
-                      fit: BoxFit.fill,
+                      fit: BoxFit.contain,
                       image: AssetImage(
                           'images/componetRightBlackButtonSquare.png')),
                 ),

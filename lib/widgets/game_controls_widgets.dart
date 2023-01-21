@@ -132,8 +132,19 @@ class GameControlsWidgets extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: AssetImage(
-                            'images/componetFourArrowsSquareBloodDarkest.png')),
+                        image: context
+                                    .watch<GameStatusProvider>()
+                                    .shouldDisplayDoublePointsEffects ==
+                                false
+                            ? AssetImage(
+                                // 'images/componetFourArrowsSquareBloodDarkest.png',
+                                'images/gameControlComponetsFourArrows1-18-23Standard.png',
+                                // 'images/gameControlComponetsFourArrows1-18-23Combo.gif',
+                              )
+                            : AssetImage(
+                                // 'images/componetFourArrowsSquareBloodDarkest.png',
+                                'images/gameControlComponetsFourArrows1-18-23Combo.gif',
+                              )),
                   ),
                   child: Column(
                     children: [
@@ -174,7 +185,9 @@ class GameControlsWidgets extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage(
-                                  'images/componetFullGreenButtonSquareBlackThumb.png')),
+                                // 'images/componetFullGreenButtonSquareBlackThumb.png',
+                                'images/componetFullGreenButtonTriggerCombo.gif',
+                              )),
                         ),
                       ),
                     ),
@@ -193,7 +206,10 @@ class GameControlsWidgets extends StatelessWidget {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
-                                    'images/componetBottomButtonSquareBlack.png')),
+                                  //// this is the pause button
+                                  'images/componetBottomButtonSquareBlack.png',
+                                  // 'images/componetFullGreenButtonTriggerCombo.gif',
+                                )),
                           ),
                           child: context.watch<GameStatusProvider>().crashed ==
                                   true

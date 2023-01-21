@@ -13,8 +13,13 @@ import '../widgets/winnables/winnable_consoles.dart';
 import '../widgets/winnables/winnable_shanks.dart';
 
 //// latest import file names
-
-// 'space90BlackGreen.gif',
+// pinkChestClosed.gif
+// blackChestFull.gif
+// blackChestOpenX.gif
+// pinkChestClosed.gif
+// pinkChestOpen.gif
+// step11Pink.gif
+//blackDiamondABC.gif
 
 enum PremiumContentType {
   gat,
@@ -26,8 +31,18 @@ enum PremiumContentType {
 }
 
 class PremiumContentProvider with ChangeNotifier {
-  String _pathToSelectedBarrier = 'mmmZombieFuzzyPink.gif';
+  String _pathToSelectedBarrier = 'hotGothInvert.gif';
+  // 'mmmZombieFuzzyPink.gif';
   // String _pathToSelectedBarrier = 'zombieHandXX.gif';
+
+  bool _activatedFireBallAmmo = false;
+
+  bool get activatedFireBallAmmo => _activatedFireBallAmmo;
+
+  void toggleFireBallAmmo() {
+    _activatedFireBallAmmo = !_activatedFireBallAmmo;
+    notifyListeners();
+  }
 
   bool _activatedSkeletonHand = false;
 
@@ -123,184 +138,43 @@ class PremiumContentProvider with ChangeNotifier {
   int get iterateThroughBarrierIndex => _iterateThroughBarrierIndex;
 
   List<String> _barrierFileNames = [
-    // 'mmFastTrollBlackWhite.gif',
-    // 'mmFastTrollCard0.gif',
-    // 'mmFastTrollCard5.gif',
-    // 'mmFastTrollGray.gif',
-    // 'mmFastTrollInvert.gif',
-    // 'mmFrankensteinBlackCardNoAngle.gif',
-    // 'mmFrankensteinPolaroid.gif',
-    // 'mmGoblinBright.gif',
-    // 'mmGoblinBrightInvert.gif',
-    // 'mmGoblinBrightInvertGrayScale.gif',
-    // 'mmGoblinCardProfile.gif',
-    // 'mmGoblinGreyScale.gif',
-    // 'mmInvertFrankenstein.gif',
-    'mmJakFuzzy.gif',
-    'mmjakFuzzyBlack.gif',
-    'mmJakFuzzyBlackWhite.gif',
-    'mmJakFuzzyBlackWhite2.gif',
-    'mmjakFuzzyInvertBlack.gif',
-    'mmjakFuzzyInvertBlack2.gif',
-    'mmjakFuzzyInvertBlue.gif',
-    'mmjakFuzzyInvertGreen.gif',
-    'mmjakFuzzyInvertPink.gif',
-    'mmjakFuzzyInvertRed.gif',
-    'mmjakFuzzyPurple.gif',
-    'mmjakFuzzyRed.gif',
-    'mmjakFuzzyYellow.gif',
-    // 'mmJakInvert.gif',
-    // 'mmPinup.gif',
-    // 'mmPinupBlackCard0Green.gif',
-    // 'mmPinupBlackSkin.gif',
-    // 'mmPinupBlackSkinCard0.gif',
-    // 'mmPinupBlackSkinCard5.gif',
-    'mmPinupBlueSkinFuzzy.gif',
-    // 'mmPinupCard0.gif',
-    // 'mmPinupCard0Red.gif',
-    // 'mmPinupCard5.gif',
-    // 'mmPinupCard5Red.gif',
-    // 'mmPinupGreenBlackCard5.gif',
-    // 'mmPinupGreenInvert.gif',
-    // 'mmPinupInvert.gif',
-    'mmPinupPitchBlackSkinFuzzy.gif',
-    // 'mmPinupPurpleSkin.gif',
-    // 'mmPinupPurpleSkin5card.gif',
-    // 'mmPinupPurpleSkinFuzzy0.gif',
-    'mmPinupPurpleSkinFuzzy5.gif',
-    // 'mmPinupRedInvert.gif',
-    // 'mmPinupRedWhiteBlue.gif',
-    // 'mmPinupRedWhiteBlueBlackCard0.gif',
-    'mmPinupRedWhiteBlueBlackCardFuzzy.gif',
-    // 'mmPinupWhiteHair.gif',
-    'mmPinupWhiteHairFuzzy.gif',
-    'mmPinupWhiteHairFuzzyX.gif',
-    'mmmPinUpFuzzBlackSkin.gif',
-    'mmmPinUpFuzzBlackSkin123.gif',
-    'mmmPinUpFuzzBlackSkin444.gif',
-    'mmmPinUpFuzzBlackSkinXX.gif',
-    'mmmPinUpFuzzy1.gif',
-    // 'mmPixelWolf.gif',
-    // 'mmPixelWolfGotham.gif',
-    // 'mmPixelWolfGotham2.gif',
-    // 'mmPixelWolfInvert.gif',
-    // 'mmPolarideGreenTroll.gif',
-    // 'mmPurpVampire.gif',
-    // 'mmPurpVampireCard5.gif',
-    // 'mmRedVampireCard0.gif',
-    // 'mmRedVampireCard5.gif',
-    // 'mmStandardFrankenstein.gif',
-    // 'mmStandardTroll.gif',
-    // 'mmVampireRed.gif',
-    // 'mmVampireWhite.gif',
-    // 'mmWhiteBlackVampire.gif',
-    // 'mmWhiteBlackVampireCard.gif',
-    // 'mmZombieChargeInvert.gif',
-    // 'mmZombieChargeInvertBlack.gif',
-    // 'mmZombieChargeInvertBlackBlack.gif',
-    // 'mmZombieChargeInvertBlackBlackCard.gif',
-    // 'mmZombieChargeInvertBlackCard5.gif',
-    // 'mmZombieChargeInvertCard0.gif',
-    // 'mmZombieChargeInvertCard5.gif',
-    // 'mmZombieChargeInvertCard5Gray.gif',
-    // 'mmZombieChargeInvertGray.gif',
-    // 'mmZombieChargeInvertLightPink.gif',
-    // 'mmZombieChargeInvertLightPinkCard.gif',
-    // 'mmZombieChargeInvertPink.gif',
-    // 'mmZombieChargeInvertPinkCard5.gif',
-    // 'mmZombieChargeInvertPitchBlack.gif',
-    // 'mmZombieChargeInvertPitchBlackCard.gif',
-    // 'mmZombieChargeInvertPitchWhite.gif',
-    // 'mmZombieChargeInvertPitchWhiteBlackCard.gif',
-    // 'mmZombieChargeInvertPurp.gif',
-    // 'mmZombieChargeInvertPurp2.gif',
-
-    // 'mmZombieChargeInvertPurpCard5.gif',
-    // 'mmZombieChargeInvertPurplecard52.gif',
-    // 'mmZombieChargeInvertRed.gif',
-    // 'mmZombieChargeInvertRedCard0.gif',
-    // 'mmZombieChargeInvertRedCard5.gif',
-
-    //// new imports
-    // 'mmmFrankensteinBlackxxxx.gif',
-    // 'mmmFrankensteinPink2.gif',
-    // 'mmmFrankensteinPinkGreen.gif',
-    // 'mmmFrankensteinPinkOrange.gif',
-    // 'mmmFrankensteinRed.gif',
-    // 'mmmFrankensteinRedBlack.gif',
-    // 'mmmFrankensteinRedBlackBlack.gif',
-    // 'mmmFrankensteinRedBlackBlue.gif',
-    // 'mmmFrankensteinRedBlackGreen.gif',
-    // 'mmmFrankensteinRedBlackPink.gif',
-    // 'mmmFrankensteinRedBlackYellow.gif',
-    // 'mmmMonsterTrumpBlackHair.gif',
-    'mmmMonsterTrumpBlackWhite.gif',
-    // 'mmmMonsterTrumpGreen.gif',
-    // 'mmmMonsterTrumpGreenx.gif',
-    // 'mmmMonsterTrumpGreenYellowRed.gif',
-    // 'mmmMonsterTrumpPink.gif',
-    // 'mmmMonsterTrumpPurple.gif',
-    // 'mmmMonsterTrumpRed.gif',
-    'mmmMonsterTrumpREdWhiteBlue.gif',
-
-    // 'mmmTrumpTroll.gif',
-    'mmmTrumpTrollBlackBlue.gif',
-    'mmmTrumpTrollBlackWhite.gif',
-    'mmmTrumpTrollBlue.gif',
-    'mmmTrumpTrollBluePink.gif',
-    // 'mmmTrumpTrollBluex.gif',
-    // 'mmmTrumpTrollBrown.gif',
-    'mmmTrumpTrollDarkBlueGreen.gif',
-    // 'mmmTrumpTrollGreen.gif',
-    // 'mmmTrumpTrollInvert.gif',
-    // 'mmmTrumpTrollLightBlue.gif',
-    // 'mmmTrumpTrollLightGrey.gif',
-    // 'mmmTrumpTrollOrange.gif',
-    // 'mmmTrumpTrollPurpleYellow.gif',
-    'mmmTrumpTrollPurpYellow.gif',
-    // 'mmmTrumpTrollRed.gif',
-    'mmmZombieFuzzyBlackSkinOrange.gif',
-    // 'mmmZombieFuzzyBlackWhite.gif',
-    'mmmZombieFuzzyBlackWhitexxxx.gif',
-    'mmmZombieFuzzyBlue.gif',
-    'mmmZombieFuzzyDarkRed.gif',
-    // 'mmmZombieFuzzyDarkRedx.gif',
-    'mmmZombieFuzzyGreenOrange.gif',
-    // 'mmmZombieFuzzyGrey.gif',
-    'mmmZombieFuzzyGreyBlack.gif',
-    'mmmZombieFuzzyHotPink.gif',
-    'mmmZombieFuzzyLightBlue.gif',
-    'mmmZombieFuzzyPink.gif',
-    // 'mmmZombieFuzzyPink1.gif',
-    // 'mmmZombieFuzzyPinkx.gif',
-    // 'mmmZombieFuzzyPurple.gif',
     'mmmZombieFuzzyPurplePinkSkin.gif',
-    'mmmZombieFuzzyRed1.gif',
-    'mmmZombieFuzzyRedishPurp.gif',
+
     'mmmZombieFuzzyRedSkin.gif',
-    'mmmZombieFuzzyRedx.gif',
-    'mmmZombieFuzzyRedXXX.gif',
+
     'mmmZombieFuzzyWhiteBlackxxxxx.gif',
 
-    /// oringals
-    // 'pinUp.gif',
-    // 'hotGothMonsterChick.gif',
-    // 'jak.gif',
+    'mmJakFuzzy.gif',
+    'mmJakFuzzyBlackWhite.gif',
+
+    'mmjakFuzzyInvertPink.gif',
+
+    'mmmMonsterTrumpBlackWhite.gif',
+
+    // 'mmmMonsterTrumpREdWhiteBlue.gif',
+
+    'mmmTrumpTrollPurpYellow.gif',
+
+    /// pinup mislabeled as zombie
+    'mmmZombieFuzzyLightBlue.gif',
+    'mmmZombieFuzzyBlackSkinOrange.gif',
+    'mmmZombieFuzzyBlackWhitexxxx.gif',
+
+    /// zombies
+    'mmmZombieFuzzyDarkRed.gif',
+
+    'mmmZombieFuzzyPink.gif',
+    'mmPinupPitchBlackSkinFuzzy.gif',
 
     //// hot goth chick
 
     'hotGothBlackWhite.gif',
     'hotGothInvert.gif',
     'hotGothInvertBluePurp.gif',
-    'hotGothInvertGreen.gif',
-    'hotGothInvertOrange.gif',
-    'hotGothInvertPencil.gif',
-    // 'hotGothInvertPink.gif',
+
+    // 'hotGothInvertPencil.gif',
     'hotGothInvertPinkPink.gif',
-    'hotGothInvertRed.gif',
-    'hotGothInvertRedRed.gif',
-    'hotGothInvertWhite.gif',
-    'hotGothInvertx.gif',
+
     'hotGothInvertYellow.gif',
 
     /// Combos - double or triple price?
@@ -329,19 +203,6 @@ class PremiumContentProvider with ChangeNotifier {
     // 'pendantNew14Colors.gif',
     // 'friendlyMonster2.gif',
     'friendlyMonster3.gif',
-    // 'friendlySpider1.gif',
-    // '21BlueZombieSuit.gif',
-    // // '21FatBlueZombie.gif',
-    // '21Savage.gif',
-    // '21Trump.gif',
-    // '21Trump2.gif',
-    // '21Unicorn.GIF',
-
-    // 'friendlySpider2.gif',
-    // 'friendlySpider3.gif',
-
-    // 'sparklingDiamondsPowerUp.gif',
-    // 'zombieHandReach.gif',
   ];
 
   void changeBarrier() {
@@ -351,7 +212,7 @@ class PremiumContentProvider with ChangeNotifier {
       _iterateThroughBarrierIndex++;
     }
     _pathToSelectedBarrier = _barrierFileNames[_iterateThroughBarrierIndex];
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
     notifyListeners();
   }
@@ -359,14 +220,14 @@ class PremiumContentProvider with ChangeNotifier {
 
   String _pathToSelectedBackgroundImage =
       // 'horror41GlowingColorIncreasedInvertedOptimized.gif';
-      // 'blackSpace1723.gif';
-      // 'fire.gif';
-      // 'fusion3.gif';
-      // 'blackWater.gif';
-      // "bgReactorCore.GIF";
-      // 'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif';
-      // 'reactor1-18-23ColorChangingOptimized.gif';
-      "bgBlackHole.GIF";
+      'blackSpace1723.gif';
+  // 'fire.gif';
+  // 'fusion3.gif';
+  // 'blackWater.gif';
+  // "bgReactorCore.GIF";
+  // 'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif';
+  // 'reactor1-18-23ColorChangingOptimized.gif';
+  // "bgBlackHole.GIF";
 
   String get pathToSelectedBackgroundImage => _pathToSelectedBackgroundImage;
 
@@ -421,37 +282,38 @@ class PremiumContentProvider with ChangeNotifier {
     // 'horror41GlowingBO.gif',
     // 'horror41GlowingColorIncreasedInvertedOptimized.gif',
     // 'horror41GlowingColorIncreasedOptimized.gif',
-    'reactor1-18-23ColorChangingOptimized.gif',
-    'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif',
-    'fire1-18-23ColorChange.gif',
+    'blackSpace1723.gif',
+    "bgBlackHole.GIF",
+
+    // 'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif',
+    // 'fire1-18-23ColorChange.gif',
 
     // "bgReactorCore.GIF",
     //
     // 'blackWater.gif',
 
-    'blackSpace1723.gif',
     // 'bonusSpace2.GIF',
 
-    'ravenSkullStandardSpeed.gif',
+    // 'ravenSkullStandardSpeed.gif',
 
-    'blackTunnel.gif',
+    // 'blackTunnel.gif',
     // 'colorChangingTunnelCombo1-18-23.gif',
 
     // 'horror10.JPG',
 
     // 'horror11.PNG',
+    'reactor1-18-23ColorChangingOptimized.gif',
 
-    'horror29.JPG',
+    // 'horror29.JPG',
 
     // 'horror34.JPG',
     // 'horror35.JPG',
-    "bgBlackHole.GIF",
     // 'fusion3.gif',
 
     //// trees
 
-    'horror41.JPG',
-    'fire.gif',
+    // 'horror41.JPG',
+    // 'fire.gif',
 
     // 'horror39.JPG',
   ];
@@ -556,14 +418,14 @@ class PremiumContentProvider with ChangeNotifier {
 
   String get playersGatChoiceString => _playersGatChoiceString;
 
-  String _playersGrenadeChoiceString = 'dynamite.png';
+  String _playersGrenadeChoiceString = 'standardGrenade1-18-23YellowInvert.png';
   String get playersGrenadeChoiceString => _playersGrenadeChoiceString;
 
   String _pathToNewItemFromChest = 'xThingKeltechPistol.png';
 
   String get pathToNewItemFromChest => _pathToNewItemFromChest;
 
-  int _amountOfRubiesReadyToUse = 10;
+  int _amountOfRubiesReadyToUse = 1985;
 
   int get amountOfRubiesReadyToUse => _amountOfRubiesReadyToUse;
 
@@ -574,7 +436,7 @@ class PremiumContentProvider with ChangeNotifier {
   void changeKnife(String knifePath) {
     _pathToSelectedKnife = knifePath;
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
     notifyListeners();
   }
@@ -586,7 +448,7 @@ class PremiumContentProvider with ChangeNotifier {
   void changeBeast(String beastPath) {
     _pathToSelectedBeast = beastPath;
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
     notifyListeners();
   }
@@ -598,21 +460,24 @@ class PremiumContentProvider with ChangeNotifier {
   void changeRocket(String rocketPath) {
     _pathToSelectedBeast = rocketPath;
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
     notifyListeners();
   }
 
   // String _pathToSelectedGameConsole = '12dotSquashSuperDevice.gif';
 
-  String _pathToSelectedGameConsole = '12DotSquashSuper.gif';
+  String _pathToSelectedGameConsole =
+      // '12DotSquashSuper.gif';
+      // '12dotsquashConsoleExtraDarkWithRedChip2.png';
+      '12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png';
 
   String get pathToSelectedGameConsole => _pathToSelectedGameConsole;
 
   void changeConsole(String consolePath) {
     _pathToSelectedGameConsole = consolePath;
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
     notifyListeners();
   }
@@ -691,7 +556,7 @@ class PremiumContentProvider with ChangeNotifier {
     }
     _pathToSelectedGameConsole = _listOfConsoles[_consoleListIndex];
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
     notifyListeners();
   }
 
@@ -703,7 +568,7 @@ class PremiumContentProvider with ChangeNotifier {
     }
     _pathToSelectedGameConsole = _listOfConsoles[_consoleListIndex];
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
     notifyListeners();
   }
 
@@ -738,7 +603,7 @@ class PremiumContentProvider with ChangeNotifier {
   void changeGat(String gatName) {
     _playersGatChoiceString = gatName;
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
     notifyListeners();
   }
@@ -746,7 +611,7 @@ class PremiumContentProvider with ChangeNotifier {
   void changeGrenade(String grenadeName) {
     _playersGrenadeChoiceString = grenadeName;
     // _shouldHideTheLastPrize = true;
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
     notifyListeners();
   }
@@ -774,7 +639,7 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+  String _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
 
   String get pathToChangeChestImageFromClosedToOpen =>
       _pathToChangeChestImageFromClosedToOpen;
@@ -846,7 +711,7 @@ class PremiumContentProvider with ChangeNotifier {
   void closeChestAndHideLastPrize() {
     _shouldHideTheLastPrize = true;
 
-    _pathToChangeChestImageFromClosedToOpen = 'xClosedChest.gif';
+    _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
     _heightOfNewItemForAnimationWhenOpeningChest = 0;
     notifyListeners();
   }
@@ -861,7 +726,7 @@ class PremiumContentProvider with ChangeNotifier {
 
     Timer(Duration(milliseconds: 1200), () {
       _shouldHideTheLastPrize = false;
-      _pathToChangeChestImageFromClosedToOpen = 'xChestTransparent.gif';
+      _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
       notifyListeners();
 
       handleAnimation();
@@ -870,7 +735,7 @@ class PremiumContentProvider with ChangeNotifier {
     int _randomIntRepresentingOneTypeOfItemWon;
     int _randomIntRepresetingPrizeIndex;
 
-    _randomIntRepresentingOneTypeOfItemWon = Random().nextInt(3) + 1;
+    _randomIntRepresentingOneTypeOfItemWon = Random().nextInt(3);
     if (_randomIntRepresentingOneTypeOfItemWon == 1) {
       /// player won a gat
       /// pick a random prize index
@@ -900,7 +765,7 @@ class PremiumContentProvider with ChangeNotifier {
           type: PremiumContentType.beast));
       _pathToNewItemFromChest =
           _pathToEachWinnableBeast[_randomIntRepresetingPrizeIndex];
-    } else if (_randomIntRepresentingOneTypeOfItemWon == 4) {
+    } else if (_randomIntRepresentingOneTypeOfItemWon == 0) {
       _randomIntRepresetingPrizeIndex =
           Random().nextInt(_pathToEachWinnableShank.length - 1);
 
@@ -914,7 +779,7 @@ class PremiumContentProvider with ChangeNotifier {
 
     notifyListeners();
     Timer(Duration(milliseconds: 1200), () {
-      _pathToChangeChestImageFromClosedToOpen = 'xOpenChest.gif';
+      _pathToChangeChestImageFromClosedToOpen = 'pinkChestOpen.gif';
       notifyListeners();
     });
 
@@ -952,25 +817,25 @@ class PremiumContentProvider with ChangeNotifier {
 
   List<String> _pathToEachWinnableBeast = [
     'zzGhost1.gif',
-    'zzBaby.GIF',
     'zzBaby2.gif',
+    'zzBaby.GIF',
   ];
 
   List<String> _pathToEachWinnableGrenade = [
-    'icedGrenade1-18-23BlackGreen.png',
-    'icedGrenade1-18-23Blue.png',
-    'icedGrenade1-18-23BrightBlue.png',
-    'icedGrenade1-18-23Gold.png',
-    'icedGrenade1-18-23Green.png',
-    'icedGrenade1-18-23NeonGreenA.png',
-    'icedGrenade1-18-23NeonIce.png',
-    'icedGrenade1-18-23Orange.png',
-    'icedGrenade1-18-23Pink.png',
-    'icedGrenade1-18-23PinkBlack.png',
-    'icedGrenade1-18-23PinkIce.png',
-    'icedGrenade1-18-23PinkIceX.png',
-    'icedGrenade1-18-23Purple.png',
-    'icedGrenade1-18-23RedBlack.png',
+    // 'icedGrenade1-18-23BlackGreen.png',
+    // 'icedGrenade1-18-23Blue.png',
+    // 'icedGrenade1-18-23BrightBlue.png',
+    // 'icedGrenade1-18-23Gold.png',
+    // 'icedGrenade1-18-23Green.png',
+    // 'icedGrenade1-18-23NeonGreenA.png',
+    // 'icedGrenade1-18-23NeonIce.png',
+    // 'icedGrenade1-18-23Orange.png',
+    // 'icedGrenade1-18-23Pink.png',
+    // 'icedGrenade1-18-23PinkBlack.png',
+    // 'icedGrenade1-18-23PinkIce.png',
+    // 'icedGrenade1-18-23PinkIceX.png',
+    // 'icedGrenade1-18-23Purple.png',
+    // 'icedGrenade1-18-23RedBlack.png',
     'icedGrenade1-18-23TiffanyIce.png',
     'icedGrenade1-18-23SaturatedBlueBlack.png',
     'icedGrenade1-18-23SaturatedGreenBlack.png',
@@ -1005,19 +870,19 @@ class PremiumContentProvider with ChangeNotifier {
     'standardGrenade1-18-23RedInvert.png',
     'standardGrenade1-18-23TealStandard.png',
     'standardGrenade1-18-23YellowInvert.png',
-    'sharkGrenade1-18-23BlueS.png',
-    'sharkGrenade1-18-23BrightGreenS.png',
-    'sharkGrenade1-18-23GreenI.png',
-    'sharkGrenade1-18-23LightBlueS.png',
-    'sharkGrenade1-18-23NeonGreenI.png',
-    'sharkGrenade1-18-23OrangeI.png',
-    'sharkGrenade1-18-23PinkI.png',
-    'sharkGrenade1-18-23PinkS.png',
-    'sharkGrenade1-18-23PurpleS.png',
-    'sharkGrenade1-18-23RedI.png',
-    'sharkGrenade1-18-23RedS.png',
-    'sharkGrenade1-18-23SeaFoamS.png',
-    'sharkGrenade1-18-23YellowI.png',
+    // 'sharkGrenade1-18-23BlueS.png',
+    // 'sharkGrenade1-18-23BrightGreenS.png',
+    // 'sharkGrenade1-18-23GreenI.png',
+    // 'sharkGrenade1-18-23LightBlueS.png',
+    // 'sharkGrenade1-18-23NeonGreenI.png',
+    // 'sharkGrenade1-18-23OrangeI.png',
+    // 'sharkGrenade1-18-23PinkI.png',
+    // 'sharkGrenade1-18-23PinkS.png',
+    // 'sharkGrenade1-18-23PurpleS.png',
+    // 'sharkGrenade1-18-23RedI.png',
+    // 'sharkGrenade1-18-23RedS.png',
+    // 'sharkGrenade1-18-23SeaFoamS.png',
+    // 'sharkGrenade1-18-23YellowI.png',
     'iceGrenade1-18-23NormalCombo.gif',
     'iceGrenade1-18-23SaturatedCombo.gif',
     'SharkBomb-18-23Combo.gif',

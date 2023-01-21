@@ -41,7 +41,7 @@ class ShopDrawerWidget extends StatelessWidget {
                                       image: DecorationImage(
                                           fit: BoxFit.fill,
                                           image: AssetImage(
-                                              'images/rubyColorGif.gif'))),
+                                              'images/blackDiamondABC.gif'))),
                                 ),
                                 Text(
                                   context
@@ -117,14 +117,14 @@ class ShopDrawerWidget extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: Colors.purple,
+                                  color: Colors.black,
                                   borderRadius: BorderRadius.circular(10.0)),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    FlashingTextMessageWidget(
-                                      text: 'Buy Rubies?',
+                                    FlashingText(
+                                      text: 'Add Rubies',
                                     ),
                                     // FlashingText(text: 'Do it do it do it'),
                                   ],

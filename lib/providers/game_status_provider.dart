@@ -1205,8 +1205,8 @@ class GameStatusProvider with ChangeNotifier {
     _rotatingIceCreamPickups.add(
       Center(
           child: Container(
-              height: 500.0,
-              width: 500.0,
+              height: 300.0,
+              width: 300.0,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -1618,8 +1618,44 @@ class GameStatusProvider with ChangeNotifier {
   Timer gameSpeedTimer =
       Timer.periodic(Duration(microseconds: 150000), (timer) {});
 
+  int _number = 0;
+
+  int _amountOFBonusGemsEarnedViaGamePlay = 7;
+
+  int _growingNmber = 3;
+
+  int get amountOFBonusGemsEarnedViaGamePlay =>
+      _amountOFBonusGemsEarnedViaGamePlay;
+
+  void updateFrequencyOfGemsEarnedBasedOnScore() {
+    if (_score <= 10000) {
+      _growingNmber = 1;
+    } else if (_score <= 20000) {
+      _growingNmber = 2;
+    } else if (_score <= 30000) {
+      _growingNmber = 3;
+    } else if (_score <= 40000) {
+      _growingNmber = 4;
+    } else if (_score <= 50000) {
+      _growingNmber = 5;
+    } else if (_score <= 60000) {
+      _growingNmber = 6;
+    } else if (_score <= 70000) {
+      _growingNmber = 7;
+    }
+  }
+
   void cancelGameSpeedTimerToCreateANewOne() {
     gameSpeedTimer.cancel();
+
+    _number = Random().nextInt(_growingNmber);
+    if (_number > 1) {
+      /// that's the magic number add a gem!
+      _amountOFBonusGemsEarnedViaGamePlay =
+          _amountOFBonusGemsEarnedViaGamePlay + 3;
+      // notifyListeners();
+    }
+
     //// 01.17.23 game speed was - 100 now its - 150 to account for crystal ball helping user
     _gameSpeed = _gameSpeed - 150;
     _reverseGameSpeedToDisplayForUserAsTheyProgress =

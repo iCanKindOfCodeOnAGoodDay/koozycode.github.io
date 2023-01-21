@@ -27,39 +27,38 @@ class GamePlayAreaWidget extends StatelessWidget {
 
         Container(
           decoration:
-              context.read<GameStatusProvider>().shouldDisplayBandaidPickup ==
-                      true
-                  ? BoxDecoration()
-                  : BoxDecoration(
-                      // color: Colors.black,
-                      borderRadius: BorderRadius.circular(20),
-                      image: context
-                                  .read<GameStatusProvider>()
-                                  .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
-                              true
-                          ? DecorationImage(
-                              image: AssetImage(
-                                  'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}'))
-                          : context
-                                      .watch<GameStatusProvider>()
-                                      .showSkullBackground ==
-                                  true
-                              ? DecorationImage(
-                                  image: AssetImage(
-                                      'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}'))
-                              : context
-                                          .watch<GameStatusProvider>()
-                                          .shouldDisplayTimeIncrease ==
-                                      true
-                                  ? DecorationImage(
-                                      image: AssetImage(
-                                      'images/crystalBallLargeScreen.gif',
-                                    ))
-                                  : DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(
-                                          'images/ledScreenBackground.jpg')),
-                    ),
+              // context.read<GameStatusProvider>().shouldDisplayBandaidPickup ==
+              //         true
+              //     ? BoxDecoration()
+              //     :
+              BoxDecoration(
+            // color: Colors.black,
+            borderRadius: BorderRadius.circular(20),
+            image: context
+                        .read<GameStatusProvider>()
+                        .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
+                    true
+                ? DecorationImage(
+                    image: AssetImage(
+                        'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}'))
+                : context.watch<GameStatusProvider>().showSkullBackground ==
+                        true
+                    ? DecorationImage(
+                        image: AssetImage(
+                            'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}'))
+                    : context
+                                .watch<GameStatusProvider>()
+                                .shouldDisplayTimeIncrease ==
+                            true
+                        ? DecorationImage(
+                            image: AssetImage(
+                            'images/crystalBallLargeScreen.gif',
+                          ))
+                        : DecorationImage(
+                            fit: BoxFit.cover,
+                            image:
+                                AssetImage('images/ledScreenBackground.jpg')),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -91,7 +90,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                                           .shouldDisplayExplosion2 ==
                                       true
                                   ? AssetImage(
-                                      'images/explosionFlames.gif',
+                                      'images/explosionFlamesCombo.gif',
                                       // 'images/macGruberGunshots.gif',
                                     )
                                   : context
@@ -107,7 +106,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                                               true
                                           ? AssetImage(
                                               // 'images/horseTwoLegs.gif',
-                                              'images/explosionFlames.gif',
+                                              'images/explosionFlamesCombo.gif',
                                               // 'images/horseRidingPeople.gif',
                                             )
                                           : context

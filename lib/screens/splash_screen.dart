@@ -35,29 +35,15 @@ class _SplashScreenState extends State<SplashScreen> {
       );
     });
 
-    List<Widget> listOfIcons = [
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-      kblankIcon,
-    ];
     void replaceBlankIconsWithZombieCards() {
       for (var i = 0; i < 13; i++) {
         /// replace 13 blank icons by removing the blank icon at the end
         /// every 200th of a seconds
         int delay = i * 200;
         Timer(Duration(milliseconds: delay), () {
-          listOfIcons.removeAt(listOfIcons.length - 1);
-          listOfIcons.insert(
+          listOfIconsToBeReplacedByZombieCards
+              .removeAt(listOfIconsToBeReplacedByZombieCards.length - 1);
+          listOfIconsToBeReplacedByZombieCards.insert(
               0,
               (Expanded(
                 child: RotatingBarrierWidget(
@@ -129,6 +115,22 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  List<Widget> listOfIconsToBeReplacedByZombieCards = [
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+    kblankIcon,
+  ];
+
   String imageFileName = "skelletonThing.gif";
 
   String fireBallPathTop = 'mmmMonsterTrumpGreenYellowRed.gif';
@@ -154,6 +156,13 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(
                 height: 20.0,
               ),
+              Container(
+                height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: listOfIconsToBeReplacedByZombieCards,
+                ),
+              ),
               Expanded(
                 child: Hero(
                   tag: 'fireBall',
@@ -164,13 +173,6 @@ class _SplashScreenState extends State<SplashScreen> {
                             fit: BoxFit.fitHeight,
                             image: AssetImage('images/$fireBallPathTop'))),
                   ),
-                ),
-              ),
-              Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: coinList,
                 ),
               ),
               Container(
@@ -212,13 +214,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
               ),
-              Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: coinList,
-                ),
-              ),
               Expanded(
                 child: Hero(
                   tag: 'fireBall',
@@ -229,6 +224,13 @@ class _SplashScreenState extends State<SplashScreen> {
                             fit: BoxFit.fitHeight,
                             image: AssetImage('images/$fireBallPathBottom'))),
                   ),
+                ),
+              ),
+              Container(
+                height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: listOfIconsToBeReplacedByZombieCards,
                 ),
               ),
             ],

@@ -864,6 +864,92 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                           ),
                                         ],
                                       ),
+                                      Icon(
+                                        Icons.arrow_circle_right_outlined,
+                                        size: 50.0,
+                                        color: Colors.green,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            'Fireball Ammo',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.info_outline,
+                                                color: Colors.orange,
+                                                size: 40.0,
+                                              ),
+                                              Text(
+                                                '\$7.99',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                            ],
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              context
+                                                  .read<
+                                                      PremiumContentProvider>()
+                                                  .toggleFireBallAmmo();
+                                            },
+                                            child: context
+                                                        .watch<
+                                                            PremiumContentProvider>()
+                                                        .activatedFireBallAmmo ==
+                                                    false
+                                                ? Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        color: Colors.black),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        'activate',
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        color: Colors.red),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        'de-activate',
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ],

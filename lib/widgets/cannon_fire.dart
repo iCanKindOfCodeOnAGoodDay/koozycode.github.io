@@ -5,6 +5,7 @@ import 'package:flappy_taco/widgets/rotating_icecream_bullet_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/20mm_bullet_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/40MM_bullet_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/color_changing_bullet_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/original_fireball_widgets.dart';
 import 'package:flappy_taco/widgets/winnables/shank_shooter_bullet_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,21 +25,20 @@ class CannonFire extends StatelessWidget {
                             .activatedColorChangingBullets ==
                         true
                     ? ColorChangingBullet()
-                    : FastRotatingIcecreamBullet(
-                        path:
-                            '${context.watch<GameStatusProvider>().iceCreamBulletPath}',
-                        height: 40.0,
-                        width: 40.0,
-                      )
+                    :
+                    // OriginalFireBallWidgets()
+                    context
+                                .watch<PremiumContentProvider>()
+                                .activatedFireBallAmmo ==
+                            true
+                        ? OriginalFireBallWidgets()
+                        : FastRotatingIcecreamBullet(
+                            path:
+                                '${context.watch<GameStatusProvider>().iceCreamBulletPath}',
+                            height: 40.0,
+                            width: 40.0,
+                          )
         : ShankShooterBullet();
-    // return Container(
-    //   height: 40.0,
-    //   width: 40.0,
-    //   decoration: BoxDecoration(
-    //       image: DecorationImage(
-    //           image: AssetImage(
-    //               'images/${context.watch<GameStatusProvider>().iceCreamBulletPath}'))),
-    // );
   }
 }
 
