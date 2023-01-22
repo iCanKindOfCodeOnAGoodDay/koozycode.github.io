@@ -71,7 +71,7 @@ class GameStatusProvider with ChangeNotifier {
 
   AmmoType get currentAmmunition => _currentAmmunition;
 
-  bool _hearSoundEffects = false;
+  bool _hearSoundEffects = true;
 
   bool get hearSoundEffects => _hearSoundEffects;
 
@@ -85,7 +85,7 @@ class GameStatusProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool _hearBackgroundMusic = false;
+  bool _hearBackgroundMusic = true;
 
   bool get hearBackgroundMusic => _hearBackgroundMusic;
 
@@ -550,7 +550,9 @@ class GameStatusProvider with ChangeNotifier {
             soundModel.playOtherFour('splat.mp3', _hearSoundEffects);
             soundModel.playOtherFive('deathCallsForMe.mp3', _hearSoundEffects);
             soundModel.playOtherSix('fireworks.mp3', _hearSoundEffects);
-            soundModel.playOtherSoundsTwo('bulletShot.mp3', _hearSoundEffects);
+            // soundModel.playOtherSoundsTwo('bulletShot.mp3', _hearSoundEffects);
+            soundModel.playOtherSounds(
+                '1-21-23BurstRifle.mp3', hearSoundEffects);
 
             print('craashed = $_crashed');
             print('game over top buildling');
@@ -845,6 +847,8 @@ class GameStatusProvider with ChangeNotifier {
   bool get shouldDisplayQuickLifePickup => _shouldDisplayQuickLifePickup;
 
   void fireQuickLifePickup() {
+    soundModel.playOtherSounds5x('1-21-23Gingle8Bit.mp3', hearSoundEffects);
+
     // _score = _score + 50;
     _shouldDisplayQuickLifePickup = true;
     notifyListeners();
@@ -859,6 +863,7 @@ class GameStatusProvider with ChangeNotifier {
   bool get shouldDisplayBandaidPickup => _shouldDisplayBandaidPickup;
 
   void fireQuickBandaidPickup() {
+    soundModel.playOtherSounds5x('1-21-23Gingle8Bit.mp3', hearSoundEffects);
     // _score = _score + 50;
     _shouldDisplayBandaidPickup = true;
     notifyListeners();
@@ -933,70 +938,20 @@ class GameStatusProvider with ChangeNotifier {
   /// time bomb
   void timeBombExplosionOnScreen() {
     // soundModel.playOtherThree('sciFiBitExplosion.mp3');
-    soundModel.playOtherFour('whistle.mp3', _hearSoundEffects);
+    // soundModel.playOtherFour('whistle.mp3', _hearSoundEffects);
+    // soundModel.playOtherFour('whistle.mp3', _hearSoundEffects);
+    // soundModel.playOtherFour('zapAndExplosion.mp3', _hearSoundEffects);
+    soundModel.playOtherSounds5x('customExplosion.mp3', _hearSoundEffects);
+
     // soundModel.playOtherFive('sizzlePop.mp3');
-    soundModel.playOtherSix('popDebris.mp3', _hearSoundEffects);
+    // soundModel.playOtherSix('popDebris.mp3', _hearSoundEffects);
 
     fireDoublePointsEffects();
     fireExplosion1();
 
     nukeList.removeAt(nukeList.length - 1);
     blowUpBuildingsButNotPowerUps();
-    // buildings = [];
-    // buildings = [
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    //   BuildingWidget(
-    //     buildingHeight: 20,
-    //     powerUpPosition: 0,
-    //   ),
-    // ];
+
     notifyListeners();
   }
 
@@ -1034,11 +989,15 @@ class GameStatusProvider with ChangeNotifier {
     if (_handPosition - 1 == _gemLocationAtIndexZero ||
         _handPosition == _gemLocationAtIndexZero) {
       if (_gemLocationAtIndexZero == 4 || _gemLocationAtIndexZero == 7) {
+        // soundModel.playFlapFlapFlap(_hearSoundEffects);
+        soundModel.playOtherSounds5x('1-21-23stab.mp3', _hearSoundEffects);
+        soundModel.playOtherSounds('1-21-23Lose8Bit.mp3', hearSoundEffects);
+
         if (redGems.isEmpty && extraLives.isEmpty) {
           // fireQuickScream();
           soundModel.playOtherSounds('jumpScare.mp3', _hearSoundEffects);
-          soundModel.playOtherThree(
-              'negativePowerupTwo.mp3', _hearSoundEffects);
+          // soundModel.playOtherThree(
+          //     'negativePowerupTwo.mp3', _hearSoundEffects);
           fireQuickScreamWhenUserLosesALifeAndNotARedGemWhenStabbed();
           // fireBloodSplatQuick();
 
@@ -1049,8 +1008,8 @@ class GameStatusProvider with ChangeNotifier {
           notifyListeners();
         } else if (redGems.isNotEmpty) {
           fireQuickScreamWhenUserLosesALifeAndNotARedGemWhenStabbed();
-          soundModel.playOtherThree(
-              'negativePowerupTwo.mp3', _hearSoundEffects);
+          // soundModel.playOtherThree(
+          //     'negativePowerupTwo.mp3', _hearSoundEffects);
 
           redGems.removeAt(redGems.length - 1);
           print('red gem stab protection - 1 red gem');
@@ -1059,7 +1018,7 @@ class GameStatusProvider with ChangeNotifier {
           notifyListeners();
         } else if (extraLives.isNotEmpty) {
           fireQuickScreamWhenUserLosesALifeAndNotARedGemWhenStabbed();
-          soundModel.playOtherFour('negativePowerupTwo.mp3', _hearSoundEffects);
+          // soundModel.playOtherFour('negativePowerupTwo.mp3', _hearSoundEffects);
 
           extraLives.removeAt(extraLives.length - 1);
           print(
@@ -1068,13 +1027,18 @@ class GameStatusProvider with ChangeNotifier {
           notifyListeners();
         }
       } else if (_gemLocationAtIndexZero == 5) {
+        // soundModel.playFlapFlapFlap(_hearSoundEffects);
+
         soundModel.playComedySounds('horseNeigh.mp3', _hearSoundEffects);
         turnOnAndOffSkullBackground();
         soundModel.playOtherThree('negativePowerup.mp3', _hearSoundEffects);
       } else if (_gemLocationAtIndexZero == 6) {
+        // soundModel.playFlapFlapFlap(_hearSoundEffects);
+
+        /// crystal ball!
         /// show
-        fireTimeIncrease();
-        soundModel.playOtherThree('negativePowerup.mp3', _hearSoundEffects);
+        fireCrystalBallTimeDecrease();
+        soundModel.playOtherSounds5x('crowdApplause.mp3', _hearSoundEffects);
       }
     }
   }
@@ -1085,7 +1049,7 @@ class GameStatusProvider with ChangeNotifier {
 
   //// rather than speeding game up, slow it down?!?!?!?
 
-  void fireTimeIncrease() {
+  void fireCrystalBallTimeDecrease() {
     _gameSpeed = _gameSpeed + 5000;
     _reverseGameSpeedToDisplayForUserAsTheyProgress =
         _reverseGameSpeedToDisplayForUserAsTheyProgress - 50;
@@ -1242,6 +1206,7 @@ class GameStatusProvider with ChangeNotifier {
         fireJustPickedUpCannon();
         soundModel.playCannonUpgradeSound(_hearSoundEffects);
         soundModel.playOtherThree('sciFiPowerupThree.mp3', _hearSoundEffects);
+        soundModel.playFlapFlapFlap(_hearSoundEffects);
 
         ///hell fire cannon
         if (_currentCannon == CannonType.orange) {
@@ -1367,6 +1332,7 @@ class GameStatusProvider with ChangeNotifier {
         soundModel.playComedySounds(
             'laughingYoungFemale.mp3', _hearSoundEffects);
         fireQuickLifePickup();
+        soundModel.playFlapFlapFlap(_hearSoundEffects);
 
         // soundModel.playOtherSoundsTwo('sciFiPowerupThree.mp3');
         // soundModel.playOtherFive('positivePowerupTwo.mp3');
@@ -1380,6 +1346,7 @@ class GameStatusProvider with ChangeNotifier {
       } else if (_gemLocationAtIndexZero == 10) {
         /// used to be 6 and 10, now lets just put this at 10, and 6 will be the speed up negative powerup
         soundModel.playOtherFour('positivePowerupTwo.mp3', _hearSoundEffects);
+        soundModel.playFlapFlapFlap(_hearSoundEffects);
 
         fireQuickBandaidPickup();
         fireDoublePointsEffects();
@@ -1390,19 +1357,25 @@ class GameStatusProvider with ChangeNotifier {
         /// increase users red gem count
         print('user made contact with red gem');
       } else if (_gemLocationAtIndexZero == 1) {
+        // soundModel.playFlapFlapFlap(_hearSoundEffects);
+
         ///empty buildings
         fireDoublePointsEffects();
         // soundModel.playOtherThree('sciFiBitExplosion.mp3');
-        soundModel.playComedySounds('savageHorse.mp3', _hearSoundEffects);
+        // soundModel.playComedySounds('savageHorse.mp3', _hearSoundEffects);
         // soundModel.playOtherFour('sciFiBitExplosion.mp3');
-        soundModel.playOtherFive('debrisShatter.mp3', _hearSoundEffects);
+        // soundModel.playOtherFive('debrisShatter.mp3', _hearSoundEffects);
         // soundModel.playOtherSoundsTwo('sciFiPowerupThree.mp3');
         // soundModel.playOtherSounds5x('fuseSound.mp3');
         /// user caught a bomb blow up obstacles instantly
         blowUpBuildingsButNotPowerUps();
+        soundModel.playOtherSounds5x('customExplosion.mp3', _hearSoundEffects);
+
         fireExplosion2();
         print('user caught a flashing gem');
       } else if (_gemLocationAtIndexZero == 8) {
+        // soundModel.playFlapFlapFlap(_hearSoundEffects);
+
         soundModel.playOtherSounds('sizzlePop.mp3', _hearSoundEffects);
         // soundModel.playOtherSix('bopBopBopDing.mp3');
         soundModel.playOtherSeven('sciFiPowerupThree.mp3', _hearSoundEffects);
@@ -1465,8 +1438,7 @@ class GameStatusProvider with ChangeNotifier {
     } else if (_gemPosition == 5) {
       /// skellaton
       // soundModel.playOtherSounds5x('emergencyAlertFourDings.mp3');
-      soundModel.playOtherSounds5x(
-          'emergencyAlertFourDings.mp3', _hearSoundEffects);
+      soundModel.playOtherSounds('1-21-23Warning.mp3', _hearSoundEffects);
 
       notifyListeners();
     } else if (_gemPosition == 8) {

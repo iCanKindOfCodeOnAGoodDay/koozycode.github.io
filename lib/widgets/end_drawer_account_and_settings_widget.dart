@@ -128,7 +128,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 fontWeight: FontWeight.w700),
                                           ),
                                           Text(
-                                            '\$7.99',
+                                            '\$2.99',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w700),
@@ -1047,6 +1047,8 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                       .read<
                                                           GameStatusProvider>()
                                                       .setBackgroundMusicToTrue();
+                                                  // soundModel
+                                                  //     .playFlapFlapFlap(true);
                                                   soundModel.playSpookyMusic(
                                                       context
                                                           .read<
@@ -1125,7 +1127,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                   onTap: () {
                                     context
                                         .read<PremiumContentProvider>()
-                                        .changeBarrier();
+                                        .nextHandColor();
                                   },
                                   child: Container(
                                     height: 150.0,
@@ -1133,14 +1135,14 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'images/${context.watch<PremiumContentProvider>().pathToSelectedBarrier}'))),
+                                                'images/${context.watch<PremiumContentProvider>().pathToSelectedWalkingHand}'))),
                                   ),
                                 ),
                                 GestureDetector(
                                   onTap: () {
                                     context
                                         .read<PremiumContentProvider>()
-                                        .changeBarrier();
+                                        .nextHandColor();
                                   },
                                   child: Icon(
                                     Icons.swap_calls,
@@ -1149,7 +1151,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                   ),
                                 ),
                                 FlashingText(text: 'FREE'),
-                                FlashingText(text: 'MONSTERS'),
+                                FlashingText(text: 'HANDS'),
                               ],
                             ),
                             Column(
@@ -1199,7 +1201,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                               fontWeight: FontWeight.w700),
                                         ),
                                         Text(
-                                          '\$7.99',
+                                          '\$1.99',
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w700),

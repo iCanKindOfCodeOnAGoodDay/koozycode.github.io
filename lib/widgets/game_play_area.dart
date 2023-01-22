@@ -31,34 +31,45 @@ class GamePlayAreaWidget extends StatelessWidget {
               //         true
               //     ? BoxDecoration()
               //     :
-              BoxDecoration(
-            // color: Colors.black,
-            borderRadius: BorderRadius.circular(20),
-            image: context
-                        .read<GameStatusProvider>()
-                        .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
-                    true
-                ? DecorationImage(
-                    image: AssetImage(
-                        'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}'))
-                : context.watch<GameStatusProvider>().showSkullBackground ==
-                        true
-                    ? DecorationImage(
-                        image: AssetImage(
-                            'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}'))
-                    : context
-                                .watch<GameStatusProvider>()
-                                .shouldDisplayTimeIncrease ==
-                            true
-                        ? DecorationImage(
-                            image: AssetImage(
-                            'images/crystalBallLargeScreen.gif',
-                          ))
-                        : DecorationImage(
-                            fit: BoxFit.cover,
-                            image:
-                                AssetImage('images/ledScreenBackground.jpg')),
-          ),
+
+              context.watch<GameStatusProvider>().shouldDisplayExplosion1 ==
+                      true
+                  ? BoxDecoration()
+                  : context
+                              .watch<GameStatusProvider>()
+                              .shouldDisplayExplosion2 ==
+                          true
+                      ? BoxDecoration()
+                      : BoxDecoration(
+                          // color: Colors.black,
+                          borderRadius: BorderRadius.circular(20),
+                          image: context
+                                      .read<GameStatusProvider>()
+                                      .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
+                                  true
+                              ? DecorationImage(
+                                  image: AssetImage(
+                                      'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}'))
+                              : context
+                                          .watch<GameStatusProvider>()
+                                          .showSkullBackground ==
+                                      true
+                                  ? DecorationImage(
+                                      image: AssetImage(
+                                          'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}'))
+                                  : context
+                                              .watch<GameStatusProvider>()
+                                              .shouldDisplayTimeIncrease ==
+                                          true
+                                      ? DecorationImage(
+                                          image: AssetImage(
+                                          'images/crystalBallLargeScreen.gif',
+                                        ))
+                                      : DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              'images/ledScreenBackground.jpg')),
+                        ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -69,7 +80,10 @@ class GamePlayAreaWidget extends StatelessWidget {
                               .read<GameStatusProvider>()
                               .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
                           true
-                      ? AssetImage('images/blood2.gif')
+                      ? AssetImage(
+                          // 'images/blood2.gif',
+                          'images/blood2LightGreen.gif',
+                        )
                       : context
                                   .watch<GameStatusProvider>()
                                   .showSkullBackground ==
@@ -87,35 +101,29 @@ class GamePlayAreaWidget extends StatelessWidget {
                                 )
                               : context
                                           .watch<GameStatusProvider>()
-                                          .shouldDisplayExplosion2 ==
+                                          .shouldDisplayKnifeDefense ==
                                       true
                                   ? AssetImage(
-                                      'images/explosionFlamesCombo.gif',
-                                      // 'images/macGruberGunshots.gif',
+                                      'images/psychadelic.gif',
                                     )
                                   : context
-                                              .watch<GameStatusProvider>()
-                                              .shouldDisplayKnifeDefense ==
+                                              .read<GameStatusProvider>()
+                                              .shouldDisplayBandaidPickup ==
                                           true
-                                      ? AssetImage(
-                                          'images/psychadelic.gif',
-                                        )
+                                      ? AssetImage('images/psychadelic.gif')
                                       : context
                                                   .watch<GameStatusProvider>()
                                                   .shouldDisplayExplosion1 ==
                                               true
                                           ? AssetImage(
-                                              // 'images/horseTwoLegs.gif',
-                                              'images/explosionFlamesCombo.gif',
-                                              // 'images/horseRidingPeople.gif',
-                                            )
+                                              'images/whiteExplosion2.gif')
                                           : context
-                                                      .read<
+                                                      .watch<
                                                           GameStatusProvider>()
-                                                      .shouldDisplayBandaidPickup ==
+                                                      .shouldDisplayExplosion2 ==
                                                   true
                                               ? AssetImage(
-                                                  'images/psychadelic.gif')
+                                                  'images/ooooExplosionBlue.gif')
                                               : context
                                                           .watch<
                                                               GameStatusProvider>()
@@ -131,52 +139,77 @@ class GamePlayAreaWidget extends StatelessWidget {
                 ),
               ),
               child: Container(
-                decoration: context
-                            .read<GameStatusProvider>()
-                            .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
-                        true
-                    ? BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(
-                                'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}')))
-                    : context
-                                .read<GameStatusProvider>()
-                                .shouldDisplayQuickLifePickup ==
+                decoration:
+                    // context
+                    //             .watch<GameStatusProvider>()
+                    //             .shouldDisplayExplosion1 ==
+                    //         true
+                    //     ? BoxDecoration(
+                    //         image: DecorationImage(
+                    //             image: AssetImage('images/blackExplosion.gif')))
+                    //     :
+
+                    context
+                                .watch<GameStatusProvider>()
+                                .shouldDisplayExplosion2 ==
                             true
                         ? BoxDecoration(
                             image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage(
-                                    'images/${context.watch<GameStatusProvider>().pathToZombieHandReach}')))
+                                image:
+                                    AssetImage('images/ooooExplosionBlue.gif')))
                         : context
-                                    .read<GameStatusProvider>()
-                                    .shouldDisplayBandaidPickup ==
+                                    .watch<GameStatusProvider>()
+                                    .shouldDisplayExplosion1 ==
                                 true
-                            ? BoxDecoration()
-                            // ? BoxDecoration(
-                            //     image: DecorationImage(
-                            //         fit: BoxFit.fill,
-                            //         image: AssetImage(
-                            //             'images/christopherScottWhite.gif')))
+                            ? BoxDecoration(
+                                image: DecorationImage(
+                                image: AssetImage('images/whiteExplosion2.gif'),
+                              ))
                             : context
                                         .read<GameStatusProvider>()
-                                        .shouldDisplayBloodSplatQuick ==
+                                        .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
                                     true
                                 ? BoxDecoration(
                                     image: DecorationImage(
                                         fit: BoxFit.fill,
-                                        image: AssetImage('images/blood2.gif')))
+                                        image: AssetImage(
+                                            'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}')))
                                 : context
                                             .read<GameStatusProvider>()
-                                            .shouldDisplayQuickHorror ==
+                                            .shouldDisplayQuickLifePickup ==
                                         true
                                     ? BoxDecoration(
                                         image: DecorationImage(
                                             fit: BoxFit.fill,
                                             image: AssetImage(
-                                                'images/blood2.gif')))
-                                    : BoxDecoration(),
+                                                'images/${context.watch<GameStatusProvider>().pathToZombieHandReach}')))
+                                    : context
+                                                .read<GameStatusProvider>()
+                                                .shouldDisplayBandaidPickup ==
+                                            true
+                                        ? BoxDecoration()
+                                        // ? BoxDecoration(
+                                        //     image: DecorationImage(
+                                        //         fit: BoxFit.fill,
+                                        //         image: AssetImage(
+                                        //             'images/christopherScottWhite.gif')))
+                                        : context
+                                                    .read<GameStatusProvider>()
+                                                    .shouldDisplayBloodSplatQuick ==
+                                                true
+                                            ? BoxDecoration(
+                                                image: DecorationImage(
+                                                    fit: BoxFit.fill,
+                                                    image: AssetImage(
+                                                      // 'images/blood2.gif',
+                                                      'images/blood2LightGreen.gif',
+                                                    )))
+                                            : context
+                                                        .read<GameStatusProvider>()
+                                                        .shouldDisplayQuickHorror ==
+                                                    true
+                                                ? BoxDecoration(image: DecorationImage(fit: BoxFit.fill, image: AssetImage('images/blood2.gif')))
+                                                : BoxDecoration(),
                 child: Container(
                   decoration: context
                               .read<GameStatusProvider>()

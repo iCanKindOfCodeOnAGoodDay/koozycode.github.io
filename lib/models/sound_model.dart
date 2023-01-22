@@ -46,16 +46,19 @@ class SoundModel {
   void playSpookyMusic(bool hearSoundEffects) async {
     if (hearSoundEffects == true) {
       await spookyMusicPlayer.setLoopMode(LoopMode.one);
-      await spookyMusicPlayer.setAsset('assets/xAll249.mp3');
+      await spookyMusicPlayer.setVolume(2.0);
+
+      await spookyMusicPlayer.setAsset(
+          // 'assets/spookyMusic.mp3',
+          // 'assets/wednesdaySoundingTrack.mp3'
+          'assets/harryPotterSoundingTrack.mp3'
+          // 'assets/flapFlapFlapBenReich.wav',
+          );
       await spookyMusicPlayer.play();
       await spookyMusicPlayer.stop();
-      // Stop an
-      // d free resources
+
       await spookyMusicPlayer.dispose();
-      // Clear the asset cache directory
-      // await AudioPlayer.clearAssetCache();
     }
-// Download and cache audio while playing it (experimental)
   }
 
   final loopSizzleSoundPlayer = AudioPlayer();
@@ -69,7 +72,9 @@ class SoundModel {
   void playLoopSizzleSound(bool hearSoundEffects) async {
     if (hearSoundEffects == true) {
       await loopSizzleSoundPlayer.setLoopMode(LoopMode.one);
-      await loopSizzleSoundPlayer.setAsset('assets/sizzleFire.mp3');
+      await loopSizzleSoundPlayer.setAsset(
+        'assets/sizzleFire.mp3',
+      );
       await loopSizzleSoundPlayer.play();
       await loopSizzleSoundPlayer.stop();
 
@@ -102,7 +107,12 @@ class SoundModel {
   void playLoopElectricChair(bool hearSoundEffects) async {
     if (hearSoundEffects == true) {
       await loopElectricChairPlayer.setLoopMode(LoopMode.one);
-      await loopElectricChairPlayer.setAsset('assets/electricChair.mp3');
+      await loopElectricChairPlayer.setVolume(.2);
+
+      await loopElectricChairPlayer.setAsset(
+        'assets/electricChair.mp3',
+        // 'assets/flapFlapFlapBenReich.wav',
+      );
       await loopElectricChairPlayer.play();
       await loopElectricChairPlayer.stop();
 
@@ -355,6 +365,26 @@ class SoundModel {
       final audioPlayer = AudioPlayer();
       await audioPlayer.setVolume(5.0);
       await audioPlayer.setAsset('assets/$soundPath');
+      await audioPlayer.play();
+      await audioPlayer.stop();
+      // Clear the asset cache directory
+      // await AudioPlayer.clearAssetCache();
+      // Stop an
+      // d free resources
+      await audioPlayer.dispose();
+    }
+  }
+
+  void playFlapFlapFlap(bool hearSoundEffects) async {
+    if (hearSoundEffects == true) {
+      final audioPlayer = AudioPlayer();
+      await audioPlayer.setVolume(2.0);
+      // await audioPlayer.setLoopMode(LoopMode.one);
+
+      await audioPlayer.setAsset(
+        // 'assets/flapFlapFlapBenReich.wav',
+        'assets/flapFlapFlapFlappyHand.mp3',
+      );
       await audioPlayer.play();
       await audioPlayer.stop();
       // Clear the asset cache directory

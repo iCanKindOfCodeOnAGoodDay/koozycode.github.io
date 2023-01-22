@@ -1,4 +1,5 @@
 import 'package:flappy_taco/providers/premium_content_provider.dart';
+import 'package:flappy_taco/widgets/flashing_text_message_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -51,7 +52,7 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                                           .score
                                           .toString(),
                                       style: kScoreStyle)
-                                  : FlashingText(
+                                  : FlashingTextMessageWidget(
                                       text: context
                                           .watch<GameStatusProvider>()
                                           .score
@@ -65,8 +66,8 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 40.0,
-                      width: 40.0,
+                      height: 80.0,
+                      width: 80.0,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.contain,

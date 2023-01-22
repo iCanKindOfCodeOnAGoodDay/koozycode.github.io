@@ -14,6 +14,11 @@ class ShopDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(
+                  'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}'))),
       child: ListView(
         children: [
           Container(
@@ -35,11 +40,11 @@ class ShopDrawerWidget extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  height: 40.0,
-                                  width: 40.0,
+                                  height: 80.0,
+                                  width: 80.0,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
-                                          fit: BoxFit.fill,
+                                          fit: BoxFit.contain,
                                           image: AssetImage(
                                               'images/blackDiamondABC.gif'))),
                                 ),
@@ -222,7 +227,7 @@ class ShopDrawerWidget extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        'press to add all free!',
+                                        'press to add all guns!',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 10.0,

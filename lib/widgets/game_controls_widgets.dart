@@ -83,7 +83,7 @@ class GameControlsWidgets extends StatelessWidget {
                 ),
                 context.watch<GameStatusProvider>().shouldDisplayTimeIncrease ==
                         true
-                    ? FlashingTextMessageWidget(text: '- 50')
+                    ? FlashingTextMessageWidget(text: '50!!!')
                     // ? Text(
                     //     '-50',
                     //     style: TextStyle(

@@ -8,6 +8,14 @@ class ThingWalkingDynamicWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return context.watch<PremiumContentProvider>().activatedSkeletonHand == true
         ? kThingFallingSkeleton
-        : kThingFalling;
+        : Container(
+            height: 40.0,
+            width: 40.0,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                        'images/${context.watch<PremiumContentProvider>().pathToSelectedWalkingHand}'))),
+          );
   }
 }

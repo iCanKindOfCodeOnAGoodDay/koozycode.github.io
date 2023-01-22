@@ -50,10 +50,10 @@ class GamePlayScreen extends StatelessWidget {
         child: Stack(
           children: [
             ////todo top of the screen above game play area
-            TopScreenWidgets(),
+            // TopScreenWidgets(),
 
             ///todo this is the bottom screen below the game control buttons
-            BottomOfTheScreenImages(),
+            // BottomOfTheScreenImages(),
 
             Container(
               decoration: BoxDecoration(
