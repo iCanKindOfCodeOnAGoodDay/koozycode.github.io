@@ -47,6 +47,83 @@ enum HandColors {
 }
 
 class PremiumContentProvider with ChangeNotifier {
+  /// hands fish, and faces
+  ///
+  int indexToIterateThroughFloppyFishList = 0;
+
+  bool _activatedFloppyFish = false;
+
+  bool get activatedFloppyFish => _activatedFloppyFish;
+
+  // void toggleActivationOfFloppyFish() {
+  //   _activatedFloppyFish = !_activatedFloppyFish;
+  //   notifyListeners();
+  // }
+
+  void updateHandToFloppyFishes() {
+    if (indexToIterateThroughFloppyFishList <=
+        _listOfPathsToFloppyFishFileNames.length - 1) {
+      indexToIterateThroughFloppyFishList++;
+    } else {
+      indexToIterateThroughFloppyFishList = 0;
+    }
+    _pathToSelectedWalkingHand =
+        _listOfPathsToFloppyFishFileNames[indexToIterateThroughFloppyFishList];
+    notifyListeners();
+  }
+
+  List<String> _listOfPathsToFloppyFishFileNames = [
+    'blueFishSpeedUp.gif',
+    'goldFishSpeedUp.gif',
+    'greenFishSpeedUp.gif',
+    'pinkFishSpeedUp2.gif',
+    'zzFish2.GIF',
+  ];
+
+  List<String> get listOfPathsToFloppyFishFileNames =>
+      _listOfPathsToFloppyFishFileNames;
+
+  bool _activatedFloppyFace = false;
+
+  bool get activatedFloppyFace => _activatedFloppyFace;
+
+  int indexToIterateThroughFloppyFaceList = 0;
+
+  // void toggleActivationOfFloppyFace() {
+  //   _activatedFloppyFace = !_activatedFloppyFace;
+  //   notifyListeners();
+  // }
+
+  void updateHandToFloppyFaces() {
+    if (indexToIterateThroughFloppyFaceList <=
+        _listOfPathsToFloppyFaceFileNames.length - 1) {
+      indexToIterateThroughFloppyFaceList++;
+    } else {
+      indexToIterateThroughFloppyFaceList = 0;
+    }
+    _pathToSelectedWalkingHand =
+        _listOfPathsToFloppyFaceFileNames[indexToIterateThroughFloppyFaceList];
+    notifyListeners();
+  }
+
+  List<String> _listOfPathsToFloppyFaceFileNames = [
+    // 'blobDeadEyesBrown.gif',
+    // 'flappyFaceOrangeO.gif',
+    // 'flappyFacePinko.gif',
+    // 'horseTransparent.gif',
+    // 'zzFish.gif',
+    'zzDuck.gif',
+    // 'zzCockatoo2.gif',
+    // '21Trump2.gif',
+    '21Savage.gif',
+    '2LeggedHorseTransparent1-22-23.gif',
+    // 'donkeyHeadxx1-22-23.gif',
+    'flappyTongue1-22-23A.gif',
+    'flappyTongue1-22-23B.gif',
+    'goofyMan1-22-23.gif',
+    'trumpHeadxx1-22-23.gif',
+  ];
+
   String _pathToSelectedWalkingHand = 'thingStichedWalkingXX.gif';
 
   String get pathToSelectedWalkingHand => _pathToSelectedWalkingHand;
@@ -127,11 +204,41 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  bool _activatedFishAmmo = false;
+
+  bool get activatedFishAmmo => _activatedFishAmmo;
+
+  void toggleFishAmmo() {
+    _activatedTrumpAmmo = false;
+    _activatedShankShooter = false;
+    _activated40MMAmmo = false;
+    _activatedColorChangingBullets = false;
+    _activated20MMAmmo = false;
+    _activatedFishAmmo = !_activatedFishAmmo;
+    notifyListeners();
+  }
+
+  bool _activatedTrumpAmmo = false;
+
+  bool get activatedTrumpAmmo => _activatedTrumpAmmo;
+
+  void toggleTrumpAmmo() {
+    _activatedShankShooter = false;
+    _activated40MMAmmo = false;
+    _activatedColorChangingBullets = false;
+    _activated20MMAmmo = false;
+    _activatedFishAmmo = false;
+    _activatedTrumpAmmo = !_activatedTrumpAmmo;
+    notifyListeners();
+  }
+
   bool _activated20MMAmmo = false;
 
   bool get activated20MMAmmo => _activated20MMAmmo;
 
   void toggle20MMAmmo() {
+    _activatedTrumpAmmo = false;
+    _activatedFishAmmo = false;
     _activatedShankShooter = false;
     _activated40MMAmmo = false;
     _activatedColorChangingBullets = false;
@@ -144,6 +251,10 @@ class PremiumContentProvider with ChangeNotifier {
   bool get activated40MMAmmo => _activated40MMAmmo;
 
   void toggle40MMAmmo() {
+    _activatedTrumpAmmo = false;
+
+    _activatedFishAmmo = false;
+    _activatedColorChangingBullets = false;
     _activatedShankShooter = false;
     _activated20MMAmmo = false;
     _activated40MMAmmo = !_activated40MMAmmo;
@@ -155,6 +266,10 @@ class PremiumContentProvider with ChangeNotifier {
   bool get activatedColorChangingBullets => _activatedColorChangingBullets;
 
   void toggleColorChangingAmmo() {
+    _activatedTrumpAmmo = false;
+
+    _activatedFishAmmo = false;
+
     _activatedShankShooter = false;
     _activated20MMAmmo = false;
     _activated40MMAmmo = false;
@@ -162,12 +277,28 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool _activatedExplodingAmmo = false;
+  bool _activatedShankShooter = false;
 
-  bool get activatedExplodingAmmo => _activatedExplodingAmmo;
+  bool get activatedShankShooter => _activatedShankShooter;
 
-  void toggleExplodingAmmo() {
-    _activatedExplodingAmmo = !_activatedExplodingAmmo;
+  void toggleShankShooter() {
+    _activatedFishAmmo = false;
+
+    _activated20MMAmmo = false;
+    _activated40MMAmmo = false;
+    _activatedTrumpAmmo = false;
+
+    _activatedColorChangingBullets = false;
+    _activatedShankShooter = !_activatedShankShooter;
+    notifyListeners();
+  }
+
+  bool _activatedExplodingHitMarkers = false;
+
+  bool get activatedExplodingAmmo => _activatedExplodingHitMarkers;
+
+  void toggleExplodingHitMarkers() {
+    _activatedExplodingHitMarkers = !_activatedExplodingHitMarkers;
     notifyListeners();
   }
 
@@ -178,18 +309,6 @@ class PremiumContentProvider with ChangeNotifier {
   void toggleExplodingRecoil() {
     _activatedExplodingRecoil = !_activatedExplodingRecoil;
     _activatedShellCasingsInsteadOfSparks = false;
-    notifyListeners();
-  }
-
-  bool _activatedShankShooter = false;
-
-  bool get activatedShankShooter => _activatedShankShooter;
-
-  void toggleShankShooter() {
-    _activated20MMAmmo = false;
-    _activated40MMAmmo = false;
-    _activatedColorChangingBullets = false;
-    _activatedShankShooter = !_activatedShankShooter;
     notifyListeners();
   }
 
@@ -250,6 +369,18 @@ class PremiumContentProvider with ChangeNotifier {
     'hotGothInvertPinkPink.gif',
 
     'hotGothInvertYellow.gif',
+    'flappyFaceBrownDeadEyesResizedBarrier.gif',
+    'monsterFaceSmallBlueWhite.gif',
+    'monsterFaceSmallGreen.gif',
+    'monsterFaceSmallPinkWhite.gif',
+    'monsterFaceSmallPurpleX.gif',
+    'monsterFaceSmallRed.gif',
+
+    /// fish
+    'blueFishSpeedUp.gif',
+    'goldFishSpeedUp.gif',
+    'greenFishSpeedUp.gif',
+    'pinkFishSpeedUp2.gif',
 
     /// Combos - double or triple price?
     ///
@@ -359,10 +490,20 @@ class PremiumContentProvider with ChangeNotifier {
     // 'horror41GlowingColorIncreasedInvertedOptimized.gif',
     // 'horror41GlowingColorIncreasedOptimized.gif',
     'ooooSharpBlackSpace.gif',
-    "bgBlackHole.GIF",
+    'dallEDotSquashColabRedWhiteBlue.gif',
+    'dotSquashxDallEColorChanger.gif',
+    'handGem1-23-23AxxCPinko.gif',
+    'handGem1-23-23Eo.gif',
+    'handGem1-23-23xxA.gif',
+    'tattooedGirl1-23-23C.GIF',
+    // 'tattooedGirl1-23-23InvertE-T.gif',
+    'tattooedGirl1-23-23InvertE.gif',
+    // 'xtattooedGirl1-23-23InvertFx.gif',
+    'handGem1-23-23Eo.gif',
+    // "bgBlackHole.GIF",
 
     // 'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif',
-    'fire1-18-23ColorChange.gif',
+    // 'fire1-18-23ColorChange.gif',
 
     // "bgReactorCore.GIF",
     //
@@ -388,7 +529,7 @@ class PremiumContentProvider with ChangeNotifier {
 
     //// trees
 
-    'horror41.JPG',
+    // 'horror41.JPG',
     // 'fire.gif',
 
     // 'horror39.JPG',
@@ -544,9 +685,10 @@ class PremiumContentProvider with ChangeNotifier {
   // String _pathToSelectedGameConsole = '12dotSquashSuperDevice.gif';
 
   String _pathToSelectedGameConsole =
-      // '12DotSquashSuper.gif';
-      // '12dotsquashConsoleExtraDarkWithRedChip2.png';
+      // 'futuristicGameConsoleNoLogoBLANK.png';
+      // 'dotSquashGameConsoleWhiteInvert.png';
       '12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png';
+  // '12dotSquashConsoleWhiteChip1.png';
 
   String get pathToSelectedGameConsole => _pathToSelectedGameConsole;
 
@@ -793,13 +935,10 @@ class PremiumContentProvider with ChangeNotifier {
   }
 
   void openChestToGetRandomPrize() async {
-    ////TODO
     //// each winnable item type has it's own list
     // the random int should be a combination of each winnable (length - 1)
     /// add a widget with that index for that list
-    ///
     closeChestAndHideLastPrize();
-
     Timer(Duration(milliseconds: 1200), () {
       _shouldHideTheLastPrize = false;
       _pathToChangeChestImageFromClosedToOpen = 'pinkChestClosed.gif';
@@ -807,10 +946,8 @@ class PremiumContentProvider with ChangeNotifier {
 
       handleAnimation();
     });
-
     int _randomIntRepresentingOneTypeOfItemWon;
     int _randomIntRepresetingPrizeIndex;
-
     _randomIntRepresentingOneTypeOfItemWon = Random().nextInt(3);
     if (_randomIntRepresentingOneTypeOfItemWon == 1) {
       /// player won a gat

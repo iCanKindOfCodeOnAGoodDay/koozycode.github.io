@@ -63,7 +63,7 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                   ),
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Container(
                       height: 80.0,
@@ -71,7 +71,8 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.contain,
-                              image: AssetImage('images/blackDiamondABC.gif'))),
+                              image: AssetImage(
+                                  'images/sparklingDiamondsPowerUp.gif'))),
                     ),
                     Text(
                       '${(context.watch<PremiumContentProvider>().amountOfRubiesReadyToUse + context.watch<GameStatusProvider>().amountOFBonusGemsEarnedViaGamePlay).toString()}',

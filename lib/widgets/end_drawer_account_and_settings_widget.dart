@@ -26,7 +26,9 @@ class EndDrawerCustomWidget extends StatelessWidget {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                          'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')),
+                        'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}',
+                        // 'images/tattooedGirl1-23-23C.GIF',
+                      )),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -128,7 +130,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 fontWeight: FontWeight.w700),
                                           ),
                                           Text(
-                                            '\$2.99',
+                                            '\$4.99',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w700),
@@ -197,7 +199,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$13.99',
+                                                '\$7.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -270,7 +272,13 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                       Column(
                                         children: [
                                           Text(
-                                            'Exploding Ammo',
+                                            'Exploding',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          Text(
+                                            'Hit Markers',
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w700),
@@ -283,7 +291,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$13.99',
+                                                '\$7.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -296,7 +304,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                               context
                                                   .read<
                                                       PremiumContentProvider>()
-                                                  .toggleExplodingAmmo();
+                                                  .toggleExplodingHitMarkers();
                                             },
                                             child: context
                                                         .watch<
@@ -369,7 +377,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$3.99',
+                                                '\$1.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -455,7 +463,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$9.99',
+                                                '\$7.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -627,7 +635,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$3.99',
+                                                '\$4.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -713,7 +721,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$3.99',
+                                                '\$1.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -799,7 +807,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$7.99',
+                                                '\$1.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -885,7 +893,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 size: 40.0,
                                               ),
                                               Text(
-                                                '\$7.99',
+                                                '\$1.99',
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontWeight:
@@ -904,6 +912,178 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                         .watch<
                                                             PremiumContentProvider>()
                                                         .activatedFireBallAmmo ==
+                                                    false
+                                                ? Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        color: Colors.black),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        'activate',
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        color: Colors.red),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        'de-activate',
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                      Icon(
+                                        Icons.arrow_circle_right_outlined,
+                                        size: 50.0,
+                                        color: Colors.green,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            'Fish Ammo',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.info_outline,
+                                                color: Colors.orange,
+                                                size: 40.0,
+                                              ),
+                                              Text(
+                                                '\$2.99',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                            ],
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              context
+                                                  .read<
+                                                      PremiumContentProvider>()
+                                                  .toggleFishAmmo();
+                                            },
+                                            child: context
+                                                        .watch<
+                                                            PremiumContentProvider>()
+                                                        .activatedFishAmmo ==
+                                                    false
+                                                ? Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        color: Colors.black),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        'activate',
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        color: Colors.red),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        'de-activate',
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                      Icon(
+                                        Icons.arrow_circle_right_outlined,
+                                        size: 50.0,
+                                        color: Colors.green,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            'Trump Ammo',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.info_outline,
+                                                color: Colors.orange,
+                                                size: 40.0,
+                                              ),
+                                              Text(
+                                                '\$4.99',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                            ],
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              context
+                                                  .read<
+                                                      PremiumContentProvider>()
+                                                  .toggleTrumpAmmo();
+                                            },
+                                            child: context
+                                                        .watch<
+                                                            PremiumContentProvider>()
+                                                        .activatedTrumpAmmo ==
                                                     false
                                                 ? Container(
                                                     decoration: BoxDecoration(
@@ -1138,20 +1318,116 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                 'images/${context.watch<PremiumContentProvider>().pathToSelectedWalkingHand}'))),
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    context
-                                        .read<PremiumContentProvider>()
-                                        .nextHandColor();
-                                  },
-                                  child: Icon(
-                                    Icons.swap_calls,
-                                    size: 50.0,
-                                    color: Colors.white,
-                                  ),
+                                Row(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        FlashingText(text: 'Flappy'),
+                                        FlashingText(text: 'Fishes'),
+                                        GestureDetector(
+                                          onTap: () {
+                                            context
+                                                .read<PremiumContentProvider>()
+                                                .updateHandToFloppyFishes();
+                                          },
+                                          child: Icon(
+                                            Icons.arrow_circle_left_outlined,
+                                            size: 50.0,
+                                            color: Colors.orange,
+                                          ),
+                                        ),
+                                        Text(
+                                          '\$7.99',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700),
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              color: Colors.black),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'buy pack',
+                                              style: TextStyle(
+                                                  fontSize: 10.0,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            context
+                                                .read<PremiumContentProvider>()
+                                                .nextHandColor();
+                                          },
+                                          child: Icon(
+                                            Icons.swap_calls,
+                                            size: 50.0,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        FlashingText(text: 'FREE'),
+                                        FlashingText(text: 'HANDS'),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        FlashingText(text: 'Flappy'),
+                                        FlashingText(text: 'Faces'),
+                                        GestureDetector(
+                                          onTap: () {
+                                            context
+                                                .read<PremiumContentProvider>()
+                                                .updateHandToFloppyFaces();
+                                          },
+                                          child: Icon(
+                                            Icons.arrow_circle_right_outlined,
+                                            size: 50.0,
+                                            color: Colors.orange,
+                                          ),
+                                        ),
+                                        Text(
+                                          '\$7.99',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700),
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              color: Colors.black),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  'buy pack',
+                                                  style: TextStyle(
+                                                      fontSize: 10.0,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                                FlashingText(text: 'FREE'),
-                                FlashingText(text: 'HANDS'),
+                                SizedBox(
+                                  height: 10,
+                                ),
                               ],
                             ),
                             Column(
@@ -1201,7 +1477,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                               fontWeight: FontWeight.w700),
                                         ),
                                         Text(
-                                          '\$1.99',
+                                          '\$4.99',
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w700),
@@ -1221,7 +1497,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                                                   fontWeight: FontWeight.w700),
                                             ),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                     GestureDetector(
@@ -1274,9 +1550,9 @@ class EndDrawerCustomWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 10.0,
-              // ),
+              SizedBox(
+                height: 10.0,
+              ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1319,7 +1595,7 @@ class EndDrawerCustomWidget extends StatelessWidget {
                         child: Icon(
                           Icons.arrow_circle_left_outlined,
                           size: 50.0,
-                          color: Colors.red,
+                          color: Colors.orange,
                         ),
                       ),
                     ],
@@ -1359,99 +1635,14 @@ class EndDrawerCustomWidget extends StatelessWidget {
                         child: Icon(
                           Icons.arrow_circle_right_outlined,
                           size: 50.0,
-                          color: Colors.green,
+                          color: Colors.orange,
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Column(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         Text(
-              //           'Video Themes:',
-              //           style: TextStyle(
-              //               color: Colors.white,
-              //               fontWeight: FontWeight.w900,
-              //               fontSize: 20.0),
-              //         ),
-              //         GestureDetector(
-              //           onTap: context.watch<GameStatusProvider>().crashed ==
-              //                   false
-              //               ? () {
-              //                   context
-              //                       .read<PremiumContentProvider>()
-              //                       .changeBackgroundImage(true);
-              //                   print(
-              //                       'change the background image to previous');
-              //                 }
-              //               : () {
-              //                   print('do something');
-              //
-              //                   context.read<GameStatusProvider>().resetGame();
-              //                   context.read<GameStatusProvider>().start();
-              //                   context.read<GameStatusProvider>().handFall();
-              //                   context.read<GameStatusProvider>().pauseGame();
-              //
-              //                   context
-              //                       .read<PremiumContentProvider>()
-              //                       .changeBackgroundImage(true);
-              //                   print(
-              //                       'change the background image to previous');
-              //                 },
-              //           child: Icon(
-              //             Icons.arrow_circle_left_outlined,
-              //             size: 50.0,
-              //             color: Colors.orange,
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //     Column(
-              //       crossAxisAlignment: CrossAxisAlignment.end,
-              //       children: [
-              //         // Text(
-              //         //   'Theme:',
-              //         //   style: TextStyle(
-              //         //       color: Colors.white,
-              //         //       fontWeight: FontWeight.w900,
-              //         //       fontSize: 20.0),
-              //         // ),
-              //         GestureDetector(
-              //           onTap: context.watch<GameStatusProvider>().crashed ==
-              //                   false
-              //               ? () {
-              //                   context
-              //                       .read<PremiumContentProvider>()
-              //                       .changeBackgroundImage(false);
-              //                   print('change the background image');
-              //                 }
-              //               : () {
-              //                   print('do something');
-              //
-              //                   context.read<GameStatusProvider>().resetGame();
-              //                   context.read<GameStatusProvider>().start();
-              //                   context.read<GameStatusProvider>().handFall();
-              //                   context.read<GameStatusProvider>().pauseGame();
-              //
-              //                   context
-              //                       .read<PremiumContentProvider>()
-              //                       .changeBackgroundImage(false);
-              //                   print('change the background image');
-              //                 },
-              //           child: Icon(
-              //             Icons.arrow_circle_right_outlined,
-              //             size: 50.0,
-              //             color: Colors.orange,
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ],
+
               // ),
             ],
           ),

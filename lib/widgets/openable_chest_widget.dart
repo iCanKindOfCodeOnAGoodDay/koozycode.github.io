@@ -105,7 +105,7 @@ class OpenableChest extends StatelessWidget {
                           child: Container(
                             child: Center(
                               child: Text(
-                                'time bomb:',
+                                'grenade:',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20.0,
@@ -195,12 +195,12 @@ class OpenableChest extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: context
-                        .watch<PremiumContentProvider>()
-                        .heightOfNewItemForAnimationWhenOpeningChest /
-                    10,
-              ),
+              // SizedBox(
+              //   height: context
+              //           .watch<PremiumContentProvider>()
+              //           .heightOfNewItemForAnimationWhenOpeningChest /
+              //       10,
+              // ),
             ],
           ),
         ),
@@ -217,12 +217,12 @@ class OpenableChest extends StatelessWidget {
         ),
         Column(
           children: [
-            SizedBox(
-              height: context
-                      .watch<PremiumContentProvider>()
-                      .heightOfNewItemForAnimationWhenOpeningChest /
-                  1.4,
-            ),
+            // SizedBox(
+            //   height: context
+            //           .watch<PremiumContentProvider>()
+            //           .heightOfNewItemForAnimationWhenOpeningChest /
+            //       1.4,
+            // ),
           ],
         ),
       ],

@@ -82,7 +82,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                           true
                       ? AssetImage(
                           // 'images/blood2.gif',
-                          'images/blood2LightGreen.gif',
+                          'images/blood2LightBlue.gif',
                         )
                       : context
                                   .watch<GameStatusProvider>()
@@ -104,13 +104,16 @@ class GamePlayAreaWidget extends StatelessWidget {
                                           .shouldDisplayKnifeDefense ==
                                       true
                                   ? AssetImage(
-                                      'images/psychadelic.gif',
+                                      'images/psychadelicPink1-23-23xx.gif',
                                     )
                                   : context
                                               .read<GameStatusProvider>()
                                               .shouldDisplayBandaidPickup ==
                                           true
-                                      ? AssetImage('images/psychadelic.gif')
+                                      ? AssetImage(
+                                          'images/psychadelicPink1-23-23xx.gif',
+                                          // 'images/handGem1-23-23Eo.gif',
+                                        )
                                       : context
                                                   .watch<GameStatusProvider>()
                                                   .shouldDisplayExplosion1 ==
@@ -202,7 +205,7 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                     fit: BoxFit.fill,
                                                     image: AssetImage(
                                                       // 'images/blood2.gif',
-                                                      'images/blood2LightGreen.gif',
+                                                      'images/blood2LightBlue.gif',
                                                     )))
                                             : context
                                                         .read<GameStatusProvider>()

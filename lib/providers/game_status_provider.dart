@@ -1039,6 +1039,7 @@ class GameStatusProvider with ChangeNotifier {
         /// show
         fireCrystalBallTimeDecrease();
         soundModel.playOtherSounds5x('crowdApplause.mp3', _hearSoundEffects);
+        soundModel.playOtherSounds5x('1-21-23Gingle8Bit.mp3', hearSoundEffects);
       }
     }
   }
@@ -1764,8 +1765,8 @@ class GameStatusProvider with ChangeNotifier {
 
   int get comboHits => _comboHits;
 
-  ///this funnction should determine contact points and fire animations at the correct contact point
-  ///with 1/50th the amounth of code or so
+  ///contact points and fire animations at the correct contact point
+  ///with 1/50th the amount of code or so
   ///display contactGrid as a stack in from of the game play areas
   void contactFiveOrLess() {
     for (var i = 0; i < 11; i++) {
@@ -1776,21 +1777,13 @@ class GameStatusProvider with ChangeNotifier {
           /// then contact has been made
           handleComboHitsMessageAndHoldTripleHit();
 
-          /// decrease the building height (later for just upgrade cannons)
-          /// todo implement upgrade cannon destroy barriers only
+          /// decrease the building height
           buildings[i].buildingHeight = buildings[i].buildingHeight - 1;
-
-          // _comboHits++;
-          // if (_comboHits >= 3) {
-          //   fireDoublePointsEffects();
-          // }
-          // resetHellFireContactLocations();
           contactGrid.removeAt(i);
           contactGrid.insert(i,
               HellFireContactColumns(potentialContactPosition: _handPosition));
 
           /// add a animation when the gunshot hits a target
-          /// at the location of contact
           notifyListeners();
           Future.delayed(Duration(milliseconds: 400), () {
             resetHellFireContactLocations();
@@ -1800,7 +1793,6 @@ class GameStatusProvider with ChangeNotifier {
             contactGrid.insert(
                 i, HellFireContactColumns(potentialContactPosition: 21));
             pointsForHittingPerCannonType();
-
             notifyListeners();
 
             /// 21 adds a blank column
@@ -2002,7 +1994,13 @@ class GameStatusProvider with ChangeNotifier {
 
   bool get triedFiringWhenOutOfAmmo => _triedFiringWhenOutOfAmmo;
 
+  int _indexToFireDifferentFishBullets = 0;
+
+  int get indexToFireDifferentFishBullets => _indexToFireDifferentFishBullets;
+
   void fireHellFire() {
+    _indexToFireDifferentFishBullets = Random().nextInt(5);
+
     if (flamesSecond.isEmpty == false) {
       _fullyLoaded = false;
       if (_roundsInMagazine > 0) {

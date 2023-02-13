@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
       for (var i = 0; i < 13; i++) {
         /// replace 13 blank icons by removing the blank icon at the end
         /// every 200th of a seconds
-        int delay = i * 200;
+        int delay = i * 300;
         Timer(Duration(milliseconds: delay), () {
           listOfIconsToBeReplacedByZombieCards
               .removeAt(listOfIconsToBeReplacedByZombieCards.length - 1);
@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
               0,
               (Expanded(
                 child: RotatingBarrierWidget(
-                  path: 'mmmZombieFuzzyHotPink.gif',
+                  path: 'pendantNew14Colors.gif',
                 ),
               )));
           setState(() {});
@@ -85,58 +85,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
     /// carrry out the instructions defined above
     //
-
-    Timer imageTimer1a = Timer(Duration(milliseconds: 500), () {
-      setState(() {
-        // imageFileName = 'caroleLynnRayGun.gif';
-        imageFileName = 'iceCreamXXX.gif';
-
-        fireBallPathTop = 'iceCreamXXX.gif';
-        fireBallPathBottom = 'mmmZombieFuzzyRedXXX.gif';
-      });
-    });
-
-    ///  image chaninging timer
-    Timer imageTimer = Timer(Duration(seconds: 1), () {
-      setState(() {
-        imageFileName = 'thingWalkingStichedXXLeft.gif';
-        fireBallPathTop = 'mmmZombieFuzzyRedXXX.gif';
-        fireBallPathBottom = 'iceCreamXXX.gif';
-      });
-    });
-
-    Timer imageTimer2a = Timer(Duration(milliseconds: 1500), () {
-      setState(() {
-        imageFileName = 'thingRightTracedBlackGreenXxx12.gif';
-        fireBallPathTop = 'consumeJesus-unscreen.gif';
-        fireBallPathBottom = 'consumeJesus-unscreen.gif';
-      });
-    });
-
-    Timer imageTimer2 = Timer(Duration(seconds: 2), () {
-      setState(() {
-        imageFileName = 'thingRightTracedBlackGreenXxx12.gif';
-        fireBallPathTop = 'hotGothInvert.gif';
-
-        fireBallPathBottom = 'iceCreamXXX.gif';
-      });
-    });
-
-    Timer imageTimer3a = Timer(Duration(milliseconds: 2500), () {
-      setState(() {
-        imageFileName = 'bloodyThumb.png';
-        fireBallPathTop = 'mmmPinUpFuzzBlackSkin123.gif';
-        fireBallPathBottom = 'mmmPinUpFuzzBlackSkin123.gif';
-      });
-    });
-
-    Timer imageTimer3 = Timer(Duration(seconds: 3), () {
-      setState(() {
-        imageFileName = 'iceCreamXXX.gif';
-        fireBallPathTop = 'iceCreamXXX.gif';
-        fireBallPathBottom = 'iceCreamXXX.gif';
-      });
-    });
   }
 
   List<Widget> listOfIconsToBeReplacedByZombieCards = [
@@ -155,11 +103,11 @@ class _SplashScreenState extends State<SplashScreen> {
     kblankIcon,
   ];
 
-  String imageFileName = "thingRightTracedBlackGreenXxx12.gif";
+  String imageFileName = "consumeJesus-unscreen.gif";
 
-  String fireBallPathTop = 'thingRightTracedBlackGreenXxx12.gif';
+  String fireBallPathTop = 'consumeJesus-unscreen.gif';
 
-  String fireBallPathBottom = 'iceCreamXXX.gif';
+  String fireBallPathBottom = 'mmjakFuzzyInvertPink.gif';
 
   @override
   Widget build(BuildContext context) {
@@ -171,80 +119,43 @@ class _SplashScreenState extends State<SplashScreen> {
           image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage(
-                'images/12dotSquashSuperDevice.gif',
+                'images/12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png',
+
+                // 'images/psychadelic.gif',
+
+                // 'images/dotSquashGameConsoleWhiteInvert.png',
                 // 'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}',
               )),
         ),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
                 height: 40.0,
               ),
-              // Container(
-              //   height: 40.0,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.end,
-              //     children: listOfIconsToBeReplacedByZombieCards,
-              //   ),
-              // ),
-              // Expanded(
-              //   child: Hero(
-              //     tag: 'fireBall',
-              //     child: Container(
-              //       // width: 100.0,
-              //       decoration: BoxDecoration(
-              //           image: DecorationImage(
-              //               fit: BoxFit.fitHeight,
-              //               image:
-              //                   AssetImage('images/iceCreamXXX.gif'))),
-              //     ),
-              //   ),
-              // ),
               Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: listOfIconsToBeReplacedByZombieCards,
+                height: 500.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('images/ledScreenBackground.jpg')),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        // borderRadius: BorderRadius.circular(20.0),
+                        image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('images/gameOver.GIF'),
+                    )),
+                  ),
                 ),
               ),
-              Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
+              // //
               Expanded(
                 child: Hero(
                   tag: 'fireBall',
@@ -253,50 +164,19 @@ class _SplashScreenState extends State<SplashScreen> {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.contain,
-                            image: AssetImage('images/$fireBallPathTop'))),
+                            image:
+                                AssetImage('images/bbbbNinjaStarInvert.gif'))),
                   ),
                 ),
               ),
+              Container(
+                // height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: listOfIconsToBeReplacedByZombieCards,
+                ),
+              ),
 
-              // Container(
-              //   decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(20),
-              //       image: DecorationImage(
-              //           fit: BoxFit.fill,
-              //           image: AssetImage('images/ledScreenBackground.jpg'))),
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(8.0),
-              //     child: Container(
-              //       ///TODO use dynamic sizes using media query
-              //       height: 400.0,
-              //       decoration: BoxDecoration(
-              //           image: DecorationImage(
-              //               fit: BoxFit.fill,
-              //               image: AssetImage('images/gameOver.GIF'))),
-              //       child: Center(
-              //           child: Hero(
-              //         tag: "pimpedRayGun",
-              //         child: Container(
-              //           height: imageFileName == 'thingRightTracedBlackGreenXxx12.gif'
-              //               ? 300.0
-              //               : imageFileName == 'consumeTrumpX3.gif'
-              //                   ? 300.0
-              //                   : 150.0,
-              //           width: imageFileName == 'bloodyThumb.png'
-              //               ? 200.0
-              //               : imageFileName ==
-              //                       'thingRightTracedBlackGreenXxx12.gif'
-              //                   ? 400.0
-              //                   : 300.0,
-              //           decoration: BoxDecoration(
-              //               image: DecorationImage(
-              //                   fit: BoxFit.fitHeight,
-              //                   image: AssetImage('images/$imageFileName'))),
-              //         ),
-              //       )),
-              //     ),
-              //   ),
-              // ),
               // Expanded(
               //   child: Hero(
               //     tag: 'fireBall',
@@ -304,12 +184,16 @@ class _SplashScreenState extends State<SplashScreen> {
               //       // width: 100.0,
               //       decoration: BoxDecoration(
               //           image: DecorationImage(
-              //               fit: BoxFit.fitHeight,
-              //               image:
-              //                   AssetImage('images/iceCreamXXX.gif'))),
+              //               fit: BoxFit.contain,
+              //               image: AssetImage('images/$fireBallPathTop'))),
               //     ),
               //   ),
               // ),
+
+              SizedBox(
+                height: 20.0,
+              ),
+
               // Expanded(
               //   child: Hero(
               //     tag: 'fireBall',

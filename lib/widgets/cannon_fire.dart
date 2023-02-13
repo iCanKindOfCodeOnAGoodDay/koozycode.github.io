@@ -5,7 +5,9 @@ import 'package:flappy_taco/widgets/rotating_icecream_bullet_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/20mm_bullet_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/40MM_bullet_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/color_changing_bullet_widget.dart';
+import 'package:flappy_taco/widgets/selected_winnables/fish_bullet_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/original_fireball_widgets.dart';
+import 'package:flappy_taco/widgets/selected_winnables/trump_bullet_widget.dart';
 import 'package:flappy_taco/widgets/winnables/shank_shooter_bullet_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,28 +18,36 @@ class CannonFire extends StatelessWidget {
   Widget build(BuildContext context) {
     return context.watch<PremiumContentProvider>().activatedShankShooter ==
             false
-        ? context.watch<PremiumContentProvider>().activated20MMAmmo == true
-            ? TwentyMMBullet()
-            : context.watch<PremiumContentProvider>().activated40MMAmmo == true
-                ? FortyMMBullet()
-                : context
-                            .watch<PremiumContentProvider>()
-                            .activatedColorChangingBullets ==
+        ? context.watch<PremiumContentProvider>().activatedTrumpAmmo == true
+            ? TrumpBulletWidget()
+            : context.watch<PremiumContentProvider>().activatedFishAmmo == true
+                ? FishBulletWidget()
+                : context.watch<PremiumContentProvider>().activated20MMAmmo ==
                         true
-                    ? ColorChangingBullet()
-                    :
-                    // OriginalFireBallWidgets()
-                    context
+                    ? TwentyMMBullet()
+                    : context
                                 .watch<PremiumContentProvider>()
-                                .activatedFireBallAmmo ==
+                                .activated40MMAmmo ==
                             true
-                        ? OriginalFireBallWidgets()
-                        : FastRotatingIcecreamBullet(
-                            path:
-                                '${context.watch<GameStatusProvider>().iceCreamBulletPath}',
-                            height: 40.0,
-                            width: 40.0,
-                          )
+                        ? FortyMMBullet()
+                        : context
+                                    .watch<PremiumContentProvider>()
+                                    .activatedColorChangingBullets ==
+                                true
+                            ? ColorChangingBullet()
+                            :
+                            // OriginalFireBallWidgets()
+                            context
+                                        .watch<PremiumContentProvider>()
+                                        .activatedFireBallAmmo ==
+                                    true
+                                ? OriginalFireBallWidgets()
+                                : FastRotatingIcecreamBullet(
+                                    path:
+                                        '${context.watch<GameStatusProvider>().iceCreamBulletPath}',
+                                    height: 40.0,
+                                    width: 40.0,
+                                  )
         : ShankShooterBullet();
   }
 }
