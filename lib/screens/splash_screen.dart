@@ -25,6 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   initState() {
     super.initState();
     soundModel.playFlapFlapFlap(true);
+    soundModel.playOtherSounds('cannonUpgrade.mp3', true);
 
     // context.read<GameStatusProvider>().setBackgroundMusicToTrue();
     // soundModel.playSpookyMusic(
@@ -44,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
     /// if they are, play background music and
     /// send them to the game play screen
     /// TODO for now, send user straight to game play screen after a delay to display splash screen
-    Timer transitionTimer = Timer(Duration(seconds: 5), () {
+    Timer transitionTimer = Timer(Duration(seconds: 3), () {
       context.read<GameStatusProvider>().fireExplosion1();
       soundModel.playOtherSounds5x('customExplosion.mp3', true);
       soundModel.playSpookyMusic(true);
@@ -63,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
       for (var i = 0; i < 13; i++) {
         /// replace 13 blank icons by removing the blank icon at the end
         /// every 200th of a seconds
-        int delay = i * 300;
+        int delay = i * 200;
         Timer(Duration(milliseconds: delay), () {
           listOfIconsToBeReplacedByZombieCards
               .removeAt(listOfIconsToBeReplacedByZombieCards.length - 1);
@@ -71,7 +72,10 @@ class _SplashScreenState extends State<SplashScreen> {
               0,
               (Expanded(
                 child: RotatingBarrierWidget(
-                  path: 'pendantNew14Colors.gif',
+                  // path: 'pendantNew14Colors.gif',
+                  // path: 'blackDiamondABC.gif',
+                  // path: "IMG_6724_icon.PNG",
+                  path: 'cube-white-t.png',
                 ),
               )));
           setState(() {});
@@ -119,9 +123,9 @@ class _SplashScreenState extends State<SplashScreen> {
           image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage(
-                'images/12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png',
+                // 'images/12dotSquashConsoleWhiteChip1.png',
 
-                // 'images/psychadelic.gif',
+                'images/psychadelic.gif',
 
                 // 'images/dotSquashGameConsoleWhiteInvert.png',
                 // 'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}',
@@ -130,31 +134,31 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 height: 40.0,
               ),
-              Container(
-                height: 500.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('images/ledScreenBackground.jpg')),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        // borderRadius: BorderRadius.circular(20.0),
-                        image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('images/gameOver.GIF'),
-                    )),
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 500.0,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(10.0),
+              //     image: DecorationImage(
+              //         fit: BoxFit.fill,
+              //         image: AssetImage('images/ledScreenBackground.jpg')),
+              //   ),
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Container(
+              //       decoration: BoxDecoration(
+              //           // borderRadius: BorderRadius.circular(20.0),
+              //           image: DecorationImage(
+              //         fit: BoxFit.fill,
+              //         image: AssetImage('images/gameOver.GIF'),
+              //       )),
+              //     ),
+              //   ),
+              // ),
               // //
               Expanded(
                 child: Hero(
@@ -164,9 +168,40 @@ class _SplashScreenState extends State<SplashScreen> {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.contain,
-                            image:
-                                AssetImage('images/bbbbNinjaStarInvert.gif'))),
+                            image: AssetImage(
+                              'images/bbbbNinjaStarInvert.gif',
+                              // 'images/IMG_6896_alien2.png',
+                            ))),
                   ),
+                ),
+              ),
+
+              Container(
+                // height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: listOfIconsToBeReplacedByZombieCards,
+                ),
+              ),
+              Container(
+                // height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: listOfIconsToBeReplacedByZombieCards,
+                ),
+              ),
+              Container(
+                // height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: listOfIconsToBeReplacedByZombieCards,
+                ),
+              ),
+              Container(
+                // height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: listOfIconsToBeReplacedByZombieCards,
                 ),
               ),
               Container(

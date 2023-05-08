@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 class SkeletonFingerGunWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return kSkeletonFingerGun;
+    return kThingFalling;
+
+    /// not happy with the asthetics of the skeleton finger gun
+    //   kSkeletonFingerGun;
   }
 }

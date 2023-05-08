@@ -61,17 +61,17 @@ class GamePlayScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                     image: AssetImage(
                       context.watch<GameStatusProvider>().purpleGameBoy == true
-                          ? 'images/12dotSqushGameConsoleInternalsPurp2.png'
+                          ? 'images/futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png'
                           : context.watch<GameStatusProvider>().silverGameBoy ==
                                   true
-                              ? 'images/12dotSquashConsoleWhiteChip1.png'
+                              ? 'images/dotSquashGameConsoleGrey.png'
                               : context
                                           .watch<GameStatusProvider>()
                                           .redGameBoyInsteadOfYellow ==
                                       false
-                                  ? 'images/12dotsquashConsoleExtraDarkWithRedChipOrange.png'
+                                  ? 'images/dotSquashGameConsoleWhiteInvert.png'
                                   // ? 'images/redChip.jpg'
-                                  : 'images/12dotSqushGameConsoleInternalsLightRedGreen.png',
+                                  : 'images/dotSquashGameConsoleSilver.png',
                     )),
               ),
             ),

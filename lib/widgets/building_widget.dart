@@ -1,41 +1,12 @@
 import 'package:flappy_taco/constants.dart';
 import 'package:flappy_taco/providers/game_status_provider.dart';
 import 'package:flappy_taco/providers/premium_content_provider.dart';
-import 'package:flappy_taco/widgets/cannon_ammunition_next_pickup.dart';
-import 'package:flappy_taco/widgets/cannon_ammunition_widget.dart';
+
 import 'package:flappy_taco/widgets/development_block_widget.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/dynamic_barrier_coin.dart';
-import 'package:flappy_taco/widgets/ice_cream_bullet.dart';
+
 import 'package:flappy_taco/widgets/rotating_barrier_widget.dart';
 import 'package:flappy_taco/widgets/rotating_icecream_bullet_widget.dart';
-import 'package:flappy_taco/widgets/selected_winnables/hand_walking_left_widgets.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
-import 'package:flappy_taco/widgets/selected_winnables/selected_barrier.dart';
+
 import 'package:flappy_taco/widgets/selected_winnables/selected_beast.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_grendade_widget.dart';
 import 'package:flappy_taco/widgets/selected_winnables/selected_knife_widget.dart';
@@ -79,7 +50,7 @@ class BuildingWidget extends StatelessWidget {
                   /// the hand can fall down to 1, and climb up to 10
                   ///                   kblankIcon,
                   powerUpPosition == 10 ? kBlood : kblankIcon,
-                  powerUpPosition == 9 ? HandWalkingLeftWidgets() : kblankIcon,
+                  powerUpPosition == 9 ? kExtraLife : kblankIcon,
                   powerUpPosition == 8
                       ? SelectedGrenadeWidget(
                           onScreenPickupAndNotAGrenadeButton: true,

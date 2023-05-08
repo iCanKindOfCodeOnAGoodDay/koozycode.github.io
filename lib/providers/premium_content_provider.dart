@@ -183,7 +183,8 @@ class PremiumContentProvider with ChangeNotifier {
 
   String _pathToSelectedBarrier =
       // 'mmjakFuzzyInvertPink.gif';
-      'mmmZombieFuzzyPink.gif';
+      // 'mmmZombieFuzzyPink.gif';
+      'cube-white-t.png';
   // String _pathToSelectedBarrier = 'zombieHandXX.gif';
 
   bool _activatedFireBallAmmo = false;
@@ -421,13 +422,17 @@ class PremiumContentProvider with ChangeNotifier {
 
     notifyListeners();
   }
-  //// the background image is set here
+  //// the  image is set here
 
   String _pathToSelectedBackgroundImage =
       // 'horror41GlowingColorIncreasedInvertedOptimized.gif';
-      // 'blackSpace1723.gif';
+      // 'ravenSkullStandardSpeed.gif';
+      // 'ooooSharpBlackSpace.gif';
       // 'oooBlackSpaceFrame.gif';
-      'ooooSharpBlackSpace.gif';
+      // 'blocks-bg-5-6.png';
+      'blank-transparent-photo-layer.png';
+  // 'ledScreenBackground.jpg';
+  // 'horror41.JPG';
   // 'fire.gif';
   // 'fusion3.gif';
   // 'blackWater.gif';
@@ -490,16 +495,18 @@ class PremiumContentProvider with ChangeNotifier {
     // 'horror41GlowingColorIncreasedInvertedOptimized.gif',
     // 'horror41GlowingColorIncreasedOptimized.gif',
     'ooooSharpBlackSpace.gif',
-    'dallEDotSquashColabRedWhiteBlue.gif',
-    'dotSquashxDallEColorChanger.gif',
-    'handGem1-23-23AxxCPinko.gif',
-    'handGem1-23-23Eo.gif',
-    'handGem1-23-23xxA.gif',
-    'tattooedGirl1-23-23C.GIF',
+    // 'dallEDotSquashColabRedWhiteBlue.gif',
+    // 'dotSquashxDallEColorChanger.gif',
+    // 'handGem1-23-23AxxCPinko.gif',
+    // 'handGem1-23-23Eo.gif',
+    // 'handGem1-23-23xxA.gif',
+    ///hippie girl
+    // 'tattooedGirl1-23-23C.GIF',
     // 'tattooedGirl1-23-23InvertE-T.gif',
-    'tattooedGirl1-23-23InvertE.gif',
+    // 'tattooedGirl1-23-23InvertE.gif',
     // 'xtattooedGirl1-23-23InvertFx.gif',
-    'handGem1-23-23Eo.gif',
+    /// hands in pool with gem and space
+    // 'handGem1-23-23Eo.gif',
     // "bgBlackHole.GIF",
 
     // 'blackWaterDotSquashLogo1-18-23ColorChangeCombo.gif',
@@ -511,7 +518,7 @@ class PremiumContentProvider with ChangeNotifier {
 
     // 'bonusSpace2.GIF',
 
-    // 'ravenSkullStandardSpeed.gif',
+    'ravenSkullStandardSpeed.gif',
 
     // 'blackTunnel.gif',
     // 'colorChangingTunnelCombo1-18-23.gif',
@@ -529,8 +536,8 @@ class PremiumContentProvider with ChangeNotifier {
 
     //// trees
 
-    // 'horror41.JPG',
-    // 'fire.gif',
+    'horror41.JPG',
+    'fire.gif',
 
     // 'horror39.JPG',
   ];
@@ -597,7 +604,6 @@ class PremiumContentProvider with ChangeNotifier {
   //   // "bonusCar3.GIF",
   //   // "bonusCar4.GIF",
   //   // "bonusCrumble.GIF",
-  //   // "bonusEscalator.GIF",
   //   // "bonusEscalator2.GIF",
   //   // "bonusEww.GIF",
   //   // "bonusEyes.GIF",
@@ -631,7 +637,9 @@ class PremiumContentProvider with ChangeNotifier {
 
   String _playersGatChoiceString =
       // 'skeletonWhiteARPistolRemakeSkeletonHand.png';
-      'skeletonARPistolRemakeWhiteBlackTealCombo.gif';
+      // 'skeletonARPistolRemakeWhiteBlackTealCombo.gif';
+      // 'skeletonGunCompxxInverseBlueOrangexxx.png';
+      'skeletonWhiteARPistolRemakeSkeletonHandWhitePinkTint.png';
 
   String get playersGatChoiceString => _playersGatChoiceString;
 
@@ -658,7 +666,7 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _pathToSelectedBeast = 'consumeJesus-unscreen.gif';
+  String _pathToSelectedBeast = 'zzGhost1.gif';
 
   String get pathToSelectedBeast => _pathToSelectedBeast;
 
@@ -670,7 +678,8 @@ class PremiumContentProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _pathToSelectedRocket = 'crystalBallXXXXX.gif';
+  String _pathToSelectedRocket = 'img-handWings2-16-23.png';
+  // 'crystalBallXXXXX.gif';
 
   String get pathToSelectedRocket => _pathToSelectedRocket;
 
@@ -685,9 +694,10 @@ class PremiumContentProvider with ChangeNotifier {
   // String _pathToSelectedGameConsole = '12dotSquashSuperDevice.gif';
 
   String _pathToSelectedGameConsole =
-      // 'futuristicGameConsoleNoLogoBLANK.png';
-      // 'dotSquashGameConsoleWhiteInvert.png';
-      '12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png';
+      'futuristicGameConsoleNoLogo2BLANKLOGO copy 3.png';
+  // 'futuristicGameConsoleNoLogoBLANK.png';
+  // 'dotSquashGameConsoleWhiteInvert.png';
+  // '12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png';
   // '12dotSquashConsoleWhiteChip1.png';
 
   String get pathToSelectedGameConsole => _pathToSelectedGameConsole;
@@ -711,7 +721,7 @@ class PremiumContentProvider with ChangeNotifier {
     // '12dotsquashConsoleExtraDarkWithLightChipGreen.png',
     // '12dotsquashConsoleExtraDarkWithLightChipGrey.png',
     // '12dotsquashConsoleExtraDarkWithLightChipSaturatedGreen.png',
-    '12dotsquashConsoleExtraDarkWithRedChip2.png',
+    // '12dotsquashConsoleExtraDarkWithRedChip2.png',
     // '12dotsquashConsoleExtraDarkWithRedChipDarkGrey.png',
     // '12dotsquashConsoleExtraDarkWithRedChipOrange.png',
     // '12dotsquashConsoleExtraDarkWithRedChipYellow.png',
@@ -719,27 +729,27 @@ class PremiumContentProvider with ChangeNotifier {
     // '12dotSquashConsoleLightGrey2.png',
     // '12dotsquashConsoleLightGreyWithRedChip.png',
     // '12dotsquashConsoleLightWithGreenChip.png',
-    '12dotsquashConsoleLightWithPinkChip.png',
-    '12dotSquashConsoleWhiteChip1.png',
+    // '12dotsquashConsoleLightWithPinkChip.png',
+    // '12dotSquashConsoleWhiteChip1.png',
     // '12dotSquashLightWithRedChip.png',
     // '12dotSquashSuperDevice.gif',
-    '12dotSquashWhiteInternalsxx.png',
-    // '12dotSqushGameConsoleInternalsBlue.png',
-    '12dotSqushGameConsoleInternalsBrown.png',
-    '12dotSqushGameConsoleInternalsCamo2.png',
-    '12dotSqushGameConsoleInternalsDarkBlueGreen.png',
-    // '12dotSqushGameConsoleInternalsDarkGreenLightGreen.png',
-    // '12dotSqushGameConsoleInternalsGreen.png',
-    // '12dotSqushGameConsoleInternalsLightBlue.png',
-    // '12dotSqushGameConsoleInternalsLightBrown.png',
-    // '12dotSqushGameConsoleInternalsLightGreen.png',
-    // '12dotSqushGameConsoleInternalsLightGrey.png',
-    // '12dotSqushGameConsoleInternalsLightGreyGreen.png',
-    // '12dotSqushGameConsoleInternalsLightPurp.png',
-    '12dotSqushGameConsoleInternalsLightRedGreen.png',
-    '12dotSqushGameConsoleInternalsPink.png',
-    // '12dotSqushGameConsoleInternalsPinkish.png',
-    '12dotSqushGameConsoleInternalsPurp2.png',
+    // '12dotSquashWhiteInternalsxx.png',
+    // // '12dotSqushGameConsoleInternalsBlue.png',
+    // '12dotSqushGameConsoleInternalsBrown.png',
+    // '12dotSqushGameConsoleInternalsCamo2.png',
+    // '12dotSqushGameConsoleInternalsDarkBlueGreen.png',
+    // // '12dotSqushGameConsoleInternalsDarkGreenLightGreen.png',
+    // // '12dotSqushGameConsoleInternalsGreen.png',
+    // // '12dotSqushGameConsoleInternalsLightBlue.png',
+    // // '12dotSqushGameConsoleInternalsLightBrown.png',
+    // // '12dotSqushGameConsoleInternalsLightGreen.png',
+    // // '12dotSqushGameConsoleInternalsLightGrey.png',
+    // // '12dotSqushGameConsoleInternalsLightGreyGreen.png',
+    // // '12dotSqushGameConsoleInternalsLightPurp.png',
+    // '12dotSqushGameConsoleInternalsLightRedGreen.png',
+    // '12dotSqushGameConsoleInternalsPink.png',
+    // // '12dotSqushGameConsoleInternalsPinkish.png',
+    // '12dotSqushGameConsoleInternalsPurp2.png',
     // '12dotSqushGameConsoleInternalsYellow.png',
     // '12DotSquashSuper.gif',
 

@@ -44,7 +44,7 @@ class CannonSwitch extends StatelessWidget {
                                 ? 'images/componetLeftBlackButtonSquare.png'
                                 : context
                                             .watch<GameStatusProvider>()
-                                            .roundsInMagazine ==
+                                            .roundsInMagazine !=
                                         0
                                     ? 'images/nukeButton.png'
                                     : 'images/nukeButtonReload.gif'))),

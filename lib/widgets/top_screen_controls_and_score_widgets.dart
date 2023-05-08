@@ -72,7 +72,9 @@ class TopOfScreenControlsAndScoreWidgets extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.contain,
                               image: AssetImage(
-                                  'images/sparklingDiamondsPowerUp.gif'))),
+                                // 'images/sparklingDiamondsPowerUp.gif',
+                                'images/blackDiamondABC.gif',
+                              ))),
                     ),
                     Text(
                       '${(context.watch<PremiumContentProvider>().amountOfRubiesReadyToUse + context.watch<GameStatusProvider>().amountOFBonusGemsEarnedViaGamePlay).toString()}',

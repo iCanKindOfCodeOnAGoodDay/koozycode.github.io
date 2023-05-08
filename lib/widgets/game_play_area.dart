@@ -50,25 +50,34 @@ class GamePlayAreaWidget extends StatelessWidget {
                               ? DecorationImage(
                                   image: AssetImage(
                                       'images/${context.watch<PremiumContentProvider>().pathToSelectedKnife}'))
-                              : context
-                                          .watch<GameStatusProvider>()
-                                          .showSkullBackground ==
+                              // : context
+                              //             .watch<GameStatusProvider>()
+                              //             .showSkullBackground ==
+                              //         true
+                              //     ? DecorationImage(
+                              //         image: AssetImage(
+                              //             'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}'))
+                              // : context
+                              //             .watch<GameStatusProvider>()
+                              //             .shouldDisplayTimeIncrease ==
+                              //         true
+                              //     ? DecorationImage(image: AssetImage(
+                              //         // 'images/crystalBallLargeScreen.gif',
+                              //         'images/IMG_6896_alien2.png'))
+                              : context.watch<GameStatusProvider>().crashed ==
                                       true
                                   ? DecorationImage(
+                                      fit: BoxFit.cover,
                                       image: AssetImage(
-                                          'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}'))
-                                  : context
-                                              .watch<GameStatusProvider>()
-                                              .shouldDisplayTimeIncrease ==
-                                          true
-                                      ? DecorationImage(
-                                          image: AssetImage(
-                                          'images/crystalBallLargeScreen.gif',
-                                        ))
-                                      : DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              'images/ledScreenBackground.jpg')),
+                                          'images/ledScreenBackground.jpg'))
+                                  : DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          'images/ledScreenBackground.jpg')
+
+                                      // (AssetImage(
+                                      //     'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')),
+                                      ),
                         ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -81,64 +90,74 @@ class GamePlayAreaWidget extends StatelessWidget {
                               .shouldDisplayLossALifeAndNotAGameOverAndNotAKnifeDefenseDueToBeingStabbed ==
                           true
                       ? AssetImage(
-                          // 'images/blood2.gif',
-                          'images/blood2LightBlue.gif',
+                          'images/blood2.gif',
+                          // 'images/blood2LightBlue.gif',
                         )
+                      // : context
+                      //             .watch<GameStatusProvider>()
+                      //             .showSkullBackground ==
+                      //         true
+                      //     ? AssetImage(
+                      //         'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}')
                       : context
                                   .watch<GameStatusProvider>()
-                                  .showSkullBackground ==
+                                  .shouldDisplayTimeIncrease ==
                               true
                           ? AssetImage(
-                              'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}')
+                              // 'images/IMG_7147_alien.GIF',
+                              // 'images/hhWarp3.GIF',
+                              'images/warpSpeedBlack.gif',
+                              // 'images/crystalBallLargeScreen.gif',
+                            )
                           : context
                                       .watch<GameStatusProvider>()
-                                      .shouldDisplayTimeIncrease ==
+                                      .shouldDisplayKnifeDefense ==
                                   true
                               ? AssetImage(
-                                  // 'images/hhWarp3.GIF',
-                                  // 'images/ravenSkullSpeedUp.gif',
-                                  'images/crystalBallLargeScreen.gif',
+                                  ///funny app icon face
+                                  'images/IMG_6724_icon.PNG',
+                                  // ///fun hand icon image
+                                  //
+                                  // 'images/IMG_6722_icon.PNG',
                                 )
                               : context
-                                          .watch<GameStatusProvider>()
-                                          .shouldDisplayKnifeDefense ==
+                                          .read<GameStatusProvider>()
+                                          .shouldDisplayBandaidPickup ==
                                       true
                                   ? AssetImage(
-                                      'images/psychadelicPink1-23-23xx.gif',
+                                      ///fun hand icon image
+
+                                      'images/blood2White2.gif',
+                                      // ///pimp girl
+                                      // 'images/IMG_6550_pimPGirl.PNG',
+                                      // 'images/handGem1-23-23Eo.gif',
                                     )
                                   : context
-                                              .read<GameStatusProvider>()
-                                              .shouldDisplayBandaidPickup ==
+                                              .watch<GameStatusProvider>()
+                                              .shouldDisplayExplosion1 ==
                                           true
-                                      ? AssetImage(
-                                          'images/psychadelicPink1-23-23xx.gif',
-                                          // 'images/handGem1-23-23Eo.gif',
-                                        )
+                                      ? AssetImage('images/whiteExplosion2.gif')
                                       : context
                                                   .watch<GameStatusProvider>()
-                                                  .shouldDisplayExplosion1 ==
+                                                  .shouldDisplayExplosion2 ==
                                               true
                                           ? AssetImage(
-                                              'images/whiteExplosion2.gif')
+                                              'images/ooooExplosionBlue.gif')
                                           : context
                                                       .watch<
                                                           GameStatusProvider>()
-                                                      .shouldDisplayExplosion2 ==
-                                                  true
+                                                      .crashed ==
+                                                  false
+                                              // ? AssetImage('images/fire.gif')
                                               ? AssetImage(
-                                                  'images/ooooExplosionBlue.gif')
-                                              : context
-                                                          .watch<
-                                                              GameStatusProvider>()
-                                                          .crashed ==
-                                                      false
-                                                  // ? AssetImage('images/fire.gif')
-                                                  ? AssetImage(
-                                                      'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
+                                                  'images/purpleEnergyBlackLightened.gif')
 
-                                                  // blackWater.gif
-                                                  : AssetImage(
-                                                      'images/gameOver.GIF'),
+                                              /// current background image is a 100% transparent 'image'
+                                              // 'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}')
+
+                                              // blackWater.gif
+                                              : AssetImage(
+                                                  'images/gameOver.GIF'),
                 ),
               ),
               child: Container(
@@ -204,8 +223,8 @@ class GamePlayAreaWidget extends StatelessWidget {
                                                 image: DecorationImage(
                                                     fit: BoxFit.fill,
                                                     image: AssetImage(
-                                                      // 'images/blood2.gif',
-                                                      'images/blood2LightBlue.gif',
+                                                      'images/blood2.gif',
+                                                      // 'images/blood2LightBlue.gif',
                                                     )))
                                             : context
                                                         .read<GameStatusProvider>()
@@ -235,7 +254,9 @@ class GamePlayAreaWidget extends StatelessWidget {
                               ? BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}')))
+                                  // 'images/IMG_7151_monsters.GIF',
+                                  'images/${context.watch<PremiumContentProvider>().pathToSelectedBeast}',
+                                )))
                               : BoxDecoration(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

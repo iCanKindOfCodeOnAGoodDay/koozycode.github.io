@@ -479,7 +479,10 @@ Hero kExtraLife = Hero(
     decoration: BoxDecoration(
       image: DecorationImage(
         fit: BoxFit.cover,
-        image: AssetImage('images/thingWalkingStichedXXLeft.gif'),
+        image: AssetImage(
+          'images/thingWalkingStichedXXLeft.gif',
+          // 'images/img-monsterHand2-16-23.png',
+        ),
       ),
     ),
   ),
