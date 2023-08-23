@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer transitionTimer = Timer(Duration(seconds: 3), () {
       context.read<GameStatusProvider>().fireExplosion1();
       soundModel.playOtherSounds5x('customExplosion.mp3', true);
-      soundModel.playSpookyMusic(true);
+      // soundModel.playSpookyMusic(true);
       // soundModel.playOtherSounds5x('assets/explosionAndDebris.mp3', true);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -123,9 +123,9 @@ class _SplashScreenState extends State<SplashScreen> {
           image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage(
-                // 'images/12dotSquashConsoleWhiteChip1.png',
+                'images/dotSquashGameConsoleGrey.png',
 
-                'images/psychadelic.gif',
+                // 'images/psychadelic.gif',
 
                 // 'images/dotSquashGameConsoleWhiteInvert.png',
                 // 'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}',
@@ -169,66 +169,17 @@ class _SplashScreenState extends State<SplashScreen> {
                         image: DecorationImage(
                             fit: BoxFit.contain,
                             image: AssetImage(
-                              'images/bbbbNinjaStarInvert.gif',
+                              'images/koozyLogo.gif',
                               // 'images/IMG_6896_alien2.png',
                             ))),
                   ),
                 ),
               ),
 
-              Container(
-                // height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                // height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                // height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                // height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-              Container(
-                // height: 40.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: listOfIconsToBeReplacedByZombieCards,
-                ),
-              ),
-
-              // Expanded(
-              //   child: Hero(
-              //     tag: 'fireBall',
-              //     child: Container(
-              //       // width: 100.0,
-              //       decoration: BoxDecoration(
-              //           image: DecorationImage(
-              //               fit: BoxFit.contain,
-              //               image: AssetImage('images/$fireBallPathTop'))),
-              //     ),
-              //   ),
-              // ),
-
               SizedBox(
                 height: 20.0,
               ),
-
+              //
               // Expanded(
               //   child: Hero(
               //     tag: 'fireBall',
@@ -241,6 +192,14 @@ class _SplashScreenState extends State<SplashScreen> {
               //     ),
               //   ),
               // ),
+
+              Container(
+                // height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: listOfIconsToBeReplacedByZombieCards,
+                ),
+              ),
             ],
           ),
         ),

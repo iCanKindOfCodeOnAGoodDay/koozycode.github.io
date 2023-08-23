@@ -17,15 +17,18 @@ class ShopDrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(
-                  'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}'))),
+        image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage(
+                'images/${context.watch<PremiumContentProvider>().pathToSelectedGameConsole}')),
+      ),
       child: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('images/tattooedGirl1-23-23InvertE.gif'))),
+          color: Colors.black,
+          // image: DecorationImage(
+          //     fit: BoxFit.cover,
+          //     image: AssetImage('images/tattooedGirl1-23-23InvertE.gif')),
+        ),
         child: ListView(
           children: [
             Container(

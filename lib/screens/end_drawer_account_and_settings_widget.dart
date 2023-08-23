@@ -23,12 +23,13 @@ class EndDrawerCustomWidget extends StatelessWidget {
                 // color: Colors.red,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(
-                        'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}',
-                        // 'images/tattooedGirl1-23-23C.GIF',
-                      )),
+                  color: Colors.black,
+                  // image: DecorationImage(
+                  //     fit: BoxFit.cover,
+                  //     // image: AssetImage(
+                  //     //   'images/${context.watch<PremiumContentProvider>().pathToSelectedBackgroundImage}',
+                  //       // 'images/tattooedGirl1-23-23C.GIF',
+                  //     ),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
